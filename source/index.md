@@ -13,4 +13,5 @@ A guide for new users of [Denizen](https://www.spigotmc.org/resources/denizen.21
 
     guides/background/index
     guides/first-steps/index
+    guides/basics/index
 ```

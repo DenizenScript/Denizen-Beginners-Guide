@@ -1,5 +1,5 @@
-First Steps
------------
+Your First Steps
+----------------
 
 ``` toctree::
     :maxdepth: 1
