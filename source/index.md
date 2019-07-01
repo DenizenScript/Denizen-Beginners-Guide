@@ -16,4 +16,5 @@ A guide for new users of [Denizen](https://www.spigotmc.org/resources/denizen.21
     guides/basics/index
     guides/npcs/index
     guides/advanced/index
+    guides/put-it-together/index
 ```
