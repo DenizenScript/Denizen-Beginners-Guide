@@ -6,68 +6,80 @@ pre {
     background-color: #EEEEEE;
 }
 
-.highlight-dscript .s { /* string: "double quoted" */
+.highlight-dscript_red pre {
+    border: 1px solid #FF0000;
+}
+
+.highlight-dscript_green pre {
+    border: 1px solid #00FF00;
+}
+
+.highlight-dscript_blue pre {
+    border: 1px solid #0000FF;
+}
+
+div[class^="highlight-dscript"] .s { /* string: "double quoted" */
     color: #0066FF;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .sb { /* string-backtick: 'single quoted' */
+div[class^="highlight-dscript"] .sb { /* string-backtick: 'single quoted' */
     color: #0099BB;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .nt { /* name-tag: <tag> */
+div[class^="highlight-dscript"] .nt { /* name-tag: <tag> */
     color: #444444;
     font-weight: bold;
     font-style: normal;
 }
 
-.highlight-dscript .gr { /* generic-error: %old_defs% */
+div[class^="highlight-dscript"] .gr { /* generic-error: %old_defs% */
     color: #000000;
     background-color: #FF6666;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .c1 { /* comment-single: #- code comment */
+div[class^="highlight-dscript"] .c1 { /* comment-single: #- code comment */
     color: #AA6600;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .nv { /* name-variable: [brackets] */
+div[class^="highlight-dscript"] .nv { /* name-variable: [brackets] */
     color: #777777;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .nc { /* name-class: yaml keys */
+div[class^="highlight-dscript"] .nc { /* name-class: yaml keys */
     color: #0000FF;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .ch { /* comment-hashbang: # +-- header comment */
+div[class^="highlight-dscript"] .ch { /* comment-hashbang: # +-- header comment */
     color: #CC0000;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .c { /* comment: # regular comment */
+div[class^="highlight-dscript"] .c { /* comment: # regular comment */
     color: #007700;
     font-weight: normal;
     font-style: normal;
 }
 
-.highlight-dscript .k { /* keyword: - commandname */
+div[class^="highlight-dscript"] .k { /* keyword: - commandname */
     color: #000000;
     font-weight: normal;
     font-style: italic;
 }
 
-.highlight-dscript .o { /* operator: the . in tags */
+div[class^="highlight-dscript"] .o { /* operator: the . in tags */
     color: #000000;
     font-weight: normal;
     font-style: normal;
