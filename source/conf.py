@@ -1,0 +1,83 @@
+# for custom dScript lexer
+from pygments.lexer import RegexLexer, include
+from pygments import token
+from sphinx.highlighting import lexers
+
+# Project Info
+project = "Denizen Beginner's Guide"
+copyright = '2019 The DenizenScript Team'
+author = 'The DenizenScript Team'
+version = '0.1'
+release = '0.1'
+
+# General Config
+extensions = ['recommonmark']
+templates_path = ['_templates']
+source_suffix = '.md'
+master_doc = 'index'
+language = 'en'
+exclude_patterns = []
+pygments_style = 'sphinx'
+html_theme = 'sphinx_rtd_theme'
+html_static_path = ['_static']
+
+def setup(app):
+    app.add_stylesheet('css/stylesheet.css')
+    app.add_javascript('js/custom.js')
+
+templates_path = ['_templates']
+
+# dScript highlighting placeholder
+class dScriptLexer(RegexLexer):
+    name = 'dscript'
+    tokens = {
+        'spaces_patch': [
+            (r'\s', token.Text ) #                                                    spaces
+        ],
+        'inside_brackets': [
+            (r'\[', token.Name.Variable, '#push'), #                                  [
+            (r'\]', token.Name.Variable, '#pop'), #                                   ]
+            include('tag_finder'),
+            (r'$', token.Text, '#pop'),
+            (r'.', token.Name.Variable) #                                             anything else
+        ],
+        'inside_tag': [
+            (r'\[(?=([^\s]+)\])', token.Name.Variable, 'inside_brackets' ), #         [brackets]
+            (r'\.', token.Operator ), #                                               .
+            (r'>', token.Name.Tag, '#pop'), #                                         >
+            (r'$', token.Text, '#pop'),
+            (r'.', token.Name.Tag) #                                                  anything else
+        ],
+        'tag_finder': [
+            (r'<(?=([^\s]+)>)', token.Name.Tag, 'inside_tag' ), #                     <tag>
+            (r'%.*%', token.Generic.Error ) #                                         %old_def%
+        ],
+        'double_quoted': [
+            include('tag_finder'),
+            (r'"', token.Literal.String, '#pop'), #                                   ]
+            (r'.', token.Literal.String ) #                                           anything else
+        ],
+        'single_quoted': [
+            include('tag_finder'),
+            (r'\'', token.Literal.String.Backtick, '#pop'), #                         ]
+            (r'.', token.Literal.String.Backtick ) #                                  anything else
+        ],
+        'code_line': [
+            (r'"(?=([^"]+)")', token.Literal.String, 'double_quoted' ), #             "text"
+            (r'\'(?=([^\']+)\')', token.Literal.String.Backtick, 'single_quoted' ), # 'text'
+            (r'$', token.Text, '#pop'),
+            include('tag_finder'),
+            (r'.', token.Text ) #                                                     anything else
+        ],
+        'root': [
+            (r'^\s*#\s*[\|+=].*$', token.Comment.Hashbang ), #                        # +--- header comment
+            (r'^\s*#\s*-.*$', token.Comment.Single ), #                               # - code comment
+            (r'^\s*#.*$', token.Comment ), #                                          # regular comment
+            (r'^[^-#:]*:', token.Name.Class ), #                                       yaml key:
+            (r'^\s*-\s[^\s]+\s', token.Keyword, 'code_line' ), #                      - somecommand
+            include('spaces_patch'),
+            (r'.', token.Text ) #                                                     anything else
+        ]
+    }
+
+lexers['dscript'] = dScriptLexer(startinline=True)
