@@ -3,6 +3,10 @@ from pygments.lexer import RegexLexer, include
 from pygments import token
 from sphinx.highlighting import lexers
 
+# for markdown support
+import recommonmark
+from recommonmark.transform import AutoStructify
+
 # Project Info
 project = "Denizen Beginner's Guide"
 copyright = '2019 The DenizenScript Team'
@@ -20,10 +24,6 @@ exclude_patterns = []
 pygments_style = 'sphinx'
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
-
-def setup(app):
-    app.add_stylesheet('css/stylesheet.css')
-    app.add_javascript('js/custom.js')
 
 templates_path = ['_templates']
 
@@ -90,3 +90,12 @@ class dScriptLexerBlue(RegexLexer):
 lexers['dscript_red'] = dScriptLexerRed(startinline=True)
 lexers['dscript_green'] = dScriptLexerGreen(startinline=True)
 lexers['dscript_blue'] = dScriptLexerBlue(startinline=True)
+
+# For markdown
+def setup(app):
+    app.add_stylesheet('css/stylesheet.css')
+    app.add_config_value('recommonmark_config', {
+            'auto_toc_tree_section': 'Contents',
+            'enable_eval_rst': True,
+            }, True)
+    app.add_transform(AutoStructify)
