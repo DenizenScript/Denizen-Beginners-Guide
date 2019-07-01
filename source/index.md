@@ -18,3 +18,12 @@ A guide for new users of [Denizen](https://www.spigotmc.org/resources/denizen.21
     guides/advanced/index
     guides/put-it-together/index
 ```
+
+## Also, information about this guide:
+
+``` toctree::
+    :maxdepth: 2
+    :titlesonly:
+
+    guides/this-guide/index
+```
