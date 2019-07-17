@@ -25,6 +25,9 @@ pygments_style = 'sphinx'
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
+# Disabled stuff
+smartquotes = False
+
 templates_path = ['_templates']
 
 reusable_tokens = {

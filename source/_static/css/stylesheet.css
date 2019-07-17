@@ -2,6 +2,10 @@
     margin: auto;
 }
 
+h1, h2 {
+    letter-spacing: 0.1em;
+}
+
 pre {
     background-color: #EEEEEE;
 }
