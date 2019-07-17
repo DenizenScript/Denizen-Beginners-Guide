@@ -202,10 +202,69 @@ magic_healing_bell:
         - heal
 ```
 
-That's a lot worse! We had to write the `heal` command twice (not to mention the extra `stop` command).
+That's a lot worse! We had to write the `heal` command twice <span class="parens">(not to mention the extra `stop` command)</span>.
 If you're thinking "that's not too bad", just think about how much worse that might get in a real script where there's a lot more than just a single `heal` command that runs regardless of the condition.
 You'd be duplicating an entire list of commands - luckily, the `else` command lets us avoid that!
 
-### TODO
+### Don't Forks Normally Have 3 or 4 Prongs?
 
-**TODO: else if commands, explanation of matches and contains, discussion of the idea that you can put an if inside another if...**
+The `else` command is pretty handy as we've seen, but it actually has even more power to it!
+We started out with just an `if` command that lets you make one subset of code run or not run.
+We then expanded to the `else` command to let you run one of two possible subsets of code.
+You can probably guess what we're expanding to next: a way to choose one of many possible subsets of code.
+This is the `else if`!
+
+### How Do You Write An 'Else If'?
+
+Here's the basic format:
+```dscript_blue
+- if (first condition here):
+    - (commands for when the first condition is 'true')
+- else if (second condition):
+    - (second condition 'true' commands)
+- else:
+    - (commands for when all conditions were 'false')
+```
+
+As you can see, it's pretty much just slapping an `if` inside of an `else`.
+You can chain `else if`s in a row as many times as like, the only limit is you must always start with a regular `if`.
+You do not have to have an `else` <span class="parens">(without the `if`)</span> but you can if you want, it just has to be kept at the very end if so.
+
+How might that go in real usage?
+
+```dscript_green
+magic_healing_bell:
+    type: world
+    events:
+        on player right clicks bell:
+        - if <player.health.percentage> > 90:
+            - actionbar "<red>The bell does nothing: you're healthy enough already."
+        - else if <player.health.percentage> < 25:
+            - actionbar "<red>The bell can't save you: you're too far gone."
+        - else:
+            - actionbar "<green>The bell has healed you!"
+            - heal
+```
+
+This version of the magic bell script won't heal you if you're healthy already, and also won't save you from death - it will only heal you if you're moderately injured.
+Thanks to this new design, we don't need the `stop` command at all anymore, as the `heal` command only runs on one of the possible "branches".
+
+### Wait Who Was Talking About Trees?
+
+If you have experience in advanced computer processing design - well, first of all, why are you bothering to read this guide? but more relevantly - you might recognize the term "branch" being used here.
+If not, you might still recognize the idea of visualizing paths as trees with many branches. If you don't have any idea what I'm on about, don't worry, I'll explain.
+
+The different ways an if command might go are sometimes called "branches", usually when using this terminology the overall structure of a script is called a "tree".
+When a script is being ran, it starts at the "root" <span class="parens">(whatever the first command is)</span>,
+and it "branches out" any time you have an `if` command or similar <span class="parens">(anything subset of commands that only sometimes runs)</span>.
+
+You don't have to know or use any of these terms or any others like it we introduce, but if you see someone using them and don't know what they're talking about, hopefully you'll remember that this subsection exists to come look back at!
+
+Another common phrasing you might want to be aware of is "pass" and "fail" - an `if` command "passes" when its conditions are true <span class="parens">(and its sub-commands run)</span>.
+The `if` has "failed" when its conditions are false <span class="parens">(and its sub-commands don't run)</span>.
+
+### Going Beyond
+
+If you're sitting here thinking "well this is all well and good, but there's so many more complicated ways I want to branch my scripts",
+well... you've reached the end of the general overview of the `if` command here. Depending on what you want to do,
+you might just go ahead and stick an `if` command inside of another `if` command <span class="parens">(nothing's going to stop you, other than than your script starting to look big and scary)</span>.
