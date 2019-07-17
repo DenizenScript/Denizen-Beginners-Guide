@@ -9,7 +9,7 @@ Written by the Denizen Script team.
 
 Instructions on how to install Sphinx can be found at: http://www.sphinx-doc.org/en/master/usage/installation.html
 
-You must use `pip` to install the packages listed in `requirements.txt`.
+You must use `pip` to install the packages listed in `requirements.txt` (via `pip install -r requirements.txt`).
 
 ### Building
 
