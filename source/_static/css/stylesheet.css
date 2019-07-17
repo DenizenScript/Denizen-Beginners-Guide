@@ -17,6 +17,7 @@ h1, h2 { /* Headers */
 
 pre { /* Code blocks */
     background-color: #EEEEEE;
+    white-space: pre-wrap !important;
 }
 
 .rst-content code.literal { /* inline `code` */
