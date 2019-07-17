@@ -17,7 +17,7 @@ Now it's time to use the `if` command to combine the two concepts: choosing a se
 
 The `if` command does exactly what it says on the tin: it says "*if* something is true, then run these commands. Otherwise, don't run them."
 
-### So What Does An If Look Like?
+### So What Does An If Command Look Like?
 
 Don't worry, `if` commands are pretty easy to write, and look just like anything else in a Denizen script does.
 
@@ -68,6 +68,45 @@ so you can read this like "if three **is not** equal to three, then run some com
 ### The Most Common Usage of 'If'
 
 **TODO: `stop` command usage**
+
+### A Fork In The Road
+
+So far, we've explained the basics of the `if` command in terms of how to run a set of commands or not run them, based on some condition.
+This is great for adding extra requirements to an event before a set of commands runs, but that's not all that `if` can do!
+The if command, as we currently understand it, says "if this condition is true, then run these commands, otherwise don't."
+Let's expand that to instead say "if this condition is true, then run these commands, otherwise *run these different commands*."
+Now, our script can go down one of two paths depending on some tag-based condition.
+We'll do this using the `else` command.
+
+### What Does An Else Command Look Like?
+
+The `else` command looks almost the same as an `if`.
+
+Here's the basic format:
+```dscript_blue
+- if (some condition here):
+    - (commands for when the condition is 'true')
+- else:
+    - (commands for 'false')
+```
+
+That's pretty simple! It's just an `else` with no input parameters, formatted just like an `if`, and with the special requirement that it must be right after an `if`.
+Whenever the `if` command's condition is 'false', the commands in `else` will run.
+
+Let's make use of an else in our magic bell script...
+```dscript_green
+magic_healing_bell:
+    type: world
+    events:
+        on player right clicks bell:
+        - if <player.health.percentage> < 25:
+            - heal
+            - actionbar "<green>The bell has healed you!"
+        - else:
+            - actionbar "<red>The bell does nothing: you're healthy enough already."
+```
+
+The existing script healed players with less than 25% health. Now it will also give a message to players that are healthy enough, so they don't get confused when the bell doesn't do anything.
 
 ### TODO
 
