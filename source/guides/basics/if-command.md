@@ -61,13 +61,25 @@ One or both values can be a tag. <span class="parens">(Technically, both values 
 
 There are a few different comparison types available:
 - `==` to test equality <span class="parens">(`- if 3 == 3:` will run its commands, but `- if 3 == 4:` will not)</span> - you can read this as "if three is equal to three, then run some commands".
+
+<hr>
+
 - `!=` to test equality but expect the opposite result <span class="parens">(so, `- if 3 != 3:` will **not** run its commands, and `- if 3 != 4:` **will** run its commands)</span> - the `!` is read as "not",
 so you can read this like "if three **is not** equal to three, then run some commands." Of course in real usage, one or both of the values would be from a tag.
+
+<hr>
+
 - `>` (is greater than), `>=` (is greater than or equal to), `<` (is less than), and `<=` (is less than or equal to) to test numeric comparisons. Note that `>` and `<=` are opposites, and that `<` and `>=` are opposites.
 As a special additional note here: you might notice that `<` and `>` are the symbols used to indicate a tag normally, but are used for a different meaning here -
 this is fine, as you will never have both `<` and `>` in a single argument of a comparison, and thus the symbols will never be misinterpreted as a tag.
-- `matches` to test if a value fits a mold <span class="parens">(this will be explained later)</span>. The opposite of `matches` is `!matches` <span class="parens">("does not match")</span>.
-- `contains` to test if a list contains an entry <span class="parens">(this will be explained later)</span>. The opposite of `contains` is `!contains` <span class="parens">("does not contain")</span>.
+
+<hr>
+
+- `matches` to test if a value fits a mold <span class="parens">(this is explained in [Advanced - Matches Operator](/guides/advanced/matches-operator))</span>. The opposite of `matches` is `!matches` <span class="parens">("does not match")</span>.
+
+<hr>
+
+- `contains` to test if a list contains an entry <span class="parens">(based on a `ListTag` as the first value - lists will be discussed more in other sections)</span>. The opposite of `contains` is `!contains` <span class="parens">("does not contain")</span>.
 
 ### Combining Conditions: The Venti Mocha Frap With Extra Sugar and No Cream
 
@@ -76,6 +88,9 @@ When a simple comparison just won't do, and you gotta get a few extra things inc
 There are two combination types available:
 - If you want a set of commands to run if multiple comparisons **are all** true, use `&&` <span class="parens">(read as "and" - the symbol itself is a double-ampersand)</span>.
 For example, `- if <player.on_fire> && <player.health.percentage> < 25:` will run its commands if a player is on fire *and* almost dead.
+
+<hr>
+
 - If you want a set of commands to run if **any one (or more)** of multiple comparisons is true, use `||` <span class="parens">(read as "or" - the symbol itself is a double-pipe)</span>.
 For example, `- if <player.on_fire> || <player.health.percentage> < 25:` will run its commands if a player is on fire <span class="parens">(regardless of their health)</span>,
 or will run its commands if the player's health is low <span class="parens">(regardless of whether they're on fire)</span>.
@@ -267,4 +282,5 @@ The `if` has "failed" when its conditions are false <span class="parens">(and it
 
 If you're sitting here thinking "well this is all well and good, but there's so many more complicated ways I want to branch my scripts",
 well... you've reached the end of the general overview of the `if` command here. Depending on what you want to do,
-you might just go ahead and stick an `if` command inside of another `if` command <span class="parens">(nothing's going to stop you, other than than your script starting to look big and scary)</span>.
+you might just go ahead and stick an `if` command inside of another `if` command <span class="parens">(nothing's going to stop you, other than than your script starting to look big and scary)</span>,
+or if that's not good enough... well keep reading through the guide, one of the upcoming sections will have what you're looking for.

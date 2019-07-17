@@ -8,6 +8,10 @@ body {
 
 h1, h2 { /* Headers */
     letter-spacing: 0.1em;
+    margin-top: 48px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #CCCCCC;
+    text-align: center;
 }
 
 .parens { /* Parentheticals */
@@ -22,6 +26,14 @@ pre { /* Code blocks */
 
 .rst-content code.literal { /* inline `code` */
     color: #000030;
+}
+
+hr {
+    margin: 12px !important;
+}
+
+.section ul {
+    margin-bottom: 12px !important;
 }
 
 .highlight-dscript_red pre {
