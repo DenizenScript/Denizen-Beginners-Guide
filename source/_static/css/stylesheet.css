@@ -1,13 +1,26 @@
 .wy-nav-content {
-    margin: auto;
+    margin: auto; /* Fix to make the content centered, not left-aligned */
 }
 
-h1, h2 {
+body {
+    color: #222222;
+}
+
+h1, h2 { /* Headers */
     letter-spacing: 0.1em;
 }
 
-pre {
+.parens { /* Parentheticals */
+    color: #444444;
+    font-size: 92%;
+}
+
+pre { /* Code blocks */
     background-color: #EEEEEE;
+}
+
+.rst-content code.literal { /* inline `code` */
+    color: #000030;
 }
 
 .highlight-dscript_red pre {
