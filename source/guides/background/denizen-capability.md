@@ -22,6 +22,10 @@ What Is Denizen Capable Of?
 
 ![](https://i.alexgoodwin.media/i/denizen_guide/883aea.png)
 
+- Or whatever other crazy thing you might imagine. Here's a chest GUI of a keypad to type on:
+
+![](https://i.alexgoodwin.media/i/denizen_guide/487cb1.gif)
+
 ### What Can A Normal User Do With Denizen?
 
 **What can you do with Denizen... if you're a more average user? Still quite a lot!**
