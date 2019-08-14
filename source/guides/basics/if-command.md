@@ -8,7 +8,7 @@ Changing The Path: The If Command
 
 ### Required Reading
 
-Before starting this section, you should already understand everything in the [Your First Steps](/guides/first-steps/index) category.
+Before starting this section, you should already understand everything in the [Your First Steps](/guides/first-steps/index) section.
 
 ### What Is The 'If' Command?
 
