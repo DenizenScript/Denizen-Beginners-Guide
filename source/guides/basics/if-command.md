@@ -6,10 +6,6 @@ Changing The Path: The If Command
     :local:
 ```
 
-### Required Reading
-
-Before starting this section, you should already understand everything in the [Your First Steps](/guides/first-steps/index) section.
-
 ### What Is The 'If' Command?
 
 You learned how to use events to run a set of commands whenever a situation occurs on your server. You learned how to use tags to change what any command does based on the details of the situation.
