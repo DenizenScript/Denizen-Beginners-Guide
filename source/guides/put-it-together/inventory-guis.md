@@ -1,4 +1,4 @@
-An Inventory GUI Menu
+An Inventory GUI Menu (NOT YET WRITTEN)
 ---------------------
 
 **TODO: Notice about required section reading before starting this.**

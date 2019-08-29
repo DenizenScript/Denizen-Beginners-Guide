@@ -1,4 +1,4 @@
-Do That Again: Loops
+Do That Again: Loops (NOT YET WRITTEN)
 --------------------
 
 **TODO: Write-up that introduces loops in general, using the repeat command.**

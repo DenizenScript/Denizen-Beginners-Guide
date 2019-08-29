@@ -1,4 +1,4 @@
-Finding The Right Tool For The Script
+Finding The Right Tool For The Script (NOT YET WRITTEN)
 -------------------------------------
 
 **TODO: Write-up that explains how to find the correct command/event/tag/... for a script. Should emphasize the `#bot-spam` channel on the Discord and the idea of asking other people for help in `#denizen-lobby`, though also mention the meta docs website.**

@@ -1,4 +1,4 @@
-A Kill Quest
+A Kill Quest (NOT YET WRITTEN)
 ------------
 
 **TODO: Notice about required section reading before starting this.**
