@@ -267,7 +267,7 @@ If not, you might still recognize the idea of visualizing paths as trees with ma
 
 The different ways an if command might go are sometimes called "branches", usually when using this terminology the overall structure of a script is called a "tree".
 When a script is being ran, it starts at the "root" <span class="parens">(whatever the first command is)</span>,
-and it "branches out" any time you have an `if` command or similar <span class="parens">(anything subset of commands that only sometimes runs)</span>.
+and it "branches out" any time you have an `if` command or similar <span class="parens">(any subset of commands that only sometimes runs)</span>.
 
 You don't have to know or use any of these terms or any others like it we introduce, but if you see someone using them and don't know what they're talking about, hopefully you'll remember that this subsection exists to come look back at!
 
@@ -279,4 +279,4 @@ The `if` has "failed" when its conditions are false <span class="parens">(and it
 If you're sitting here thinking "well this is all well and good, but there's so many more complicated ways I want to branch my scripts",
 well... you've reached the end of the general overview of the `if` command here. Depending on what you want to do,
 you might just go ahead and stick an `if` command inside of another `if` command <span class="parens">(nothing's going to stop you, other than than your script starting to look big and scary)</span>,
-or if that's not good enough... well keep reading through the guide, one of the upcoming sections will have what you're looking for.
+or if that's not good enough... well keep reading through the guide, one of the upcoming sections will probably have what you're looking for <span class="parens">(like the [Loops section](/guides/basics/loops))</span>.
