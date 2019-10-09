@@ -43,7 +43,7 @@ npc_killquest_interact:
                     - give diamond
                     - flag player kill_zombie_quest_count:!
                     - flag player kill_zombie_quest_cooldown duration:24h
-                    - flag player npc_engage:!
+                    - flag player npc_engaged:!
                     # - disengage
                     - stop
                 - narrate format:cchat "Hello there. Would you care for a special prize?"
@@ -53,7 +53,7 @@ npc_killquest_interact:
                 - narrate format:cchat "Will you accept this request?"
                 - wait 5t
                 - narrate "[<&o>Type <&b><&o>Yes<&f><&o> or <&b><&o>No<&f>]"
-                - flag player npc_engage:!
+                - flag player npc_engaged:!
                 # - disengage
             chat trigger:
                 1:
@@ -70,7 +70,7 @@ npc_killquest_interact:
                     - narrate "[Kill 5 zombies!]"
                     - flag player kill_zombie_quest
                     - flag player kill_zombie_quest_count:0
-                    - flag player npc_engage:!
+                    - flag player npc_engaged:!
                     # - disengage
                 2:
                     trigger: "/No/ I don't"
