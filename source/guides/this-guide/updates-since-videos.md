@@ -1,5 +1,5 @@
 Updates Since the Tutorial Videos
---------------
+---------------------------------
 
 Denizen has had quite a number of updates over the years since the original tutorial videos were published! This guide page documents the changes that you should know about for best practices.
 
@@ -12,7 +12,7 @@ If you've written scripts using braced syntax, you can quickly convert them to c
 
 For example, here's a script converted from braced syntax to colon syntax:
 
-```dscript_green
+```dscript_red
 old_brace_syntax:
     type: task
     script:
@@ -41,7 +41,7 @@ Definition syntax no longer looks like `%this%`, but instead looks like `<[this]
 
 Here's an example of the old syntax updated to the new syntax:
 
-```dscript_green
+```dscript_red
 old_definition_syntax:
     type: task
     script:
@@ -65,7 +65,7 @@ This limitation no longer exists - the `while` command now supports operators.
 
 The following is an example of a task script using the `while` command that will narrate to a player when their health is below 10, with both old and modern syntax:
 
-```dscript_green
+```dscript_red
 old_while_syntax:
     type: task
     script:
@@ -89,7 +89,7 @@ Historically, multiple interact scripts were used on NPCs with conditions to det
 
 Here are examples of old and updated syntax:
 
-```dscript_green
+```dscript_red
 old_assignment_script:
     type: assignment
     interact scripts:
@@ -109,7 +109,7 @@ new_assignment_script:
 
 The replacement is simple:
 
-```dscript_green
+```dscript_red
 old_queue_clear:
     type: task
     script:
@@ -133,7 +133,7 @@ In the past, including [the Kill Quest tutorial video](https://one.denizenscript
 
 Now, the correct way to check whether a flag exists is to use `.has_flag[]`. `.flag[]` is now only for checking the value of a flag, and should only be used where the flag is known to exist. Here are some examples:
 
-```dscript_green
+```dscript_red
 old_flag:
     type: task
     script:
