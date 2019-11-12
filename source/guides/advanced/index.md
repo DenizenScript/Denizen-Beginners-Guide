@@ -7,7 +7,7 @@ Advanced Scripting
     :maxdepth: 1
     :titlesonly:
 
-    matches-operator
+    notables
     parse-tag
     list-filters
 ```
