@@ -37,7 +37,7 @@ Colon syntax is easier to write, and as an added bonus, Denizen even parses it m
 
 The `define` command has had two significant changes - first, the syntax has changed for the definition tag itself, and second, the define command now supports [data actions](https://one.denizenscript.com/denizen/lngs/data%20actions).
 
-Definition syntax no longer looks like `%this%`, but instead looks like `<[this]>` (for a definition of `this`, of course). For additional details on how to use and modify definitions, please see the [Definitions](/guide/basics/definitions) page.
+Definition syntax no longer looks like `%this%`, but instead looks like `<[this]>` (for a definition of `this`, of course). For additional details on how to use and modify definitions, please see the [Definitions](/guides/basics/definitions) page.
 
 Here's an example of the old syntax updated to the new syntax:
 

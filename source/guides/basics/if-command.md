@@ -69,14 +69,6 @@ so you can read this like "if three **is not** equal to three, then run some com
 As a special additional note here: you might notice that `<` and `>` are the symbols used to indicate a tag normally, but are used for a different meaning here -
 this is fine, as you will never have both `<` and `>` in a single argument of a comparison, and thus the symbols will never be misinterpreted as a tag.
 
-<hr>
-
-- `matches` to test if a value fits a mold <span class="parens">(this is explained in [Advanced - Matches Operator](/guides/advanced/matches-operator))</span>. The opposite of `matches` is `!matches` <span class="parens">("does not match")</span>.
-
-<hr>
-
-- `contains` to test if a list contains an entry <span class="parens">(based on a `ListTag` as the first value - lists will be discussed more in other sections)</span>. The opposite of `contains` is `!contains` <span class="parens">("does not contain")</span>.
-
 ### Combining Conditions: The Venti Mocha Frap With Extra Sugar and No Cream
 
 When a simple comparison just won't do, and you gotta get a few extra things included, don't worry: the `if` command will let you do that!
