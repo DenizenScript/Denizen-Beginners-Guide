@@ -37,4 +37,4 @@ my_bad_script:
     - narrote 'This ain't work""
 ```
 
-Scripts that are bad and should not be used have a red outline. These scripts usually demonstrate common mistakes or pitfalls, and are presented only as examples of what **NOT** to do.
+Scripts that are bad and should not be used have a red outline. These scripts usually demonstrate common mistakes or pitfalls, and are presented only as examples of what **NOT** to do. These scripts may contain typos, errors, misformatting, bad logic, or even just simply outdated syntaxes.
