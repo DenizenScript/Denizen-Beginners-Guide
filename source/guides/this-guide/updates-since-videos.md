@@ -1,12 +1,23 @@
 Updates Since the Tutorial Videos
 ---------------------------------
 
-Denizen has had quite a number of updates over the years since the original tutorial videos were published! This guide page documents the changes that you should know about for best practices.
+Denizen has had quite a number of updates over the years since the original tutorial videos were published <span class="parens">(5-6 years ago)</span>! This guide page documents the changes that you should know about for best practices.
+
+### Editor of Choice
+
+In the tutorial videos, Notepad++ was displayed as the script editor to use. This was basically just a slightly better text editor. Since then, we've gotten an actual proper script editor, based on an extension to VS Code.
+
+For more information, refer to the page on [Setting Up The Script Editor](/guides/first-steps/script-editor).
+
+### We're on Discord Now
+
+The tutorial videos showcase some interactions with a bot on IRC - if you've tried to reach this IRC, you've already seen the messages that we moved to Discord. You're probably also aware of that if you got to this guide.
+
+But, just in case you haven't yet seen it - we're on Discord, so [join us there!](https://discord.gg/Q6pZGSR). We provide human support and bot-assisted searches/script-checking/etc. there.
 
 ### Colon Syntax
 
-Braced syntax has been replaced with colon syntax. As documented on the page for [The If Command](/guides/basics/if-command), colon syntax allows you to use multiple commands within an `if` command, `foreach` command, or `while` command. Unlike braced syntax, no closing character is needed - when you return to the prior level of spacing, the script will continue as normal.
-
+Braced syntax has been replaced with colon syntax. As documented on the page for [The If Command](/guides/basics/if-command), colon syntax allows you to use multiple commands within commands like `if` and `foreach`. Unlike braced syntax, no closing character is needed - when you return to the prior level of spacing, the script will continue as normal.
 
 If you've written scripts using braced syntax, you can quickly convert them to colon syntax by deleting all closing brace characters (`}`), replacing the opening brace character (`{`) with a colon, and removing any extra spaces between the colon and the last other character in the line.
 
@@ -18,7 +29,7 @@ old_brace_syntax:
     script:
     - if <player.has_flag[test]> {
         - narrate "This is an example of braced syntax!"
-    }
+        }
     - narrate "This narrate will always run!"
 ```
 
@@ -31,13 +42,16 @@ new_colon_syntax:
     - narrate "This narrate will always run!"
 ```
 
-Colon syntax is easier to write, and as an added bonus, Denizen even parses it more efficiently!
+Colon syntax is easier to write, looks cleaner, and as an added bonus, Denizen even parses it more efficiently!
 
 ### Definition Syntax
 
 The `define` command has had two significant changes - first, the syntax has changed for the definition tag itself, and second, the define command now supports [data actions](https://one.denizenscript.com/denizen/lngs/data%20actions).
 
-Definition syntax no longer looks like `%this%`, but instead looks like `<[this]>` (for a definition of `this`, of course). For additional details on how to use and modify definitions, please see the [Definitions](/guides/basics/definitions) page.
+The videos taught two different forms of definition syntax: First, the 'ancient style' percent syntax (like `%this%`), and second, the 'old style' tag syntax (like `<def[this]>`).
+Definition tags no longer look like that, but instead looks like `<[this]>` <span class="parens">(for a definition named `this`, of course)</span>. For additional details on how to use and modify definitions, please see the [Definitions](/guides/basics/definitions) page.
+
+Note that `%name%` is considered ancient and completely unsupported, and should never be used. `<def[name]>` however is considered an older/alternative syntax for the modern `<[name]>` <span class="parens">(it's the same tag-base syntax, except the empty-name tag is now available in place of a tag named `def`)</span>.
 
 Here's an example of the old syntax updated to the new syntax:
 
@@ -46,7 +60,10 @@ old_definition_syntax:
     type: task
     script:
     - define name <player.name>
+    # Ancient
     - narrate "Hello, %name%!"
+    # Old
+    - narrate "Hello, <def[name]>!"
 ```
 
 ```dscript_green
@@ -57,30 +74,43 @@ new_definition_syntax:
     - narrate "Hello, <[name]>!"
 ```
 
-### Operators Versus .is[].to[]
+### Changes To The While Command
 
 In the past, the `while` command previously only accepted one argument, so it was necessary to use tags like `<player.health.is[>=].to[10]>]>` to evaluate expressions.
 
-This limitation no longer exists - the `while` command now supports operators.
+This limitation no longer exists - the `while` command now supports operators, the same as the `if` command.
 
-The following is an example of a task script using the `while` command that will narrate to a player when their health is below 10, with both old and modern syntax:
+The following is an example of a task script using the `while` command that will wait for a player's health to drop below 10, then narrate a warning to them, with both old and modern syntax:
 
 ```dscript_red
 old_while_syntax:
     type: task
     script:
+    - narrate "Challenge: don't lose too much health!"
     - while <player.health.is[>=].to[10]>:
         - wait 1s
-    - narrate "Your health is getting low!"
+    - narrate "Your health got too low! You lose!"
 ```
 
 ```dscript_green
 new_while_syntax:
     type:
     script:
+    - narrate "Challenge: don't lose too much health!"
     - while <player.health> >= 10:
         - wait 1s
-    - narrate "Your health is getting low!"
+    - narrate "Your health got too low! You lose!"
+```
+
+Note that this specific waiting-until-something style of logic has as well been replaced by a specialized command, `waituntil`, which can be used like so:
+
+```dscript_green
+new_while_syntax:
+    type:
+    script:
+    - narrate "Challenge: don't lose too much health!"
+    - waituntil rate:1s <player.health> < 10
+    - narrate "Your health got too low! You lose!"
 ```
 
 ### Assignment Script Updates
@@ -103,7 +133,7 @@ new_assignment_script:
     - my_cool_npc_interaction
 ```
 
-### Stop is the New Queue Clear
+### Stop Is The New Queue Clear
 
 `queue clear` was once used to stop a queue while it was running. That command has been updated to `stop`.
 
@@ -127,11 +157,11 @@ new_stop:
     - narrate "You don't have the necessary buff!"
 ```
 
-### Use .has_flag[] to Check Flag Existence
+### Use .has_flag[] To Check Flag Existence
 
-In the past, including [the Kill Quest tutorial video](https://one.denizenscript.com/denizen/vids/Putting%20It%20Together:%20A%20Kill%20Quest), `.flag[]` was used to check both the value of a flag and whether the flag existed.
+In the past, including [the Kill Quest](/guides/put-it-together/kill-quest) tutorial video, `.flag[]` was used to check both the value of a flag and whether the flag existed.
 
-Now, the correct way to check whether a flag exists is to use `.has_flag[]`. `.flag[]` is now only for checking the value of a flag, and should only be used where the flag is known to exist. Here are some examples:
+Now, the correct way to check whether a flag exists is to use `.has_flag[]`. `.flag[]` is now only for reading the value of a flag, and should only be used where the flag is known to exist <span class="parens">(or with a fallback)</span>. Here is an example:
 
 ```dscript_red
 old_flag:
