@@ -17,11 +17,13 @@ After Sphinx is installed, you can build by running `sphinx-build -ab html sourc
 
 This will create a fully built static web pages folder in `build/`.
 
-### The short of the license is:
+### Non-Software License
 
-You can do basically whatever you want, except you may not hold any developer liable for what you do with the software.
+[![Creative Commons License CC-BY-NC-SA 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-### The long version of the license follows:
+The (non-software) writing in this repo is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+### Software License
 
 The MIT License (MIT)
 
