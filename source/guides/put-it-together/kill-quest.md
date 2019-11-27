@@ -85,9 +85,7 @@ npc_killquest_interact:
 killquest_zombie_world:
     type: world
     events:
-        on player kills zombie:
-        - if !<player.has_flag[kill_zombie_quest]>:
-            - stop
+        on player kills zombie flagged:kill_zombie_quest:
         - flag player kill_zombie_quest_count:++
         - if <player.flag[kill_zombie_quest_count]> == 5:
             - narrate "[Return to the NPC]"
