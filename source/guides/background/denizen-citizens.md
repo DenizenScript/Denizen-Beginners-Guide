@@ -14,7 +14,7 @@ The integration Denizen has with Citizens actually works in two ways:
 
 - But in addition to that, Denizen also adds a variety of additional tools directly into Citizens. For example: `/npc mirror` is a command made available by Denizen (which makes the NPC automatically mirror the viewing player's skin). Several "basic usage" commands are provided by Denizen, such as `/npc sit`, `/npc sneak`, and `/npc invisible`. Denizen also provides several basic handy traits, like the `health` trait or the `fishing` trait.
 
-- The two ways can also work together sometimes, such as [this handy script](https://forum.denizenscript.com/viewtopic.php?f=13&t=133) that allows users to do `/npc skin --url [url here]` to set an NPC's skin from an image URL, or on a more simple level [this quick helper script](https://forum.denizenscript.com/viewtopic.php?f=13&t=149) that allows users to add commands that an NPC will execute when it's right-clicked.
+- The two ways can also work together sometimes, such as [this handy script](https://forum.denizenscript.com/viewtopic.php?f=13&t=241) that allows users to do `/npc skin --url [url here]` to set an NPC's skin from an image URL, or on a more simple level [this quick helper script](https://forum.denizenscript.com/viewtopic.php?f=13&t=149) that allows users to add commands that an NPC will execute when it's right-clicked.
 
 ### Questing
 
