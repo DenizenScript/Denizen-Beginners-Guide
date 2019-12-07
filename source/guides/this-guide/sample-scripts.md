@@ -3,6 +3,11 @@ Sample Scripts
 
 When you see a sample script anywhere in this guide, it wil be categorized into one of three color-coded types: Good, Needs-Change, or Bad.
 
+```eval_rst
+.. contents:: Table of Contents
+    :local:
+```
+
 ### Good Scripts
 
 ```dscript_green

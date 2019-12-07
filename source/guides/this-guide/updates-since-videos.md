@@ -3,6 +3,11 @@ Updates Since the Tutorial Videos
 
 Denizen has had quite a number of updates over the years since the original tutorial videos were published <span class="parens">(5-6 years ago)</span>! This guide page documents the changes that you should know about for best practices.
 
+```eval_rst
+.. contents:: Table of Contents
+    :local:
+```
+
 ### Editor of Choice
 
 In the tutorial videos, Notepad++ was displayed as the script editor to use. This was basically just a slightly better text editor. Since then, we've gotten an actual proper script editor, based on an extension to VS Code.
