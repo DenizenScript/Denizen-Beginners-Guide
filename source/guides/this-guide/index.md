@@ -6,5 +6,4 @@ This Guide
     :titlesonly:
 
     sample-scripts
-    updates-since-videos
 ```

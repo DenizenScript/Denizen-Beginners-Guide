@@ -19,11 +19,12 @@ A guide for new users of [Denizen](https://www.spigotmc.org/resources/denizen.21
     guides/put-it-together/index
 ```
 
-## Also, information about this guide:
+## Also, Special Sections
 
 ``` toctree::
     :maxdepth: 2
     :titlesonly:
 
+    guides/troubleshooting/index
     guides/this-guide/index
 ```
