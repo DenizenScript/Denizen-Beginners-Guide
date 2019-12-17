@@ -80,7 +80,7 @@ div[class^="highlight-dscript"] .c1 { /* comment-single: #- code comment */
 }
 
 div[class^="highlight-dscript"] .nv { /* name-variable: [brackets] */
-    color: #777777;
+    color: #5500FF;
     font-weight: normal;
     font-style: normal;
 }
