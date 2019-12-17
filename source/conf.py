@@ -74,7 +74,8 @@ reusable_tokens = {
         (r'^\s*#\s*-.*$', token.Comment.Single ), #                               # - code comment
         (r'^\s*#.*$', token.Comment ), #                                          # regular comment
         (r'^[^-#:]*:', token.Name.Class ), #                                       yaml key:
-        (r'^\s*-\s[^\s]+\s', token.Keyword, 'code_line' ), #                      - somecommand
+        (r'^\s*-\s[^\s]+$', token.Keyword ), #                                    - somecommand
+        (r'^\s*-\s[^\s]+\s', token.Keyword, 'code_line' ), #                      - somecommand someargs
         include('spaces_patch'),
         (r'.', token.Text ) #                                                     anything else
     ]
