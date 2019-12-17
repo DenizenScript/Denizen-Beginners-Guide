@@ -37,6 +37,80 @@ A few examples of where this might come into play:
 - In some cases, reading directly from data storage <span class="parens">(YAML, Flags, SQL, etc.)</span> might return the plain text identifier of whatever object was inserted into it. When this happens, you again have to convert it back into the real object using the relevant conversion tags.
 - Generally when user input is given (in for example a command script). A unique identifier or even a non-unique one may be used, and you will have to do more complex real-object-finding. As a particular example of this, when a command script has a player input option, generally you can trust that users aren't going to type out the exact perfect object identifier. The tag `server.match_player` is useful for converting the human-input player name into a real player object.
 
+### Don't Trust Players
+
+When you're writing scripts, you can generally assume that the system is going to process what you wrote as you wrote it. If you used a flag command to set a flag on a linked player, you can pretty safely trust that `player.flag` will then return the value of that flag.
+
+Players, however, are not machines. They're human. Humans make mistakes - humans also sometimes like to cheat. When scripting user-input, you must prepare for and account for this.
+
+Let's demonstrate the difference between a bad script that trusts players, and a good script that doesn't, using a "pay" command that you might have with an economy system.
+
+```dscript_red
+pay_command:
+    type: command
+    name: pay
+    usage: /pay [player] [amount]
+    description: Pays the specified player.
+    script:
+    - money give players:<server.match_player[<context.args.get[1]>]> quantity:<context.args.get[2]>
+    - money take quantity:<context.args.get[2]>
+    - narrate "<blue>You paid <gold><server.match_player[<context.args.get[1]>].name> <green>$<context.args.get[2]>"
+```
+
+That script is nice and simple. Only takes 3 lines, and does everything it needs to do... if the player using it uses it exactly as specified without any mistakes or intent to abuse the system.
+
+Let's see what that script looks like if we validate all user input with care. Read the comments in the script to see what was being prevented.
+
+```dscript_green
+pay_command:
+    type: command
+    name: pay
+    usage: /pay [player] [amount]
+    description: Pays the specified player.
+    # Users might be jailed or similar and have their permissions taken away,
+    # so let's be sure to require a permission to use the command.
+    permission: myscript.pay
+    script:
+    # Players might just type "/pay" without remembering the input arguments,
+    # so if they do, just tell them what the input is and stop there.
+    - if <context.args.size> < 2:
+        - narrate "<red>/pay [player] [amount]"
+        - stop
+    # Use a fallback in case the player name given is invalid.
+    - define target:<server.match_player[<context.args.get[1]>]||null>
+    # A user might mess up typing a player name.
+    # If there's no matched player, just tell them and stop there.
+    - if <[target]> == null:
+        - narrate "<red>Unknown player '<yellow><context.args.get[1]><red>'."
+        - stop
+    - define amount:<context.args.get[2]>
+    # A user might mess up typing the number.
+    # If they did mess up, tell them that and stop there.
+    - if !<[amount].is_decimal>:
+        - narrate "<red>Invalid amount input (not a number)."
+        - stop
+    # A user might try to cheat by paying a negative value (so that they receive money instead of lose it).
+    # So, validate that the number is positive.
+    # Also exclude zero at the same time as there's no reason to pay $0.
+    - if <[amount]> <= 0:
+        - narrate "<red>Amount must be more than zero."
+        - stop
+    # A user might try to pay more than they have, either as a cheat or by accident.
+    # Make sure they can afford it and stop if they can't.
+    - if <player.money> < <[amount]>:
+        - narrate "<red>You do not have <green>$<[amount]><red>."
+        - stop
+    - money give players:<[target]> quantity:<[amount]>
+    - money take quantity:<[amount]>
+    - narrate "<blue>You paid <gold><[target].name> <green>$<[amount]>"
+```
+
+That's an awful lot of things that needed checking! Unfortunately, good user-input scripts tend to get pretty long from all the input validation that's needed. Luckily, nobody should be able to break these longer scripts!
+
 ### Don't Compare Raw Objects
+
+**TODO**
+
+### Don't Overuse Fallbacks
 
 **TODO**
