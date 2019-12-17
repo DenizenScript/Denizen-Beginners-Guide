@@ -158,4 +158,28 @@ For example, you might add `- if <[target]> == <player>:` to [the `/pay` command
 
 ### Don't Overuse Fallbacks
 
-**TODO**
+Fallbacks are an incredibly handy tool in Denizen. They're one of the primary tools you can use to handle uncertain situations edge-cases in your scripts. They are, like most things, best in moderation. Excessive use of fallbacks can cause more harm than good.
+
+#### Errors Are Scary
+
+The mindset that tends to lead to fallback overuse is one where errors are scary. An error is a problem, so you have to get rid of errors by any means necessary!
+
+In reality, errors are just another tool that Denizen provides. The error message itself is not the problem, the error is merely there to tell you that there is a problem somewhere in your script. If you put a fallback on every tag, you'll end up hiding errors without fixing the actual problem. Your script won't show any scary red text in the console, but it also won't do what it's supposed to be doing!
+
+#### When To Use Fallbacks
+
+A fallback should only be placed onto a tag when you're *expecting* that tag to fail.
+
+Consider for example the `server.match_player` tag, which is used to convert user-input names into a player object. You can quite reasonably expect that sometimes a player will input something that isn't a valid player name, and the tag will fail. That's a case where you should absolutely add a fallback like `||null`.
+
+When you add a fallback, you often will also need to check for the fallback value, like for a definition defined as `<server.match_player[<input>]||null>`, you might do `- if <[target]> == null:` and inside that block handle the case of an invalid player input.
+
+In other situations, the fallback can simply be a reasonable default value, like `<player.flag[coins]||0>`, which you won't need to specifically account for.
+
+#### When To Not Use Fallbacks
+
+Fallbacks should not be used when the tag doesn't have a very good reason it might fail.
+
+For example, the tag `<player.name>` should probably not have a fallback in most scripts <span class="parens">(unless it's a reusable script that doesn't specifically require a player to work)</span>.
+
+If a script that uses `<player.name>` runs, and there isn't a player available, it will show an error message. This is good! This lets you know that something went wrong, and the script was ran without a player, which means you can from there look into why there was no player, and fix whatever caused it.

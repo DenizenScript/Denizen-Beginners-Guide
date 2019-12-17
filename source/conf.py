@@ -11,8 +11,8 @@ from recommonmark.transform import AutoStructify
 project = "Denizen Beginner's Guide"
 copyright = '2019 The DenizenScript Team'
 author = 'The DenizenScript Team'
-version = '0.1'
-release = '0.1'
+version = '0.2'
+release = '0.2'
 
 # General Config
 extensions = ['recommonmark']
