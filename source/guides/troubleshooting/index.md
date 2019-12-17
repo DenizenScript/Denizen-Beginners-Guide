@@ -6,4 +6,5 @@ Troubleshooting
     :titlesonly:
 
     updates-since-videos
+    common-mistakes
 ```
