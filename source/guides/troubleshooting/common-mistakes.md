@@ -52,8 +52,8 @@ pay_command:
     usage: /pay [player] [amount]
     description: Pays the specified player.
     script:
-    - money give players:<server.match_player[<context.args.get[1]>]> quantity:<context.args.get[2]>
     - money take quantity:<context.args.get[2]>
+    - money give players:<server.match_player[<context.args.get[1]>]> quantity:<context.args.get[2]>
     - narrate "<blue>You paid <gold><server.match_player[<context.args.get[1]>].name> <green>$<context.args.get[2]>"
 ```
 
@@ -89,7 +89,8 @@ pay_command:
     - if !<[amount].is_decimal>:
         - narrate "<red>Invalid amount input (not a number)."
         - stop
-    # A user might try to cheat by paying a negative value (so that they receive money instead of lose it).
+    # A user might try to cheat by paying a negative value
+    # (so that they receive money instead of lose it).
     # So, validate that the number is positive.
     # Also exclude zero at the same time as there's no reason to pay $0.
     - if <[amount]> <= 0:
@@ -100,8 +101,8 @@ pay_command:
     - if <player.money> < <[amount]>:
         - narrate "<red>You do not have <green>$<[amount]><red>."
         - stop
-    - money give players:<[target]> quantity:<[amount]>
     - money take quantity:<[amount]>
+    - money give players:<[target]> quantity:<[amount]>
     - narrate "<blue>You paid <gold><[target].name> <green>$<[amount]>"
 ```
 
@@ -109,7 +110,51 @@ That's an awful lot of things that needed checking! Unfortunately, good user-inp
 
 ### Don't Compare Raw Objects
 
-**TODO**
+Raw object comparison is one that seems at first natural to do, and you don't realize the problems until they bite you much later on.
+
+"Raw object comparison" refers to use an `if` command or similar to compare a raw Denizen object to something else (often plain text of the object identity).
+
+This looks, for example, like this:
+```dscript_red
+- if <player.item_in_hand> == i@diamond_sword:
+    - narrate "You have a diamond sword!"
+```
+
+At first glance, this looks mostly fine. If you test it in-game, it will probably even work. So what's the problem?!
+
+#### Not Always Just A Sword
+
+The first problem with this is that non-unique objects in Denizen <span class="parens">(those that are identified by their details, like an item is, as opposed to objects that identify by some ID, like entities do)</span>, often include secondary details in specific circumstances, even if they didn't in your early testing.
+
+The if command in the example above will stop working the moment a player uses their sword a bit, as the durability value will change and now they'll have `i@diamond_sword[durability=1]`. This will also change if they enchant the sword, or rename it at an anvil, or...
+
+#### Identifier Style Changes In Denizen
+
+The second problem with this is that what's valid now might not be valid in the future. Denizen changes often, and the way objects identify change between versions. For example, `<player>` used to return `p@name`, but now returns `p@uuid`. Many other changes to identify format have happened over the years.
+
+For the example given above, a sword that today is `i@diamond_sword`, might someday be `i@diamond_sword[durability=0]` or `item@diamond_sword` or `i@item[material=diamond_sword]` or `diamond_sword[future_minecraft_shininess_statistic=0]` or any number of other possibilities.
+
+#### So What Do I Do?
+
+Always compare objects based on reasonably-guaranteed-format tags. That is: tags that return a plaintext element of a clearly specified format, not an object.
+
+Let's fix the earlier script:
+```dscript_blue
+- if <player.item_in_hand.material.name> == diamond_sword:
+    - narrate "You have a diamond sword!"
+```
+
+The tag `.material.name` is guaranteed to always return *just* the material name, making this comparison safe from any item-detail-changes or future Denizen changes. The only risk is that the name of the material might change in a future Minecraft version <span class="parens">(this would be harder to avoid - luckily, this happens very rarely and usually you'll know it's coming when it does. If you really want to protect against it, you could do `== <item[diamond_sword].material.name>:` to rely on the autoconversion that would be added in Denizen when a rename happens, but you don't really need to)</span>.
+
+For other object types, find the relevant unique comparison point. For materials, worlds, scripts, plugins, ... you can use `.name`.
+
+For notable object types <span class="parens">(locations, cuboids, ellipsoids, ...)</span>, you should never compare them directly. Instead, note the object and check `.notable_name` - or use more specific syntaxes, like the `in:<area>` switch on events.
+
+#### Note On Exact-Same Objects
+
+When you want to compare exactly-the-same-object <span class="parens">(usually for unique objects like entities, or in list-handling tags, or similar)</span>, and you have a tag for both <span class="parens">(instead of typing one as plaintext)</span>, you can be relatively safe doing direct comparisons.
+
+For example, you might add `- if <[target]> == <player>:` to [the `/pay` command example](#don-t-trust-players) to prevent players trying to pay themselves. This would be acceptable, as the two values do literally refer to exactly the same object in theory, and thus they will not have any different details, and any identifier changes will automatically apply to both, not only one.
 
 ### Don't Overuse Fallbacks
 
