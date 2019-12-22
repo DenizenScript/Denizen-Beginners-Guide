@@ -183,3 +183,15 @@ Fallbacks should not be used when the tag doesn't have a very good reason it mig
 For example, the tag `<player.name>` should probably not have a fallback in most scripts <span class="parens">(unless it's a reusable script that doesn't specifically require a player to work)</span>.
 
 If a script that uses `<player.name>` runs, and there isn't a player available, it will show an error message. This is good! This lets you know that something went wrong, and the script was ran without a player, which means you can from there look into why there was no player, and fix whatever caused it.
+
+### "Quotes Go Around The Whole Argument"
+
+Many users tend to misunderstand where quotes go in Denizen commands.
+
+Denizen syntax is structure such that a line starting with `-` indicates that line is a command line. A command line is then made up of the command name, and the command arguments. The command name goes first, then each argument is added, separated by spaces (and not by anything other than spaces). So, for example, `- commandname arg1 arg2 arg3` is a command with three arguments.
+
+When you need to use a space within an argument, you must put quotes around whole the argument, to indicate that it is a single argument. For example, `- narrate "this is one big argument"` is a `narrate` command with only one argument.
+
+As another example, `- flag player "my_flag:my value"`. This is a `flag` command with two arguments: `player`, and `"my_flag:my value"`. Notice that `my value` is not a separate argument from `my_flag`. The colon (`:`) symbol is not a symbol that separates arguments, it instead merely indicates a prefix to an argument (which is still part of that argument!).
+
+It is **NEVER** correct to put quotes *inside* an argument. `- flag player my_flag:"my value"` is entirely invalid and considered an error.
