@@ -195,3 +195,17 @@ When you need to use a space within an argument, you must put quotes around whol
 As another example, `- flag player "my_flag:my value"`. This is a `flag` command with two arguments: `player`, and `"my_flag:my value"`. Notice that `my value` is not a separate argument from `my_flag`. The colon (`:`) symbol is not a symbol that separates arguments, it instead merely indicates a prefix to an argument (which is still part of that argument!).
 
 It is **NEVER** correct to put quotes *inside* an argument. `- flag player my_flag:"my value"` is entirely invalid and considered an error.
+
+### Watch Your Debug Console
+
+When you're writing scripts, you should always have your server debug console open and ready. When you run a script, keep that console in your corner of your eye and look over it when applicable. If an error message appears in your console, that will both tell you that you need to fix something, and tell you *what* you need to fix far faster than trying to review your script to find what you might have screwed up.
+
+Many users come to the support Discord to ask for help with a problem - when they do, we usually ask for a debug recording. Far too often, they'll post a debug recording with a bright red visible error message that says exactly what went wrong. Had the user simply been watching their debug console and saw the error message, they could have resolved the issue quickly on their own, without having to ask for help.
+
+### Toggle Debug Settings With Care
+
+**TODO**
+
+### Live Servers Are Not Test Servers
+
+**TODO**
