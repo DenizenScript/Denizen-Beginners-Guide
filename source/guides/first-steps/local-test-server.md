@@ -41,7 +41,7 @@ It's pretty simple! Let's go through the steps...
 
 - **Step 4: Launch the server once.** To do so, just double-click the start script file. If all goes well, a command line window will pop up for a minute, show a few messages, then disappear, and you'll have a new `eula.txt` file. Since Mojang is ruled by lawyers now, you have to open that file and change `false` to `true` to indicate that you accept the Minecraft EULA. Don't re-launch the server yet though.
 
-![](https://i.alexgoodwin.media/i/denizen_guide/36243c.png)
+![](https://i.alexgoodwin.media/i/denizen_guide/c74079.png)
 
 - **Step 5: Add the plugins.** Create a `plugins` folder if you don't already have one, and download the latest jar file for Denizen, Citizens, etc. <span class="parens">(any plugins you want to include)</span> and place them into that folder. For your test server, you'll probably want to install the latest [Developmental Build of Denizen](https://ci.citizensnpcs.co/job/Denizen_Developmental/) - though for your production server, you'll generally want the latest [Release Build of Denizen](https://ci.citizensnpcs.co/job/Denizen/).
 
