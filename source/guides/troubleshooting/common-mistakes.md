@@ -224,11 +224,30 @@ When you're writing scripts, you should always have your server debug console op
 
 When users come to the support Discord to ask for help with a problem, we usually ask for a debug recording. Far too often, they'll post a debug recording with a bright red visible error message that says exactly what went wrong. Had the user simply been watching their debug console and saw the error message, they could have resolved the issue quickly on their own, without having to ask for help.
 
+Debug output also shows a lot of non-error information, which tends to be very useful when working on a script. Your custom-drops script is dropping too many items - why is that? The debug logs will show you a repeat loop going too long, or a quantity value being set different than you expected, or whatever else happened. You're not sure what that event context of an enum value might be when the event fires... the debug logs will show you what it is!
+
 ### Toggle Debug Settings With Care
 
-**TODO**
+First of all: **NEVER** disable the global debug output. Debug information is extremely important to have. A global disable will hide everything, even error messages! Instead, simply set `debug: false` on scripts you want to stop showing debug output.
 
+Here's where you fit a `debug: false` onto a script:
 
+```dscript_blue
+No debug script:
+    type: task
+    debug: false
+    script:
+    - define a b
+    - (commands here)
+```
+
+It should always be right after the `type:` line, at the same level of indentation.
+
+When `debug: false` is set, the only debug information from that script that will show will be error messages. When it is not set, all debug information will show.
+
+As a general rule of thumb:
+- When you are editing a script / working on it, in any way, you should never have debug disabled.
+- When you are FULLY DONE with a script, it works, it's tested, you're happy with it - THEN you can disable debug on it.
 
 ### Live Servers Are Not Test Servers
 
