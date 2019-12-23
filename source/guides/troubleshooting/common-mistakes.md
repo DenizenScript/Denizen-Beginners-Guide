@@ -41,6 +41,8 @@ A few examples of where this might come into play:
 
 ### Don't Trust Players
 
+![](https://i.alexgoodwin.media/i/denizen_guide/bcf1f3.png)
+
 When you're writing scripts, you can generally assume that the system is going to process what you wrote as you wrote it. If you used a flag command to set a flag on a linked player, you can pretty safely trust that `player.flag` will then return the value of that flag.
 
 Players, however, are not machines. They're human. Humans make mistakes - humans also sometimes like to cheat. When scripting user-input, you must prepare for and account for this.
@@ -126,6 +128,8 @@ At first glance, this looks mostly fine. If you test it in-game, it will probabl
 
 #### Not Always Just A Sword
 
+![](https://i.alexgoodwin.media/i/denizen_guide/8f3b6c.png)
+
 The first problem with this is that non-unique objects in Denizen <span class="parens">(those that are identified by their details, like an item is, as opposed to objects that identify by some ID, like entities do)</span>, often include secondary details in specific circumstances, even if they didn't in your early testing.
 
 The if command in the example above will stop working the moment a player uses their sword a bit, as the durability value will change and now they'll have `i@diamond_sword[durability=1]`. This will also change if they enchant the sword, or rename it at an anvil, or...
@@ -163,6 +167,8 @@ For example, you might add `- if <[target]> == <player>:` to [the `/pay` command
 Fallbacks are an incredibly handy tool in Denizen. They're one of the primary tools you can use to handle uncertain situations edge-cases in your scripts. They are, like most things, best in moderation. Excessive use of fallbacks can cause more harm than good.
 
 #### Errors Are Scary
+
+![](https://i.alexgoodwin.media/i/denizen_guide/55b65d.png)
 
 The mindset that tends to lead to fallback overuse is one where errors are scary. An error is a problem, so you have to get rid of errors by any means necessary!
 
@@ -219,6 +225,8 @@ This is right:
 ```
 
 ### Watch Your Debug Console
+
+![](https://i.alexgoodwin.media/i/denizen_guide/950e86.png)
 
 When you're writing scripts, you should always have your server debug console open and ready. When you run a script, keep that console in your corner of your eye and look over it when applicable. If an error message appears in your console, that will both tell you that you need to fix something, and tell you *what* you need to fix far faster than trying to review your script to find what you might have screwed up.
 
