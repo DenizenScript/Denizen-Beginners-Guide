@@ -264,3 +264,13 @@ When helping people on our Discord, we sometimes hear things like "I can't resta
 If you have a LIVE server, with ACTUAL PLAYERS online, you should NOT be writing scripts on it. ALWAYS [set up a local test server](/guides/first-steps/local-test-server) for script writing, and move the scripts to the live server later, after the script fully works.
 
 It's simply too easy to cause a lot of problems for a lot of people when you're editing a live server. Don't do it.
+
+### If True Is True Equal To Truly True Is The Truth
+
+The way the `if` command in Denizen works is it processes the arguments using logical comparison techniques, then runs the code inside if the result is `true`, and does not if the result is anything else.
+
+So, if a script does `- if <sometag> == true:`, you're essentially saying `if ( true == true ) == true:` ... which is pretty silly, right?
+
+**NEVER** input `== true` into an `if` command <span class="parens">(or `while` or anything like it)</span>. It is always redundant.
+
+Also, do not input `== false`. Instead, to negate a check, use `!`. So for example, `- if !<some tag>:` or `- if <some tag> != somevalue:`.
