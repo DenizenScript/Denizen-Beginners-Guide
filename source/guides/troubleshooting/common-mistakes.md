@@ -14,6 +14,8 @@ Historically in Minecraft, players were unique based on their name. This meant t
 
 Never track a player's name internally. The `<player.name>` tag should exclusively be used for outputting a clean name in a `narrate` command or similar output meant to be read by players. As that's all a name is meant for: human reading. It is not meant for any internal tracking. It is not unique nor reliable.
 
+\* Note that there is one exception to this: the `execute` command runs external plugin commands, which will likely expect either a name or UUID as input, not a Denizen object.
+
 ### So, A Player Is Their UUID?
 
 A player is **not** just their UUID. A player isn't a name, a UUID, a location, or anything else. A player is a player.
@@ -188,7 +190,7 @@ If a script that uses `<player.name>` runs, and there isn't a player available, 
 
 Many users tend to misunderstand where quotes go in Denizen commands.
 
-Denizen syntax is structure such that a line starting with `-` indicates that line is a command line. A command line is then made up of the command name, and the command arguments. The command name goes first, then each argument is added, separated by spaces (and not by anything other than spaces). So, for example, `- commandname arg1 arg2 arg3` is a command with three arguments.
+Denizen syntax is structured such that a line starting with `-` indicates that that line is a command line. A command line is then made up of the command name and the command arguments. The command name goes first, then each argument is added, separated by spaces (and not by anything other than spaces). So, for example, `- commandname arg1 arg2 arg3` is a line containing a command with three arguments.
 
 When you need to use a space within an argument, you must put quotes around whole the argument, to indicate that it is a single argument. For example, `- narrate "this is one big argument"` is a `narrate` command with only one argument.
 
@@ -196,15 +198,37 @@ As another example, `- flag player "my_flag:my value"`. This is a `flag` command
 
 It is **NEVER** correct to put quotes *inside* an argument. `- flag player my_flag:"my value"` is entirely invalid and considered an error.
 
+Also, you should not put quotes around an argument that does not contain a space. For example, `- flag "player" "flag:value"` is full of redundant pointless quotes.
+
+You should also never use quotes around a command name, or script key. In the following example, every single quote is bad and should be removed.
+
+```dscript_red
+"This is wrong":
+    "type": "task"
+    "script":
+    - "flag" player flag:value
+```
+
+Here's how that should look:
+
+```dscript_blue
+This is right:
+    type: task
+    script:
+    - flag player flag:value
+```
+
 ### Watch Your Debug Console
 
 When you're writing scripts, you should always have your server debug console open and ready. When you run a script, keep that console in your corner of your eye and look over it when applicable. If an error message appears in your console, that will both tell you that you need to fix something, and tell you *what* you need to fix far faster than trying to review your script to find what you might have screwed up.
 
-Many users come to the support Discord to ask for help with a problem - when they do, we usually ask for a debug recording. Far too often, they'll post a debug recording with a bright red visible error message that says exactly what went wrong. Had the user simply been watching their debug console and saw the error message, they could have resolved the issue quickly on their own, without having to ask for help.
+When users come to the support Discord to ask for help with a problem, we usually ask for a debug recording. Far too often, they'll post a debug recording with a bright red visible error message that says exactly what went wrong. Had the user simply been watching their debug console and saw the error message, they could have resolved the issue quickly on their own, without having to ask for help.
 
 ### Toggle Debug Settings With Care
 
 **TODO**
+
+
 
 ### Live Servers Are Not Test Servers
 
