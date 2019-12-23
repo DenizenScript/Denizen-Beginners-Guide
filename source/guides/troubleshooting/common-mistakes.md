@@ -251,4 +251,8 @@ As a general rule of thumb:
 
 ### Live Servers Are Not Test Servers
 
-**TODO**
+When helping people on our Discord, we sometimes hear things like "I can't restart the server right now, players are on" or "oh woops a player accidentally triggered the event".
+
+If you have a LIVE server, with ACTUAL PLAYERS online, you should NOT be writing scripts on it. ALWAYS [set up a local test server](/guides/first-steps/local-test-server) for script writing, and move the scripts to the live server later, after the script fully works.
+
+It's simply too easy to cause a lot of problems for a lot of people when you're editing a live server. Don't do it.
