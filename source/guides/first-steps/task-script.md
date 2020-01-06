@@ -41,7 +41,7 @@ TODO SCREENSHOT (new file highlighted)
 
 Now you can begin writing your first task script!
 
-#### Writing the script
+#### Writing the Script
 
 Let's start with the core of the script:
 
@@ -54,7 +54,7 @@ my_first_task:
 
 This example should look familiar - it's very similar to the example above.
 
-### Script names
+### Script Names
 
 The name of the script here is `my_first_task`. It's at the top of the indentation. Each top-level indentation entry is a separate script. Here is an example of two different scripts:
 
@@ -72,7 +72,7 @@ my_second_task:
 
 This example demonstrates what having two different scripts in the same file looks like. `my_first_task` and `my_second_task` are two different scripts, and each is a fully self-contained script. Additionally, *script names* and *file names* are different. Both `my_first_task` and `my_second_task` could be contained within the same file named `my_first_scripts.dsc`.
 
-### Script types
+### Script Types
 
 Below the script name - on the second level of indentation - you'll see the `type` key.
 
