@@ -6,13 +6,13 @@ Your First Task Script
     :local:
 ```
 
-#### Task Script Basics
+### Task Script Basics
 
-A task script is a stand-alone script that can be run either via in-game command with the `/ex` [command](/guides/first-steps/ex-command), or by the `run` command in a script.
+A task script is a stand-alone script that can be run either via in-game command with the [`/ex` command](/guides/first-steps/ex-command), or by the `run` command in a script.
 
 Task scripts will run all of the Denizen commands that they include. A task script can be simple, it can be complicated, and it can even run other task scripts. This is useful to create logic-based script chains, like dialogue options or random content.
 
-#### Task Script Syntax
+### Task Script Syntax
 
 Here's an example of a basic task script.
 
@@ -54,7 +54,7 @@ my_first_task:
 
 This example should look familiar - it's very similar to the example above.
 
-### Script Names
+#### Script Names
 
 The name of the script here is `my_first_task`. It's at the top of the indentation. Each top-level indentation entry is a separate script. Here is an example of two different scripts:
 
@@ -72,7 +72,7 @@ my_second_task:
 
 This example demonstrates what having two different scripts in the same file looks like. `my_first_task` and `my_second_task` are two different scripts, and each is a fully self-contained script. Additionally, *script names* and *file names* are different. Both `my_first_task` and `my_second_task` could be contained within the same file named `my_first_scripts.dsc`.
 
-### Script Types
+#### Script Types
 
 Below the script name - on the second level of indentation - you'll see the `type` key.
 
@@ -85,9 +85,9 @@ my_first_task:
     type: task
 ```
 
-### Script Commands
+#### Script Commands
 
-Below the `type` key, you'll see the `script` key. This is where you'll be doing most of your work in Denizen! Under the `script` key is where you write the content of the script - for most script types, the `script` key is where you tell Denizen what to do. 
+Below the `type` key, you'll see the `script` key. This is where you'll be doing most of your work in Denizen! For a task script, the `script` key is where you write the content of the script - the set of instructions that tell Denizen what to do. Other types of scripts use other keys, and you'll learn about them as you continue to work through this guide.
 
 Let's look at another example script:
 
