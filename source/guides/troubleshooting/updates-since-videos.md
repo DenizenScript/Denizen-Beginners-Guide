@@ -183,3 +183,13 @@ new_has_flag:
     - if <player.has_flag[VIP]>:
         - narrate "Your VIP level is <player.flag[VIP]>!"
 ```
+
+### Event Cancellation Is A Little More Advanced Now
+
+In the tutorial video for [Inventory GUIs](/guides/put-it-together/inventory-guis), it is taught to cancel the generic clicks event, and run actions in response to the more specific event.
+
+While this is still correct, it is missing a necessary component to work well in modern Denizen.
+
+In the past, events would just all fire, and if an event got cancelled that just means the underlying action wouldn't be performed. In modern Denizen, the system more intelligently knows to not fire more script events after the event was cancelled. While this [can be simply disabled for the relevant events](https://one.denizenscript.com/denizen/lngs/Script%20Event%20Cancellation) a better solution is to instead guarantee that the generic event that cancels it will run *last*. This is as easy as adding a high-valued `priority` to the cancelling event line.
+
+So, where previously you had `on player clicks in my_inventory:` you now instead have `on player clicks in my_inventory priority:100:`, and a similar change to the `drags` event line. Event priorities run in numerical order, with a default of `0`. So all the specific events, with their default priority, will run first, and then only after they're done, the generic cancellation events <span class="parens">(now at priority `100`)</span> will fire last.
