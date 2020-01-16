@@ -35,11 +35,16 @@ Previously, you've learned [how to set up VS Code](/guides/first-steps/script-ed
 
 To create your first task script, start by opening your scripts folder in VS Code.
 
-TODO SCREENSHOT (open scripts folder)
+![](https://i.alexgoodwin.media/i/denizen_guide/548218.png)
+![](https://i.alexgoodwin.media/i/denizen_guide/d2810b.png)
 
 From there, right click the scripts folder in the explorer menu and click the "New File" option.
 
-TODO SCREENSHOT (new file highlighted)
+![](https://i.alexgoodwin.media/i/denizen_guide/5fad5b.png)
+
+Type any file name you want, just make sure to end it with `.dsc` - the required extension for a Denizen script file.
+
+![](https://i.alexgoodwin.media/i/denizen_guide/e3ec76.png)
 
 Now you can begin writing your first task script!
 
@@ -105,6 +110,18 @@ my_first_task:
 
 Notice how the text we want to narrate - `This is a valid task script!` - is enclosed in `""` quotes. Because the message we want to narrate has ` ` spaces in it, we enclose it in quotes to make sure that the command only has one argument. Denizen commands have arguments that are separated by ` ` spaces. For example, `run one two three` has arguments `one`, `two`, and `three`, but `run "one two three"` only has one argument, `one two three`.
 
+### Completed Product
+
+At this point, you should have a task script that's ready to run! Go on, give it a try - first, type `/ex reload` in-game to load the new script in, then use the `/ex run (YourTaskName)` command to run the task in-game. For example, the in-game command to run the above script would be `/ex run my_first_task`.
+
+If you see the text that you wrote for the `narrate` command, you've successfully written your first task script. Congratulations!
+
+![](https://i.alexgoodwin.media/i/denizen_guide/831e94.png)
+
+### A Little Bit Further
+
+To take what you learned here a little bit further, and bearing in mind that while we've been using the `run` command via `/ex`, it is a Denizen script command <span class="parens">(the `/ex` command is just an in-game tool to quickly run any script command)</span>, let's look at an example that does just a little bit more than the previous ones.
+
 You can also use one task script to trigger another task script. That looks like this:
 
 ```dscript_green
@@ -114,9 +131,7 @@ my_first_task:
     - narrate "This is a valid task script!"
     - narrate "Congratulations on writing your first script!"
     - run my_second_task
-```
 
-```dscript_green
 my_second_task:
     type: task
     script:
@@ -125,10 +140,3 @@ my_second_task:
 
 This is just a basic example, and you'll be able to create more complicated and powerful scripts as you learn more about Denizen.
 
-### Completed Product
-
-At this point, you should have a task script that's ready to run! Go on, give it a try - use the `/ex run (YourTaskName)` command to run the task in-game. For example, the in-game command to run the above script would be `/ex run my_first_task`.
-
-If you see the text that you wrote for the `narrate` command, you've successfully written your first task script. Congratulations!
-
-TODO SCREENSHOT (in-game script successfully run)
