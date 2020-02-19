@@ -81,13 +81,13 @@ pay_command:
         - narrate "<red>/pay [player] [amount]"
         - stop
     # Use a fallback in case the player name given is invalid.
-    - define target:<server.match_player[<context.args.get[1]>]||null>
+    - define target <server.match_player[<context.args.get[1]>]||null>
     # A user might mess up typing a player name.
     # If there's no matched player, just tell them and stop there.
     - if <[target]> == null:
         - narrate "<red>Unknown player '<yellow><context.args.get[1]><red>'."
         - stop
-    - define amount:<context.args.get[2]>
+    - define amount <context.args.get[2]>
     # A user might mess up typing the number.
     # If they did mess up, tell them that and stop there.
     - if !<[amount].is_decimal>:

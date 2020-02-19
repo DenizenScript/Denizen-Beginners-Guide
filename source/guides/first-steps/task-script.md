@@ -139,4 +139,3 @@ my_second_task:
 ```
 
 This is just a basic example, and you'll be able to create more complicated and powerful scripts as you learn more about Denizen.
-

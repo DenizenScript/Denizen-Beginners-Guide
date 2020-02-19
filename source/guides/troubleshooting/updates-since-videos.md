@@ -75,7 +75,7 @@ old_definition_syntax:
 new_definition_syntax:
     type: task
     script:
-    - define name:<player.name>
+    - define name <player.name>
     - narrate "Hello, <[name]>!"
 ```
 
