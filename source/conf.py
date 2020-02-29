@@ -9,7 +9,7 @@ from recommonmark.transform import AutoStructify
 
 # Project Info
 project = "Denizen Beginner's Guide"
-copyright = '2019 The DenizenScript Team'
+copyright = '2019-2020 The DenizenScript Team'
 author = 'The DenizenScript Team'
 version = '0.2'
 release = '0.2'
@@ -24,6 +24,9 @@ exclude_patterns = []
 pygments_style = 'sphinx'
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+
+# Changes to HTML format
+html_title = "Denizen Beginner's Guide"
 
 # Disabled stuff
 smartquotes = False
