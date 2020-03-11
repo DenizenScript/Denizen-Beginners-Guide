@@ -274,3 +274,17 @@ So, if a script does `- if <sometag> == true:`, you're essentially saying `if ( 
 **NEVER** input `== true` into an `if` command <span class="parens">(or `while` or anything like it)</span>. It is always redundant.
 
 Also, do not input `== false`. Instead, to negate a check, use `!`. So for example, `- if !<some tag>:` or `- if <some tag> != somevalue:`.
+
+### Text Isn't A Tag
+
+Users who are new to Denizen often misread documentation like `<#>` in a command syntax as meaning that `<3>` is valid input.
+
+This is not correct, as the [command syntax explanation](https://one.denizenscript.com/denizen/lngs/command%20syntax) writeup explains, in that context the `<>` means "insert a value here". The `<>` are not meant to be literally included.
+
+So, if a command says its syntax is `- heal [<#>]`, correct input might look like `- heal 3`.
+
+A key reason for this confusion stems from the fact that `<>` is often actually used in Denizen scripts to form a tag. The thing to remember is that tags are never literal - they are an instruction to the script engine to go find some other value. The tag `<player.money>` for example does not mean to insert the plain text "player.money" into a command, it means to find the amount of money the player has, and put that value in. So, `- heal <player.money>` in a script would process the tag's value and end up processing the command like `- heal 3` <span class="parens">(if the player happened to have $3 at the time)</span>.
+
+If at any time you want to insert literal text: just insert literal text, will nothing more to it. `- heal 3` or `- narrate mytexthere` are perfectly valid ways to write arguments, with no need for any special symbols <span class="parens">(except when quotes are required to contain a space within an argument)</span>.
+
+As an additional note, if you need literal text in the form of a tag <span class="parens">(to use some element sub-tag on it)</span>, you can use the `element` base tag, like: `<element[3].div[5]>` <span class="parens">(this takes the plain value "3", forms it into an ElementTag, then uses the `ElementTag.div` sub-tag to divide it by 5)</span>.
