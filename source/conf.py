@@ -27,6 +27,7 @@ html_static_path = ['_static']
 
 # Changes to HTML format
 html_title = "Denizen Beginner's Guide"
+html_extra_path = ['_static_extra']
 
 # Disabled stuff
 smartquotes = False
