@@ -24,11 +24,23 @@ As you might have guessed looking at that longer sample above - tags aren't limi
 
 #### The Parts of A Tag
 
-There are two basic 'types' of tag that are available as building blocks to scripters. These types are: **Base tags**, and **sub-tags**. Base tags exist on their own, and can only be used as the first part of a tag. Every completed tag has exactly one base tag in use. Sub-tags are tacked onto the end of an existing tag. A complete tag can have any number of sub-tags - zero <span class="parens">(just the base)</span>, one <span class="parens">(a very simple tag)</span>, five hundred <span class="parens">(an incredibly long tag)</span>, or any other number.
+There are two basic 'types' of tag that are available as building blocks to scripters. These types are: **Base tags**, and **sub-tags**. 
+
+#### Base Tags
+
+A base tag is something like `<player>`, which returns a `PlayerTag` of the situationally relevant player. There are also seemingly multi-part base tags like `<server.motd>` <span class="parens">(though these are sometimes also thought of as `<server>` returns a "ServerTagBase" and `<ServerTagBase.motd>` is a sub-tag of that)</span>.
+
+Base tags exist on their own, and can only be used as the first part of a tag. Every completed tag has exactly one base tag in use.
+
+#### Sub-Tags
+
+ A sub-tag is something like `<PlayerTag.name>` which returns an `ElementTag` of the applicable player's name. A sub-tag, in documentation, will always start with `(Something)Tag`, like `PlayerTag` or `ItemTag`. Anything that isn't in this format is a base tag.
+
+ Sub-tags are tacked onto the end of an existing tag. A complete tag can have any number of sub-tags - zero <span class="parens">(just the base)</span>, one <span class="parens">(a very simple tag)</span>, five hundred <span class="parens">(an incredibly long tag)</span>, or any other number.
 
 #### Combining The Parts
 
-A base tag is something like `<player>` which returns a `PlayerTag` of the situationally relevant player. A sub-tag is something like `<PlayerTag.name>` which returns an `ElementTag` of the applicable player's name. When a sub-tag starts with "PlayerTag", this basically means "insert a player here"... since `<player>` returns a player, and `<PlayerTag.name>` needs a player as its first part, you can combine these to make `<player.name>` which returns the name of the situationally relevant player. In the case of the `/ex` command, `<player.name>` returns *your* name.
+We saw the sub-tag example `<PlayerTag.name>` above. When a sub-tag starts with "PlayerTag", this basically means "insert a player here"... since the base tag `<player>` returns a player, and `<PlayerTag.name>` needs a player as its first part, you can combine these to make `<player.name>` which returns the name of the situationally relevant player. In the case of the `/ex` command, `<player.name>` returns *your* name.
 
 #### Longer Chains
 
