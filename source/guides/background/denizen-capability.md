@@ -8,7 +8,7 @@ What Is Denizen Capable Of?
 
 ### Let Me Put It Simply
 
-![](https://i.alexgoodwin.media/i/denizen_guide/651094.gif)
+![](images/throughdenizen.gif)
 
 ### What Can An Advanced User Do With Denizen?
 
@@ -16,15 +16,15 @@ What Is Denizen Capable Of?
 - Here's a region manager that competes with WorldGuard, written as a Denizen script: [Spigot - dRegions](https://www.spigotmc.org/resources/denizen-dregions.26864/)
 - Here's a script only about 20 lines long that makes it so a torch glows when held in your hand: [Spigot - Denizen Torch Light](https://www.spigotmc.org/resources/denizen-torch-light.26855/)
 
-![](https://i.alexgoodwin.media/i/denizen_guide/fd8448.png)
+![](images/torchlight.png)
 
 - In the past before I (mcmonkey) created Sentinel, I had written the same basic concept as a fully functional Denizen script: [Old Repo Archive - dSentry](https://one.denizenscript.com/denizen/repo/entry/0)
 
-![](https://i.alexgoodwin.media/i/denizen_guide/883aea.png)
+![](images/dsentry.png)
 
 - Or whatever other crazy thing you might imagine. Here's a chest GUI of a keypad to type on:
 
-![](https://i.alexgoodwin.media/i/denizen_guide/487cb1.gif)
+![](images/bankkeypad.gif)
 
 ### What Can A Normal User Do With Denizen?
 
