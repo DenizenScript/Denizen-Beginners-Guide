@@ -35,16 +35,16 @@ Previously, you've learned [how to set up VS Code](/guides/first-steps/script-ed
 
 To create your first task script, start by opening your scripts folder in VS Code.
 
-![](https://i.alexgoodwin.media/i/denizen_guide/548218.png)
-![](https://i.alexgoodwin.media/i/denizen_guide/d2810b.png)
+![](images/fileopenfolder.png)
+![](images/fileopenscriptsfolder.png)
 
 From there, right click the scripts folder in the explorer menu and click the "New File" option.
 
-![](https://i.alexgoodwin.media/i/denizen_guide/5fad5b.png)
+![](images/rightclicknewfile.png)
 
 Type any file name you want, just make sure to end it with `.dsc` - the required extension for a Denizen script file.
 
-![](https://i.alexgoodwin.media/i/denizen_guide/e3ec76.png)
+![](images/typefilenametest.png)
 
 Now you can begin writing your first task script!
 
@@ -116,7 +116,7 @@ At this point, you should have a task script that's ready to run! Go on, give it
 
 If you see the text that you wrote for the `narrate` command, you've successfully written your first task script. Congratulations!
 
-![](https://i.alexgoodwin.media/i/denizen_guide/831e94.png)
+![](images/runfirsttaskscript.png)
 
 ### A Little Bit Further
 

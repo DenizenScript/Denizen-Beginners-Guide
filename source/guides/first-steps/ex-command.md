@@ -24,7 +24,7 @@ The important thing to remember is they aren't interchangable. You can't do `/na
 Yes, I did! For that matter you can write server commands in a script. How? Well there's a Denizen command that executes a server command, and there's a server command that executes a Denizen command.
 
 If you're writing commands in-game, and want to run a Denizen command, just use `/ex`. So, for example: `/ex narrate "hi <player.name>"`. This works because `/ex` is a server command that simply tells Denizen to process the rest of your input. This will look something like this:
-![](https://i.alexgoodwin.media/i/denizen_guide/a5d1c0.png)
+![](images/excommandnarrate.png)
 
 Similarly, if you're writing commands in a script, and want to run a server command, you can use the `- execute` command, like `- execute as_op "gamemode creative"` <span class="parens">(you can also do as_player, as_server, or even as_npc)</span>. Note that for the most part usage of the `- execute` command should be avoided, as almost anything you can do by server command, you can do better through a Denizen command <span class="parens">(for the gamemode example, `- adjust <player> gamemode:creative`)</span>. The only exception is usually commands from other plugins that you want your script to integrate into.
 

@@ -8,7 +8,7 @@ Setting Up Your Script Editor
 
 ### The Editor
 
-![](https://i.alexgoodwin.media/i/denizen_guide/168999.png)
+![](images/scripteditor.png)
 
 The officially recommended way to edit Denizen scripts is using VS Code, with the Denizen extension!
 
