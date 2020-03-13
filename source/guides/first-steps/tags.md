@@ -10,6 +10,8 @@ Your First Tags
 
 If you're following this guide in order <span class="parens">(and you should be!)</span>, you've already used a tag. In the [ex command guide](/guides/first-steps/ex-command), you tried `/ex narrate "hi <player.name>"`. That `<player.name>` part is a **tag** in Denizen. This is somewhat similar to what some plugins call a "placeholder", but with a lot more power to it. The "player.name" tag, as you can probably guess, is automatically replaced with your username.
 
+![](images/playernameexample.png)
+
 Tags in Denizen are marked by `<>` around a description of what value should replace the tag. Tags can get you almost any information you need, whenever you need it.
 
 ### What Do Tags Look Like In Real Usage?
@@ -67,6 +69,8 @@ ElementTag, as was said, is the most basic type of value. Every single object ty
 Some tags need an input value. For example, the tag `<util.random.int[<#>].to[<#>]>` takes two simple numeric input values <span class="parens">(the 'from' and the 'to')</span> and returns a random number between the two.
 
 At the most basic, these inputs can simply be filled in with whatever type of value they expect. So, you can type into your in-game command line `/ex narrate <util.random.int[1].to[10]>` and it will, as expected, narrate back a random number from 1 to 10. If you repeat the command a few times, you'll get a different random number each time <span class="parens">(except when it repeats, as true randomness tends to do sometimes)</span>.
+
+![](images/utilrandomexample.png)
 
 #### A Tag As Input To A Tag?!
 
