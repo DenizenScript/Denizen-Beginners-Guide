@@ -50,6 +50,35 @@ In Denizen, object types can have sub-types. The notable example is that PlayerT
 
 ElementTag, as was said, is the most basic type of value. Every single object type in Denizen has the sub-type of ElementTag. This means that anywhere an `ElementTag` is needed, *any* value at all can be inserted. A PlayerTag, an NPCTag, an ItemTag, or anything else, all are valid inputs to anything that takes an ElementTag as input.
 
+### Some Tags Have Inputs
+
+Some tags need an input value. For example, the tag `<util.random.int[<#>].to[<#>]>` takes two simple numeric input values <span class="parens">(the 'from' and the 'to')</span> and returns a random number between the two.
+
+At the most basic, these inputs can simply be filled in with whatever type of value they expect. So, you can type into your in-game command line `/ex narrate <util.random.int[1].to[10]>` and it will, as expected, narrate back a random number from 1 to 10. If you repeat the command a few times, you'll get a different random number each time <span class="parens">(except when it repeats, as true randomness tends to do sometimes)</span>.
+
+#### A Tag As Input To A Tag?!
+
+Simple value inputs are good for testing, but in real usage, you'll often find reason to put a dynamic value into the input of a tag. Here's a fun sample script:
+
+```dscript_green
+slowly_dying:
+    type: task
+    script:
+    - Narrate "You think you're so special with <player.health> health left?!"
+    - hurt <player> <util.random.decimal[0].to[<player.health.div[2]>]>
+    - Narrate "Hah! Take that, <player.name>! Now you only have <player.health> health left!"
+```
+
+Every time this sample script runs, the player will lose a random amount up to half of their health, usually less. It will also tell them what their health was before and after the damage is applied.
+
+As you can see in the sample, the tag `<player.health.div[2]>` was used as the second input to the tag `<util.random.decimal[<#.#>].to[<#.#>]>`.
+
+That inner tag is formed from `<player>` to get the linked player, `<PlayerTag.health>` to get the player's health value, and `<ElementTag.div[<#.#>]>` to divide the value <span class="parens">(in this case, by 2)</span>.
+
+### Note About The Future
+
+In the future, when writing real scripts, you of course won't be expected to just memorize the tags that are available to use. In a [later section](/guides/basics/finding-tools) we'll see the ways to find the tags that are needed for any given script idea. Until we get to that section, this guide will show you any tags you need to practice the ideas taught on any page.
+
 ### Wording Clarifications
 
 There are some words used on this page that are specific to Denizen. For the most part, the context of their usage should be enough to give you the idea of what they mean... But, just in case, here's some explanations to make sure you understand the words used properly:
