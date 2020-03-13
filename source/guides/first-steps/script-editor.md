@@ -21,5 +21,5 @@ The officially recommended way to edit Denizen scripts is using VS Code, with th
 ### Usage
 
 - Open your scripts folder with VS Code - that's `plugins/Denizen/scripts/` within your server directory <span class="parens">(the folder itself, not individual files - you can see the file tree on the left side of the editor)</span>.
-- The Denizen extension will automatically be active on any files that have the `.dsc` file extension.
+- The Denizen extension will automatically be active on any files that have the `.dsc` file extension. <span class="parens">(note: historically, the `.yml` extension was used for scripts. This is no longer a recommended file extension, and `.yml` files will not have Denizen script highlighting. You must use `.dsc`).
 - For the most part, just start editing your script files the same way you would edit any text file within VS Code.
