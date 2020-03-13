@@ -41,7 +41,7 @@ A few examples of where this might come into play:
 
 ### Don't Trust Players
 
-![](https://i.alexgoodwin.media/i/denizen_guide/bcf1f3.png)
+![](images/cheatingplayer.png)
 
 When you're writing scripts, you can generally assume that the system is going to process what you wrote as you wrote it. If you used a flag command to set a flag on a linked player, you can pretty safely trust that `player.flag` will then return the value of that flag.
 
@@ -128,7 +128,7 @@ At first glance, this looks mostly fine. If you test it in-game, it will probabl
 
 #### Not Always Just A Sword
 
-![](https://i.alexgoodwin.media/i/denizen_guide/8f3b6c.png)
+![](images/bigfancysword.png)
 
 The first problem with this is that non-unique objects in Denizen <span class="parens">(those that are identified by their details, like an item is, as opposed to objects that identify by some ID, like entities do)</span>, often include secondary details in specific circumstances, even if they didn't in your early testing.
 
@@ -168,7 +168,7 @@ Fallbacks are an incredibly handy tool in Denizen. They're one of the primary to
 
 #### Errors Are Scary
 
-![](https://i.alexgoodwin.media/i/denizen_guide/55b65d.png)
+![](images/somanyerrors.png)
 
 The mindset that tends to lead to fallback overuse is one where errors are scary. An error is a problem, so you have to get rid of errors by any means necessary!
 
@@ -226,7 +226,7 @@ This is right:
 
 ### Watch Your Debug Console
 
-![](https://i.alexgoodwin.media/i/denizen_guide/950e86.png)
+![](images/debugconsole.png)
 
 When you're writing scripts, you should always have your server debug console open and ready. When you run a script, keep that console in your corner of your eye and look over it when applicable. If an error message appears in your console, that will both tell you that you need to fix something, and tell you *what* you need to fix far faster than trying to review your script to find what you might have screwed up.
 
