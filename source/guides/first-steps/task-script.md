@@ -139,3 +139,5 @@ my_second_task:
 ```
 
 This is just a basic example, and you'll be able to create more complicated and powerful scripts as you learn more about Denizen.
+
+It's worth noting that in the example above, `my_first_task` and `my_second_task` are each a separate *script container*, and both can be within one *script file*, or different files - it doesn't make a difference to Denizen.
