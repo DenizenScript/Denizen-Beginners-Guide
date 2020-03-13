@@ -27,11 +27,11 @@ This script will narrate the text: `This is a basic task script!` to the player 
 
 Note that this script sample is highlighted in green. That means it's good enough that you could copy/paste it and it will work. Farther down this page there's a script example highlighted in blue, meaning it's a good example but some part needs to be filled in. Later on you'll see examples in red, indicating that those examples are what to *not* do. For more information on this highlighting system, refer to [This Guide - Sample Scripts](/guides/this-guide/sample-scripts).
 
-### Building Your First Task Script in VS Code
+### Building Your First Task Script In VS Code
 
 Previously, you've learned [how to set up VS Code](/guides/first-steps/script-editor), the editor that we recommend for writing Denizen scripts.
 
-#### Creating the File
+#### Creating The File
 
 To create your first task script, start by opening your scripts folder in VS Code.
 
@@ -48,7 +48,7 @@ Type any file name you want, just make sure to end it with `.dsc` - the required
 
 Now you can begin writing your first task script!
 
-#### Writing the Script
+#### Writing The Script
 
 Let's start with the core of the script:
 
