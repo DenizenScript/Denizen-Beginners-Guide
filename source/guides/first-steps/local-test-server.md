@@ -35,7 +35,7 @@ It's pretty simple! Let's go through the steps...
 
 ![](images/myserverfolder.png)
 
-- **Step 3: Make a launch script.** The simplest way to do this is to just open Notepad and create a file named `start.bat` (be sure to save as 'all files', not 'text documents'). In this file, put the following: `java -Xms500M -Xmx500M -jar paper.jar` ... you can configure the specifics - the '500M' twice is how much RAM you want to give to the server, and 'paper.jar' is the name of the server jar file. <span class="parens">(On Linux or Mac, create a `start.sh` file and edit it with whatever your favorite text editor is. The command to include remains the same.)</span>
+- **Step 3: Make a launch script.** The simplest way to do this is to just open Notepad and create a file named `start.bat` (be sure to save as 'all files', not 'text documents'). In this file, put the following: `java -Xms1G -Xmx1G -jar paper.jar` ... you can configure the specifics - the '1G' twice is how much RAM you want to give to the server <span class="parens">(`1G` means "One GigaByte of RAM", you can also type values like `2G` for 2 GigaBytes, `500M` for 500 MegaBytes, etc.)</span>, and 'paper.jar' is the name of the server jar file. <span class="parens">(On Linux or Mac, create a `start.sh` file and edit it with whatever your favorite text editor is. The command to include remains the same.)</span>
 
 ![](images/startbat.png)
 
