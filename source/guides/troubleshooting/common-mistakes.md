@@ -288,3 +288,17 @@ A key reason for this confusion stems from the fact that `<>` is often actually 
 If at any time you want to insert literal text: just insert literal text, will nothing more to it. `- heal 3` or `- narrate mytexthere` are perfectly valid ways to write arguments, with no need for any special symbols <span class="parens">(except when quotes are required to contain a space within an argument)</span>.
 
 As an additional note, if you need literal text in the form of a tag <span class="parens">(to use some element sub-tag on it)</span>, you can use the `element` base tag, like: `<element[3].div[5]>` <span class="parens">(this takes the plain value "3", forms it into an ElementTag, then uses the `ElementTag.div` sub-tag to divide it by 5)</span>.
+
+### The Adjust Command Is Not For Items/Materials/Etc.
+
+Many users, when first trying to adjust a mechanism on an item, material, or similar type, will try to use the `adjust` command to achieve this, like `- adjust <[inventory].slot[5]> "lore:My new lore!"` or `- adjust <[location].material> lit:true`.
+
+While this does seem to make sense initially, it unfortunately will not work out, due to an important distinction between object types: [unique vs. generic objects](https://one.denizenscript.com/denizen/lngs/Unique%20Objects%20vs%20Generic%20Objects). It is recommended that you read and understand that explanation page to properly understand why you cannot `adjust` an `item`, but the short summary is: ItemTags look like `stick`, which is a *description* of an item, not a single unique item. As a result, the system has no way to track down *which* stick you're trying to adjust.
+
+If you do use `adjust` on an item, it will apply the modification to the description of the item, and store the modified description into a save entry. A similar result happens with a MaterialTag object. While this may be useful in some cases, this isn't useful when you want to change an actual specific item in the world.
+
+#### So, How Do I Adjust A Specific Item?
+
+The way to properly adjust a specific item changes depending on where that item is. If the item is inside an inventory, the best way is to use the `inventory` command with the `adjust` and `slot:<#>` arguments <span class="parens">(like `- inventory adjust slot:5 "lore:My new lore!"`)</span>. In other cases, the tag `ItemTag.with[...]` is useful. This tag returns a copy of an item with a mechanism applied. So if, for example, you have a `dropped_item` entity, you can adjust the `item` mechanism on that entity to be the result of a `with` tag, like: `- adjust <[entity]> "item:<[entity].item.with[lore=my new lore!]>"`. To change the item in an event, you might also be able to use `determine` with the `ItemTag.with` tag.
+
+To adjust a `MaterialTag`, there is a `MaterialTag.with[...]` tag that matches the `ItemTag` version. Most likely, however, you want to adjust the material of a block, so the `adjustblock` command is what you need. It takes the location of a block, and applies MaterialTag mechanisms to that specific block <span class="parens">(like `- adjustblock <[location]> lit:true`)</span>.
