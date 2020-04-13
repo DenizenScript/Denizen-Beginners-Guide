@@ -302,3 +302,21 @@ If you do use `adjust` on an item, it will apply the modification to the descrip
 The way to properly adjust a specific item changes depending on where that item is. If the item is inside an inventory, the best way is to use the `inventory` command with the `adjust` and `slot:<#>` arguments <span class="parens">(like `- inventory adjust slot:5 "lore:My new lore!"`)</span>. In other cases, the tag `ItemTag.with[...]` is useful. This tag returns a copy of an item with a mechanism applied. So if, for example, you have a `dropped_item` entity, you can adjust the `item` mechanism on that entity to be the result of a `with` tag, like: `- adjust <[entity]> "item:<[entity].item.with[lore=my new lore!]>"`. To change the item in an event, you might also be able to use `determine` with the `ItemTag.with` tag.
 
 To adjust a `MaterialTag`, there is a `MaterialTag.with[...]` tag that matches the `ItemTag` version. Most likely, however, you want to adjust the material of a block, so the `adjustblock` command is what you need. It takes the location of a block, and applies MaterialTag mechanisms to that specific block <span class="parens">(like `- adjustblock <[location]> lit:true`)</span>.
+
+### Don't Script Raw Locations
+
+On the Denizen Discord, we often get questions like "how do I put in the coordinates for a location" or "how do I make the NPC walk to x,y,z 1,5,7" or something like that. Sometimes it even gets phrased like "how do I give raw coordinate values instead of using a LocationTag".
+
+The short answer: You don't do that.
+
+As a general matter of clean and proper scripting, it never makes sense to type world coordinate values directly into a script instead of using a tag to get the location.
+
+#### But What If There Isn't A Tag For The Location I Want?
+
+Then make one! Denizen tags are not unmovable boulders. They are tools, and they work for you, not against you.
+
+If, for example, you have a fancy pillar of obsidian at the center of your arena build, and you need scripts to use the location of the pillar... simply stand on top of the pillar, and type `/ex note <player.location.below> as:arena1_pillar`. Now that you've done that, any script that needs the location can literally type in `arena1_pillar` as a location. Need an NPC to look at the pillar? `- look arena1_pillar`. Need to get the exact Y height value of the pillar? `<location[arena1_pillar].y>`. Clean, descriptive, and easy!
+
+If, for example, you have an NPC that needs to walk towards specific points on a path, you might at that point use anchors. Select the NPC, then stand at each point on the path and type `/npc anchor --save point1` <span class="parens">(then `point2`, then `3`, etc)</span>. Then, the script can do `- ~walk <npc.anchor[point1]>` <span class="parens">(and then `point2`, `3`, etc)</span>.
+
+If you need a location that changes from time to time, or is selected from a list of possibilities, or is attached to a player instead of an NPC, or... you might in that case store the location into a flag.
