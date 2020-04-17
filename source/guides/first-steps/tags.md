@@ -101,3 +101,16 @@ There are some words used on this page that are specific to Denizen. For the mos
 
 - **"Returns"**, when discussing tags, generally used in sentences like "The tag `<PlayerTag.name>` returns the player's name" means that tag, when used, gets replaced by the player's name. So `- narrate "hi <player.name>"` will narrate `"hi bob"`. "Returns" in any sentence can be swapped out for "gets replaced by", like "The tag `<PlayerTag.name>` gets replaced by the player's name".
 - **"Object"** is general term refering to some value, usually in the context of discussing the different *types of objects*. A PlayerTag is one type of object, an NPCTag is another. When working on a script, any player is an object, and that object is of the PlayerTag object type. Each type is named "(something)Tag" to indicate that it is (something) for usage within a tag. This phrasing is still used even when not specifically discussing tags. The wider set of all objects in the context of scripting are sometimes called ObjectTags.
+
+### Related Technical Docs
+
+If you want to read a lot more about tags, here are a few technical guides you might consider...
+
+Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
+
+- [Fallbacks language doc](https://one.denizenscript.com/denizen/lngs/tag%20fallbacks)
+- [ObjectTags language doc](https://one.denizenscript.com/denizen/lngs/ObjectTags)
+- [Unique vs generic objects language doc](https://one.denizenscript.com/denizen/lngs/Unique%20Objects%20vs%20Generic%20Objects)
+- [ElementTag related language docs](https://one.denizenscript.com/denizen/lngs/ElementTag)
+- [Object type related language docs](https://one.denizenscript.com/denizen/lngs/Tag%20Objects)
+- [List of all tags](https://one.denizenscript.com/denizen/tags/)

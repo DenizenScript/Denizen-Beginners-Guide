@@ -272,3 +272,14 @@ If you're sitting here thinking "well this is all well and good, but there's so 
 well... you've reached the end of the general overview of the `if` command here. Depending on what you want to do,
 you might just go ahead and stick an `if` command inside of another `if` command <span class="parens">(nothing's going to stop you, other than than your script starting to look big and scary)</span>,
 or if that's not good enough... well keep reading through the guide, one of the upcoming sections will probably have what you're looking for <span class="parens">(like the [Loops section](/guides/basics/loops))</span>.
+
+### Related Technical Docs
+
+If you want to read a lot more about the if command, here are a few technical guides you might consider...
+
+Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
+
+- [If command doc](https://one.denizenscript.com/denizen/cmds/if)
+- [Else command doc](https://one.denizenscript.com/denizen/cmds/else)
+- [Comparable language doc](https://one.denizenscript.com/denizen/lngs/comparable)
+- [Operator language doc](https://one.denizenscript.com/denizen/lngs/operator)

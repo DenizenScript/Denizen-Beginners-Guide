@@ -45,3 +45,12 @@ When asking for help with a script, it's usually best to provide a link to your 
 When you join the Discord, before you post anything, be sure to read the rules (in the `#rules`) channel to make sure you don't start off on the wrong foot. The discord is generally pretty chill and friendly, but the rules will be enforced <span class="parens">(lightly, that is - a simple accident isn't going to get you banned or anything, don't worry. Most caught rule breaks will just have a warning recorded... not much more will happen except to users that repeatedly break the same rules over and over)</span>.
 
 Be prepared, however, for some potential tough-love support with fixing particularly messy scripts. If you post a script full of errors, you're likely to see a helper reply with a long angry-looking listing of every single problem and how to fix it. Don't read too much into the tone <span class="parens">(remember that text based conversations can often lose the intended tone, and tend to come across sounding more negative than was meant)</span> - we do long breakdowns because we want you to learn and achieve the best scripting you can. If we were actually angry or anything like that at you, we probably wouldn't be replying at all.
+
+### Related Technical Docs
+
+If you want to read a lot more about problem solving, here are a few technical guides you might consider...
+
+Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
+
+- [Denizen debug command command language doc](https://one.denizenscript.com/denizen/lngs/denizen%20debug%20command)
+- [Denizen submit command language doc](https://one.denizenscript.com/denizen/lngs/denizen%20submit%20command)

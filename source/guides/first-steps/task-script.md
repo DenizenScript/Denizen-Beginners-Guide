@@ -141,3 +141,12 @@ my_second_task:
 This is just a basic example, and you'll be able to create more complicated and powerful scripts as you learn more about Denizen.
 
 It's worth noting that in the example above, `my_first_task` and `my_second_task` are each a separate *script container*, and both can be within one *script file*, or different files - it doesn't make a difference to Denizen.
+
+### Related Technical Docs
+
+If you want to read a lot more about task scripts, here are a few technical guides you might consider...
+
+Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
+
+- [Task script containers doc](https://one.denizenscript.com/denizen/lngs/task%20script%20containers)
+- [Run command doc](https://one.denizenscript.com/denizen/cmds/run)

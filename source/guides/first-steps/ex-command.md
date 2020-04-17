@@ -49,3 +49,12 @@ Basically anything! You can run any Denizen command from `/ex`, and there's Deni
 Denizen commands are at the heart of every script. Scripts can be described as simple config files listing a bunch of Denizen commands <span class="parens">(and the configuration parts just there to indicate when exactly it is the commands should run)</span>.
 
 `/ex` is a really handy way to test out individual commands in-game quickly. We'll be making a lot of use of it in the upcoming sections of this guide. It's one of several Denizen power-tools that make your life easy <span class="parens">(and make Java developers hate their choice to learn Java after seeing how much better it is on the Denizen side!)</span>.
+
+### Related Technical Docs
+
+If you want to read a lot more about the /ex command, here are a few technical guides you might consider...
+
+Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
+
+- [Ex command language doc](https://one.denizenscript.com/denizen/lngs/ex%20command)
+- [Narrate command doc](https://one.denizenscript.com/denizen/cmds/narrate)

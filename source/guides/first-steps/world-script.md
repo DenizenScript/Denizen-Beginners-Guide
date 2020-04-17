@@ -134,3 +134,21 @@ my_world_script:
         after player places stone:
         - narrate "Why are you putting that stone there? Better not break it with a diamond pickaxe!"
 ```
+
+### Related Technical Docs
+
+If you want to read a lot more about world events, here are a few technical guides you might consider...
+
+Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
+
+- [Switches language doc](https://one.denizenscript.com/denizen/lngs/script%20event%20switches)
+- [Player switches language doc](https://one.denizenscript.com/denizen/lngs/player%20event%20switches)
+- [Advanced matching language doc](https://one.denizenscript.com/denizen/lngs/advanced%20script%20event%20matching)
+- [Cancellation language doc](https://one.denizenscript.com/denizen/lngs/script%20event%20cancellation)
+- [Special contexts language doc](https://one.denizenscript.com/denizen/lngs/script%20event%20special%20contexts)
+- [After vs On language doc](https://one.denizenscript.com/denizen/lngs/script%20event%20after%20vs%20on)
+- [Safety in events language doc](https://one.denizenscript.com/denizen/lngs/safety%20in%20events)
+- [Priority language doc](https://one.denizenscript.com/denizen/lngs/script%20event%20priority)
+- [Bukkit priority language doc](https://one.denizenscript.com/denizen/lngs/bukkit%20event%20priority)
+- [World script containers doc](https://one.denizenscript.com/denizen/lngs/world%20script%20containers)
+- [List of all world events](https://one.denizenscript.com/denizen/evts/)

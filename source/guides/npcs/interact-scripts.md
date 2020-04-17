@@ -6,3 +6,13 @@ What Do I Do: Interact Scripts (PLACEHOLDER ONLY)
 ### Placeholder
 
 Until this page is written, you can view the [old tutorial video here](https://one.denizenscript.com/denizen/vids/Your%20First%20Interact%20Script%20And%20Chat%20Trigger).
+
+### Related Technical Docs
+
+If you want to read a lot more about interact scripts, here are a few technical guides you might consider...
+
+Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
+
+- [Interact script containers doc](https://one.denizenscript.com/denizen/lngs/interact%20script%20containers)
+- [Trigger command doc](https://one.denizenscript.com/denizen/cmds/trigger)
+- [Interact script triggers language doc](https://one.denizenscript.com/denizen/lngs/Interact%20Script%20Triggers)
