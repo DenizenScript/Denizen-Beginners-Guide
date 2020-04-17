@@ -14,7 +14,7 @@ So, you've learned [how to use '/ex' to run a single Denizen command](/guides/fi
 
 Let's take a look at the primary way we make automatically triggered scripts: `world` script containers!
 
-A world script contains `events`. An event is basically: a thing that happens in the world. For example, when a player breaks a block, there's an event for that. Most events are named pretty clearly and simply - for example, the previously mentioned event would be `on player breaks block`. Note that all events start with the word `on`, and what follows is usually English phrasing of the event based on that. Some more examples of event names: `on player places block`, `on entity dies`, `on creeper powered`, `on lightning strikes`, ...
+A world script contains `events`. An event is basically: a thing that happens in the world. For example, when a player breaks a block, there's an event for that. Most events are named pretty clearly and simply - for example, the previously mentioned event would be `player breaks block`. Note that all events start with either the word `on` or `after`, and what follows is usually English phrasing of the event based on that. Some more examples of event names: `on player places block`, `after entity dies`, `on creeper powered`, `after lightning strikes`, ... <span class="parens">(the distinction between `on` and `after` is explained farther down this page)</span>.
 
 ### Let's See A Real World Script!
 
@@ -22,7 +22,7 @@ A world script contains `events`. An event is basically: a thing that happens in
 my_world_script:
     type: world
     events:
-        on player breaks block:
+        after player breaks block:
         - narrate "Whoa <player.name>, you broke a block!"
 ```
 
@@ -59,17 +59,17 @@ Note also that context tags, naturally, only exist within their relevant context
 
 Event names allow extra specification to be added, as either an input filling or an event switch.
 
-The breaks block event is documented as: `on player breaks block` or `on player breaks <material>`. The second version here gives us a `<material>` input option. In this context, the `<>` means "fill in your specific value here". So, try changing your script's event line to be `on player breaks stone:`, then reload and try breaking a few different block types, including stone. You will see that the narrate only happens when you break stone. If you break dirt or anything else, nothing will happen.
+The breaks block event is documented as: `player breaks block` or `player breaks <material>`. The second version here gives us a `<material>` input option. In this context, the `<>` means "fill in your specific value here". So, try changing your script's event line to be `after player breaks stone:`, then reload and try breaking a few different block types, including stone. You will see that the narrate only happens when you break stone. If you break dirt or anything else, nothing will happen.
 
 Event switches are additional options on an event aside from just the basic name input. The breaks block event has a few switches available, including one documented as `with:<item> to only process the event when the player is breaking the block with a specified item`.
 
-To put this to use, you can do, for example: `on player breaks stone with:diamond_pickaxe:` to make the script only run when the player specifically uses a diamond pickaxe while breaking the stone - if you try it with an iron pickaxe or anything else instead, the script simply won't run.
+To put this to use, you can do, for example: `after player breaks stone with:diamond_pickaxe:` to make the script only run when the player specifically uses a diamond pickaxe while breaking the stone - if you try it with an iron pickaxe or anything else instead, the script simply won't run.
 
 #### Event Lines Are Static
 
 Note that event lines can never contain tags - they must always be valid plain text. In a [later section](/guides/basics/if-command) you will learn how to change whether the script runs based on more dynamic tag-based checks.
 
-There is, however, a bit of limited dynamicness available. For example, consider the `with:diamond_pickaxe` switch we used above. What if we want *any* pickaxe to count? We can use `with:*_pickaxe` for this. The `*` symbol means "anything here". Similarly, if we want only diamond or iron, we can use `with:diamond_pickaxe|iron_pickaxe`. The `|` symbol means "either one of these counts". You can also apply this to the input portions of an event line. For example, if you want to react to players breaking wood logs, but don't want to have a different event for each and every type of log, you can simply use `on player breaks *_log:`.
+There is, however, a bit of limited dynamicness available. For example, consider the `with:diamond_pickaxe` switch we used above. What if we want *any* pickaxe to count? We can use `with:*_pickaxe` for this. The `*` symbol means "anything here". Similarly, if we want only diamond or iron, we can use `with:diamond_pickaxe|iron_pickaxe`. The `|` symbol means "either one of these counts". You can also apply this to the input portions of an event line. For example, if you want to react to players breaking wood logs, but don't want to have a different event for each and every type of log, you can simply use `after player breaks *_log:`.
 
 ### Okay But Stop Breaking My Blocks Please
 
@@ -81,6 +81,23 @@ The most commonly available determination, that almost all events support, is `-
 
 So, let's try it! After the narrate line in our test script, add the determine. If you've applied all the suggested changes thus far, your script should now look like this:
 
+```dscript_red
+my_world_script:
+    type: world
+    events:
+        after player breaks stone with:diamond_pickaxe:
+        - narrate "Whoa <player.name>, you broke a <context.material.name>!"
+        - determine cancelled
+```
+
+Wait... that didn't work. What went wrong?
+
+#### We Have Events Now And Then
+
+This is where the difference between `after` and `on` comes into play. `after` means to run the script *after* the event happens and is already done. `on` means to run the script *before* the event happens and can be changed. Effectively, when `after` is used, the event is a *past* event, and when `on` is used, the event is a *future* event. You can only use `determine` within `on`, not `after`, for a pretty simple reason: You can't change the past!
+
+So, change the `after` in our example script to `on`.
+
 ```dscript_green
 my_world_script:
     type: world
@@ -90,7 +107,7 @@ my_world_script:
         - determine cancelled
 ```
 
-This script means if you break a stone with a diamond pickaxe, you will be stopped. If you break a different block, or don't use a diamond pick, things will work normally.
+This script theoretically means if you break a stone with a diamond pickaxe, you will be stopped. If you break a different block, or don't use a diamond pick, things will work normally.
 
 ![](images/breakingthemstones.gif)
 
@@ -110,11 +127,10 @@ As an additional note to be aware of: any one world script can contain several e
 my_world_script:
     type: world
     events:
-        on player breaks block:
+        after player breaks block:
         - narrate "Whoa <player.name>, you broke a <context.material.name>!"
         on player breaks stone with:diamond_pickaxe:
         - determine cancelled
-        on player places stone:
+        after player places stone:
         - narrate "Why are you putting that stone there? Better not break it with a diamond pickaxe!"
 ```
-
