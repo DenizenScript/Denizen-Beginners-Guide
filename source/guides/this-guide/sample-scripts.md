@@ -1,5 +1,5 @@
-Sample Scripts
---------------
+How Sample Scripts Are Formatted In This Guide
+----------------------------------------------
 
 When you see a sample script anywhere in this guide, it wil be categorized into one of three color-coded types: Good, Needs-Change, or Bad.
 
