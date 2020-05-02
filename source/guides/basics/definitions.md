@@ -171,6 +171,10 @@ When you run that script, it will first narrate `mydef became 4`, showing that t
 
 For the list data actions, change the first line to `- define mydef <list[old_value|some_other_value]>` for testing.
 
+### Other Definition Sources
+
+As an added note, be aware that there are some things that create definitions other than the `define` command, including [loops](/guides/basics/loops), some various commands <span class="parens">(like shoot)</span> that will say when they create a definition in the relevant command's documentation, and sometimes external plugins that hook into Denizen.
+
 ### Related Technical Docs
 
 If you want to read a lot more about definitions, here are a few technical guides you might consider...
