@@ -40,7 +40,7 @@ magic_healing_bell:
             - actionbar "<green>The bell has healed you!"
 ```
 
-This handy sample script will instantly heal a player that clicks on it, but *only if* their health is dangerously low.
+This handy sample script will instantly heal a player that clicks on a bell block, but *only if* their health is dangerously low.
 <span class="parens">(We'll expand on this sample script throughout this section, and when we get to the [Flags](flags) section we'll revisit this sample script to add a rate limit, so players can only heal once every few minutes).</span>
 
 ### Conditions

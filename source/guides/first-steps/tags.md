@@ -80,9 +80,9 @@ Simple value inputs are good for testing, but in real usage, you'll often find r
 slowly_dying:
     type: task
     script:
-    - Narrate "You think you're so special with <player.health> health left?!"
+    - narrate "You think you're so special with <player.health> health left?!"
     - hurt <player> <util.random.decimal[0].to[<player.health.div[2]>]>
-    - Narrate "Hah! Take that, <player.name>! Now you only have <player.health> health left!"
+    - narrate "Hah! Take that, <player.name>! Now you only have <player.health> health left!"
 ```
 
 Every time this sample script runs, the player will lose a random amount up to half of their health, usually less. It will also tell them what their health was before and after the damage is applied.
