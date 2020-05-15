@@ -27,4 +27,5 @@ A guide for new users of [Denizen](https://www.spigotmc.org/resources/denizen.21
 
     guides/troubleshooting/index
     guides/this-guide/index
+    guides/non-denizen/index
 ```
