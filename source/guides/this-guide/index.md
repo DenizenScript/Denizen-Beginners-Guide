@@ -6,4 +6,5 @@ This Guide
     :titlesonly:
 
     sample-scripts
+    dev-faq
 ```

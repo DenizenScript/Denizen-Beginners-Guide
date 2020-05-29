@@ -1,7 +1,7 @@
 Denizen Beginner's Guide
 ------------------------
 
-Beginner's Guide for [Denizen 1.x.x](https://github.com/DenizenScript/Denizen-For-Bukkit) - https://guide.denizenscript.com/
+Beginner's Guide for [Denizen](https://github.com/DenizenScript/Denizen) - https://guide.denizenscript.com/
 
 Written by the Denizen Script team.
 
