@@ -16,7 +16,7 @@ The officially recommended way to edit Denizen scripts is using VS Code, with th
 
 - First, download and install [VS Code](https://code.visualstudio.com/). Note that this is NOT "Visual Studio" despite half of its name being that. <span class="parens">(The naming is rather confusing, unfortunately. Microsoft's doing...)</span>
 - Second, after VS Code is installed, you can install the [Denizen extension](https://marketplace.visualstudio.com/items?itemName=DenizenScript.denizenscript) by clicking the green "Install" button on the linked page.
-- As an additional note: some features require [.NET Core 3.1+](https://dotnet.microsoft.com/download/dotnet-core/3.1) ... at time of writing, these features aren't yet implemented and thus you can ignore this requirement if you prefer (you will see an error message if you don't have it, but you can ignore that message).
+- Note that you also need [.NET Core 3.1+](https://dotnet.microsoft.com/download/dotnet-core/3.1). This is used to power tools like automatic script checking and meta validation.
 
 ### Usage
 
