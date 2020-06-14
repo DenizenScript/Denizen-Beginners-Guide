@@ -8,5 +8,4 @@ This section is for topics not specific to Denizen, but still likely to be very 
     :titlesonly:
 
     resource-packs
-
 ```

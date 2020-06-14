@@ -1,5 +1,5 @@
 Resource Packs - Custom Items And Sounds
--------------------
+----------------------------------------
 
 This page will answer some common questions from programmers interested in creating visually custom items and adding new sounds into a resource pack.
 There are plenty of tutorials on creating your own resource pack, and less commonly how to implement custom model data and manage sounds within one.
@@ -12,7 +12,7 @@ This guide primarily, details how to correctly format your resource pack, and th
 
 ### Inside The Root Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\`
+Directory: `.minecraft/resourcepacks/MyResourcePack/`
 
 The main directory within your resource pack folder should contain both:
 - The `Assets` Folder - This is where all your files are placed.
@@ -63,14 +63,14 @@ You can also google search for unicode characters.
 
 ### Inside The Assets Folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\`
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/`
 
 This directory should be empty except for the one folder directory: `minecraft`. 
 Toss it in and leave everything else out of here.
 
 ### Inside The Minecraft Folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\`
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/`
 
 Depending on what content you plan on changing, you can create any of the following folders:
 
@@ -141,16 +141,16 @@ Optionally, you can manually adjust the following valid properties of the sound:
 
 ### Inside The Blockstates Folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\blockstates\`
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/blockstates/`
 
 To modify each individual block-state of an item, you must specify each individual blockstate.
 Additional blockstates cannot be specified.
-When specifying blockstate models, the relative folder directs to the `Models` directory, located at `\assets\minecraft\models\`.
+When specifying blockstate models, the relative folder directs to the `Models` directory, located at `/assets/minecraft/models/`.
 Adjusting these is not covered in this guide.
 
 ### Inside The Models Folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\models\`
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/models/`
 
 To "Create" new items, you will need to modify existing items within Minecraft.
 This can and was previously done with Durability, but optimally utilized with `custom_model_data` that was implemented in Minecraft 1.14.
@@ -170,17 +170,17 @@ Existing files such as `wooden_sword` for example, should look like this:
 }
 ```
 
-The above example is `wooden_sword.json`, which is located at `\assets\minecraft\models\item\wooden_sword.json`.
+The above example is `wooden_sword.json`, which is located at `/assets/minecraft/models/item/wooden_sword.json`.
 The `parent` key indicates the model data this file injects data for.
 The data's value for parent specified are the `FILEPATH/FILENAME` from the `models` directory if specifying a model file,
 and the `textures` directory if specifying a texture. 
 
-In the above example, the `wooden_sword` utilizes the parent model located at: `\assets\minecraft\textures\item\handheld.json`.
-In the above example, the `wooden_sword` utilizes the texture image located at: `\assets\minecraft\textures\item\wooden_sword.png`.
+In the above example, the `wooden_sword` utilizes the parent model located at: `/assets/minecraft/textures/item/handheld.json`.
+In the above example, the `wooden_sword` utilizes the texture image located at: `/assets/minecraft/textures/item/wooden_sword.png`.
 
 Note that removing `parent` keys if you are not specifying all display properties of an item will return unexpected results.
-The `wooden_sword`, for example, utilizes the parent file `\assets\minecraft\textures\item\generated.json`;
-which also utilizes a parent file at `\assets\minecraft\textures\builtin\generated.json`.
+The `wooden_sword`, for example, utilizes the parent file `/assets/minecraft/textures/item/generated.json`;
+which also utilizes a parent file at `/assets/minecraft/textures/builtin/generated.json`.
 If these files do not exist altered in the pack, they utilize the respective existing file within Minecraft's default resource.
 To add the `custom_model_data` predicate, we specify this in the `Overrides` key.
 Here is an example of the override, and the `custom_model_data` specified.
@@ -199,7 +199,7 @@ Here is an example of the override, and the `custom_model_data` specified.
 
 *Note: Remember that objects and arrays are separated by commas.*
 The above example extends the item `wooden_sword` to have an additional item model when the item in-game has the mechanism applied.
-This file is located at: `\assets\minecraft\models\item\custom\bandos_godsword.json`.
+This file is located at: `/assets/minecraft/models/item/custom/bandos_godsword.json`.
 Valid `custom_model_data` entries are integers, up to larger integers available as opposed to the durability predicate.
 An example of this file with multiple custom model data's specified looks like this:
 
@@ -234,21 +234,21 @@ When you place your custom item's model data into the location you direct it to 
 	},
 ```
 
-In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `\assets\minecraft\models\item\custom\bandos_godsword.png`.
+In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `/assets/minecraft/models/item/custom/bandos_godsword.png`.
 
 ### Inside The Textures folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\textures\`.
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/textures/`.
 This is where your image files are saved.
 These files should be in the relative filepath specified within the model file that it corresponds to.
 
 ### Inside The Sounds folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\sounds\`.
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
 The sound format Minecraft uses is `.ogg`.
 Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
 For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
-You can find Minecraft's default resource sound index here: `\.minecraft\assets\indexes\1.15.json`; where `1.15` is the versions we're using in this guide.
+You can find Minecraft's default resource sound index here: `/.minecraft/assets/indexes/1.15.json`; where `1.15` is the versions we're using in this guide.
 All of your sound files <span class="parens">('.ogg' files)</span> should be saved in this directory.
 
 ### Putting It Together: Using Denizen With Your New Pack
@@ -303,11 +303,11 @@ Minecraft will give no indicators excluding broken texture images and models if 
 Custom textures, models and sounds can be placed within as many sub-folders as you would like. Remember to abide the lowercase sensitivity.
 
 Your default Resource Packs folder is located in your default minecraft directory, and looks something like this:
-`C:\Users\username\AppData\Roaming\.minecraft\resourcepacks` on Windows, or `/home/[username]/.minecraft` on Linux.
+`C:/Users/username/AppData/Roaming/.minecraft/resourcepacks` on Windows, or `/home/[username]/.minecraft` on Linux.
 Optimally, you can directly open the folder directory with the `Open Resource Pack Folder` button in the `Resource Packs...` section of your in-game menu.
 
 The best template for modifying existing models and textures for Minecraft is the default resource,
-which can be found in your Version Jar directly located in the directory: `\.minecraft\versions\`.
+which can be found in your Version Jar directly located in the directory: `/.minecraft/versions/`.
 You can extract this to it's respective file and locate the `Assets` folder within.
 Note that if you copy the entire `assets` folder as a template, you may consider removing material you don't change,
 as it's extra file storage you don't need to contribute to the resource pack.
