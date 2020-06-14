@@ -7,4 +7,6 @@ This section is for topics not specific to Denizen, but still likely to be very 
     :maxdepth: 1
     :titlesonly:
 
+    resource-packs
+
 ```
