@@ -19,7 +19,6 @@ The main directory within your resource pack folder should contain both:
 - `pack.mcmeta` - This is how Minecraft knows what format your Resource Pack is.
 Optimally, you can also include `pack.png` - This is a `64x64` custom image for your pack!
 
-
 #### Example File: `pack.mcmeta`
 
 Inside the `pack.mcmeta` file, you will find this is formatted in a `json` format.
@@ -147,7 +146,7 @@ Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\blockstates
 To modify each individual block-state of an item, you must specify each individual blockstate.
 Additional blockstates cannot be specified.
 When specifying blockstate models, the relative folder directs to the `Models` directory, located at `\assets\minecraft\models\`.
-Adjusting these are not covered in this guide.
+Adjusting these is not covered in this guide.
 
 ### Inside The Models Folder Directory
 
