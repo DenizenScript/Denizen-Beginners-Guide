@@ -1,4 +1,4 @@
-Resource Packs - Custom Items and Sounds
+Resource Packs - Custom Items And Sounds
 -------------------
 
 This page will answer some common questions from programmers interested in creating visually custom items and adding new sounds into a resource pack. There are plenty of tutorials on creating your own resource pack, and less commonly how to implement custom model data and manage sounds within one. This guide primarily, details how to correctly format your resource pack, and then implement it into Minecraft using Denizen scripts.
@@ -217,7 +217,7 @@ MyCustomSound:
         - playsound <player> sound:entity.player.defence.level custom
 ```
 
-### Tips, Tricks and Notes While You Create
+### Tips, Tricks And Notes While You Create
 A very handy trial-and-error debugging tricks for creating resource packs is that you can actively edit the pack and view your changes in-game. One of the most common misconceptions of resource packs is that you need to have it saved as a `.ZIP`. FALSE! You can save this directly in your resource packs folder, edit and just reload!
 The default hotkey to reload your resource packs is `F3 + T`
 
@@ -236,7 +236,7 @@ Optimally, you can directly open the folder directory with the `Open Resource Pa
 
 The best template for modifying existing models and textures for Minecraft is the default resource, which can be found in your Version Jar directly located in the directory: `\.minecraft\versions\`. You can extract this to it's respective file and locate the `Assets` folder within. Note that if you copy the entire `assets` folder as a template, you may consider removing material you don't change, as it's extra file storage you don't need to contribute to the resource pack.
 
-### Related Technical Docs and Links
+### Related Technical Docs And Links
 * [Playsound Command Meta](https://one.denizenscript.com/denizen/cmds/playsound)
 * [JSON Formatter and Validator](https://jsonformatter.curiousconcept.com/)
 * [Online-Convert.com | Convert Audio to OGG Format](https://audio.online-convert.com/convert-to-ogg)
