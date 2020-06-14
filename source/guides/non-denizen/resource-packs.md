@@ -86,6 +86,7 @@ Depending on what content you plan on changing, you can create any of the follow
 For Optifine support, it's recommended you join their discord and review their documentation at their [Github Source](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc).
 
 #### Example File: `sounds.json`
+
 This file indexes where Minecraft should look for your sounds.
 Below is an example of a setup for two custom sounds, `defence_levelup0` and `defence_levelup1`.
 
@@ -113,6 +114,7 @@ The file extension is `.ogg` - other formats are not compatible.
 
 For each file, you will need the data: `"name":"FILEPATH/FILENAME"`, excluding the file's extension.
 Optionally, you can manually adjust the following valid properties of the sound:
+
 1) `volume` - The volume the sound will be played as. 
     - Default is `1.0`; Valid volume ranges from `0.0` to `1.0`; where `1.0` is the loudest it may be played at.
     - The Volume value accepts higher values using Denizen's PlaySound, however not by increasing the volume. It increases the audible distance the sound may be heard from. 
@@ -120,8 +122,7 @@ Optionally, you can manually adjust the following valid properties of the sound:
 2) `pitch` - The pitch the sound plays at, altered from it's original `.ogg` form.
     - Default is `1.0`; Valid pitches range from `0.0` to `2.0`; where `1.0` is high-pitched and `0.0` will be low-pitched.
 3) `weight` - The chance that this sound will be selected as opposed to randomly.
-    - Default is 0; Only accepts valid integers, not adjustable within Denizen.
-    - For example, putting 2 in for the value would be like placing in the name twice.
+            - Higher integers are used more frequently.
 4) `stream` - Determines if the sound should be streamed from it's file.
     - Default is false.
     - Recommended to set this value as `true` if the sound is longer than two seconds to avoid lag.
@@ -135,21 +136,23 @@ Optionally, you can manually adjust the following valid properties of the sound:
     - Used by portals, beacons, conduits.
 7) `type` - determines if a pre-defined event fires this sound.
     - Default is `sound`, the other option available is `event`.
-    - `sound` causes the value of `name` to be interpreted as the name of a file
+    - `sound` causes the value of `name` to be interpreted as the name of a file.
     - `event` causes the value of `name` to be interpreted as the name of an already defined event.
     - used for things like being under-water, in a cave, near a beacon, near a beehive.
 
 ### Inside The Blockstates Folder Directory
 
 Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\blockstates\`
+
 To modify each individual block-state of an item, you must specify each individual blockstate.
 Additional blockstates cannot be specified.
-When specifying blockstate models, the relative folder directs to the `Models` directory, located at `\assets\minecraft\models\`
+When specifying blockstate models, the relative folder directs to the `Models` directory, located at `\assets\minecraft\models\`.
 Adjusting these are not covered in this guide.
 
 ### Inside The Models Folder Directory
 
 Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\models\`
+
 To "Create" new items, you will need to modify existing items within Minecraft.
 This can and was previously done with Durability, but optimally utilized with `custom_model_data` that was implemented in Minecraft 1.14.
 The three object model types for model data are `Block States`,`Block Models`, and `Item Models`.
@@ -168,13 +171,13 @@ Existing files such as `wooden_sword` for example, should look like this:
 }
 ```
 
-The above example is `wooden_sword.json`, which is located at `\assets\minecraft\models\item\wooden_sword.json`
+The above example is `wooden_sword.json`, which is located at `\assets\minecraft\models\item\wooden_sword.json`.
 The `parent` key indicates the model data this file injects data for.
 The data's value for parent specified are the `FILEPATH/FILENAME` from the `models` directory if specifying a model file,
 and the `textures` directory if specifying a texture. 
 
-In the above example, the `wooden_sword` utilizes the parent model located at: `\assets\minecraft\textures\item\handheld.json`
-In the above example, the `wooden_sword` utilizes the texture image located at: `\assets\minecraft\textures\item\wooden_sword.png`
+In the above example, the `wooden_sword` utilizes the parent model located at: `\assets\minecraft\textures\item\handheld.json`.
+In the above example, the `wooden_sword` utilizes the texture image located at: `\assets\minecraft\textures\item\wooden_sword.png`.
 
 Note that removing `parent` keys if you are not specifying all display properties of an item will return unexpected results.
 The `wooden_sword`, for example, utilizes the parent file `\assets\minecraft\textures\item\generated.json`;
@@ -223,6 +226,7 @@ THere are plenty of options for modeling software available, two of which most c
 Note that the software you use must be able to export the model to a `.json` file format.
 Cubik Pro specifically saves the model, and the respective image file, into it's correct locations and formats the model file correctly.
 When you place your custom item's model data into the location you direct it to in the above example, the top of your model file should look something like this:
+
 ```json
 {
 	"textures": {
@@ -231,17 +235,17 @@ When you place your custom item's model data into the location you direct it to 
 	},
 ```
 
-where the `particle` and `texture` keys both point to the image files we will be saving at the directory: `\assets\minecraft\models\item\custom\bandos_godsword.png`
+In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `\assets\minecraft\models\item\custom\bandos_godsword.png`.
 
 ### Inside The Textures folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\textures\`
+Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\textures\`.
 This is where your image files are saved.
 These files should be in the relative filepath specified within the model file that it corresponds to.
 
 ### Inside The Sounds folder Directory
 
-Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\sounds\`
+Directory: `.minecraft\resourcepacks\MyResourcePack\assets\minecraft\sounds\`.
 The sound format Minecraft uses is `.ogg`.
 Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
 For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
@@ -252,10 +256,11 @@ All of your sound files <span class="parens">('.ogg' files)</span> should be sav
 
 #### Custom Items
 
-Giving yourself the item is simple. If it's a one-off time you need the thing or you're just generally testing, you can use the [`/ex` command](/guides/first-steps/ex-command) like this:
-`/ex give wooden_sword[custom_model_data=1]`
-
+Giving yourself the item is simple. If it's a one-off time you need the thing or you're just generally testing, 
+you can use the [`/ex` command](/guides/first-steps/ex-command) like this:
+`/ex give wooden_sword[custom_model_data=1]`.
 The item script simply looks something like this:
+
 ```dscript_green
 BandosSword:
     type: item
@@ -271,8 +276,9 @@ You can give yourself the custom item just like any other item script, `/ex give
 
 Playing your sound is relative to the unique custom name you gave it.
 In our example, we specified the name of the sound as `entity.player.defence.level`.
-You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defence.level custom`
+You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defence.level custom`.
 In a script, this would look something like this:
+
 ```dscript_green
 MyCustomSound:
     type: task
@@ -285,7 +291,7 @@ MyCustomSound:
 A very handy trial-and-error debugging tricks for creating resource packs is that you can actively edit the pack and view your changes in-game.
 One of the most common misconceptions of resource packs is that you need to have it saved as a `.ZIP`.
 FALSE! You can save this directly in your resource packs folder, edit and just reload!
-The default hotkey to reload your resource packs is `F3 + T`
+The default hotkey to reload your resource packs is `F3 + T`.
 
 If you run across a flat purple and black square texture, this is the default Minecraft missing data replacement. 
 - if your item is flat with the purple/black texture, your item's model file path is misconfigured or is missing.
