@@ -30,6 +30,7 @@ Here is what it looks like inside:
    }
 }
 ```
+
 ##### pack.meta File Key: `pack_format`
 This is the indicator to Minecraft what version this pack is.
 1 indicates versions `1.6` - `1.8`.
@@ -86,6 +87,7 @@ This file indexes where Minecraft should look for your sounds. Below is an examp
   }
 }
 ```
+
 The first key is the name for the command; in this example, `entity.player.defence.level`
 The only data object within the command we need to specify are `sounds`. Optionally, you can specify the subtitle that displays if subtitles are enabled in-game. If you place multiple sounds within the `"sounds":[]` array, the sound will randomize between them based on their weight.
 
@@ -133,6 +135,7 @@ Existing files such as `wooden_sword` for example, should look like this:
     }
 }
 ```
+
 The above example is `wooden_sword.json`, which is located at `\assets\minecraft\models\item\wooden_sword.json`
 The `parent` key indicates the model data this file injects data for. The data's value for parent specified are the `FILEPATH/FILENAME` from the `models` directory if specifying a model file, and the `textures` directory if specifying a texture. 
 
@@ -153,6 +156,7 @@ Here is an example of the override, and the `custom_model_data` specified.
     ]
 }
 ```
+
 *Note: remember that objects and arrays are separated by commas*
 The above example extends the item `wooden_sword` to have an additional item model when the item in-game has the mechanism applied. This file is located at: `\assets\minecraft\models\item\custom\bandos_godsword.json`. Valid `custom_model_data` entries are integers, up to larger integers available as opposed to the durability predicate. An example of this file with multiple custom model data's specified looks like this:
 
@@ -180,6 +184,7 @@ Your custom item's model data file is something you may or may not adjust yourse
 		"texture": "item/custom/handheld/bandos_godsword"
 	},
 ```
+
 where the `particle` and `texture` keys both point to the image files we will be saving at the directory: `\assets\minecraft\models\item\custom\bandos_godsword.png`
 
 ### Inside The Textures folder Directory
@@ -205,6 +210,7 @@ BandosSword:
     mechanisms:
         custom_model_data: 1
 ```
+
 The `custom_model_data` is in-line with any other mechanisms you choose to specify with the custom item. You can give yourself the custom item just like any other item script, `/ex give BandosSword` or in any script with the `give` or `inventory` command.
 
 #### Custom Sounds
