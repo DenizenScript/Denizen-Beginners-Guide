@@ -1,6 +1,11 @@
 Long Term Memory: Flags (PLACEHOLDER ONLY)
 -----------------------
 
+```eval_rst
+.. contents:: Table of Contents
+    :local:
+```
+
 **TODO: Write-up that introduces flags on players and the server, and mentions that flags can be added onto any entity.**
 
 ### Placeholder

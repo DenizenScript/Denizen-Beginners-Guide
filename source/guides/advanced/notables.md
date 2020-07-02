@@ -1,7 +1,30 @@
 Special Memory: Notable Objects (NOT YET WRITTEN)
 -------------------------------
 
-**TODO: Write-up that explains notable objects in general, the note command, the 'in area' switch, and how to use noted objects.**
+```eval_rst
+.. contents:: Table of Contents
+    :local:
+```
+
+### Some Objects Are Notable
+
+**TODO: Explain noting objects in general**
+
+### Noting An Area
+
+#### Cuboids
+
+#### Ellipsoids
+
+**TODO: Explain noting areas, and using them with 'in area', enter/exit event, etc**
+
+### Noting A Location
+
+**TODO: Explain the idea and usages of noting a single location**
+
+### Noting An Inventory
+
+**TODO: Explain noting inventories and the usages of that**
 
 ### Related Technical Docs
 
