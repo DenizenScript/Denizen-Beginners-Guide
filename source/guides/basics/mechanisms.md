@@ -1,11 +1,44 @@
 Mechanisms And Properties (PLACEHOLDER ONLY)
 -------------------------
 
-**TODO: Write-up that introduces the mechanisms (particularly on entities) and properties in general (particularly on items).**
+```eval_rst
+.. contents:: Table of Contents
+    :local:
+```
 
 ### Placeholder
 
 Until this page is written, you can view the [old tutorial video here](https://one.denizenscript.com/denizen/vids/Properties%20and%20Mechanisms).
+
+### The Adjust Command
+
+The `adjust` command is primarily used to adjust entities that are already spawned or otherwise have a unique identifier.
+
+#### The AdjustBlock command
+
+The `adjustblock` command is a variant of normal `adjust` specifically to adjust `material` mechanisms on blocks.
+
+#### How To Adjust Items
+
+**TODO: Explain adjust/adjustblock more, including how `inventory adjust` works, and including what a 'unique identifier' is**
+
+#### Adjusting Definitions
+
+**TODO: Explain `adjust def:x`**
+
+### Properties
+
+"Properties" are a system to track the details of an object that doesn't have a unique identity of its own.
+
+#### Item Properties
+
+The most common place that properties are seen in use is with items.
+
+#### Material Properties
+
+#### Entities Have Properties Too
+
+**TODO: Explain properties more, including the `entity.describe` tag, the idea of tag+mechanism pairs, etc**
 
 ### Related Technical Docs
 
