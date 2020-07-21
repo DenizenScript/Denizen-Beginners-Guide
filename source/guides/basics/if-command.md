@@ -35,7 +35,7 @@ magic_healing_bell:
     type: world
     events:
         on player right clicks bell:
-        - if <player.health.percentage> < 25:
+        - if <player.health_percentage> < 25:
             - heal
             - actionbar "<green>The bell has healed you!"
 ```
@@ -75,12 +75,12 @@ When a simple comparison just won't do, and you gotta get a few extra things inc
 
 There are two combination types available:
 - If you want a set of commands to run if multiple comparisons **are all** true, use `&&` <span class="parens">(read as "and" - the symbol itself is a double-ampersand)</span>.
-For example, `- if <player.on_fire> && <player.health.percentage> < 25:` will run its commands if a player is on fire *and* almost dead.
+For example, `- if <player.on_fire> && <player.health_percentage> < 25:` will run its commands if a player is on fire *and* almost dead.
 
 <hr>
 
 - If you want a set of commands to run if **any one (or more)** of multiple comparisons is true, use `||` <span class="parens">(read as "or" - the symbol itself is a double-pipe)</span>.
-For example, `- if <player.on_fire> || <player.health.percentage> < 25:` will run its commands if a player is on fire <span class="parens">(regardless of their health)</span>,
+For example, `- if <player.on_fire> || <player.health_percentage> < 25:` will run its commands if a player is on fire <span class="parens">(regardless of their health)</span>,
 or will run its commands if the player's health is low <span class="parens">(regardless of whether they're on fire)</span>.
 
 If you have a lot of things you want to specify at once, you can simply chain these together in a row: `- if (condition one) && (condition two) && (condition three) && (condition four):`.
@@ -95,7 +95,7 @@ So how do we use that?
 
 Here's a long but relatively simple example:
 ```dscript_blue
-- if ( <player.name> == mcmonkey4eva && <player.health.percentage> > 90 ) || ( <player.on_fire> && <player.health.percentage> < 25 ):
+- if ( <player.name> == mcmonkey4eva && <player.health_percentage> > 90 ) || ( <player.on_fire> && <player.health_percentage> < 25 ):
     - narrate "wow mcmonkey specifically is doing pretty well! That or somebody is dying from a fire..."
 ```
 
@@ -115,7 +115,7 @@ magic_healing_bell:
     type: world
     events:
         on player right clicks bell:
-        - if <player.health.percentage> > 25:
+        - if <player.health_percentage> > 25:
             - stop
         - heal
         - actionbar "<green>The bell has healed you!"
@@ -157,7 +157,7 @@ magic_healing_bell:
     type: world
     events:
         on player right clicks bell:
-        - if <player.health.percentage> < 25:
+        - if <player.health_percentage> < 25:
             - heal
             - actionbar "<green>The bell has healed you!"
         - else:
@@ -175,10 +175,10 @@ magic_healing_bell:
     type: world
     events:
         on player right clicks bell:
-        - if <player.health.percentage> > 90:
+        - if <player.health_percentage> > 90:
             - actionbar "<red>The bell does nothing: you're healthy enough already."
             - stop
-        - if <player.health.percentage> < 25:
+        - if <player.health_percentage> < 25:
             - actionbar "<green>The bell has saved you!"
         - else:
             - actionbar "<green>The bell has healed you!"
@@ -194,10 +194,10 @@ magic_healing_bell:
     type: world
     events:
         on player right clicks bell:
-        - if <player.health.percentage> > 90:
+        - if <player.health_percentage> > 90:
             - actionbar "<red>The bell does nothing: you're healthy enough already."
             - stop
-        - if <player.health.percentage> < 25:
+        - if <player.health_percentage> < 25:
             - actionbar "<green>The bell has saved you!"
             - heal
             - stop
@@ -240,9 +240,9 @@ magic_healing_bell:
     type: world
     events:
         on player right clicks bell:
-        - if <player.health.percentage> > 90:
+        - if <player.health_percentage> > 90:
             - actionbar "<red>The bell does nothing: you're healthy enough already."
-        - else if <player.health.percentage> < 25:
+        - else if <player.health_percentage> < 25:
             - actionbar "<red>The bell can't save you: you're too far gone."
         - else:
             - actionbar "<green>The bell has healed you!"
