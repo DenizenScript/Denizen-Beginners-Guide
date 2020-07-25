@@ -21,7 +21,7 @@ npc_killquest:
 
 cchat:
     type: format
-    format: "<&b><npc.name> <&f>to you<&co> <&2><text>"
+    format: <&b><npc.name> <&f>to you<&co> <&2><text>
 
 npc_killquest_interact:
     type: interact
