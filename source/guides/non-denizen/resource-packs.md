@@ -288,7 +288,7 @@ MyCustomSound:
 ### Tips, Tricks And Notes While You Create
 
 A very handy trial-and-error debugging tricks for creating resource packs is that you can actively edit the pack and view your changes in-game.
-One of the most common misconceptions of resource packs is that you need to have it saved as a `.ZIP`.
+One of the most common misconceptions of resource packs is that you need to have it saved as a `.zip`.
 FALSE! You can save this directly in your resource packs folder, edit and just reload!
 The default hotkey to reload your resource packs is `F3 + T`.
 
@@ -297,7 +297,7 @@ If you run across a flat purple and black square texture, this is the default Mi
 - If your item has shape but no texture, your model file's image path is misconfigured or you're missing the image file.
 - if your item is normal, your resource pack is not registering any changes made to the item.
 
-THere is an incredibly handy JSON formatter and Validator you can find [Here](https://jsonformatter.curiousconcept.com/) for checking your JSON data.
+There is an incredibly handy JSON formatter and Validator you can find [Here](https://jsonformatter.curiousconcept.com/) for checking your JSON data.
 Minecraft will give no indicators excluding broken texture images and models if your files are wrongly formatted.
 
 Custom textures, models and sounds can be placed within as many sub-folders as you would like. Remember to abide the lowercase sensitivity.
