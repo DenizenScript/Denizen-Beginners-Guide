@@ -331,3 +331,15 @@ Instead of typing the object notation out, use one of these three options:
 - Just leave it off. Often, you can input a value without in any way specifying the type, and it will just work <span class="parens">(refer to [Don't Overuse Constructor Tags](#don-t-overuse-constructor-tags) for related information)</span>.
 - Use a tag that returns a relevant value, rather than trying to specify a raw value in the first place <span class="parens">(refer to [Don't Script Raw Locations](#don-t-script-raw-locations) for related information)</span>.
 - Use a constructor tag when needed <span class="parens">(refer to [Don't Overuse Constructor Tags](#don-t-overuse-constructor-tags) for related information)</span>.
+
+### Don't Overuse Constructor Tags
+
+Constructor tags are tag-bases that exist to automatically convert a raw value to the applicable object type. For example, `<cuboid[some value here]>` is the constructor tag base for CuboidTags.
+
+These can be handy for cases where you have a raw value that doesn't know its own type for whichever reason, and need to use a tag on it. For example, if the definition `ent_id` has an entity's UUID in it, and you want to get the entity type for that entity, you could use `<entity[<[ent_id]>].entity_type>`.
+
+These can also be useful for some cases where exact object type specificity is required but not automatically available, such as in the `note` command. For example, if you have an inventory script named `my_inv_script` and want to note an inventory to save as a player's personal copy of that inventory, you might use `- note <inventory[my_inv_script]> as:my_inv_<player.uuid>`.
+
+Constructor tags are, however, mostly not needed, and tend to make scripts messier and more complicated for little good reason when overused.
+
+We often see unnecessary overuse of the tags, for example in lines like `- give <item[stick]>`, which of course should just be `- give stick`. The Denizen script parser is pretty clever, and in most cases knows what type of object is involved. The `give` command in this example of course knows that you're trying to give an item <span class="parens">(what else could you be giving, without matching a different argument's specifier?)</span>, so you don't need to tell it that.
