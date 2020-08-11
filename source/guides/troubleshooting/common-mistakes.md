@@ -320,3 +320,14 @@ If, for example, you have a fancy pillar of obsidian at the center of your arena
 If, for example, you have an NPC that needs to walk towards specific points on a path, you might at that point use anchors. Select the NPC, then stand at each point on the path and type `/npc anchor --save point1` <span class="parens">(then `point2`, then `3`, etc)</span>. Then, the script can do `- ~walk <npc.anchor[point1]>` <span class="parens">(and then `point2`, `3`, etc)</span>.
 
 If you need a location that changes from time to time, or is selected from a list of possibilities, or is attached to a player instead of an NPC, or... you might in that case store the location into a flag.
+
+### Don't Type Raw Object Notation
+
+Denizen uses object notation internally to track object types. For example, `l@` indicates a value is a location, `p@` indicates a player, etc.
+
+This is exclusively intended for internal tracking of generated values. A script should NEVER contain these object notation values typed out.
+
+Instead of typing the object notation out, use one of these three options:
+- Just leave it off. Often, you can input a value without in any way specifying the type, and it will just work <span class="parens">(refer to [Don't Overuse Constructor Tags](#don-t-overuse-constructor-tags) for related information)</span>.
+- Use a tag that returns a relevant value, rather than trying to specify a raw value in the first place <span class="parens">(refer to [Don't Script Raw Locations](#don-t-script-raw-locations) for related information)</span>.
+- Use a constructor tag when needed <span class="parens">(refer to [Don't Overuse Constructor Tags](#don-t-overuse-constructor-tags) for related information)</span>.
