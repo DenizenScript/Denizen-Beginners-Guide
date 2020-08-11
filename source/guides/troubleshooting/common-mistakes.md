@@ -343,3 +343,17 @@ These can also be useful for some cases where exact object type specificity is r
 Constructor tags are, however, mostly not needed, and tend to make scripts messier and more complicated for little good reason when overused.
 
 We often see unnecessary overuse of the tags, for example in lines like `- give <item[stick]>`, which of course should just be `- give stick`. The Denizen script parser is pretty clever, and in most cases knows what type of object is involved. The `give` command in this example of course knows that you're trying to give an item <span class="parens">(what else could you be giving, without matching a different argument's specifier?)</span>, so you don't need to tell it that.
+
+### Object Hacking Is A Bad Idea
+
+Denizen has standard formats for most object types. For example, ItemTags look like `i@stick[lore=Fancy stick]`.
+
+These formats are used for internal tracking purposes, and should be kept that way. They are generated internal values, not meant to be manipulated via scripts.
+
+We sometimes see users try things like `<player.item_in_hand>[lore=Fancy stick]`. This example, if the player is holding a stick, will create a new item that is a stick with that lore, just like the user wanted. However, if the player's held item already has any additional data on it, it will end up processing into something more like `i@stick[display_name=Best stick][lore=Fancy stick]`, and that no longer matches the standard format, and thus will not work. <span class="parens">(The correct non-object-hacking way, for reference, to get a copy of an item with additional mechanisms, would be `<player.item_in_hand.with[lore=Fancy stick]>`)</span>.
+
+Something to bear in mind as well is that standard formats *change* as the underlying object needs to hold different forms of internal data. For example, MaterialTag was originally formed like `m@chest` or `m@chest,2`, but now has a format more like `m@chest[direction=north]`. While old data that was stored using an older format will generally still be parsed in correctly <span class="parens">(at least for a period of time after the initial change)</span>, any scripts expecting the format to be a certain way will instantly stop working.
+
+The most common recent example of object hacking biting people in recent times is ListTag object hacking. The original ListTag format was `li@one|two|three`, which still works perfectly fine as input, but no longer is the standard output format. Several users had scripts with lines akin to `<some_list>|additional|value|here` which worked with the old format. However, the format was changed to allow for things like sub-lists via built-in escaping logic, and distinguished itself with an additional `|` on the end. This format change also allowed for empty entries to exist in ListTags. This resulted in those object-hacking scripts having escaped data in the list, but looking like old-list-format to the parser, and thus not having the escaping parsed, and thus suddenly the hacked lists had corrupted data. <span class="parens">(The correct non-object-hacking way, for reference, to add entries to a list is `<some_list.include[additional|value|here]>`)</span>.
+
+The lesson here is: never assume that the full object format for an object is going to be a certain way. There's always a tag to read or change any data within an object in a better way.
