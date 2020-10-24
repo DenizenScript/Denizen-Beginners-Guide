@@ -33,6 +33,7 @@ Go ahead and put that into a script file, use `/ex reload` to load it in, then b
 Some things to note in this example:
 - The `type` for these scripts is now `world`.
 - Instead of `script:` from before, we now have `events:`, which contains within it the actual event name.
+- The event itself <span class="parens">(`after player breaks block`)</span> is indented another 4 spaces past where `events:` is, which makes the event part of the `events` block rather than part of the script's base level keys.
 - The player that broke the block is automatically the contextually linked player. So, the narrate shows to that player, and `<player.name>` will be that players name.
 
 An event will run every time the thing happens in the world. Every single time any player breaks any block, that script will run. If 5 players all break a block at the same time, that script will run 5 times - once for each player, each time linking to the specific player that broke the block that the script is reacting to. If one player gets an efficiency 5 shovel and destroys 10 dirt blocks in under a second... yep, the event will run 10 times, with that one player linked each time.

@@ -28,4 +28,4 @@ Generally, your main public/live server should use only the release builds. Your
 
 ### Don't Touch That Spigot Resource
 
-We maintain a Spigot Resources [here](https://www.spigotmc.org/resources/denizen.21039/) page for the sake of public visibility, but it is not updated often and its builds should not be used. Updates are only pushed to Spigot for the purpose of keep the resource page alive.
+We maintain a Spigot Resources [here](https://www.spigotmc.org/resources/denizen.21039/) page for the sake of public visibility, but it is not updated often and its builds should not be used. Updates are only pushed to Spigot for the purpose of keeping the resource page alive.

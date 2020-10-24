@@ -61,6 +61,8 @@ my_first_task:
 
 This example should look familiar - it's very similar to the example above.
 
+You should write this by first typing `my_first_task:` <span class="parens">(making sure to use `_` underscore symbols rather than spaces, and a `:` colon at the end), then press the ENTER key to go to the next line, and the TAB key to space forward the next block. As you continue typing lines, the level of indentation will remain where it was, meaning you do not have to press TAB again until you need to space something even farther out, as will be needed in later examples.
+
 #### Script Names
 
 The name of the script here is `my_first_task`. It's at the top of the indentation <span class="parens">(meaning that there are no spaces at the start of the line, whereas all the other lines have exactly 4 spaces at the start - those are indented farther in)</span>. Each top-level indentation entry is a separate script. Here is an example of two different scripts:
