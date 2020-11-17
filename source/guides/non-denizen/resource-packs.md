@@ -200,7 +200,7 @@ Here is an example of the override, and the `custom_model_data` specified.
 *Note: Remember that objects and arrays are separated by commas.*
 The above example extends the item `wooden_sword` to have an additional item model when the item in-game has the mechanism applied.
 This file is located at: `/assets/minecraft/models/item/custom/dserver_ubersword.json`.
-Valid `custom_model_data` entries are integers, up to larger integers available as opposed to the durability predicate.
+Valid `custom_model_data` entries are integers, <span class="parens">(including larger integers, as opposed to the durability predicate which is more limited)</span>.
 An example of this file with multiple custom model data's specified looks like this:
 
 ```json
@@ -221,7 +221,7 @@ An example of this file with multiple custom model data's specified looks like t
 #### Example File: `custom_item.json`
 
 Your custom item's model data file is something you may or may not adjust yourself.
-THere are plenty of options for modeling software available, two of which most commonly recommended are [Cubik Pro](https://cubik.studio/) and [BlockBench](https://blockbench.net/).
+There are plenty of options for modeling software available, two of which most commonly recommended are [Cubik Pro](https://cubik.studio/) and [BlockBench](https://blockbench.net/).
 Note that the software you use must be able to export the model to a `.json` file format.
 Cubik Pro specifically saves the model, and the respective image file, into it's correct locations and formats the model file correctly.
 When you place your custom item's model data into the location you direct it to in the above example, the top of your model file should look something like this:
@@ -234,7 +234,9 @@ When you place your custom item's model data into the location you direct it to 
 	},
 ```
 
-In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `/assets/minecraft/models/item/custom/dserver_ubersword.png`.
+Note that you do still need any other parts of the JSON file, such as the `"parent"` key.
+
+In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `/assets/minecraft/textures/item/custom/dserver_ubersword.png`.
 
 ### Inside The Textures folder Directory
 
