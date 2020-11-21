@@ -236,7 +236,7 @@ When you place your custom item's model data into the location you direct it to 
 
 Note that you do still need any other parts of the JSON file, such as the `"parent"` key.
 
-In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `/assets/minecraft/textures/item/custom/dserver_ubersword.png`.
+In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `/assets/minecraft/textures/item/custom/handheld/dserver_ubersword.png`.
 
 ### Inside The Textures folder Directory
 
