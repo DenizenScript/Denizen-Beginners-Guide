@@ -1,7 +1,7 @@
 Run It Your Way: Run/Inject Options (PLACEHOLDER ONLY)
 -----------------------------------
 
-**TODO: Write-up that introduces the options on the run command, including how defs are passed through (mention escaping), and how the inject command differs.**
+**TODO: Write-up that introduces the options on the run command, including how defs are passed through (including how to do a list as a single def), and how the inject command differs.**
 
 ### Placeholder
 
