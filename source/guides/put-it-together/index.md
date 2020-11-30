@@ -6,5 +6,6 @@ Putting It Together
     :titlesonly:
 
     kill-quest
+    item-quest
     inventory-guis
 ```
