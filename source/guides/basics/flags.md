@@ -18,12 +18,10 @@ If you want to read a lot more about flags, here are a few technical guides you 
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
+- [Flag System lang doc](https://one.denizenscript.com/denizen/lngs/flag%20system)
 - [Flag command doc](https://one.denizenscript.com/denizen/cmds/flag)
-- [player.flag tag](https://one.denizenscript.com/denizen/tags/player.flag)
-- [player.has_flag tag](https://one.denizenscript.com/denizen/tags/player.has_flag)
-- [player.list_flags tag](https://one.denizenscript.com/denizen/tags/player.list_flags)
-- [player.flag.is_expired tag](https://one.denizenscript.com/denizen/tags/player.flag.is_expired)
-- [player.flag.expiration tag](https://one.denizenscript.com/denizen/tags/player.flag.expiration)
-- [npc.flag tag](https://one.denizenscript.com/denizen/tags/npc.flag)
-- [entity.flag tag](https://one.denizenscript.com/denizen/tags/entity.flag)
-- [server.flag tag](https://one.denizenscript.com/denizen/tags/server.flag)
+- [FlaggableObject.flag tag](https://one.denizenscript.com/denizen/tags/flaggableobject.flag)
+- [FlaggableObject.has_flag tag](https://one.denizenscript.com/denizen/tags/flaggableobject.has_flag)
+- [FlaggableObject.list_flags tag](https://one.denizenscript.com/denizen/tags/flaggableobject.list_flags)
+- [FlaggableObject.flag_expiration tag](https://one.denizenscript.com/denizen/tags/flaggableobject.flag_expiration)
+- [FlaggableObject.flag_map tag](https://one.denizenscript.com/denizen/tags/flaggableobject.flag_map)
