@@ -1,7 +1,7 @@
 Fancier Sticks: Making Custom Items (PLACEHOLDER ONLY)
 -----------------------------------
 
-**TODO: Write-up that introduces item script containers, and the general ideas of making custom items, mentioning recipes, NBT keys, name/lore, etc.**
+**TODO: Write-up that introduces item script containers, and the general ideas of making custom items, mentioning recipes, name/lore, mechanisms, item flags, etc.**
 
 ### Placeholder
 
