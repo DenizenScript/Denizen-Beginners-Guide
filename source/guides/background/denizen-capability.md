@@ -35,7 +35,7 @@ daily_autorestart:
     type: world
     debug: false
     events:
-        on system time 23:00:
+        on system time 01:00:
         - announce "<gold>Server restart in ten minutes!"
         - wait 5m
         - announce "<gold>Server restart in five minutes!"
@@ -62,6 +62,6 @@ hero_sword:
     lore:
     - Sword granted only to the greatest of heroes.
     enchantments:
-    - damage_all:5
+    - sharpness:5
 ```
 You can easily just `- give hero_sword` at any time, and use simple world events to give special properties to your items.

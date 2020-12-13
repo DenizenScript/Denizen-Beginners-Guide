@@ -184,6 +184,14 @@ new_has_flag:
         - narrate "Your VIP level is <player.flag[VIP]>!"
 ```
 
+### The Flag Rewrite
+
+In addition to the `has_flag` tag, a later total internal rewrite of the flag system has taken place (December 2020).
+
+The most relevant change from the videos in this regard is that the tag `<player.flag[NAME].expiration>` seen in the kill quest video should be changed to `<player.flag_expiration[NAME].from_now>`.
+
+Due to the significant general changes to the flag system, more modern documentation for flags should be used than the old videos, so refer to [The Flags Page](/guides/basics/flags).
+
 ### Event Cancellation Is A Little More Advanced Now
 
 In the tutorial video for [Inventory GUIs](/guides/put-it-together/inventory-guis), it is taught to cancel the generic clicks event, and run actions in response to the more specific event.

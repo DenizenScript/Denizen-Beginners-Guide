@@ -32,7 +32,7 @@ npc_killquest_interact:
                 - if <player.has_flag[npc_engaged]>:
                     - stop
                 - if <player.has_flag[kill_zombie_quest_cooldown]>:
-                    - narrate "You can repeat this quest in <player.flag[kill_zombie_quest_cooldown].expiration.formatted>."
+                    - narrate "You can repeat this quest in <player.flag_expiration[kill_zombie_quest_cooldown].from_now.formatted>."
                     - stop
                 - if <player.has_flag[kill_zombie_quest]>:
                     - stop
