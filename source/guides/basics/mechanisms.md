@@ -21,6 +21,8 @@ ultra_sword:
         unbreakable: true
 ```
 
+![](images/ultra_sword.png)
+
 This script, using the `mechanisms` key of `item` script containers, has the mechanism named `unbreakable` set to the value `true`, which makes the item never take durability damage.
 
 ```dscript_green
@@ -31,6 +33,8 @@ undead_golden_swordsman:
     item_in_offhand: golden_sword
     health_data: 80/80
 ```
+
+![](images/undead_golden_swordsman.png)
 
 This `entity` script creates a zombie and uses the `item_in_hand` and `item_in_offhand` mechanisms to put golden swords in both hands. It also spawns with 80 health, and has 80 health at maximum, using the `health_data` mechanism.
 
@@ -47,6 +51,8 @@ random_sheep_colors:
         after player right clicks sheep with:stick:
         - adjust <context.entity> color:<context.entity.allowed_colors.random>
 ```
+
+![](images/rainbow_sheep.gif)
 
 Using this script, when a player right-clicks any sheep mob with a stick in hand, the sheep mob will change to a random color.
 
@@ -67,6 +73,8 @@ plant_grower:
             - adjustblock <player.cursor_on> age:<player.cursor_on.material.maximum_age>
 ```
 
+![](images/crop_growth.png)
+
 ### How To Adjust Items
 
 You can also adjust the properties of items in inventories. Doing so uses the `inventory` command with the `adjust` argument.
@@ -74,7 +82,7 @@ You can also adjust the properties of items in inventories. Doing so uses the `i
 You might assume that the way to modify an item held by a player is by adjusting the item itself:
 
 ```dscript_red
-magical_flint_bad:
+flint_fancifier_bad:
     type: world
     events:
         after player right clicks block with:flint:
@@ -89,13 +97,15 @@ So instead, the usual way to adjust an item is to use the `inventory` command's 
 The below example will *correctly* transform a player's flint into a diamond when they right click with it:
 
 ```dscript_green
-magical_flint:
+flint_fancifier:
     type: world
     events:
         after player right clicks block with:flint:
         - inventory adjust slot:<player.held_item_slot> "display:Fancy Flint"
         - inventory adjust slot:<player.held_item_slot> "lore:Built with Denizen!"
 ```
+
+![](images/fancy_flint.png)
 
 The `inventory adjust` command will specifically change the item at issue, because that's what it is designed to do! Because you identify the unique object of the item as it exists in the player's inventory <span class="parens">(as a reference a specific slot within an inventory)</span>, the `inventory adjust` command is therefore able to modify it as desired.
 
@@ -114,6 +124,8 @@ sword_duplicator:
         - give "<player.item_in_hand.with[display=Your Free Duplicate Sword].with[durability=0]>"
         - narrate "<&b>Sword duplicated!"
 ```
+
+![](images/dup_sword.png)
 
 The above script example allows players to take a diamond sword down to bedrock level to get a repaired duplicate made, no more than once per hour.
 
@@ -143,6 +155,8 @@ sword_duplicator:
         - give <[sword]>
         - narrate "<&b>Sword duplicated!"
 ```
+
+![](images/lava_sword.png)
 
 This script is similar to the sword duplicator in the `with` tag example, but now only repairs the duplicate sword if the player is daring enough to jump into lava before clicking bedrock. <span class="parens">(You can comment out the `ratelimit` by putting a `#` symbol before the `-`, to be able to test the script without having to wait.)</span>
 
