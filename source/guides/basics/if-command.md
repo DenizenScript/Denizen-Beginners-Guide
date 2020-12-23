@@ -40,6 +40,8 @@ magic_healing_bell:
             - actionbar "<green>The bell has healed you!"
 ```
 
+![](images/magic_bell.png)
+
 This handy sample script will instantly heal a player that clicks on a bell block, but *only if* their health is dangerously low.
 <span class="parens">(We'll expand on this sample script throughout this section, and when we get to the [Flags](flags) section we'll revisit this sample script to add a rate limit, so players can only heal once every few minutes).</span>
 
@@ -136,6 +138,8 @@ Let's expand that to instead say "if this condition is true, then run these comm
 Now, our script can go down one of two paths depending on some tag-based condition.
 We'll do this using the `else` command.
 
+![](images/bell_fork.png)
+
 ### What Does An Else Command Look Like?
 
 The `else` command looks almost the same as an `if`.
@@ -211,6 +215,8 @@ You'd be duplicating an entire list of commands - luckily, the `else` command le
 
 ### Don't Forks Normally Have 3 or 4 Prongs?
 
+![](images/trifork.png)
+
 The `else` command is pretty handy as we've seen, but it actually has even more power to it!
 We started out with just an `if` command that lets you make one subset of code run or not run.
 We then expanded to the `else` command to let you run one of two possible subsets of code.
@@ -253,6 +259,8 @@ This version of the magic bell script won't heal you if you're healthy already, 
 Thanks to this new design, we don't need the `stop` command at all anymore, as the `heal` command only runs on one of the possible "branches".
 
 ### Wait Who Was Talking About Trees?
+
+![](images/logic_tree.png)
 
 If you have experience in advanced computer processing design - well, first of all, why are you bothering to read this guide? but more relevantly - you might recognize the term "branch" being used here.
 If not, you might still recognize the idea of visualizing paths as trees with many branches. If you don't have any idea what I'm on about, don't worry, I'll explain.
