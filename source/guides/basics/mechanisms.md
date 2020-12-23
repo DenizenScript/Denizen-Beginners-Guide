@@ -83,7 +83,7 @@ magical_flint_bad:
         - adjust <player.item_in_Hand> "lore:Built with Denizen!"
 ```
 
-However, this will only adjust the *generic concept* of the item in the player's hand. If you're not adjusting a specific item that exists in the world somehow, nothing is going to change in the world! Instead, you need to use the `adjust` argument of the `inventory` command to adjust the specific item that you want to change.
+However, this will only adjust the *generic concept* of the item in the player's hand. The tag `<player.item_in_hand>` will just return flint - any flint, not the specific instance of the flint being used by the player that exists in their inventory. If you're not adjusting a specific item that exists in the world somehow, nothing is going to change in the world! Instead, you need to use the `adjust` argument of the `inventory` command to adjust the specific item that you want to change.
 
 The below example will *correctly* transform a player's flint into a diamond when they right click with it:
 
