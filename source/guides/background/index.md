@@ -13,4 +13,5 @@ If you already get the idea of what it *can* do, and want to dive straight in to
     denizen-capability
     denizen-citizens
     download-denizen
+    new-user-faq
 ```
