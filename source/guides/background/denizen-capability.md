@@ -14,7 +14,7 @@ What Is Denizen Capable Of?
 
 **What can you do with Denizen... if you're dedicated? Anything you can set your mind to!**
 - Here's a region manager that competes with WorldGuard, written as a Denizen script: [Spigot - dRegions](https://www.spigotmc.org/resources/denizen-dregions.26864/)
-- Here's a script only about 20 lines long that makes it so a torch glows when held in your hand: [Spigot - Denizen Torch Light](https://www.spigotmc.org/resources/denizen-torch-light.26855/)
+- Here's a script only about 20 lines long that makes it so a torch glows when held in your hand: [Forums - Denizen Torch Light](https://forum.denizenscript.com/viewtopic.php?f=13&t=8)
 
 ![](images/torchlight.png)
 

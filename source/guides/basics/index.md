@@ -22,6 +22,7 @@ Remember: just reading the guide isn't the same as actually practicing. It's imp
     custom-items
     queues
     run-options
+    procedures
     finding-tools
     where-next
 ```

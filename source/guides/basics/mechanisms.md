@@ -137,7 +137,7 @@ Note also that there is also a `with` tag available for `MaterialTag` objects, t
 
 The `adjust` command can also be used to modify an object stored in a definition and automatically apply the resultant object back into the definition.
 
-This is a relatively niche use case, but in can come in handy at times. In particular, this allows for `if` commands to be used to choose which mechanisms need to be applied to an object prior to actually performing changes.
+This is a relatively niche use case, but it can come in handy at times. In particular, this allows for `if` commands to be used to choose which mechanisms need to be applied to an object prior to actually performing changes.
 
 For example:
 
