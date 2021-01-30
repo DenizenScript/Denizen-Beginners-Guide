@@ -8,7 +8,9 @@ This page will answer some common questions from programmers learning Denizen. T
     :local:
 ```
 
-### What Programming Languages Is Denizen Similar To?
+### Is Denizen Similar To (Programming Language Here)?
+
+If **(Programming Language Here)** Is C/C#/Java/JavaScript/anything else in that range, the answer is firmly "no". For the rest, consider the following common comparisons made to Denizen:
 
 In terms of purely how it appears visually, Denizen often is said to be similar looking to Python.
 
@@ -22,7 +24,7 @@ To understand why, it's important to know the basic categories of programming la
 
 Consider for example, the Bash line `ls -la $FOLDER` - this runs the command named `ls` <span class="parens">(list files)</span> with the first argument being the raw text `-la` <span class="parens">(that will be interpretted as list style flags)</span> and the second argument prefixed with the $ symbol indicating that it should be looked up from the environment variable list <span class="parens">(presumably some variable containing a relevant folder path)</span>. The `$FOLDER` input will be replaced with an actual path, and the executed command will end up like `ls -la mydir/`.
 
-Denizen fits this same basic syntax category... consider for example the Denizen line `narrate "hello there!" targets:<[players]>` - this runs the command `narrate` with the first argument being the raw text `hello there!` (that will be interpretted as a message to show) and the second argument using `<>` to indicate a tag lookup, and `[]` to indicate a definition lookup <span class="parens">(presumably some list of players)</span>. The executed command end up like `- narrate "hello there!" targets:li@p@bob|p@joe`.
+Denizen fits this same basic syntax category... consider for example the Denizen line `narrate "hello there!" targets:<[players]>` - this runs the command `narrate` with the first argument being the raw text `hello there!` (that will be interpretted as a message to show) and the second argument using `<>` to indicate a tag lookup, and `[]` to indicate a definition lookup <span class="parens">(presumably some list of players)</span>. The executed command will end up like `- narrate "hello there!" targets:li@p@bob|p@joe`.
 
 ### Is Denizen OOP?
 

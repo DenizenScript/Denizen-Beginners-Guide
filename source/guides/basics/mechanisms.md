@@ -94,7 +94,7 @@ However, the tag `<player.item_in_hand>` will just return "flint", with no indic
 
 So instead, the usual way to adjust an item is to use the `inventory` command's `adjust` argument to adjust the specific item that you want to change.
 
-The below example will *correctly* transform a player's flint into a diamond when they right click with it:
+The below example will *correctly* modify a player's held item when they right click with it:
 
 ```dscript_green
 flint_fancifier:

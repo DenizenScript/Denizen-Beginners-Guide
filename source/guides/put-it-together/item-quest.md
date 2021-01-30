@@ -1,4 +1,4 @@
-An Item Quest (PLACEHOLDER ONLY)
+An Item Quest (NOT YET WRITTEN)
 -------------
 
 **TODO: Notice about required section reading before starting this.**

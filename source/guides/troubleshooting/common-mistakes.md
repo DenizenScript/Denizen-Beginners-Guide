@@ -8,7 +8,31 @@ There are a few common mistakes and not-very-obvious expectations about how to h
     :local:
 ```
 
-### Players Are Not Their Names
+### Display Text vs. Data
+
+An important distinction to learn is the difference between *display text* and *real data*.
+
+**Real Data** is actual internal data, formatted for your scripts to process as easily as possible.
+**Display Text** is some message you display for users to see, often generated using real data.
+
+As a general principle, real data can be used to generate display text, but display text should never be used to generate real data.
+
+The following are some examples of ways users have been seen mixing up *real data* and *display text*.
+
+#### Item Lore Is Not Data
+
+One common mixup between real data and display text is *item lore*.
+
+It's natural to think "well, my item has a lore line that says `Bonus Damage: +15`, so I need to get that `+15` from the lore during the damage event to actually apply it!" This, however, is working backwards: that would be converting display text to data, when you should only ever convert data to display text, never the reverse.
+
+Custom real data for an item can be stored in a few different places:
+- Item flags <span class="parens">(accessed like `<[item].flag[flagname]>`)</span>
+- Item script keys <span class="parens">(accessed like `<[item].script.data_key[keyname]>`)</span>
+- Vanilla minecraft features like the Attributes system
+
+After you store the data in the proper place, you can then display that data in the lore. From there, always write tags/etc. based on the real data you stored, not the lore - that's for the human players to read, not your scripts!
+
+#### Players Are Not Their Names
 
 Historically in Minecraft, players were unique based on their name. This meant that "Steve" was theoretically always going to be "Steve". There was one true "Steve", nobody else could be "Steve" and "Steve" could never take on another name. This changed around the era of Minecraft 1.7, when UUIDs became the unique identifier of a player, and players were from there on allowed to change their names.
 
@@ -16,7 +40,7 @@ Never track a player's name internally. The `<player.name>` tag should exclusive
 
 \* Note that there is one exception to this: the `execute` command runs external plugin commands, which will likely expect either a name or UUID as input, not a Denizen object.
 
-### So, A Player Is Their UUID?
+#### So, A Player Is Their UUID?
 
 A player is **not** just their UUID. A player isn't a name, a UUID, a location, or anything else. A player is a player.
 
@@ -35,7 +59,7 @@ In Denizen, whenever you look at an object in debug or with a `narrate` command 
 It's important when writing scripts to make sure you work with *the actual object* and not with some text that contains the lookup identifier.
 
 A few examples of where this might come into play:
-- A player object is placed into a line of text. Say for example `"Player:<player>"` is stored somewhere. When you read that text out, you may assume that `<[THAT_TEXT].after[:]>` is going to return the player object - but it won't. It will return plain text of the unique player identifier. You would have to convert it into a player object again, either use `<player[<[THAT_TEXT].after[:]>]>` or `<[THAT_TEXT].after[:].as_player>`.
+- A player object is placed into a line of text. Say for example `"Player:<player>"` is stored somewhere. When you read that text out, you may assume that `<[THAT_TEXT].after[:]>` is going to return the player object - but it won't. It will return plain text of the unique player identifier. You would have to convert it into a player object again, using either `<player[<[THAT_TEXT].after[:]>]>` or `<[THAT_TEXT].after[:].as_player>` <span class="parens">(though in some contexts, Denizen may automatically fix this for you)</span>.
 - In some cases, reading directly from data storage <span class="parens">(YAML, Flags, SQL, etc.)</span> might return the plain text identifier of whatever object was inserted into it. When this happens, you again have to convert it back into the real object using the relevant conversion tags.
 - Generally when user input is given (in for example a command script). A unique identifier or even a non-unique one may be used, and you will have to do more complex real-object-finding. As a particular example of this, when a command script has a player input option, generally you can trust that users aren't going to type out the exact perfect object identifier. The tag `server.match_player` is useful for converting the human-input player name into a real player object.
 
