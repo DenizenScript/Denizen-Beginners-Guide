@@ -194,6 +194,34 @@ As you can see above, all of the data about the sheep is captured by Denizen and
 
 These properties can be adjusted using the `adjust` command or read by using their corresponding tags. As the property is named `color`, we can assume that there is both a mechanism and a tag named `color` for EntityTag objects. `/ex narrate "The <player.target.entity_type> you're looking at is colored <player.target.color>"` will narrate, for example, `The SHEEP you're looking at is colored orange` based on the data above.
 
+#### Using Properties In A Script
+
+It can sometimes be helpful to use properties directly in a script. When you just need an object with a few properties, it can be more convenient to type them in-line rather than building an entire script container for it.
+
+Consider the following examples:
+
+```dscript_green
+sand_cannon:
+    type: world
+    events:
+        after player right clicks air with:sand:
+        - shoot falling_block[fallingblock_type=sand] origin:<player> speed:1
+```
+
+The above script, when a player clicks open air while holding sand, launches `falling_block` entities, and specifies that they should use the `sand` material via property syntax.
+
+```dscript_green
+pumpkin_meloner:
+    type: world
+    events:
+        on player right clicks pumpkin_stem with:golden_hoe:
+        - modifyblock <context.location> melon_stem[age=7]
+```
+
+The above script lets players click on a pumpkin stem with a golden hoe to turn it into a melon stem, and uses property syntax to specify that the melon stem should be fully grown.
+
+Note that this style of inline property specification doesn't work when you need tags for the values - at which point, use the relevant tags like `with`.
+
 ### Related Technical Docs
 
 If you want to read a lot more about mechanisms and properties, here are a few technical guides you might consider...
