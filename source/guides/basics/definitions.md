@@ -108,6 +108,43 @@ Now the final message is guaranteed to show that below-5 health value from when 
 
 As the last common use case for definitions: cleanliness. Sometimes a line gets really long from complicated tags, so sticking a complicated tag into a definition lets you fit it into the original line with just a short definition tag, making things a bit cleaner.
 
+### Lifetime
+
+Definitions, as the title of the page says, are *short term* memory. What does that 'short term' mean?
+
+Formally speaking, a definition is linked to the queue in which it was created, and exists for only so long as that queue does <span class="parens">(you'll learn more about [queues later in this guide](/guides/basics/queues))</span>.
+
+What this means in normal usage is: each time a script runs, it has its own set of definitions. If you set a definition in one event, or one firing of an event, it will not be available in the next event firing.
+
+Here are a few examples of how definitions **do NOT** work.
+
+```dscript_red
+cant_go_between_scripts:
+    type: world
+    events:
+        after player breaks iron_ore:
+        - define health <player.health>
+        after player breaks stone:
+        - narrate "You had <[health]> health when you broke iron."
+```
+
+The above example will not work, because the definition was set in a different script path than where it was read.
+
+```dscript_red
+no_queue_persistence:
+    type: world
+    events:
+        after player breaks iron_ore:
+        - narrate "You had <[next_health]> health when you broke that last bit of iron."
+        - define next_health <player.health>
+```
+
+The above example will obviously not work first of all because the first time you break iron_ore, that define command never ran in the first place. However, even after that first run, the definition will continue to not work, as the definition from the *last time* the event fired is not still available the *next time* that event fires.
+
+To be clear, this isn't just for events: any time you `run` a `task` script, it has a different set of definitions <span class="parens">(you'll learn how to change this in a [later part of this guide](/guides/basics/run-options))</span>.
+
+On [the next page](/guides/basics/flags), you'll learn about an option for long-term memory.
+
 ### Advanced Definition Changes
 
 If you want to change a definition you already set, you can of course just do another define command. For example, the following is fine:
