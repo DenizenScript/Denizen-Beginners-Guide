@@ -12,8 +12,8 @@ There are a few common mistakes and not-very-obvious expectations about how to h
 
 An important distinction to learn is the difference between *display text* and *real data*.
 
-**Real Data** is actual internal data, formatted for your scripts to process as easily as possible.
-**Display Text** is some message you display for users to see, often generated using real data.
+- **Real Data** is actual internal data, formatted for your scripts to process as easily as possible.
+- **Display Text** is some message you display for users to see, often generated using real data.
 
 As a general principle, real data can be used to generate display text, but display text should never be used to generate real data.
 
@@ -381,3 +381,29 @@ Something to bear in mind as well is that standard formats *change* as the under
 The most common recent example of object hacking biting people in recent times is ListTag object hacking. The original ListTag format was `li@one|two|three`, which still works perfectly fine as input, but no longer is the standard output format. Several users had scripts with lines akin to `<some_list>|additional|value|here` which worked with the old format. However, the format was changed to allow for things like sub-lists via built-in escaping logic, and distinguished itself with an additional `|` on the end. This format change also allowed for empty entries to exist in ListTags. This resulted in those object-hacking scripts having escaped data in the list, but looking like old-list-format to the parser, and thus not having the escaping parsed, and thus suddenly the hacked lists had corrupted data. <span class="parens">(The correct non-object-hacking way, for reference, to add entries to a list is `<some_list.include[additional|value|here]>`)</span>.
 
 The lesson here is: never assume that the full object format for an object is going to be a certain way. There's always a tag to read or change any data within an object in a better way.
+
+### Creative Gamemode Inventories Are Clientside
+
+Many server admins tend to leave themselves in creative mode while working and even while testing things meant for survival-mode players to interact with. While this usually works out fine, there are some cases where the differences between gamemodes can bite you. Some are obvious <span class="parens">(for example, you can't test a script that damages you if you can't take damage)</span>, some aren't obvious at all. The non-obvious case that most often confuses scripters is **inventories.**
+
+Normally, in gamemode survival <span class="parens">(or adventure)</span>, inventories are *serverside*. This means that the server has the final say on which items are where, and further means that any serverside scripts or plugins can modify and control any inventory or interaction with an inventory, and trust that it will work.
+
+However, while in gamemode **creative**, inventories are *clientside*. This means that the client <span class="parens">(the code running on the player's own PC, whether it's a vanilla minecraft client or a modded one)</span> has final say on the details of an inventory. While servers can still make their own changes to inventories or interactions, the client can overrule those changes. This leads to things like trying to cancel a click event duplicating the item <span class="parens">(the server said "no, A: you don't pick up the item, and B: that item is still in its original slot" ... the client decides "I deny B, I did in fact pick up the item, it's mine now, but I'm okay with B, that item can still be in its original slot" ie there's now two copies of the same item)</span>.
+
+A related part of this system that is worth thinking about, is that players in creative gamemode have the ability to spawn any item they want. On a vanilla minecraft client, that means they can either A: grab any new core item or stack of items from the creative item list at any time, or B: produce a perfect copy of any item they see by way of middle-clicking on that item <span class="parens">(this might for example be used to get a GUI-only special scripted item into their own inventory)</span>. A modded client, however, could potentially spawn *any* item, even ones with custom NBT data on them. This is worth thinking about any time you link some power or system to data on an item. Consider the following script:
+
+```dscript_red
+dangerous_powertools:
+    type: world
+    events:
+        on player right clicks block with:powertool_item:
+        - execute as_server <player.item_in_hand.flag[powertool_command]>
+
+powertool_item:
+    type: item
+    material: stick
+    flags:
+        powertool_command: broadcast It Works!
+```
+
+At first glance, this script enables the creation of simple 'powertool' items that execute custom commands... however, because 'as_server' is used with per-item data, that means a creative player could generate an item with any command and bypass any permission requirements <span class="parens">(an ill-intentioned creative-mode player might make use of this to op themselves, or ban the server owner, or...)</span>.
