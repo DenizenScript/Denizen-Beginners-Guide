@@ -190,7 +190,6 @@ The data actions that can be used with ListTag values are:
 - `->` inserts a new value to the list. For example: `- define mydef:->:new_value`
 - `<-` removes an existing value from the list. For example: `- define mydef:<-:old_value`
 - `|` splits the input list into the original list. For example: `- define mydef:|:a|b|c`
-- `!|` clears the existing list and splits the input list into it instead <span class="parens">(a combination of `!` clear and `|` split)</span>. For example: `- define mydef:!|:a|b|c`
 
 For the sake of ensuring you understand what each of these do, considering write a task script that performs the example changes on an existing definition and observing the result.
 

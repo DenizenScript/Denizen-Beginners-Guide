@@ -10,4 +10,5 @@ Advanced Scripting
     notables
     parse-tag
     list-filters
+    submapping
 ```
