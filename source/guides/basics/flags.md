@@ -112,7 +112,7 @@ optional_ore_counter:
 
 This is the ore_counter script from earlier, but it now only runs for players that have the toggleable flag named `ore_quest`. Now, rather than just being a generic counter of ores broken, this script has become a part of a quest that requires a player go out and break some number of iron ore blocks to complete it.
 
-There are many features like this throughout Denizen, including the player `flagged:` event switch, the `server_flagged:` and `location_flagged:` and etc. similar event switches, various command arguments like the `announce` command's `to_flagged` argument, a variety of convenience tags like `<server.online_players_flagged[flag_name]>`, and so much more. As you learn more about Denizen and eventually start looking through the meta-documentation, you'll encounter many of these.
+There are many features like this throughout Denizen, including the player `flagged:` event switch, the `server_flagged:` and `location_flagged:` and etc. similar event switches, `(x)_flagged` matchables, various command arguments like the `announce` command's `to_flagged` argument, a variety of convenience tags like `<server.online_players_flagged[flag_name]>`, and so much more. As you learn more about Denizen and eventually start looking through the meta-documentation, you'll encounter many of these.
 
 ### Lifetime
 
@@ -166,6 +166,9 @@ You can actually flag a lot of objects! Here are the main ones:
 - Any minecraft entity, using an `EntityTag` object.
 - Any block in the world, using a `LocationTag` object.
 - Any item - however, items work a little different, so this will be covered in the [custom items page](/guides/basics/custom-items).
+- Any world using a `WorldTag` object.
+- Any *noted* area <span class="parens">(notes will be covered in the [advanced section](/guides/advanced/notables))</span> using a `CuboidTag`, `EllipsoidTag`, or `PolygonTag` object.
+- Any *noted* inventory <span class="parens">(notes will be covered in the [advanced section](/guides/advanced/notables))</span> using an `InventoryTag` object.
 
 Note that flags are generally loaded when the object is loaded - so server flags are loaded when the server starts, player flags are loaded when the players joins, etc.
 

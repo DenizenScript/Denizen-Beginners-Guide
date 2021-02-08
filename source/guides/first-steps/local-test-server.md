@@ -27,7 +27,7 @@ It's pretty simple! Let's go through the steps...
 
 **Fair warning** that this guide is focused on Windows PCs, as they are the most common (but will note differences for other OS's where applicable).
 
-- **Step 0: Install Java.** You might not already have Java installed on your PC - if not, you'll need to have it installed. You can download [OpenJDK 8 from here](https://adoptopenjdk.net/). <span class="parens">(for Linux/Mac, just google how to download OpenJDK 8 for your specific OS)</span>.
+- **Step 0: Install Java.** You might not already have Java installed on your PC - if not, you'll need to have it installed. You can download [OpenJDK 8 or 11 from here](https://adoptopenjdk.net/). <span class="parens">(for Linux/Mac, just google how to download OpenJDK 8 or 11 for your specific OS)</span>.
 
 - **Step 1: Download a server jar.** Conventionally, this would be Spigot ... however, Spigot is a bit of a pain to get downloaded properly. You can read the [BuildTools Wiki Page](https://www.spigotmc.org/wiki/buildtools/) if you want to do that, but I recommend instead just using Paper, which is an easy click-to-download - [Download Paper here](https://papermc.io/downloads) - For reference, Paper is a fork of Spigot designed to run more efficiently, with the added benefit of being way easier to get started. 99% of the time, Paper and Spigot jars are effectively interchangeable without issue.
 
