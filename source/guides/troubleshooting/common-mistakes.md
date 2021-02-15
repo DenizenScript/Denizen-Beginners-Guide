@@ -407,3 +407,11 @@ powertool_item:
 ```
 
 At first glance, this script enables the creation of simple 'powertool' items that execute custom commands... however, because 'as_server' is used with per-item data, that means a creative player could generate an item with any command and bypass any permission requirements <span class="parens">(an ill-intentioned creative-mode player might make use of this to op themselves, or ban the server owner, or...)</span>.
+
+### The Ex Command Is For Testing Only
+
+Some users have tried using `/ex` as a general purpose scripting tool - but that's not quite right. It is designed to be used for testing/debugging only.
+
+In other words: the only place `/ex` should ever appear is in your in-game chat bar. It should never be placed into a script, into a command block, into another plugin's command, etc.
+
+One of the most common ways `/ex` gets misused, is getting placed inside some other plugin's configuration as a triggerable command, such as a shop plugin that is configured to trigger `/ex run mytaskname player:%player%` when an item is bought. This is a bad way of going about things - it's firing up the full parsing engine and preparing debug output and all that, every single time a player triggers that option. What should you do instead? Simple: make a `command` script! Have the command script do whatever is needed, and then add the command name into that external plugin as the command to trigger. <span class="parens">(Or, of course, you can also just replace the external plugin entirely with a Denizen script, if you're up for it!)</span>
