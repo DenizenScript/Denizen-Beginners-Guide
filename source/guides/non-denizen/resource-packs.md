@@ -87,17 +87,17 @@ For Optifine support, it's recommended you join their discord and review their d
 #### Example File: `sounds.json`
 
 This file indexes where Minecraft should look for your sounds.
-Below is an example of a setup for two custom sounds, `defence_levelup0` and `defence_levelup1`.
+Below is an example of a setup for two custom sounds, `defense_levelup0` and `defense_levelup1`.
 
 ```json
 {
-  "entity.player.defence.level": {
+  "entity.player.defense.level": {
     "sounds": [
       {
-        "name": "custom/defence_levelup0"
+        "name": "custom/defense_levelup0"
       },
       {
-        "name": "custom/defence_levelup1"
+        "name": "custom/defense_levelup1"
       }
     ],
     "subtitle": "Excited Trumpet Noises"
@@ -105,7 +105,7 @@ Below is an example of a setup for two custom sounds, `defence_levelup0` and `de
 }
 ```
 
-The first key is the name for the sound; in this example, `entity.player.defence.level`.
+The first key is the name for the sound; in this example, `entity.player.defense.level`.
 The only data object within the command we need to specify are `sounds`.
 Optionally, you can specify the subtitle that displays if subtitles are enabled in-game.
 If you place multiple sounds within the `"sounds":[]` array, the sound will randomize between them based on their weight.
@@ -276,15 +276,15 @@ You can give yourself the custom item just like any other item script, `/ex give
 #### Custom Sounds
 
 Playing your sound is relative to the unique custom name you gave it.
-In our example, we specified the name of the sound as `entity.player.defence.level`.
-You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defence.level custom`.
+In our example, we specified the name of the sound as `entity.player.defense.level`.
+You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defense.level custom`.
 In a script, this would look something like this:
 
 ```dscript_green
 MyCustomSound:
     type: task
     script:
-        - playsound <player> sound:entity.player.defence.level custom
+        - playsound <player> sound:entity.player.defense.level custom
 ```
 
 ### Tips, Tricks And Notes While You Create

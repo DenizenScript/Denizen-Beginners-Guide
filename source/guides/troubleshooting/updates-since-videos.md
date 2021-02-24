@@ -201,3 +201,20 @@ While this is still correct, it is missing a necessary component to work well in
 In the past, events would just all fire, and if an event got cancelled that just means the underlying action wouldn't be performed. In modern Denizen, the system more intelligently knows to not fire more script events after the event was cancelled. While this [can be simply disabled for the relevant events](https://one.denizenscript.com/denizen/lngs/Script%20Event%20Cancellation) a better solution is to instead guarantee that the generic event that cancels it will run *last*. This is as easy as adding a high-valued `priority` to the cancelling event line.
 
 So, where previously you had `on player clicks in my_inventory:` you now instead have `on player clicks in my_inventory priority:100:`, and a similar change to the `drags` event line. Event priorities run in numerical order, with a default of `0`. So all the specific events, with their default priority, will run first, and then only after they're done, the generic cancellation events <span class="parens">(now at priority `100`)</span> will fire last.
+
+### Tags With Carets Aren't Used Anymore
+
+The videos demonstrated the tag `<^npc>` as a way to get the NPC from a queue prior to the `npc:` argument being used, and mentioned `<^player>` as a matching concept. These are considered outdated/irrelevant now, as you can and should instead just use `define`
+
+```dscript_blue
+better_npc_handler:
+    type: task
+    script:
+    - narrate "Let's pass NPCs backwards"
+    - define npc <npc>
+    - run my_other_task def:<[npc]> npc:<[some_other_npc]>
+```
+
+In the above example, the `define` command and the tag `<[npc]>` are used to replace what would have otherwise been the `<^npc>` tag.
+
+(This was removed due to a combination of been extremely rarely used, and having very complex internals weighing down the script engine even when not in use).
