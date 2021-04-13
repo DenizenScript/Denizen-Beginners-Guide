@@ -165,10 +165,12 @@ You can actually flag a lot of objects! Here are the main ones:
 - Any Citizens NPC, using an `NPCTag` object.
 - Any minecraft entity, using an `EntityTag` object.
 - Any block in the world, using a `LocationTag` object.
+- Any chunk in the world, using a `ChunkTag` object.
 - Any item - however, items work a little different, so this will be covered in the [custom items page](/guides/basics/custom-items).
 - Any world using a `WorldTag` object.
 - Any *noted* area <span class="parens">(notes will be covered in the [advanced section](/guides/advanced/notables))</span> using a `CuboidTag`, `EllipsoidTag`, or `PolygonTag` object.
 - Any *noted* inventory <span class="parens">(notes will be covered in the [advanced section](/guides/advanced/notables))</span> using an `InventoryTag` object.
+- Most other object types too. Any type that's in some way uniquely identified will usually be flaggable.
 
 Note that flags are generally loaded when the object is loaded - so server flags are loaded when the server starts, player flags are loaded when the players joins, etc.
 
