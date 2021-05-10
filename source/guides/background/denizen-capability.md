@@ -1,5 +1,5 @@
-What Is Denizen Capable Of?
----------------------------
+What Can You Do With Denizen?
+-----------------------------
 
 ```eval_rst
 .. contents:: Table of Contents
@@ -25,6 +25,8 @@ What Is Denizen Capable Of?
 - Or whatever other crazy thing you might imagine. Here's a chest GUI of a keypad to type on:
 
 ![](images/bankkeypad.gif)
+
+- Not enough for you yet? Need something even more wild and out-there? Weeeelll... here's someone [using a Denizen script to order pizza from within minecraft.](https://www.youtube.com/watch?v=5ml8EKTswu8)
 
 ### What Can A Normal User Do With Denizen?
 

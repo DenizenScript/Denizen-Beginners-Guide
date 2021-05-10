@@ -135,7 +135,7 @@ once_a_day:
     - if <player.has_flag[my_script_cooldown]>:
         - narrate "You can only get this reward once per day. You must wait <player.flag_expiration[my_script_cooldown].from_now.formatted>."
         - stop
-    - flag player my_script_cooldown duration:1d
+    - flag player my_script_cooldown expire:1d
     - narrate "Here's your daily reward!"
     - give diamond
 ```
@@ -148,7 +148,7 @@ While this might seem a bit pointless in a `task` script, after you've gone fart
 
 You'll notice two new parts of the flag system being used here:
 
-First, in the `flag` command, there is now a `duration:1d` argument. This does exactly what you think it does: it makes the flag only stick around for one day... after that, the flag is considered the same as if it didn't exist. The input is a `DurationTag` object, which can be written like `1d` to mean "one day", or `5h` to mean "five hours", or anything like that. The duration value input is then used to calculate the date/time when the flag should expire <span class="parens">(by adding the duration onto the current date/time)</span>, and stored alongside the flag.
+First, in the `flag` command, there is now a `expire:1d` argument. This does exactly what you think it does: it makes the flag only stick around for one day... after that, the flag is considered the same as if it didn't exist. The input is a `DurationTag` object, which can be written like `1d` to mean "one day", or `5h` to mean "five hours", or anything like that. The duration value input is then used to calculate the date/time when the flag should expire <span class="parens">(by adding the duration onto the current date/time)</span>, and stored alongside the flag.
 
 Second, in the `narrate` command, we used the `flag_expiration` tag. This tag, as the name implies, returns the time at which the flag is scheduled to expire. It does this in the form of a `TimeTag` object. We then use the tag `TimeTag.from_now`, which gets the `DurationTag` representing the distance in time between right now and some previously stored `TimeTag` <span class="parens">(so at the moment the flag is set, it will be `1d`... if you wait an hour, it will be `23h`, etc.)</span>, followed by the tag `DurationTag.formatted`, which converts the raw duration object to something relatively clean for human reading.
 
