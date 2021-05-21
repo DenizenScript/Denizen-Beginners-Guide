@@ -118,7 +118,7 @@ There are many features like this throughout Denizen, including the player `flag
 
 Flags are *persistent*. This means that things which normally cause data to go away, like restarting the server, will not get rid of flag data.
 
-There are only fours cases in which a flag will go away:
+There are only four cases in which a flag will go away:
 - Explicit intentional removal within a script, using the 'clear' data action.
 - Timed expiration <span class="parens">(explained in the next section)</span>.
 - Attached object is gone <span class="parens">(for example, the flag is on a mob entity, and that mob dies)</span>.
