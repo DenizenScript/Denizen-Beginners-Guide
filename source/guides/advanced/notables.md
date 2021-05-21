@@ -12,7 +12,7 @@ Some of your objects, on your server, are pretty noteworthy! That spawn location
 
 You probably need to reference some of these objects very very often. For that matter, you probably need to reference them in key places like event lines - you might want, for example, an event that fires when a player enters or exits your town region, that shows them a welcome/farewell message. There's a lot of use cases like this.
 
-The best tool for handling a these cases is the **Notable Objects** system in Denizen.
+The best tool for handling these cases is the **Notable Objects** system in Denizen.
 
 #### Some Object Types Are Notable
 
@@ -26,13 +26,13 @@ Noted objects have a few key advantages over simple server flags:
 
 - When an object is noted, *that object* is noted, not a copy of it. This means that if you adjust the object, you're actually changing the object in the note, and do not have to re-use the `note` command <span class="parens">(vs with a flag, you have to re-use the flag command after making any changes to put the result back in the flag)</span>.
 - Objects know their own note name. For example, a normal `LocationTag` identifies like `l@0,64,0,world`, but if you note that location with the name `spawn`, it will identify from there on as `l@spawn`. You can also check the note name of any location with `<[some_location].note_name>`.
-- Notes can be referenced by name alone. If you have that `LocationTag` noted with name `spawn`, you can do commands like `- teleport <player> spawn` to send a player to spawn - the name `spawn` alone is enough for Denizen to know what you mean. <span class="parens">(vs with a flag, you would have to do `- teleport <player> <server.flag[spawn]>`, with that whole tag to clarify what you're referring to)</span>
+- Notes can be referenced by name alone. If you have that `LocationTag` noted with name `spawn`, you can do commands like `- teleport <player> spawn` to send a player to spawn - the name `spawn` alone is enough for Denizen to know what you mean. <span class="parens">(vs with a flag, you would have to do `- teleport <player> <server.flag[spawn]>`, with that whole tag to clarify what you're referring to)</span>.
 - Notes can be referenced in event lines. If you have a `CuboidTag` noted as `main_town`, you can write events like `on player breaks block in:main_town:`, which automatically limits the `breaks block` event to only fire when the block is inside the town as defined by your noted area. This is the most important use case for notes, and will be explored more farther down in this guide page.
 - Notes have a reliable persistent unique state. This is just an overcomplicated way of saying, if you note an `InventoryTag`, that inventory can be opened by multiple players, who can then move items around in it, and every player will see everyone else's changes, and after the server restarts everything in the inventory will still be however the players left it, completely automatically.
 
 ### So How Do I Make A Note?
 
-Well, as with most such non-beginner-level questions in Denizen, the answer is take the word you used to ask the question, and put it in the documentation search. In this case, you will sure enough find the `note` command, which does exactly what it says on the tin.
+Well, as with most such non-beginner-level questions in Denizen, the answer is take the word you used to ask the question, and put it in [the documentation search](https://meta.denizenscript.com/). In this case, you will sure enough find the `note` command, which does exactly what it says on the tin.
 
 The basic syntax of the `note` command is `- note [<object>/remove] [as:<name>]`
 
@@ -42,7 +42,7 @@ Let's try an example.
 
 ### Noting A Location
 
-Location notes aren't the most useful in the world, but they're quick and easy to make, and can make many scripts cleaner and simpler.
+Location notes aren't the most useful type of note, but they're quick and easy to make, and can make many scripts cleaner and simpler.
 
 Go ahead and stand at an important spot in your world <span class="parens">(or just slap a gold block on the ground in the middle of nowhere and declare that's important for the sake of trying the command out)</span>, and type `/ex note <player.location> as:importantspot`
 
@@ -62,7 +62,7 @@ You might be interested in noting the location of a lever, button, door, or etc.
 
 ### Noting An Area
 
-The perhaps most important, or at least most common, type of object to note is an area object. This is a category of object types that includes `CuboidTag`, `EllipsoidTag`, and `PolygonTag` - different ways of confining a section in the world - inside a box, inside a round area, inside a many-cornered polygon.
+The perhaps most important, or at least most common, type of object to note is an area object. This is a category of object types that includes `CuboidTag`, `EllipsoidTag`, and `PolygonTag` - different ways of confining a section in the world - inside a box, inside a round area, or inside a many-cornered polygon.
 
 The command and syntax for noting areas is the same as with locations, the only difference is how you make the object.
 
@@ -80,7 +80,7 @@ You're probably thinking: "**that's such an awkward way of doing it, I want a ma
 
 ![](images/cuboid_wand.png)
 
-To use it, simply download the `.dsc` file and put it in your scripts folder. Give the file a look-through in your script editor if you like to see what's it doing, how it does it, etc. When you're ready, go into your server and type `/ex reload` to load the script, then `/ctool` to get the magic wand. You can then left click any block to start a selection, and right click to expand it. It will automatically create particle highlights to show you the selected region thus far. When you have an area selected, type `/cnote myareaname`. You now have a noted cuboid named `myareaname`.
+To use it, simply download the `.dsc` file and put it in your scripts folder. Give the file a look-through in your script editor if you'd like, to see what's it doing, how it does it, etc. When you're ready, go into your server and type `/ex reload` to load the script, then `/ctool` to get the magic wand. You can then left click any block to start a selection, and right click to expand it. It will automatically create particle highlights to show you the selected region thus far. When you have an area selected, type `/cnote myareaname`. You now have a noted cuboid named `myareaname`.
 
 #### Using An Area Note
 
@@ -113,11 +113,11 @@ in_area_sample:
 
 With this script, any time you place a block in my room, a mystical voice will yell at you to knock it off. If you place a block anywhere else, nothing happens.
 
-Limiting events in this way is useful for countless scenarios. You can use it to implement protected regions - some areas stop you from placing/breaking blocks with a `determine cancelled`, or stop PvP, or something like that. You can have some areas just work a little different - maybe fishing in the special lake brings twice as much loot, using the `player fishes` event. Maybe players that die in your arena region respawn instantly at the arena entrance rather than the global spawn. The only limits are your imagination!
+Limiting events in this way is useful for countless scenarios. You can use it to implement protected regions - some areas stop you from placing/breaking blocks with a `determine cancelled`, or stop PvP, or something like that. You can have some areas just work a little different - maybe fishing in the special lake brings twice as much loot, using a `player fishes in:special_lake` event. Maybe players that die in your arena region respawn instantly at the arena entrance rather than the global spawn. The only limits are your imagination!
 
 #### Noting Ellipsoids
 
-Ellipsoid notes work larger the same as cuboids, just they're rounder. Also unlike cuboids, ellipsoids values can have decimal points on them.
+Ellipsoid notes work larger the same as cuboids, they're just rounder. Also unlike cuboids, ellipsoids values can have decimal points on them.
 
 I'll cut to the chase here, you can basically do all the same things, just use the word `ellipsoid` instead of `cuboid`. And [here's the ellipsoid selector switch, just like the cuboid one](https://forum.denizenscript.com/resources/ellipsoid-selector-tool.3/). Use `/etool` to get the wand, left click to start, right click to expand, `/enote` to make a note of it.
 
@@ -149,13 +149,13 @@ my_inventory_script:
     title: Backpack
 ```
 
-To use a generic constructor, you would type something like `<inventory[generic[size=27;title=BigInv]]>`. This is a bit messy, so inventory scripts are better, but can be handy for quick test inventories.
+To use a generic constructor, you would type something like `<inventory[generic[size=27;title=MyInv]]>`. This is a bit messy, so inventory scripts are better, but can be handy for quick test inventories.
 
 To create a note from an inventory, the command looks like `/ex note <inventory[my_inventory_script]> as:my_inv_note`. This uses the `inventory` constructor tag to clarify to the `note` command what type of object we're trying to create a note of.
 
-An inventory script represents a generic way to construct an inventory - each type you open `my_inventory_script` it *generates* a new inventory. An inventory note, however, is a single actual inventory.
+An inventory script represents a way to construct an inventory - each time you open `my_inventory_script` it *generates* a new inventory. An inventory note, however, is a single actual inventory.
 
-What that means in practice, is if multiple players run `- inventory open d:my_inventory_script`, they will each see their own separate inventory. If, however, multiple players run `- inventory open d:my_inv_note`, they will all have the same inventory open. That means if one player moves an item, every other player also sees it.
+What that means in practice, is if multiple players run `- inventory open d:my_inventory_script`, they will each see their own separate inventory. If, however, multiple players run `- inventory open d:my_inv_note`, they will all have the same inventory open. That means if one player moves an item, every other player also sees that item move.
 
 A noted inventory's contents are persistent. This means that if you move items by hand in the inventory note, then close and re-open the inventory note, the contents will be the same. Even if you restart the server, you will still see the contents as they were when you last changed them. A common use case for this is a backpack script - a pairing of a simple inventory script like the example above, and a command script like `/backpack` that opens an inventory note unique to the player - usually generated with a name like `- note my_backpack_script as:backpack_<player.uuid>` and opened like `- inventory open d:backpack_<player.uuid>`. This means each player gets their own persistent backpack - like having a second enderchest.
 
@@ -173,14 +173,14 @@ The second way can be handy for some advanced usages, especially with inventory 
 
 ### Removing A Note
 
-If you no longer need a note, removing it simple: `/ex note remove as:<name>`. Instead of having an object, type the literal word `remove`. That's all there is to it, the note for the name you gave is no longer noted.
+If you no longer need a note, removing it is simple: `/ex note remove as:<name>`. Instead of having an object, type the literal word `remove`. That's all there is to it, the note for the name you gave is no longer noted.
 
-Be aware that this doesn't inherently destroy an underlying object. For example, if you remove an inventory note, but some player has that inventory open, it will remain open until they close it.
+Be aware that this doesn't inherently destroy an underlying object. For example, if you remove an inventory note, but some player has that inventory open, it will remain open and valid until they close it, just the note name no longer refers to it.
 
 ### Common Questions
 
 - **Will anything bad happen if I use the `note` command with a name that already exists?** That will remove the existing note and save your new one. Nothing will break, unless you needed that original note.
-- **How should I name my notes?** Generally, well, however you want. The key thing to remember is that every script on your server has the same list of notes, so you'll want to name things in a way that avoids the risk of two different scripts trying to use the same note name. So the example names of `importantspot` and `lever` probably aren't very good names for actual use. You might go for names more like `quest_savethecows_lever` <span class="parens">(this example imagines your server has a scripted quest named 'save the cows', and the lever is specifically related to that quest)</span>. However, often with notes, simple names do work out - for example, a noted location named `spawn` is pretty reasonable to have - how many spawn points could one server have? Also do of course as always observe general clean name rules - use simple words, no spaces, weird capitalization, or symbols other than an underscore `_`. That part's not *required*, it's just a suggestion to keep things clean.
+- **How should I name my notes?** Generally, well, however you want. The key thing to remember is that every script on your server has the same list of notes, so you'll want to name things in a way that avoids the risk of two different scripts trying to use the same note name. So the example names of `importantspot` and `lever` probably aren't very good names for actual use. You might go for names more like `quest_savethecows_lever` <span class="parens">(this example imagines your server has a scripted quest named 'save the cows', and the lever is specifically related to that quest)</span>. However, often with notes, simple names do work out - for example, a noted location named `spawn` is pretty reasonable to have - how many spawn points could one server have? Also do of course as always observe general clean name rules - use simple words, no spaces, no weird capitalization, no symbols other than an underscore `_`. That part's not *required*, it's just a suggestion to keep things clean.
 
 ### Related Technical Docs
 
