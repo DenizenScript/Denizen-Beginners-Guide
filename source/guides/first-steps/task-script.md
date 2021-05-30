@@ -81,7 +81,7 @@ my_second_task:
 
 This example demonstrates what having two different scripts in the same file looks like. `my_first_task` and `my_second_task` are two different scripts, and each is a fully self-contained script.
 
-Additionally, note that *script names* and *file names* are different. Both `my_first_task` and `my_second_task` could be contained within the same file named `my_first_scripts.dsc`. It's the script name <span class="parens">(that `my_first_task`)</span> that matters, the file name <span class="parens">(`my_first_scripts.dsc`)</span> is entirely for your own personal organization, and will not make any difference to Denizen.
+Additionally, note that *script names* and *file names* are different. Both `my_first_task` and `my_second_task` could be contained within the same file named `my_first_scripts.dsc`. It's the script name <span class="parens">(that `my_first_task`)</span> that matters, the file name <span class="parens">(`my_first_scripts.dsc`)</span> is entirely for your own personal organization, and will not make any difference to Denizen. Note as well that you're free to create subfolders inside the `scripts` folder, and any script files within will be loaded just the same.
 
 #### Script Types
 

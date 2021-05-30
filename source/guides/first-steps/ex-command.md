@@ -40,6 +40,10 @@ Well if you haven't caught on yet: open your in-game chat and type `/ex narrate 
 
 Note that rather than raw copy-pasting, as much as possible you should be retyping the scripts you're testing. This helps guarantee you've actually read every bit of the script, and gives you time to think and understand exactly what each bit is before running it - and, importantly, gives you light practice writing scripts. You will of course be much more ready to test something with `/ex` if you've typed a few `/ex` test commands already (compared to if you've only read about the idea and copypasted a sample).
 
+#### All That Extra Output
+
+That above example is just meant to output the message `hi (your name here)`, but as you can see in both your in-game chat and your server console, there's a bunch of extra lines. This is called *debug output*, which as the name implies is meant to help you figure out what went wrong if something does. You'll see a lot of this while you're working with Denizen, but don't worry: when you actually have finished user-ready scripts, you'll be able to hide all that output from any players and from your console. This will be explained more a few pages later.
+
 ### Back On Topic: What Can `/ex` Do?
 
 Basically anything! You can run any Denizen command from `/ex`, and there's Denizen commands for just about everything. In fact it's so powerful that I must note: on public servers, don't give permission access to `/ex` to anyone you wouldn't give full operator access to. If you have any doubts about that level of restriction: note that any player with access to `/ex` could easily do `/ex adjust <player> is_op:true`.

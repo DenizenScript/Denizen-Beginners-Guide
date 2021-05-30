@@ -14,6 +14,12 @@ If you're following this guide in order <span class="parens">(and you should be!
 
 Tags in Denizen are marked by `<>` around a description of what value should replace the tag. Tags can get you almost any information you need, whenever you need it.
 
+### The Most Common Tags
+
+The most common tags in use, more than anything else, are the color tags. The colors tag are also just about the simplest tags in Denizen. You're probably familiar with the basic color code system in minecraft, like `§7` to make gray. You're probably also familiar with some plugins that let you type something like `&7` to color text gray. Note that minecraft internally has a section sign `§` but the usual plugin format is with an ampersand `&` <span class="parens">(this is because `§` is hard to type, but `&` is easy on most keyboards)</span>. To make text gray in Denizen, you type `<&7>`, which is still easy to type, but specifically formatted using the tag system <span class="parens">(meaning it has `<>` around it, indicating that `<&7>` should be replaced by the actual internal light-gray color code with an `§`)</span>. You can also, instead of that, type `<gray>` to get the exact same result... which one you choose is up to your own preferences <span class="parens">(do you like short tags, or clearer tags? Do you better know the color's names, or their internal ID numbers?)</span>. You can also do `<&color[gray]>` or `<element[my text here].color[gray]>`, or... a lot of other ways of writing the same thing. As you get farther in this guide, you'll notice that having a whole bunch of options for how to achieve the same goal is a recurring theme in Denizen.
+
+While text colors are the most commonly used tags overall, almost any real script is going to use a bunch of tags that are a little bit more complicated than just color codes.
+
 ### What Do Tags Look Like In Real Usage?
 
 A simple tag usage might be `- teleport <npc> <player.location>` to teleport an NPC <span class="parens">(gotten via the `<npc>` tag)</span> to your own location <span class="parens">(gotten via the `<player.location>` tag)</span>.
