@@ -60,7 +60,7 @@ The `adjust` command can be used to adjust mechanisms on most object types <span
 
 ### The AdjustBlock command
 
-The `adjustblock` command is a variant of the normal `adjust` command. It's built specifically to adjust `material` mechanisms on blocks <span class="parens">([a list of which can be found here](https://one.denizenscript.com/denizen/mecs/materialtag))</span>.
+The `adjustblock` command is a variant of the normal `adjust` command. It's built specifically to adjust `material` mechanisms on blocks <span class="parens">([a list of which can be found here](https://meta.denizenscript.com/Docs/Mechanisms/materialtag))</span>.
 
 While the applicability of `adjustblock` is more niche, it can still be quite useful. For a quick usage example, you can use this script to force a plant block to immediately change to its maximum age <span class="parens">(eg. to cause newly-planted wheat to fully grow)</span>:
 
@@ -69,7 +69,7 @@ plant_grower:
     type: world
     events:
         after player right clicks block with:stick:
-        - if <player.cursor_on.material.is_ageable>:
+        - if <player.cursor_on.material.supports[age]>:
             - adjustblock <player.cursor_on> age:<player.cursor_on.material.maximum_age>
 ```
 
@@ -87,7 +87,7 @@ flint_fancifier_bad:
     events:
         after player right clicks block with:flint:
         - adjust <player.item_in_hand> "display:Fancy Flint"
-        - adjust <player.item_in_Hand> "lore:Built with Denizen!"
+        - adjust <player.item_in_hand> "lore:Built with Denizen!"
 ```
 
 However, the tag `<player.item_in_hand>` will just return "flint", with no indication of *which* flint item. In effect, the above script is attempting to modify the abstract concept of flint items, rather than the specific flint in the player's hand. If you're not adjusting a specific item that exists in the world somehow, nothing is going to change in the world!
@@ -228,10 +228,9 @@ If you want to read a lot more about mechanisms and properties, here are a few t
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Adjust command meta docs](https://one.denizenscript.com/denizen/cmds/adjust)
-- [AdjustBlock command meta docs](https://one.denizenscript.com/denizen/cmds/adjustblock)
-- [Inventory command meta docs](https://one.denizenscript.com/denizen/cmds/inventory)
-- [ItemTag.with meta docs](https://one.denizenscript.com/denizen/tags/itemtag.with)
-- [MaterialTag.with meta docs](https://one.denizenscript.com/denizen/tags/materialtag.with)
-- [EntityTag.describe meta docs](https://one.denizenscript.com/denizen/tags/entitytag.describe)
-- [List of all mechanisms](https://one.denizenscript.com/denizen/mecs/)
+- [Adjust command meta docs](https://meta.denizenscript.com/Docs/Commands/adjust)
+- [AdjustBlock command meta docs](https://meta.denizenscript.com/Docs/Commands/adjustblock)
+- [Inventory command meta docs](https://meta.denizenscript.com/Docs/Commands/inventory)
+- [PropertyHolderObject tag meta docs](https://meta.denizenscript.com/Docs/Tags/propertyholderobject)
+- [EntityTag.describe meta docs](https://meta.denizenscript.com/Docs/Tags/entitytag.describe)
+- [List of all mechanisms](https://meta.denizenscript.com/Docs/Mechanisms/)

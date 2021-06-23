@@ -7,4 +7,4 @@ A Deeper Tag: The Parsed Tag (NOT YET WRITTEN)
 
 If you want to read some more about the parsed tag, here are a few technical guides you might consider...
 
-- [Element.Parsed tag doc](https://one.denizenscript.com/denizen/tags/element.parsed)
+- [Element.Parsed tag doc](https://meta.denizenscript.com/Docs/Tags/element.parsed)

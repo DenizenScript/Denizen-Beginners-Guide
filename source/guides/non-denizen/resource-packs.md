@@ -316,6 +316,6 @@ as it's extra file storage you don't need to contribute to the resource pack.
 
 ### Related Technical Docs And Links
 
-* [Playsound Command Meta](https://one.denizenscript.com/denizen/cmds/playsound)
+* [Playsound Command Meta](https://meta.denizenscript.com/Docs/Commands/playsound)
 * [JSON Formatter and Validator](https://jsonformatter.curiousconcept.com/)
 * [Online-Convert.com | Convert Audio to OGG Format](https://audio.online-convert.com/convert-to-ogg)

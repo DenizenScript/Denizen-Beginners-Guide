@@ -52,5 +52,5 @@ If you want to read a lot more about problem solving, here are a few technical g
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Denizen debug command command language doc](https://one.denizenscript.com/denizen/lngs/denizen%20debug%20command)
-- [Denizen submit command language doc](https://one.denizenscript.com/denizen/lngs/denizen%20submit%20command)
+- [Denizen debug command command language doc](https://meta.denizenscript.com/Docs/Languages/denizen%20debug%20command)
+- [Denizen submit command language doc](https://meta.denizenscript.com/Docs/Languages/denizen%20submit%20command)

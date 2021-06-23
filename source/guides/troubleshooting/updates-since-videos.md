@@ -51,7 +51,7 @@ Colon syntax is easier to write, looks cleaner, and as an added bonus, Denizen e
 
 ### Definition Syntax
 
-The `define` command has had two significant changes - first, the syntax has changed for the definition tag itself, and second, the define command now supports [data actions](https://one.denizenscript.com/denizen/lngs/data%20actions).
+The `define` command has had two significant changes - first, the syntax has changed for the definition tag itself, and second, the define command now supports [data actions](https://meta.denizenscript.com/Docs/Languages/data%20actions).
 
 The videos taught two different forms of definition syntax: First, the 'ancient style' percent syntax (like `%this%`), and second, the 'old style' tag syntax (like `<def[this]>`).
 Definition tags no longer look like that, but instead looks like `<[this]>` <span class="parens">(for a definition named `this`, of course)</span>. For additional details on how to use and modify definitions, please see the [Definitions](/guides/basics/definitions) page.
@@ -198,7 +198,7 @@ In the tutorial video for [Inventory GUIs](/guides/put-it-together/inventory-gui
 
 While this is still correct, it is missing a necessary component to work well in modern Denizen.
 
-In the past, events would just all fire, and if an event got cancelled that just means the underlying action wouldn't be performed. In modern Denizen, the system more intelligently knows to not fire more script events after the event was cancelled. While this [can be simply disabled for the relevant events](https://one.denizenscript.com/denizen/lngs/Script%20Event%20Cancellation) a better solution is to instead guarantee that the generic event that cancels it will run *last*. This is as easy as adding a high-valued `priority` to the cancelling event line.
+In the past, events would just all fire, and if an event got cancelled that just means the underlying action wouldn't be performed. In modern Denizen, the system more intelligently knows to not fire more script events after the event was cancelled. While this [can be simply disabled for the relevant events](https://meta.denizenscript.com/Docs/Languages/Script%20Event%20Cancellation) a better solution is to instead guarantee that the generic event that cancels it will run *last*. This is as easy as adding a high-valued `priority` to the cancelling event line.
 
 So, where previously you had `on player clicks in my_inventory:` you now instead have `on player clicks in my_inventory priority:100:`, and a similar change to the `drags` event line. Event priorities run in numerical order, with a default of `0`. So all the specific events, with their default priority, will run first, and then only after they're done, the generic cancellation events <span class="parens">(now at priority `100`)</span> will fire last.
 

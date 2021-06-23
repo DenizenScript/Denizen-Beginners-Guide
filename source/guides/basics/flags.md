@@ -152,7 +152,7 @@ First, in the `flag` command, there is now a `expire:1d` argument. This does exa
 
 Second, in the `narrate` command, we used the `flag_expiration` tag. This tag, as the name implies, returns the time at which the flag is scheduled to expire. It does this in the form of a `TimeTag` object. We then use the tag `TimeTag.from_now`, which gets the `DurationTag` representing the distance in time between right now and some previously stored `TimeTag` <span class="parens">(so at the moment the flag is set, it will be `1d`... if you wait an hour, it will be `23h`, etc.)</span>, followed by the tag `DurationTag.formatted`, which converts the raw duration object to something relatively clean for human reading.
 
-Note that flags expirations are something you can check for, but you cannot wait for them - there is no "flag expires" event or similar. If you would like to know why this is, refer to the [Flag System technical doc](https://one.denizenscript.com/denizen/lngs/flag%20system).
+Note that flags expirations are something you can check for, but you cannot wait for them - there is no "flag expires" event or similar. If you would like to know why this is, refer to the [Flag System technical doc](https://meta.denizenscript.com/Docs/Languages/flag%20system).
 
 Note that very short/simple cooldowns (anything less than a few hours, usually) should often use the `ratelimit` command instead of flags, like `- ratelimit <player> 1h`. Ratelimits are very simple and easy, but notably do not persist across restarts and do not have the ability to show cooldown messages like the one the script above uses.
 
@@ -180,7 +180,7 @@ For entities however, if an entity is despawned <span class="parens">(meaning it
 
 For blocks, if the chunk that contains the block is not loaded, you will have to load the chunk before working with its flags. For the `flag` command, this will be automatic, however for flag *tags*, there is no automatic chunkload, and you can instead use the `chunkload` command beforehand to ensure the chunk is available.
 
-For more information on exactly how different object types handle flags, refer to the [Flag System technical doc](https://one.denizenscript.com/denizen/lngs/flag%20system).
+For more information on exactly how different object types handle flags, refer to the [Flag System technical doc](https://meta.denizenscript.com/Docs/Languages/flag%20system).
 
 ### Advanced Note: Maps And Sub-maps
 
@@ -192,7 +192,7 @@ It should be noted that it is considered restricted to have flag names prefixed 
 
 ### Even More Memory
 
-Advanced users may decide they need even more custom memory options. While flags and definitions should cover the overwhelming majority of cases, Denizen does provide additional options <span class="parens">(primarily intended for intercompatibility with pre-existing data systems)</span> such as [the YAML command](https://one.denizenscript.com/denizen/cmds/yaml) and  [the SQL command](https://one.denizenscript.com/denizen/cmds/sql).
+Advanced users may decide they need even more custom memory options. While flags and definitions should cover the overwhelming majority of cases, Denizen does provide additional options <span class="parens">(primarily intended for intercompatibility with pre-existing data systems)</span> such as [the YAML command](https://meta.denizenscript.com/Docs/Commands/yaml) and  [the SQL command](https://meta.denizenscript.com/Docs/Commands/sql).
 
 ### Related Technical Docs
 
@@ -200,13 +200,13 @@ If you want to read a lot more about flags, here are a few technical guides you 
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Flag System lang doc](https://one.denizenscript.com/denizen/lngs/flag%20system)
-- [Flag command doc](https://one.denizenscript.com/denizen/cmds/flag)
-- [FlaggableObject.flag tag](https://one.denizenscript.com/denizen/tags/flaggableobject.flag)
-- [FlaggableObject.has_flag tag](https://one.denizenscript.com/denizen/tags/flaggableobject.has_flag)
-- [FlaggableObject.list_flags tag](https://one.denizenscript.com/denizen/tags/flaggableobject.list_flags)
-- [FlaggableObject.flag_expiration tag](https://one.denizenscript.com/denizen/tags/flaggableobject.flag_expiration)
-- [FlaggableObject.flag_map tag](https://one.denizenscript.com/denizen/tags/flaggableobject.flag_map)
-- [ChunkLoad command doc](https://one.denizenscript.com/denizen/cmds/chunkload)
-- [Ratelimit command doc](https://one.denizenscript.com/denizen/cmds/ratelimit)
-- [DurationTag objects lang doc](https://one.denizenscript.com/denizen/lngs/durationtag%20objects)
+- [Flag System lang doc](https://meta.denizenscript.com/Docs/Languages/flag%20system)
+- [Flag command doc](https://meta.denizenscript.com/Docs/Commands/flag)
+- [FlaggableObject.flag tag](https://meta.denizenscript.com/Docs/Tags/flaggableobject.flag)
+- [FlaggableObject.has_flag tag](https://meta.denizenscript.com/Docs/Tags/flaggableobject.has_flag)
+- [FlaggableObject.list_flags tag](https://meta.denizenscript.com/Docs/Tags/flaggableobject.list_flags)
+- [FlaggableObject.flag_expiration tag](https://meta.denizenscript.com/Docs/Tags/flaggableobject.flag_expiration)
+- [FlaggableObject.flag_map tag](https://meta.denizenscript.com/Docs/Tags/flaggableobject.flag_map)
+- [ChunkLoad command doc](https://meta.denizenscript.com/Docs/Commands/chunkload)
+- [Ratelimit command doc](https://meta.denizenscript.com/Docs/Commands/ratelimit)
+- [DurationTag object type doc](https://meta.denizenscript.com/Docs/ObjectTypes/DurationTag)

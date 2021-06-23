@@ -13,6 +13,6 @@ If you want to read a lot more about assignment scripts, here are a few technica
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Assignment script containers doc](https://one.denizenscript.com/denizen/lngs/assignment%20script%20containers)
-- [On Assignment action doc](https://one.denizenscript.com/denizen/acts/assignment)
+- [Assignment script containers doc](https://meta.denizenscript.com/Docs/Languages/assignment%20script%20containers)
+- [On Assignment action doc](https://meta.denizenscript.com/Docs/Actions/assignment)
 - [List of all assignment script actions](https://one.denizenscript.com/denizen/acts)

@@ -13,5 +13,5 @@ If you want to read a lot more about the custom items, here are a few technical 
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Item script containers doc](https://one.denizenscript.com/denizen/lngs/item%20script%20containers)
-- [Book script containers doc](https://one.denizenscript.com/denizen/lngs/book%20script%20containers)
+- [Item script containers doc](https://meta.denizenscript.com/Docs/Languages/item%20script%20containers)
+- [Book script containers doc](https://meta.denizenscript.com/Docs/Languages/book%20script%20containers)

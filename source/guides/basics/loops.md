@@ -17,6 +17,6 @@ If you want to read a lot more about loops, here are a few technical guides you 
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Foreach command doc](https://one.denizenscript.com/denizen/cmds/foreach)
-- [Repeat command doc](https://one.denizenscript.com/denizen/cmds/repeat)
-- [While command doc](https://one.denizenscript.com/denizen/cmds/while)
+- [Foreach command doc](https://meta.denizenscript.com/Docs/Commands/foreach)
+- [Repeat command doc](https://meta.denizenscript.com/Docs/Commands/repeat)
+- [While command doc](https://meta.denizenscript.com/Docs/Commands/while)

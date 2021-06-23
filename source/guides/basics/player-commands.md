@@ -17,6 +17,6 @@ If you want to read a lot more about player commands, here are a few technical g
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Command script containers doc](https://one.denizenscript.com/denizen/lngs/command%20script%20containers)
-- [Match_player tag doc](https://one.denizenscript.com/denizen/tags/server.match_player)
-- [Match_offline_player tag doc](https://one.denizenscript.com/denizen/tags/server.match_offline_player)
+- [Command script containers doc](https://meta.denizenscript.com/Docs/Languages/command%20script%20containers)
+- [Match_player tag doc](https://meta.denizenscript.com/Docs/Tags/server.match_player)
+- [Match_offline_player tag doc](https://meta.denizenscript.com/Docs/Tags/server.match_offline_player)

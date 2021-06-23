@@ -87,7 +87,7 @@ Additionally, note that *script names* and *file names* are different. Both `my_
 
 Below the script name - on the second level of indentation - you'll see the `type` key.
 
-The `type` key is where you specify which `type` of Denizen script you're writing. In this case, we're writing a `task` script. You may have already seen `world` scripts, `item` scripts, `inventory` scripts, or any of the many other types that exist. For now, we will focus on `task` scripts. You'll learn about the different types as you read through these guides, and you can find explanations about all of them from the meta documentation on the [language explanation page](https://one.denizenscript.com/denizen/lngs/container).
+The `type` key is where you specify which `type` of Denizen script you're writing. In this case, we're writing a `task` script. You may have already seen `world` scripts, `item` scripts, `inventory` scripts, or any of the many other types that exist. For now, we will focus on `task` scripts. You'll learn about the different types as you read through these guides, and you can find explanations about all of them from the meta documentation on the [language explanation page](https://meta.denizenscript.com/Docs/Languages/container).
 
 Make sure you write `type: task` in your script on the second level of indentation <span class="parens">(press **enter** to start a new line, then press **tab** to indent once. This will add 4 spaces on the line, and every time you press enter after there will automatically be 4 spaces again, until you press backspace to remove the spaces)</span>, below the script name, like this:
 
@@ -150,5 +150,5 @@ If you want to read a lot more about task scripts, here are a few technical guid
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Task script containers doc](https://one.denizenscript.com/denizen/lngs/task%20script%20containers)
-- [Run command doc](https://one.denizenscript.com/denizen/cmds/run)
+- [Task script containers doc](https://meta.denizenscript.com/Docs/Languages/task%20script%20containers)
+- [Run command doc](https://meta.denizenscript.com/Docs/Commands/run)

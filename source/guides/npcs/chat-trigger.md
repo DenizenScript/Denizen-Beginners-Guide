@@ -13,4 +13,4 @@ If you want to read a lot more about chat triggers, here are a few technical gui
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Chat triggers language doc](https://one.denizenscript.com/denizen/lngs/chat%20triggers)
+- [Chat triggers language doc](https://meta.denizenscript.com/Docs/Languages/chat%20triggers)

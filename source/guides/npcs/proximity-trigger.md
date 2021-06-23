@@ -13,4 +13,4 @@ If you want to read a lot more about proximity triggers, here are a few technica
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Proximity triggers language doc](https://one.denizenscript.com/denizen/lngs/proximity%20triggers)
+- [Proximity triggers language doc](https://meta.denizenscript.com/Docs/Languages/proximity%20triggers)

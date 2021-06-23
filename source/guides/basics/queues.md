@@ -13,5 +13,5 @@ If you want to read a lot more about queues, here are a few technical guides you
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [The ex and exs commands](https://one.denizenscript.com/denizen/lngs/ex%20command)
-- [QueueTag tag list](https://one.denizenscript.com/denizen/tags/queuetag)
+- [The ex and exs commands](https://meta.denizenscript.com/Docs/Languages/ex%20command)
+- [QueueTag tag list](https://meta.denizenscript.com/Docs/Tags/queuetag)

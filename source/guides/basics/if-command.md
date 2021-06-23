@@ -287,7 +287,7 @@ If you want to read a lot more about the if command, here are a few technical gu
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [If command doc](https://one.denizenscript.com/denizen/cmds/if)
-- [Else command doc](https://one.denizenscript.com/denizen/cmds/else)
-- [Comparable language doc](https://one.denizenscript.com/denizen/lngs/comparable)
-- [Operator language doc](https://one.denizenscript.com/denizen/lngs/operator)
+- [If command doc](https://meta.denizenscript.com/Docs/Commands/if)
+- [Else command doc](https://meta.denizenscript.com/Docs/Commands/else)
+- [Comparable language doc](https://meta.denizenscript.com/Docs/Languages/comparable)
+- [Operator language doc](https://meta.denizenscript.com/Docs/Languages/operator)

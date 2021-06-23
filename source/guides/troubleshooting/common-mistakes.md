@@ -303,7 +303,7 @@ Also, do not input `== false`. Instead, to negate a check, use `!`. So for examp
 
 Users who are new to Denizen often misread documentation like `<#>` in a command syntax as meaning that `<3>` is valid input.
 
-This is not correct, as the [command syntax explanation](https://one.denizenscript.com/denizen/lngs/command%20syntax) writeup explains, in that context the `<>` means "insert a value here". The `<>` are not meant to be literally included.
+This is not correct, as the [command syntax explanation](https://meta.denizenscript.com/Docs/Languages/command%20syntax) writeup explains, in that context the `<>` means "insert a value here". The `<>` are not meant to be literally included.
 
 So, if a command says its syntax is `- heal [<#>]`, correct input might look like `- heal 3`.
 
@@ -317,7 +317,7 @@ As an additional note, if you need literal text in the form of a tag <span class
 
 Many users, when first trying to adjust a mechanism on an item, material, or similar type, will try to use the `adjust` command to achieve this, like `- adjust <[inventory].slot[5]> "lore:My new lore!"` or `- adjust <[location].material> lit:true`.
 
-While this does seem to make sense initially, it unfortunately will not work out, due to an important distinction between object types: [unique vs. generic objects](https://one.denizenscript.com/denizen/lngs/Unique%20Objects%20vs%20Generic%20Objects). It is recommended that you read and understand that explanation page to properly understand why you cannot `adjust` an `item`, but the short summary is: ItemTags look like `stick`, which is a *description* of an item, not a single unique item. As a result, the system has no way to track down *which* stick you're trying to adjust.
+While this does seem to make sense initially, it unfortunately will not work out, due to an important distinction between object types: [unique vs. generic objects](https://meta.denizenscript.com/Docs/Languages/Unique%20Objects%20vs%20Generic%20Objects). It is recommended that you read and understand that explanation page to properly understand why you cannot `adjust` an `item`, but the short summary is: ItemTags look like `stick`, which is a *description* of an item, not a single unique item. As a result, the system has no way to track down *which* stick you're trying to adjust.
 
 If you do use `adjust` on an item, it will apply the modification to the description of the item, and store the modified description into a save entry. A similar result happens with a MaterialTag object. While this may be useful in some cases, this isn't useful when you want to change an actual specific item in the world.
 

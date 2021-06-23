@@ -114,9 +114,9 @@ If you want to read a lot more about tags, here are a few technical guides you m
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Fallbacks language doc](https://one.denizenscript.com/denizen/lngs/tag%20fallbacks)
-- [ObjectTags language doc](https://one.denizenscript.com/denizen/lngs/ObjectTags)
-- [Unique vs generic objects language doc](https://one.denizenscript.com/denizen/lngs/Unique%20Objects%20vs%20Generic%20Objects)
-- [ElementTag related language docs](https://one.denizenscript.com/denizen/lngs/ElementTag)
-- [Object type related language docs](https://one.denizenscript.com/denizen/lngs/Tag%20Objects)
-- [List of all tags](https://one.denizenscript.com/denizen/tags/)
+- [Fallbacks language doc](https://meta.denizenscript.com/Docs/Languages/tag%20fallbacks)
+- [ObjectTags language doc](https://meta.denizenscript.com/Docs/Languages/ObjectTags)
+- [Unique vs generic objects language doc](https://meta.denizenscript.com/Docs/Languages/Unique%20Objects%20vs%20Generic%20Objects)
+- [ElementTag related language docs](https://meta.denizenscript.com/Docs/Languages/ElementTag)
+- [List of all object types](https://meta.denizenscript.com/Docs/ObjectTypes)
+- [List of all tags](https://meta.denizenscript.com/Docs/Tags/)
