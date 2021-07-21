@@ -105,7 +105,7 @@ pay_command:
         - narrate "<red>/pay [player] [amount]"
         - stop
     # Use a fallback in case the player name given is invalid.
-    - define target <server.match_player[<context.args.get[1]>]||null>
+    - define target <server.match_player[<context.args.get[1]>].if_null[null]>
     # A user might mess up typing a player name.
     # If there's no matched player, just tell them and stop there.
     - if <[target]> == null:
@@ -202,11 +202,11 @@ In reality, errors are just another tool that Denizen provides. The error messag
 
 A fallback should only be placed onto a tag when you're *expecting* that tag to fail.
 
-Consider for example the `server.match_player` tag, which is used to convert user-input names into a player object. You can quite reasonably expect that sometimes a player will input something that isn't a valid player name, and the tag will fail. That's a case where you should absolutely add a fallback like `||null`.
+Consider for example the `server.match_player` tag, which is used to convert user-input names into a player object. You can quite reasonably expect that sometimes a player will input something that isn't a valid player name, and the tag will fail. That's a case where you should absolutely add a fallback like `.if_null[null]` or the older style `||null`.
 
-When you add a fallback, you often will also need to check for the fallback value, like for a definition defined as `<server.match_player[<input>]||null>`, you might do `- if <[target]> == null:` and inside that block handle the case of an invalid player input.
+When you add a fallback, you often will also need to check for the fallback value, like for a definition defined as `<server.match_player[<input>].if_null[null]>`, you might do `- if <[target]> == null:` and inside that block handle the case of an invalid player input. In some cases, where you *only* need the check and don't to use the value after, you can simply use `.exists`, like `- if <player.item_in_hand.script.exists>:` <span class="parens">(to check if the player's held item is a scripted item at all)</span>.
 
-In other situations, the fallback can simply be a reasonable default value, like `<player.flag[coins]||0>`, which you won't need to specifically account for.
+In other situations, the fallback can simply be a reasonable default value, like `<player.flag[coins].if_null[0]>`, which you won't need to specifically account for with any extra `if` commands.
 
 #### When To Not Use Fallbacks
 

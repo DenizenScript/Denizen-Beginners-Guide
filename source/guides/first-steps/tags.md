@@ -24,7 +24,7 @@ While text colors are the most commonly used tags overall, almost any real scrip
 
 A simple tag usage might be `- teleport <npc> <player.location>` to teleport an NPC <span class="parens">(gotten via the `<npc>` tag)</span> to your own location <span class="parens">(gotten via the `<player.location>` tag)</span>.
 
-Tag usages can get way more complex, like `- teleport <player.location.find.living_entities.within[<[range]>]> <player.cursor_on[<[distance]>]||<player.location.forward[<[distance]>]>>` ... don't worry if that doesn't make any sense, it's intentionally long and complicated, just to give you a taste of the amount of power tags have in the hands of an experienced user <span class="parens">(and that's just a start - the only limit is the scripter's imagination!)</span>. Basic scripts will almost never require tags this long.
+Tag usages can get way more complex, like `- teleport <player.location.find.living_entities.within[<[range]>]> <player.cursor_on[<[distance]>].if_null[<player.location.forward[<[distance]>]>]>` ... don't worry if that doesn't make any sense, it's intentionally long and complicated, just to give you a taste of the amount of power tags have in the hands of an experienced user <span class="parens">(and that's just a start - the only limit is the scripter's imagination!)</span>. Basic scripts will almost never require tags this long.
 
 ### So, How Do I Make A Tag?
 
