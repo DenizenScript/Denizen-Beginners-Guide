@@ -101,7 +101,7 @@ lexers['dscript_blue'] = dScriptLexerBlue(startinline=True)
 
 # For markdown
 def setup(app):
-    app.add_stylesheet('css/stylesheet.css')
+    app.add_css_file('css/stylesheet.css')
     app.add_config_value('recommonmark_config', {
             'auto_toc_tree_section': 'Contents',
             'enable_eval_rst': True,

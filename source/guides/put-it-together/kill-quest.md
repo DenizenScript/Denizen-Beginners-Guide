@@ -42,7 +42,7 @@ npc_killquest_interact:
                     - narrate format:cchat "Great work! Here's your reward!"
                     - give diamond
                     - flag player kill_zombie_quest_count:!
-                    - flag player kill_zombie_quest_cooldown duration:24h
+                    - flag player kill_zombie_quest_cooldown expire:24h
                     - flag player npc_engaged:!
                     # - disengage
                     - stop

@@ -178,7 +178,7 @@ The tag `.material.name` is guaranteed to always return *just* the material name
 
 For other object types, find the relevant unique comparison point. For materials, worlds, scripts, plugins, ... you can use `.name`.
 
-For notable object types <span class="parens">(locations, cuboids, ellipsoids, ...)</span>, you should never compare them directly. Instead, note the object and check `.notable_name` - or use more specific syntaxes, like the `in:<area>` switch on events.
+For notable object types <span class="parens">(locations, cuboids, ellipsoids, ...)</span>, you should never compare them directly. Instead, note the object and check `.note_name` - or use more specific syntaxes, like the `in:<area>` switch on events.
 
 #### Note On Exact-Same Objects
 
