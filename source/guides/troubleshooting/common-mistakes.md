@@ -327,6 +327,8 @@ The way to properly adjust a specific item changes depending on where that item 
 
 To adjust a `MaterialTag`, there is a `MaterialTag.with[...]` tag that matches the `ItemTag` version. Most likely, however, you want to adjust the material of a block, so the `adjustblock` command is what you need. It takes the location of a block, and applies MaterialTag mechanisms to that specific block <span class="parens">(like `- adjustblock <[location]> lit:true`)</span>.
 
+The same logic applies to flagging items - don't use the `flag` command, use `inventory flag` <span class="parens">(like `- inventory flag slot:5 myflag:value`)</span> or the `with_flag` tag.
+
 ### Don't Script Raw Locations
 
 On the Denizen Discord, we often get questions like "how do I put in the coordinates for a location" or "how do I make the NPC walk to x,y,z 1,5,7" or something like that. Sometimes it even gets phrased like "how do I give raw coordinate values instead of using a LocationTag".

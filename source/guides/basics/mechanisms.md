@@ -101,8 +101,8 @@ flint_fancifier:
     type: world
     events:
         after player right clicks block with:flint:
-        - inventory adjust slot:<player.held_item_slot> "display:Fancy Flint"
-        - inventory adjust slot:<player.held_item_slot> "lore:Built with Denizen!"
+        - inventory adjust slot:hand "display:Fancy Flint"
+        - inventory adjust slot:hand "lore:Built with Denizen!"
 ```
 
 ![](images/fancy_flint.png)
