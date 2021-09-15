@@ -19,6 +19,8 @@ This sample assumes you have a **modern Denizen configuration file**. That is, y
 
 This script is designed such that you could copy/paste and load it in to your server, and assign it to an NPC with `/npc assign --set npc_killquest` or `/ex assignment set npc_killquest`, and it will all work. You can then customize it and/or use it as a reference to learn from.
 
+This may be easier to read within [the script editor](/guides/first-steps/script-editor) than on this webpage.
+
 ```dscript_green
 # Core assignment script to be given to the NPC
 npc_killquest:

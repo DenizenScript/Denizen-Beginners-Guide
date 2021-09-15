@@ -13,6 +13,8 @@ When you're ready to get started, open the [First Steps](/guides/first-steps/ind
 
 Please join us on [Discord](https://discord.gg/Q6pZGSR) to discuss or get further help with Denizen!
 
+See also the [Denizen homepage and links directory](https://denizenscript.com/).
+
 ## Contents:
 
 ``` toctree::
