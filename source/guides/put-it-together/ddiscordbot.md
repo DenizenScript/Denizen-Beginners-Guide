@@ -211,7 +211,7 @@ You can construct a `DiscordButtonTag with` `<discord_button>`. You can then att
 
 You can view the supported properties for a button [here](https://meta.denizenscript.com/Docs/Tags/discordbuttontag.with.as) and for a selection menu [here](https://example.com).
 
-The `rows` argument is a list of lists. The main lists represents the separate rows, while the lists inside represent the components on each row (similarly to columns on a grid). This argument is found on both `discordinteraction` and `discordmessage`. You can make use of `<list_single>` and `.include_single` for this. Additionally, you can mix and match components in rows as you please. However, a message is still required!
+The `rows` argument is a list of lists. The main lists represent the separate rows, while the lists inside represent the components on each row (similarly to columns on a grid). This argument is found on both `discordinteraction` and `discordmessage`. You can make use of `<list_single>` and `.include_single` for this. Additionally, you can mix and match components in rows as you please. However, a message is still required!
 
 For example, sending a message with a button would look like:
 
