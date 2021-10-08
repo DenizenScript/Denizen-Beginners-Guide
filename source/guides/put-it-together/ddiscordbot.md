@@ -209,7 +209,7 @@ The rest of the interactions feature set includes buttons and selection menus, w
 
 You can construct a `DiscordButtonTag with` `<discord_button>`. You can then attach properties using the `with[].as[]` tag. `DiscordSelectionTag` and `DiscordEmbedTag` also follow this paradigm.
 
-You can view the supported properties for a button [here](https://meta.denizenscript.com/Docs/Tags/discordbuttontag.with.as) and for a selection menu [here](https://example.com).
+You can view the supported properties for a button [here](https://meta.denizenscript.com/Docs/Tags/discordbuttontag.with.as) and for a selection menu [here](https://meta.denizenscript.com/Docs/Tags/discordselectiontag.with.as).
 
 The `rows` argument is a list of lists. The main lists represent the separate rows, while the lists inside represent the components on each row (similarly to columns on a grid). This argument is found on both `discordinteraction` and `discordmessage`. You can make use of `<list_single>` and `.include_single` for this. Additionally, you can mix and match components in rows as you please. However, a message is still required!
 
@@ -281,3 +281,12 @@ mood_menu:
 ```
 
 ![](https://cdn.discordapp.com/attachments/533123622093455362/895890729530970132/eVkiFRrVa4.gif)
+
+### Related Technical Docs
+
+If you want to read some more about the Discord API and its associated tools, here are a few technical guides you might consider...
+
+- [Creating a bot account](https://discordpy.readthedocs.io/en/stable/discord.html)
+- [Finding Discord IDs](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
+- [Slash command limitations](https://gist.github.com/MinnDevelopment/b883b078fdb69d0e568249cc8bf37fe9)
+- [All Discord-related Denizen docs](https://meta.denizenscript.com/Docs/Search/discord)
