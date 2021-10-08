@@ -282,6 +282,17 @@ mood_menu:
 
 ![](https://cdn.discordapp.com/attachments/533123622093455362/895890729530970132/eVkiFRrVa4.gif)
 
+### Some Things to Try
+
+This guide page covers two small projects, plus the basics of message components. For more ideas, you might want to look back at the [What Can It Be Used For?](#what-can-it-be-used-for?) section. If you're looking for a challenge, you could try:
+
+- Mixing components in messages
+- Replying to interactions privately (hint: docs!)
+- Making a "player info" command
+- Creating embeds
+
+Be imaginative! Discord is yet another platform, full of unique concepts and possibilities, for you to be creative with.
+
 ### Related Technical Docs
 
 If you want to read some more about the Discord API and its associated tools, here are a few technical guides you might consider...
