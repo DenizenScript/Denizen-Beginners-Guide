@@ -8,4 +8,5 @@ Putting It Together
     kill-quest
     item-quest
     inventory-guis
+    ddiscordbot
 ```
