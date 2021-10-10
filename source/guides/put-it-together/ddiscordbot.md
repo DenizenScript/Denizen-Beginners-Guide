@@ -282,7 +282,7 @@ mood_menu:
 
 ![](https://cdn.discordapp.com/attachments/533123622093455362/895890729530970132/eVkiFRrVa4.gif)
 
-### Some Things to Try
+### Some Things To Try
 
 This guide page covers two small projects, plus the basics of message components. For more ideas, you might want to look back at the [What Can It Be Used For?](#what-can-it-be-used-for?) section. If you're looking for a challenge, you could try:
 
