@@ -83,8 +83,8 @@ ping_pong:
 
 Now you've got the basic tools to make a chat bridge. In order for this to function, it needs to:
 
-- send a message to a Discord channel when a Minecraft user chats
-- narrate to the online Minecraft players when a Discord user sends a message in the channel
+- Send a message to a Discord channel when a Minecraft user chats
+- Narrate to the online Minecraft players when a Discord user sends a message in the channel
 
 Let's tackle the first part. You can use the `player chats` event for this one. Then all you have to do is use the `discordmessage` command like in the first example. You should also include the Minecraft player's name in the message, otherwise the Discord users won't know who it's from.
 
