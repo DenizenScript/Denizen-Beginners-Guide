@@ -35,7 +35,7 @@ There are enough tutorials out there for creating a bot account. [Here's a handy
 
 ### Logging In
 
-To log in using dDiscordBot, use the `discordconnect` command. **Don't hardcode your token into the script!** Use a separate tokenfile placed outside of the `scripts` folder. A common location for this is in `Denizen/data`.
+To log in using dDiscordBot, use the `discordconnect` command. For security reasons, you'll need to use a separate tokenfile placed outside of the `scripts` folder. A common location for this is in `Denizen/data`.
 
 The `discordconnect` command takes an `id` argument. This can be anything, and it identifies the connection to the bot user. Almost all Discord commands take this argument, and it must be the same for a specified connection.
 
