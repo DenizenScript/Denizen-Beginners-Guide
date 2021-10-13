@@ -27,6 +27,7 @@ See also the [Denizen homepage and links directory](https://denizenscript.com/).
     guides/npcs/index
     guides/advanced/index
     guides/put-it-together/index
+    guides/expanding/index
 ```
 
 ## Also, Special Sections
