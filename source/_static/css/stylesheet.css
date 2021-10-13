@@ -15,6 +15,12 @@ h1, h2 { /* Headers */
     color: #444444;
     font-size: 92%;
 }
+a code {
+    color: #2980B9 !important;
+}
+a:visited code {
+    color: #9B59B6 !important;
+}
 pre { /* Code blocks */
     background-color: #EEEEEE;
     white-space: pre-wrap !important;
