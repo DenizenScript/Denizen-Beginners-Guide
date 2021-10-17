@@ -31,9 +31,15 @@ The main uses might be an account linker, which verifies a Discord user with the
 
 ### Creating a Bot
 
-There are enough tutorials out there for creating a bot account, such as [this one](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token) or [this one](https://discordpy.readthedocs.io/en/stable/discord.html).
+There are enough tutorials out there for creating a bot account, such as [this one](https://discordpy.readthedocs.io/en/stable/discord.html).
 
 Make sure to enable the `Server Members Intent` on the bot page.
+
+When generating a link to have bot join a server, use the 'OAuth2' page of the developers tab and checkmark the `bot` box. You probably also want to checkmark `applications.commands` if you want to use slash commands.
+
+Alternately, just use the join link: `https://discord.com/oauth2/authorize?scope=bot%20applications.commands&permissions=0&client_id=1234` and replace the `1234` at the end with your bot's application ID.
+
+In most cases, you do not want to assign bot permissions on the 'OAuth2' page, as this can make a mess in your server role settings page.
 
 ### Sticking It Onto Your Server
 
@@ -369,7 +375,8 @@ Be imaginative! Discord is yet another platform, full of unique concepts and pos
 If something has gone wrong while testing your bot, here are some common issues you might run into and how to fix them.
 
 - First of all, if you're having any issues, make extra sure you enabled the `Server Members Intent` on the Discord bot page. A lot of things will break if that's turned off.
-- Make sure your bot has permissions to do what you're trying to make it do! The bot needs to be able to view the channel you're using, read messages in that channel, and be able to send messages there. If you're using slash commands, the "Use Application Commands" permission needs to be enabled.
+- Make sure your bot has permissions to do what you're trying to make it do! The bot needs to be able to view the channel you're using, read messages in that channel, and be able to send messages there. When first testing your bot, more permissions are better permissions. Once you're putting your bot into real use, limit the bot to only the permissions it needs.
+- If you're unable to register slash commands (with a `50001: Missing Access` error in your console) you may have forgotten to enable the `applications.commands` scope when adding your bot to your server.
 - As with all Denizen issues, monitor your console - the debug output contains a lot of helpful information to diagnose precisely what went wrong.
 - If you're stuck or lost, ask for help on Discord. See also the general Denizen [solving problems you encounter page](/guides/first-steps/problem-solving)
 
