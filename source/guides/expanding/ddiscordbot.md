@@ -364,6 +364,15 @@ This guide page covers two small projects, plus the basics of message components
 
 Be imaginative! Discord is yet another platform, full of unique concepts and possibilities, for you to be creative with.
 
+### Common Issues: When Something Went Wrong
+
+If something has gone wrong while testing your bot, here are some common issues you might run into and how to fix them.
+
+- First of all, if you're having any issues, make extra sure you enabled the `Server Members Intent` on the Discord bot page. A lot of things will break if that's turned off.
+- Make sure your bot has permissions to do what you're trying to make it do! The bot needs to be able to view the channel you're using, read messages in that channel, and be able to send messages there. If you're using slash commands, the "Use Application Commands" permission needs to be enabled.
+- As with all Denizen issues, monitor your console - the debug output contains a lot of helpful information to diagnose precisely what went wrong.
+- If you're stuck or lost, ask for help on Discord. See also the general Denizen [solving problems you encounter page](/guides/first-steps/problem-solving)
+
 ### Related Technical Docs
 
 If you want to read some more about dDiscordBot, here are a few technical guides you might consider...

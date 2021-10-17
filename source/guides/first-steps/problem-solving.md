@@ -40,7 +40,7 @@ In these cases, the best place to be is [the Discord](https://discord.gg/Q6pZGSR
 
 [![](images/thediscord.png)](https://discord.gg/Q6pZGSR)
 
-When asking for help with a script, it's usually best to provide a link to your script through the [script sharing paste service](https://one.denizenscript.com/haste), and a copy of your debug log - which you can record by typing `/denizen debug -r` in-game, then running the script, then typing `/denizen submit` - it will generate a link to a recorded copy of the debug logs for your script, that you can post alongside the script link for helpers to look through.
+When asking for help with a script, it's usually best to provide a link to your script through the [script sharing paste service](https://paste.denizenscript.com/), and a copy of your debug log - which you can record by typing `/denizen debug -r` in-game, then running the script, then typing `/denizen submit` - it will generate a link to a recorded copy of the debug logs for your script, that you can post alongside the script link for helpers to look through.
 
 When you join the Discord, before you post anything, be sure to read the rules (in the `#rules`) channel to make sure you don't start off on the wrong foot. The discord is generally pretty chill and friendly, but the rules will be enforced <span class="parens">(lightly, that is - a simple accident isn't going to get you banned or anything, don't worry. Most caught rule breaks will just have a warning recorded... not much more will happen except to users that repeatedly break the same rules over and over)</span>.
 

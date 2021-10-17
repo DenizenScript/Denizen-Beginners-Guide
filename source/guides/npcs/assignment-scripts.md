@@ -15,4 +15,4 @@ Note: most users, especially those learning from the Denizen for the first time,
 
 - [Assignment script containers doc](https://meta.denizenscript.com/Docs/Languages/assignment%20script%20containers)
 - [On Assignment action doc](https://meta.denizenscript.com/Docs/Actions/assignment)
-- [List of all assignment script actions](https://one.denizenscript.com/denizen/acts)
+- [List of all assignment script actions](https://meta.denizenscript.com/Docs/Actions)
