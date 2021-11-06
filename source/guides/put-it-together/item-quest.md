@@ -28,6 +28,7 @@ This may be easier to read within [the script editor](/guides/first-steps/script
 # If using multiple times, be sure to rename each script container appropriately
 # If you're testing the script and want to manually reset your cooldown, you can use:
 # /ex zap item_questgiver_interact *
+# Don't forget to add 'debug: false' on each container when you're done testing.
 
 
 
@@ -114,28 +115,30 @@ item_questgiver_interact:
         # This step handles when the player has the quest, but has not yet returned the item
         wait_for_return:
             click trigger:
-                script:
-                # If the player lacks the item,
-                - if !<player.inventory.contains_item[my_item_quest_item]>:
+                # If the player has the item,
+                1:
+                    trigger: my_item_quest_item
+                    script:
+                    # Thank the player and take the item
+                    - chat "Wow! My heirloom!"
+                    - take item:my_item_quest_item
+                    - narrate "<&7>[<&b><bold>Priceless Family Heirloom<&7> removed]"
+                    - chat "Thank you adventurer! Here's your reward!"
+                    # Maybe show some pretty effects to make the player feel special
+                    - toast "Quest Complete: <&b><bold>Priceless Example Quest Of Generations" icon:my_item_quest_item
+                    # Give a reward - xp in this case, maybe instead give money or something like that
+                    - give xp quantity:1000
+                    - narrate "<&7>[Got <&b>1000 XP<&7>]"
+                    # Jump to the idle 'on_cooldown' step for a cooldown duration. When the duration is up, the player will automatically reset to the default step.
+                    - narrate "<&7>[Quest <&b><bold>Priceless Example Quest Of Generations<&7> complete. May be repeated in 3 days.]"
+                    - zap on_cooldown 3d
+                    # TODO: You should consider what happens if the player simply loses the item. Do you prevent this via world script events (player drops item / clicks in inventory), or add a backup time limit, or...?
+                2:
+                    # If the player lacks the item,
+                    script:
                     - chat "Well? Where is it!?"
                     # Remind the player of their quest
                     - narrate "<&7>[Travel to Destination Townshiplandplaceville and speak to Thiefy McThiefface.]"
-                    # Stop the queue here - they can't go further until they get the item
-                    - stop
-                # If this spot is reached, the player has the item - so thank them and take it
-                - chat "Wow! My heirloom!"
-                - take item:my_item_quest_item
-                - narrate "<&7>[<&b><bold>Priceless Family Heirloom<&7> removed]"
-                - chat "Thank you adventurer! Here's your reward!"
-                # Maybe show some pretty effects to make the player feel special
-                - toast "Quest Complete: <&b><bold>Priceless Example Quest Of Generations" icon:my_item_quest_item
-                # Give a reward - xp in this case, maybe instead give money or something like that
-                - give xp quantity:1000
-                - narrate "<&7>[Got <&b>1000 XP<&7>]"
-                # Jump to the idle 'on_cooldown' step for a cooldown duration. When the duration is up, the player will automatically reset to the default step.
-                - narrate "<&7>[Quest <&b><bold>Priceless Example Quest Of Generations<&7> complete. May be repeated in 3 days.]"
-                - zap on_cooldown 3d
-                # TODO: You should consider what happens if the player simply loses the item. Do you prevent this via world script events (player drops item / clicks in inventory), or add a backup time limit, or...?
         # This step is idly waited on for the cooldown duration of the quest
         on_cooldown:
             click trigger:
