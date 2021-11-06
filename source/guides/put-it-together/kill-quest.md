@@ -15,7 +15,7 @@ This guide has not yet been written, however, here is a script with in-file expl
 
 This sample assumes you have a **modern Denizen configuration file**. That is, your `plugins/Denizen/config.yml` was generated after June 2021 (Release 1743 or later). If your config is older but you wish to use this script, you can either
 - A: Delete your `config.yml` file and restart your server so Denizen can regenerate it.
-- or B: go into your `config.yml` in your text editor, file the line `Queue speed: 0.5s` under `Interact:`, and change the `0.5s` to `instant`, then `/denizen reload config`
+- or B: go into your `config.yml` in your text editor, find the line `Queue speed: 0.5s` under `Interact:`, and change the `0.5s` to `instant`, then `/denizen reload config`
 
 This script is designed such that you could copy/paste and load it in to your server, and assign it to an NPC with `/npc assign --set npc_killquest` or `/ex assignment set npc_killquest`, and it will all work. You can then customize it and/or use it as a reference to learn from.
 

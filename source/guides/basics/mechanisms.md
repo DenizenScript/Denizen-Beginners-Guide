@@ -29,9 +29,10 @@ This script, using the `mechanisms` key of `item` script containers, has the mec
 undead_golden_swordsman:
     type: entity
     entity_type: zombie
-    item_in_hand: golden_sword
-    item_in_offhand: golden_sword
-    health_data: 80/80
+    mechanisms:
+        item_in_hand: golden_sword
+        item_in_offhand: golden_sword
+        health_data: 80/80
 ```
 
 ![](images/undead_golden_swordsman.png)
