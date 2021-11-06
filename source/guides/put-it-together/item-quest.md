@@ -17,6 +17,8 @@ This script is designed such that you could copy/paste and load it in to your se
 
 This may be easier to read within [the script editor](/guides/first-steps/script-editor) than on this webpage.
 
+Here's a [Script Pastebin Link](https://paste.denizenscript.com/View/89670) for the sample script below.
+
 ```dscript_green
 # | To use this script:
 # /npc create Questy McQuestface
