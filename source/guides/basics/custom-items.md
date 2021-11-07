@@ -7,6 +7,21 @@ Fancier Sticks: Making Custom Items (PLACEHOLDER ONLY)
 
 Until this page is written, you can view the [old tutorial video here](https://one.denizenscript.com/denizen/vids/Custom%20Items).
 
+### Sample Script
+
+Here's a quick sample of a modern item script.
+
+```dscript_green
+my_item:
+    type: item
+    material: stick
+    display name: <&b><bold>Fancy stick!
+    lore:
+    - <&7>So fancy.
+```
+
+You can get this item in-game by typing `/ex give my_item`
+
 ### Related Technical Docs
 
 If you want to read a lot more about the custom items, here are a few technical guides you might consider...
