@@ -8,6 +8,7 @@ Advanced Scripting
     :titlesonly:
 
     notables
+    save-arg
     parse-tag
     list-filters
     submapping
