@@ -9,6 +9,7 @@ Advanced Scripting
 
     notables
     save-arg
+    player-and-npc-args
     parse-tag
     list-filters
     submapping
