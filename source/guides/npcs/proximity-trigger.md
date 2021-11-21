@@ -1,4 +1,4 @@
-Proximity Triggers (PLACEHOLDER ONLY)
+Proximity Triggers (PARTIAL)
 ------------------
 
 **TODO: Write-up explaining proximity triggers, including entry, exit, and move triggers. Remind the user to activate it with `trigger` in `on assignment`.**
@@ -6,6 +6,38 @@ Proximity Triggers (PLACEHOLDER ONLY)
 ### Placeholder
 
 Until this page is written, you can view the [old tutorial video here](https://one.denizenscript.com/denizen/vids/Proximity%20Triggers).
+
+### Sample Script
+
+Here's a quick sample of a modern interact script with some basic proximity triggers.
+
+```dscript_green
+my_assignment:
+    type: assignment
+    actions:
+        on assignment:
+        - trigger name:proximity state:true radius:10
+    interact scripts:
+    - my_interact
+
+my_interact:
+    type: interact
+    steps:
+        1:
+            proximity trigger:
+                entry:
+                    script:
+                    - chat "Hello, <player.name>!"
+                exit:
+                    script:
+                    - chat "Farewell, <player.name>!"
+                move:
+                    script:
+                    - ratelimit <player> 10s
+                    - chat "Still hanging around, <player.name>?"
+```
+
+This script can be assigned to your selected NPC via `/ex assignment set my_assignment`
 
 ### Related Technical Docs
 

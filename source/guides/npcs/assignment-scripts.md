@@ -1,4 +1,4 @@
-Who Am I: Assignment Scripts (PLACEHOLDER ONLY)
+Who Am I: Assignment Scripts (PARTIAL)
 ----------------------------
 
 **TODO: Write-up explaining the basics of assignment scripts, including the `on assignment` action.**
@@ -6,6 +6,22 @@ Who Am I: Assignment Scripts (PLACEHOLDER ONLY)
 ### Placeholder
 
 Until this page is written, you can view the [old tutorial video here](https://one.denizenscript.com/denizen/vids/NPCs%20And%20You:%20Your%20First%20Assignment%20Script).
+
+### Sample Script
+
+Here's a quick sample of a modern assignment script.
+
+```dscript_green
+my_assignment:
+    type: assignment
+    actions:
+        on assignment:
+        - trigger name:click state:true
+        on click:
+        - chat "Hello <player.name>!"
+```
+
+This script can be assigned to your selected NPC via `/ex assignment set my_assignment`
 
 ### Related Technical Docs
 

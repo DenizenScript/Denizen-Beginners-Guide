@@ -8,6 +8,8 @@ Advanced Scripting
     :titlesonly:
 
     notables
+    save-arg
+    player-and-npc-args
     parse-tag
     list-filters
     submapping
