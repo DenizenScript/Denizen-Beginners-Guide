@@ -17,7 +17,7 @@ Luckily you don't have to do this, Denizen has 3 different loop commands that re
 
 ### The Repeat Command
 
-The most basic use of a loop is to simply just do a block of script again, in which the repeat command is best suited for.
+The most basic use of a loop is to simply run a block of commands again, which the repeat command is best suited for.
 The basic format of a repeat command is
 ```dscript_blue
 - repeat (number of times):
@@ -39,12 +39,12 @@ my_lightning_task:
     - narrate "no more lightning"
 ```
 
-This would in essence loop 5 times, where the player would be struck by lightning 5 times as well as be told "you have been struck by lightning!" 5 times.
-There is also a `wait` command at the end of the block. This pauses the script for a certain amount of time (in this example 1 second). This is important in a lot of cases so that it does not happen all at once. Without the `wait`, all 5 loops will run at the same time.
+This would loop 5 times, wherein the player would be struck by lightning as well as be told "you have been struck by lightning!"
+There is also a `wait` command at the end of the block. This pauses the script for a certain amount of time (in this example 1 second). This is important in many cases so that the commands don't run instantly after one another. In this example, it would seem as if the lightning strikes happened all at once.
 
-Once the loop is done, it then proceeds to continue with the rest of the script - ending with "no more lightning"
+Once the loop is done, the script continues, ending with "no more lightning."
 
-Now what if you wanted to let the player know how many times they have been struck? Granted you could put in a definition that counts up each loop, but `repeat` already does that for you. All you need to add is the `as:` argument to the repeat command like so.
+What if you wanted to let the player know how many times they have been struck? You could add a definition that tracks the amount of loops, but `repeat` already does that for you. All you need to add is the `as:` argument to the repeat command like so:
 
 ```dscript_green
 my_lightning_task:
@@ -63,10 +63,10 @@ You can try these examples in-game via `/ex run my_lightning_task`.
 
 ### The Foreach Command
 
-While the repeat command is handy, a lot of the times you would find yourself wanting to loop over the contents of a list, in that for each item in the list, do something.
+While the repeat command is handy, you'll often find yourself wanting to loop over the contents of a list and do something with each item in it.
 
-Let's say we want to tell the player where all the cows are around them
-Now, you can use the repeat command for this by doing this...
+Let's say we want to tell the player where all the cows around them are located.
+With the repeat command, you might do something like this:
 ```dscript_red
 my_cow_task:
     type: task
@@ -87,7 +87,7 @@ However, there is a much better way using the `foreach` command.
     - (will loop per item in list)
 ```
 
-Now lets see how we can simplify that script with a `foreach` loop
+Here's how we can simplify that script with a `foreach` loop:
 
 ```dscript_green
 my_cow_task:
@@ -98,8 +98,8 @@ my_cow_task:
         - playeffect effect:fireworks_spark at:<[cow].location> visibility:50 quantity:100 data:0 offset:3
 ```
 
-Much better. Most notably, we don't have have to get the item `cow` from the list, its already defined.
-In addition, foreach has a built-in definition of `<[loop_index]>` that keeps track of how many times it has looped.
+Much better. Most notably, we don't have have to get the item `cow` from the list: it's already defined.
+Additionally, foreach has a built-in definition of `<[loop_index]>` that keeps track of how many times it has looped.
 
 For instance...
 ```dscript_green
@@ -117,15 +117,13 @@ You can try these examples in-game via `/ex run my_cow_task` while standing near
 
 ### The While Command
 
-There may be a few times where neither the repeat nor the foreach command work, because you don't know how many times it should loop, you just have a condition of when to stop.
-
-This can be thought of as an `if` command but as a loop. The difference is that the `if` command simply runs the block if its true, the `while` command run the block as long as the condition is true 
+You might encounter a situation where you don't know how many times you're going to loop, but you know when to stop. You can achieve this with a while loop. It's like an `if` command that runs the block below it as long as the condition is true.
 ```dscript_blue
 - while (condition):
     - (commands here)
     - (will loop while condition is true)
 ```
-The condition format is the same format as the `if` command, see that guide page for more details on the structure. [if command](/guides/basics/if-command)
+The condition format is the same as the `if` command; [see that guide page](/guides/basics/if-command) for more details on its structure.
 
 Now, lets see an example of a `while` loop...
 
@@ -139,17 +137,17 @@ my_move_task:
         - wait 2s
 ```
 
-You can try this in-game via `/ex run my_move_task`. This task when run will keep telling you to move away until you have moved 3 blocks away from when you first were.
+You can try this in-game via `/ex run my_move_task`. This task, when run, will repeatedly tell you to move away until you have moved 3 blocks from where you first were.
 
-Just like the `repeat` command we have a `wait` command at the end of the loop. While it can be optional for `repeat` loops to use this, it is almost always required for `while` loops. Without it it will try to check as much as it can all at the same time, which can cause the server to crash.
+Just like the `repeat` command, we have a `wait` command at the end of the loop. While it's only useful in some cases with `repeat` loops, you should almost always use it with `while` loops. Without one, it will try to check the condition as often as possible all at the same time, which can cause the server to crash.
 
-As a word of warning, `while` loops should be avoided if possible. It is very easy to make what is known as an infinite loop, as in the loop will never have a chance to stop. Once its running, it is very hard to force it to stop beyond just stopping the server.
+A word of warning: `while` loops should be avoided if possible. It is very easy to make what is known as an "infinite loop", as in a loop that never has a chance to stop. Once it's running, it's difficult to force it to stop beyond just stopping the server.
 
 ### Stop The Loop
 
-Sometimes in loops you only want to keep looping until you reach a certain point, however not necessarily stop the script. While `stop` is used to stop scripts entirely, `repeat/foreach/while stop` is used to stop the relevant loop
+Sometimes in loops you only want to keep looping until you reach a certain point. However, you may not want to stop the script entirely. While `stop` is used to stop scripts, `repeat/foreach/while stop` is used to stop the relevant loop.
 
-For instance in the first example we had, if we wanted to stop sending lightning if the player had less than 5 health we would do as follows
+For instance, in the first example, if we wanted to stop striking lightning if the player had less than 5 health, we would do as follows:
 
 ```dscript_green
 my_lightning_task:
@@ -163,7 +161,7 @@ my_lightning_task:
         - wait 1s
     - narrate "no more lightning"
 ```
-Take note, only the loop stops, the end `narrate` line still runs.
+Since we're using `repeat stop`, only the loop ends; the end `narrate` line still runs.
 
 It can also be used in `foreach` loops. For instance, if we wanted to stop looping if we found a baby cow in the example above
 
@@ -181,7 +179,7 @@ my_cow_task:
 
 ### Next Please
 
-There are times where you want to skip to the next loop without running the rest of the current loop. For that you use `repeat/foreach/while next`
+There are times when you want to skip to the next loop without finishing the current iteration. For this, you would use `repeat/foreach/while next`.
 
 Take the `foreach` example we had, lets say we want to skip over all baby cows. While you can put the whole block inside an `if` command like so...
 ```dscript_green
