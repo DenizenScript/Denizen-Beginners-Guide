@@ -1,6 +1,11 @@
 Do That Again: Loops (PARTIAL)
 --------------------
 
+```eval_rst
+.. contents:: Table of Contents
+    :local:
+```
+
 ### What Is A 'Loop'?
 
 All the scripts up until now had a single directional flow from top to bottom. An exact order was listed and were executed one after the other, with maybe skipping a few if you had an `if` command. However, what if you wanted to do that script you just wrote again? Well you have a few options. The most straightforward approach would simply be writing that same bit of script again. While this may work if you only wanted it repeated twice, or if there is only one line you want repeated, this can get out of hand really quickly.
@@ -14,47 +19,47 @@ Luckily you don't have to do this, Denizen has 3 different loop commands that re
 
 The most basic use of a loop is to simply just do a block of script again, in which the repeat command is best suited for.
 The basic format of a repeat command is
-```
+```dscript_blue
 - repeat (number of times):
     - (commands here)
     - (will loop number of times)
 ```
 
-This structure is similar to the `if` command, where you end the `repeat` command with a `:`. The commands that get looped need to also be indented in to let denizen know that these are the commands you want to be looped.
+This structure is similar to the `if` command, where you end the `repeat` command with a `:`. The commands that get looped need to also be indented in to let Denizen know that these are the commands you want to be looped.
 
 Here is what it would look like in a real script...
 ```dscript_green
-my_zap_task:
+my_lightning_task:
     type: task
     script:
     - repeat 5:
         - strike <player.location>
-        - narrate "you have been zapped!"
+        - narrate "you have been struck by lightning!"
         - wait 1s
-    - narrate "no more zaps"
+    - narrate "no more lightning"
 ```
 
-This would in essence loop 5 times, where the player would be stricken by lightning 5 times as well as been told "you have been zapped!" 5 times.
-There is also a `wait` command at the end of the block. This pauses the script for a certain amount of time (in this example 1 second). This will be discussed more in a later guide. For a now its here so that you are not zapped 5 times at the same time.
+This would in essence loop 5 times, where the player would be struck by lightning 5 times as well as be told "you have been struck by lightning!" 5 times.
+There is also a `wait` command at the end of the block. This pauses the script for a certain amount of time (in this example 1 second). This is important in a lot of cases so that it does not happen all at once. Without the `wait`, all 5 loops will run at the same time.
 
-Once the loop is done, it then proceeds to continue with the rest of the script - ending with "no more zaps"
+Once the loop is done, it then proceeds to continue with the rest of the script - ending with "no more lightning"
 
-Now what if you wanted to let the player know how many times they have been zapped? Granted you could put in a definition that counts up each loop, but `repeat` already does that for you. All you need to add is the `as:` argument to the repeat command like so.
+Now what if you wanted to let the player know how many times they have been struck? Granted you could put in a definition that counts up each loop, but `repeat` already does that for you. All you need to add is the `as:` argument to the repeat command like so.
 
 ```dscript_green
-my_zap_task:
+my_lightning_task:
     type: task
     script:
     - repeat 5 as:count:
         - strike <player.location>
-        - narrate "you have been zapped <[count]> times!"
+        - narrate "you have been struck by lightning <[count]> times!"
         - wait 1s
-    - narrate "no more zaps"
+    - narrate "no more lightning"
 ```
 
-The narrate would now say "you have been zapped 1 times!", "you have been zapped 2 times!", etc... up to 5.
+The narrate would now say "you have been struck by lightning 1 times!", "you have been struck by lightning 2 times!", etc... up to 5.
 
-You can try these examples in-game via `/ex run my_zap_task`.
+You can try these examples in-game via `/ex run my_lightning_task`.
 
 ### The Foreach Command
 
@@ -76,7 +81,7 @@ my_cow_task:
 However, there is a much better way using the `foreach` command.
 
 `foreach` has the same structure as repeat
-```
+```dscript_blue
 - foreach (some list) as:(definition to store item):
     - (commands here)
     - (will loop per item in list)
@@ -115,12 +120,12 @@ You can try these examples in-game via `/ex run my_cow_task` while standing near
 There may be a few times where neither the repeat nor the foreach command work, because you don't know how many times it should loop, you just have a condition of when to stop.
 
 This can be thought of as an `if` command but as a loop. The difference is that the `if` command simply runs the block if its true, the `while` command run the block as long as the condition is true 
-```
+```dscript_blue
 - while (condition):
     - (commands here)
     - (will loop while condition is true)
 ```
-The condition format is the same format as the `if` command, see that guide page for more details on the structure.
+The condition format is the same format as the `if` command, see that guide page for more details on the structure. [if command](/guides/basics/if-command)
 
 Now, lets see an example of a `while` loop...
 
@@ -138,7 +143,7 @@ You can try this in-game via `/ex run my_move_task`. This task when run will kee
 
 Just like the `repeat` command we have a `wait` command at the end of the loop. While it can be optional for `repeat` loops to use this, it is almost always required for `while` loops. Without it it will try to check as much as it can all at the same time, which can cause the server to crash.
 
-As a word of warning, `while` loops should be avoid if possible. It is very easy to make what is known as an infinite loop, in that the loop will never have a chance to stop. Once its running, it is very hard to force it to stop beyond just stopping the server.
+As a word of warning, `while` loops should be avoided if possible. It is very easy to make what is known as an infinite loop, as in the loop will never have a chance to stop. Once its running, it is very hard to force it to stop beyond just stopping the server.
 
 ### Stop The Loop
 
@@ -147,16 +152,16 @@ Sometimes in loops you only want to keep looping until you reach a certain point
 For instance in the first example we had, if we wanted to stop sending lightning if the player had less than 5 health we would do as follows
 
 ```dscript_green
-my_zap_task:
+my_lightning_task:
     type: task
     script:
     - repeat 5 as:count:
         - strike <player.location>
-        - narrate "you have been zapped <[count]> times!"
+        - narrate "you have been struck by lightning <[count]> times!"
         - if <player.health> < 5:
             - repeat stop
         - wait 1s
-    - narrate "no more zaps"
+    - narrate "no more lightning"
 ```
 Take note, only the loop stops, the end `narrate` line still runs.
 
