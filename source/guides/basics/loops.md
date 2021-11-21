@@ -5,9 +5,9 @@ Do That Again: Loops (PARTIAL)
 
 All the scripts up until now had a single directional flow from top to bottom. An exact order was listed and were executed one after the other, with maybe skipping a few if you had an `if` command. However, what if you wanted to do that script you just wrote again? Well you have a few options. The most straightforward approach would simply be writing that same bit of script again. While this may work if you only wanted it repeated twice, or if there is only one line you want repeated, this can get out of hand really quickly.
 
-Lukcily you dont have to do this, Denizen has 3 different loop commands that repeat a block of script:
+Luckily you don't have to do this, Denizen has 3 different loop commands that repeat a block of script:
 - `repeat` to repeat a block a set amount of times
-- `foreach` to repeate a block based on a list input
+- `foreach` to repeat a block based on a list input
 - `while` keep repeating a block until a condition is met
 
 ### The Repeat Command
@@ -30,10 +30,14 @@ my_zap_task:
     - repeat 5:
         - strike <player.location>
         - narrate "you have been zapped!"
+        - wait 1s
     - narrate "no more zaps"
 ```
 
-This would in essence loop 5 times, where the player would be striken by lightning 5 times as well as been told "you have been zapped!" 5 times. Once the loop is done, it then proceeds to continue with the rest of the script - ending with "no more zaps"
+This would in essence loop 5 times, where the player would be stricken by lightning 5 times as well as been told "you have been zapped!" 5 times.
+There is also a `wait` command at the end of the block. This pauses the script for a certain amount of time (in this example 1 second). This will be discussed more in a later guide. For a now its here so that you are not zapped 5 times at the same time.
+
+Once the loop is done, it then proceeds to continue with the rest of the script - ending with "no more zaps"
 
 Now what if you wanted to let the player know how many times they have been zapped? Granted you could put in a definition that counts up each loop, but `repeat` already does that for you. All you need to add is the `as:` argument to the repeat command like so.
 
@@ -44,6 +48,7 @@ my_zap_task:
     - repeat 5 as:count:
         - strike <player.location>
         - narrate "you have been zapped <[count]> times!"
+        - wait 1s
     - narrate "no more zaps"
 ```
 
@@ -88,7 +93,7 @@ my_cow_task:
         - playeffect effect:fireworks_spark at:<[cow].location> visibility:50 quantity:100 data:0 offset:3
 ```
 
-Much better. Most notably, we dont have have to get the item `cow` from the list, its already defined.
+Much better. Most notably, we don't have have to get the item `cow` from the list, its already defined.
 In addition, foreach has a built-in definition of `<[loop_index]>` that keeps track of how many times it has looped.
 
 For instance...
@@ -107,7 +112,7 @@ You can try these examples in-game via `/ex run my_cow_task` while standing near
 
 ### The While Command
 
-There may be a few times where neither the repeat nor the foreach command work, because you dont know how many times it should loop, you just have a condition of when to stop.
+There may be a few times where neither the repeat nor the foreach command work, because you don't know how many times it should loop, you just have a condition of when to stop.
 
 This can be thought of as an `if` command but as a loop. The difference is that the `if` command simply runs the block if its true, the `while` command run the block as long as the condition is true 
 ```
@@ -131,7 +136,7 @@ my_move_task:
 
 You can try this in-game via `/ex run my_move_task`. This task when run will keep telling you to move away until you have moved 3 blocks away from when you first were.
 
-Note that there is a `wait` command here. This is a command that tells the script to pause for a certain amount of time (2 seconds in this case) and will be discussed more later. However it is important to use for while loops, without it it will try to check as much as it can all at the same time, which can cause the server to crash.
+Just like the `repeat` command we have a `wait` command at the end of the loop. While it can be optional for `repeat` loops to use this, it is almost always required for `while` loops. Without it it will try to check as much as it can all at the same time, which can cause the server to crash.
 
 As a word of warning, `while` loops should be avoid if possible. It is very easy to make what is known as an infinite loop, in that the loop will never have a chance to stop. Once its running, it is very hard to force it to stop beyond just stopping the server.
 
@@ -139,7 +144,7 @@ As a word of warning, `while` loops should be avoid if possible. It is very easy
 
 Sometimes in loops you only want to keep looping until you reach a certain point, however not necessarily stop the script. While `stop` is used to stop scripts entirely, `repeat/foreach/while stop` is used to stop the relevant loop
 
-For instance in the first example we had, if we wanted to stop sending ligtning if the player had less than 5 health we would do as follows
+For instance in the first example we had, if we wanted to stop sending lightning if the player had less than 5 health we would do as follows
 
 ```dscript_green
 my_zap_task:
@@ -150,6 +155,7 @@ my_zap_task:
         - narrate "you have been zapped <[count]> times!"
         - if <player.health> < 5:
             - repeat stop
+        - wait 1s
     - narrate "no more zaps"
 ```
 Take note, only the loop stops, the end `narrate` line still runs.
