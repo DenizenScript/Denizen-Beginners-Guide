@@ -1,4 +1,4 @@
-Do That Again: Loops (PARTIAL)
+Do That Again: Loops
 --------------------
 
 ```eval_rst
