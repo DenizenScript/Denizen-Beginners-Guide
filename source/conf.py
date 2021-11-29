@@ -15,7 +15,7 @@ version = '0.4'
 release = '0.4'
 
 # General Config
-extensions = ['recommonmark']
+extensions = ['recommonmark', 'sphinx_rtd_dark_mode']
 templates_path = ['_templates']
 source_suffix = '.md'
 master_doc = 'index'
