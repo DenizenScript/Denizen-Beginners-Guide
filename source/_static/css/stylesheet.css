@@ -101,6 +101,10 @@ div[class^="highlight-dscript"] .o { /* operator: the . in tags */
     font-style: normal;
 }
 /* Dark Theme */
+html[data-theme="dark"] .highlighted {
+    background: #403404 !important;
+    box-shadow: 0 0 0 2px #403404;
+}
 html[data-theme="dark"] a code {
     color: #249ee8 !important;
 }

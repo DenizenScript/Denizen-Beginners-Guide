@@ -38,7 +38,7 @@ npc_killquest:
 # if you make multiple NPCs with this script as a template, remember that you only need the format scripts *once* (unless you have it different per NPC)
 cchat:
     type: format
-    format: <&b><npc.name> <&f>to you<&co> <&2><text>
+    format: <&b><npc.name> <&f>to you<&co> <&2><[text]>
 
 # A clean but simple format for instructions given to the player by the script rather than by the NPC
 # (The Out-Of-Character clarification of what the NPC said In-Character).
@@ -46,7 +46,7 @@ instruction_format:
     type: format
     # Light Gray + Italic
     # Can also be written like <gray><italic>
-    format: <&7><&o>[<text><&7><&o>]
+    format: <&7><&o>[<[text]><&7><&o>]
 
 npc_killquest_interact:
     type: interact

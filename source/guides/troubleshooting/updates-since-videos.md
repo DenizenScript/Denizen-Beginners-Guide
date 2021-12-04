@@ -99,7 +99,7 @@ old_while_syntax:
 
 ```dscript_green
 new_while_syntax:
-    type:
+    type: task
     script:
     - narrate "Challenge: don't lose too much health!"
     - while <player.health> >= 10:
@@ -110,8 +110,8 @@ new_while_syntax:
 Note that this specific waiting-until-something style of logic has as well been replaced by a specialized command, `waituntil`, which can be used like so:
 
 ```dscript_green
-new_while_syntax:
-    type:
+waituntil_example:
+    type: task
     script:
     - narrate "Challenge: don't lose too much health!"
     - waituntil rate:1s <player.health> < 10
