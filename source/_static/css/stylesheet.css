@@ -26,6 +26,18 @@ hr {
 .section ul {
     margin-bottom: 12px !important;
 }
+.highlight-dscript_green {
+    margin-left: -50px !important;
+    margin-right: -50px !important;
+}
+.highlight-dscript_blue {
+    margin-left: -50px !important;
+    margin-right: -50px !important;
+}
+.highlight-dscript_red {
+    margin-left: -50px !important;
+    margin-right: -50px !important;
+}
 .highlight-dscript_red pre {
     border: 1px solid #FF0000;
 }
@@ -43,6 +55,7 @@ hr {
 pre { /* Code blocks */
     background-color: #EEEEEE;
     white-space: pre-wrap !important;
+    font-size: 11px !important;
 }
 div[class^="highlight-dscript"] .s { /* string: "double quoted" */
     color: #0066FF;
