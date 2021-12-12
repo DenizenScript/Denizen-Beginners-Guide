@@ -36,7 +36,7 @@ In other cases, the error message will identify the rough problem but not necess
 
 Sometimes a problem is too confusing to figure out, other times you just need another set of eyes to look at your script to spot something obvious that you've merely glazed over.
 
-In these cases, the best place to be is [the Discord](https://discord.gg/Q6pZGSR). The Discord has an open support channel (`#denizen`) where you can ask for help from other Denizen users. It also has several chat bots that can search documentation (check `!help`), perform automatic script error-checking (use `!ds`), and much more in the bot usage channel (`#bot-spam`).
+In these cases, the best place to be is [the Discord](https://discord.gg/Q6pZGSR). The Discord has an open support channel (`#denizen`) where you can ask for help from other Denizen users. It also has several chat bots that can search documentation (check `!help`), and much more in the bot usage channel (`#bot-spam`).
 
 [![](images/thediscord.png)](https://discord.gg/Q6pZGSR)
 

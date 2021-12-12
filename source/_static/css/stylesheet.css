@@ -11,19 +11,11 @@ h1, h2 { /* Headers */
     border-bottom: 1px solid #CCCCCC;
     text-align: center;
 }
-.parens { /* Parentheticals */
-    color: #444444;
-    font-size: 92%;
-}
 a code {
     color: #2980B9 !important;
 }
 a:visited code {
     color: #9B59B6 !important;
-}
-pre { /* Code blocks */
-    background-color: #EEEEEE;
-    white-space: pre-wrap !important;
 }
 .rst-content code.literal { /* inline `code` */
     color: #000030;
@@ -34,6 +26,18 @@ hr {
 .section ul {
     margin-bottom: 12px !important;
 }
+.highlight-dscript_green {
+    margin-left: -50px !important;
+    margin-right: -50px !important;
+}
+.highlight-dscript_blue {
+    margin-left: -50px !important;
+    margin-right: -50px !important;
+}
+.highlight-dscript_red {
+    margin-left: -50px !important;
+    margin-right: -50px !important;
+}
 .highlight-dscript_red pre {
     border: 1px solid #FF0000;
 }
@@ -42,6 +46,16 @@ hr {
 }
 .highlight-dscript_blue pre {
     border: 1px solid #0000FF;
+}
+/* Light Theme */
+.parens { /* Parentheticals */
+    color: #444444;
+    font-size: 92%;
+}
+pre { /* Code blocks */
+    background-color: #EEEEEE;
+    white-space: pre-wrap !important;
+    font-size: 11px !important;
 }
 div[class^="highlight-dscript"] .s { /* string: "double quoted" */
     color: #0066FF;
@@ -99,4 +113,58 @@ div[class^="highlight-dscript"] .o { /* operator: the . in tags */
     font-weight: normal;
     font-style: normal;
 }
-
+/* Dark Theme */
+html[data-theme="dark"] .highlighted {
+    background: #403404 !important;
+    box-shadow: 0 0 0 2px #403404;
+}
+html[data-theme="dark"] a code {
+    color: #249ee8 !important;
+}
+html[data-theme="dark"] a:visited code {
+    color: #9B59B6 !important;
+}
+html[data-theme="dark"] p a:visited {
+    color: #9B59B6 !important;
+}
+html[data-theme="dark"] .parens { /* Parentheticals */
+    color: #808080;
+    font-size: 92%;
+}
+html[data-theme="dark"] pre { /* Code blocks */
+    background-color: #222222;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .s { /* string: "double quoted" */
+    color: #77BBF5;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .sb { /* string-backtick: 'single quoted' */
+    color: #88DDFF;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .nt { /* name-tag: <tag> */
+    color: #AAAAAA;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .gr { /* generic-error: %old_defs% */
+    color: #FFFFFF;
+    background-color: #440000;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .c1 { /* comment-single: #- code comment */
+    color: #DD5500;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .nv { /* name-variable: [brackets] */
+    color: #7777FF;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .nc { /* name-class: yaml keys */
+    color: #1155FF;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .ch { /* comment-hashbang: # +-- header comment */
+    color: #FF0000;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .c { /* comment: # regular comment */
+    color: #007700;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .k { /* keyword: - commandname */
+    color: #DD99FF;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .o { /* operator: the . in tags */
+    color: #EEEEFF;
+}
