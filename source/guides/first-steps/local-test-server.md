@@ -27,7 +27,7 @@ It's pretty simple! Let's go through the steps...
 
 **Fair warning** that this guide is focused on Windows PCs, as they are the most common (but will note differences for other OS's where applicable).
 
-- **Step 0: Install Java.** You might not already have Java installed on your PC - if not, you'll need to have it installed. You can download [OpenJDK 16 from here](https://adoptium.net/?variant=openjdk16). <span class="parens">(for Linux/Mac, just google how to download OpenJDK 16 for your specific OS/Distro)</span>. When installing, make sure to enable the options "Add to PATH" and "Set JAVA_HOME variable".
+- **Step 0: Install Java.** You might not already have Java installed on your PC - if not, you'll need to have it installed. You can download [OpenJDK 17 from here](https://adoptium.net/?variant=openjdk17). <span class="parens">(for Linux/Mac, just google how to download OpenJDK 17 for your specific OS/Distro)</span>. When installing, make sure to enable the options "Add to PATH" and "Set JAVA_HOME variable". Note that the correct Java version to install depends on your Minecraft server version. For Minecraft 1.18+ the preferred Java version is JDK 17.
 
 ![](images/javainstall.png)
 
@@ -41,7 +41,7 @@ Note also that many users like to rename the jar to `paper.jar` <span class="par
 
 ![](images/myserverfolder.png)
 
-- **Step 3: Make a launch script.** The simplest way to do this is to just open Notepad and create a file named `start.bat` (be sure to save as 'all files', not 'text documents'). In this file, put the following: `java -Xms1G -Xmx1G -jar paper.jar nogui` ... you can configure the specifics - the '1G' twice is how much RAM you want to give to the server <span class="parens">(`1G` means "One GigaByte of RAM", you can also type values like `2G` for 2 GigaBytes, `500M` for 500 MegaBytes, etc.)</span>, and 'paper.jar' is the name of the server jar file. <span class="parens">(On Linux or Mac, create a `start.sh` file and edit it with whatever your favorite text editor is. The command to include remains the same.)</span>
+- **Step 3: Make a launch script.** The simplest way to do this is to just open Notepad and create a file named `start.bat` (be sure to save as 'all files', not 'text documents'). In this file, put the following: `java -Xms1G -Xmx1G -jar paper.jar nogui` ... you can configure the specifics - the '1G' twice is how much RAM you want to give to the server <span class="parens">(`1G` means "One GigaByte of RAM", you can also type values like `2G` for 2 GigaBytes, `500M` for 500 MegaBytes, etc. If you change it, make sure to change both the 'Xms' and the 'Xmx' values.)</span>, and 'paper.jar' is the name of the server jar file. <span class="parens">(On Linux or Mac, create a `start.sh` file and edit it with whatever your favorite text editor is. The command to include remains the same.)</span>
 
 ![](images/startbat.png)
 

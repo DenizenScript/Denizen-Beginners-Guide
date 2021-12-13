@@ -12,6 +12,8 @@ This guide primarily, details how to correctly format your resource pack, and th
 
 ### Inside The Root Directory
 
+If you don't already have a resource pack: You can get to the `resourcepacks` directory by opening the Resource Packs menu in your Minecraft client and clicking on the "Open Pack Folder" button. Within there, you can create a new folder for your pack.
+
 Directory: `.minecraft/resourcepacks/MyResourcePack/`
 
 The main directory within your resource pack folder should contain both:
@@ -37,11 +39,11 @@ Here is what it looks like inside:
 ##### pack.mcmeta File Key: `pack_format`
 
 This is the indicator to Minecraft what version this pack is.
-- `1` indicates versions `1.6` - `1.8`.
-- `2` indicates versions `1.9` - `1.10`,
-- `3` indicates versions `1.11` - `1.12`,
-- `4` indicates versions `1.13` - `1.14`,
-- `5` indicates versions `1.15` - `1.16`.
+- `5` indicates version `1.15`.
+- `6` indicates version `1.16.5`,
+- `7` indicates version `1.17`,
+- `8` indicates version `1.18`
+- For more version options, refer to [This minecraft wiki page](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_resource_pack#Formatting_pack.mcmeta)
 
 ##### pack.mcmeta File Key: `description`
 
@@ -250,7 +252,7 @@ Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
 The sound format Minecraft uses is `.ogg`.
 Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
 For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
-You can find Minecraft's default resource sound index here: `/.minecraft/assets/indexes/1.15.json`; where `1.15` is the versions we're using in this guide.
+You can find Minecraft's default resource sound index here: `.minecraft/assets/indexes/1.18.json`; where `1.18` is the Minecraft version to use.
 All of your sound files <span class="parens">('.ogg' files)</span> should be saved in this directory.
 
 ### Putting It Together: Using Denizen With Your New Pack
