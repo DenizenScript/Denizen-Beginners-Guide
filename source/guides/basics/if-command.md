@@ -37,13 +37,15 @@ magic_healing_bell:
         on player right clicks bell:
         - if <player.health_percentage> < 25:
             - heal
-            - actionbar "<green>The bell has healed you!"
+            - actionbar "<&[base]>The bell has healed you!"
 ```
 
 ![](images/magic_bell.png)
 
 This handy sample script will instantly heal a player that clicks on a bell block, but *only if* their health is dangerously low.
 <span class="parens">(We'll expand on this sample script throughout this section, and when we get to the [Flags](flags) section we'll revisit this sample script to add a rate limit, so players can only heal once every few minutes).</span>
+
+This script also displays an *actionbar* message to let the player know they've been healed, using the base text color defined in your Denizen `config.yml` file.
 
 ### Conditions
 
@@ -120,7 +122,7 @@ magic_healing_bell:
         - if <player.health_percentage> > 25:
             - stop
         - heal
-        - actionbar "<green>The bell has healed you!"
+        - actionbar "<&[base]>The bell has healed you!"
 ```
 
 By using the `stop` command inside an `if`, we are able to stop the script from running the heal command if a player's health is greater than 25%.
@@ -163,9 +165,9 @@ magic_healing_bell:
         on player right clicks bell:
         - if <player.health_percentage> < 25:
             - heal
-            - actionbar "<green>The bell has healed you!"
+            - actionbar "<&[base]>The bell has healed you!"
         - else:
-            - actionbar "<red>The bell does nothing: you're healthy enough already."
+            - actionbar "<&[error]>The bell does nothing: you're healthy enough already."
 ```
 
 The existing script healed players with less than 25% health. Now it will also give a message to players that are healthy enough, so they don't get confused when the bell doesn't do anything.
@@ -180,12 +182,12 @@ magic_healing_bell:
     events:
         on player right clicks bell:
         - if <player.health_percentage> > 90:
-            - actionbar "<red>The bell does nothing: you're healthy enough already."
+            - actionbar "<&[error]>The bell does nothing: you're healthy enough already."
             - stop
         - if <player.health_percentage> < 25:
-            - actionbar "<green>The bell has saved you!"
+            - actionbar "<&[base]>The bell has saved you!"
         - else:
-            - actionbar "<green>The bell has healed you!"
+            - actionbar "<&[base]>The bell has healed you!"
         - heal
 ```
 
@@ -199,13 +201,13 @@ magic_healing_bell:
     events:
         on player right clicks bell:
         - if <player.health_percentage> > 90:
-            - actionbar "<red>The bell does nothing: you're healthy enough already."
+            - actionbar "<&[error]>The bell does nothing: you're healthy enough already."
             - stop
         - if <player.health_percentage> < 25:
-            - actionbar "<green>The bell has saved you!"
+            - actionbar "<&[base]>The bell has saved you!"
             - heal
             - stop
-        - actionbar "<green>The bell has healed you!"
+        - actionbar "<&[base]>The bell has healed you!"
         - heal
 ```
 
@@ -247,11 +249,11 @@ magic_healing_bell:
     events:
         on player right clicks bell:
         - if <player.health_percentage> > 90:
-            - actionbar "<red>The bell does nothing: you're healthy enough already."
+            - actionbar "<&[error]>The bell does nothing: you're healthy enough already."
         - else if <player.health_percentage> < 25:
-            - actionbar "<red>The bell can't save you: you're too far gone."
+            - actionbar "<&[error]>The bell can't save you: you're too far gone."
         - else:
-            - actionbar "<green>The bell has healed you!"
+            - actionbar "<&[base]>The bell has healed you!"
             - heal
 ```
 

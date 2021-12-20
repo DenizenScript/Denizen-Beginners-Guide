@@ -84,6 +84,8 @@ You might notice that if the player inputs anything other than a command exactly
 
 Notice we have now also updated the `usage` text. While this doesn't provide any actual purpose to the script, it is good to keep the documentation accurate.
 
+You'll also notice that the `narrate` command makes use of multiple colors <span class="parens">(of the standard colors selected in your Denizen `config.yml` file)</span> to make the key parts of the message clearly stand out. Little touches like this go a long way in making your commands friendly to players.
+
 #### Handling Player Player Arguments
 
 A common feature of many commands is being able to do something to someone else, and as such you would need to pass in their name. For instance with our warp command we may want the functionality of being able to warp someone else instead of just yourself.
