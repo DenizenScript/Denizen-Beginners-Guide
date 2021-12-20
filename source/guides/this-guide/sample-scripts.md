@@ -32,6 +32,17 @@ my_changeable_script:
 
 Scripts that are good but need changes to work have a blue outline. These scripts usually demonstrate a syntax or contain only part of a script. If you want to try one, you'll have to fill in the missing pieces before loading it in.
 
+### Imperfect Scripts
+
+```dscript_yellow
+my_imperfect_script:
+    type: task
+    script:
+    - narrate "ur flag is <player.flag[waffle]> unless <player.has_flag[waffle]> is false oopsie"
+```
+
+Imperfect scripts have a green outline. These scripts are valid for learning material but shouldn't be used as-is.
+
 ### Bad Scripts
 
 ```dscript_red

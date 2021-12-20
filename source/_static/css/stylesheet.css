@@ -30,6 +30,10 @@ hr {
     margin-left: -50px !important;
     margin-right: -50px !important;
 }
+.highlight-dscript_yellow {
+    margin-left: -50px !important;
+    margin-right: -50px !important;
+}
 .highlight-dscript_blue {
     margin-left: -50px !important;
     margin-right: -50px !important;
@@ -40,6 +44,9 @@ hr {
 }
 .highlight-dscript_red pre {
     border: 1px solid #FF0000;
+}
+.highlight-dscript_yellow pre {
+    border: 1px solid #FFFF00;
 }
 .highlight-dscript_green pre {
     border: 1px solid #00FF00;

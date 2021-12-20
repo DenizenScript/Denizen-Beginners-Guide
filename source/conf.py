@@ -91,12 +91,16 @@ class dScriptLexerRed(RegexLexer):
 class dScriptLexerGreen(RegexLexer):
     name = 'dscript_green'
     tokens = reusable_tokens
+class dScriptLexerYellow(RegexLexer):
+    name = 'dscript_yellow'
+    tokens = reusable_tokens
 class dScriptLexerBlue(RegexLexer):
     name = 'dscript_blue'
     tokens = reusable_tokens
 
 lexers['dscript_red'] = dScriptLexerRed(startinline=True)
 lexers['dscript_green'] = dScriptLexerGreen(startinline=True)
+lexers['dscript_yellow'] = dScriptLexerYellow(startinline=True)
 lexers['dscript_blue'] = dScriptLexerBlue(startinline=True)
 
 # For markdown
