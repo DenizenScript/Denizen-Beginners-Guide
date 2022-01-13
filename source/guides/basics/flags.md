@@ -69,7 +69,7 @@ This script will keep a running count of how many iron ore blocks the player has
 
 ![](images/ore_counter.gif)
 
-You can use the 'clear' data action, marked with a `!` symbol, to remove a flag at any time. After using the script example above, try doing `/ex flag player ores_broken:!` to remove your own iron ore counter flag, then break another iron ore block. If all went went, you will see the flag tag fills with a value of `1` <span class="parens">(indicating that as far as the script knows, this is the first iron ore you've ever mined)</span>.
+You can use the 'clear' data action, marked with a `!` symbol, to remove a flag at any time. After using the script example above, try doing `/ex flag player ores_broken:!` to remove your own iron ore counter flag, then break another iron ore block. If all went well, you will see the flag tag fills with a value of `1` <span class="parens">(indicating that as far as the script knows, this is the first iron ore you've ever mined)</span>.
 
 ### Do You Have This Flag?
 

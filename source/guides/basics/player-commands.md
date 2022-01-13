@@ -82,7 +82,7 @@ To break down what's going on:
 
 You might notice that if the player inputs anything other than a command exactly the way we wanted, the script will break. More on how to deal with this farther down.
 
-Notice we have now also updated the `usage` text. While this doesn't provide any actual purpose to the script, it is good to keep the documentation accurate.
+Notice we have now also updated the `usage` text. While this doesn't affect how the script actually operates, it is good to keep the documentation accurate.
 
 You'll also notice that the `narrate` command makes use of multiple colors <span class="parens">(of the standard colors selected in your Denizen `config.yml` file)</span> to make the key parts of the message clearly stand out. Little touches like this go a long way in making your commands friendly to players.
 

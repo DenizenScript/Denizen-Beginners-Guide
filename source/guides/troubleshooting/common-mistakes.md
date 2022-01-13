@@ -398,7 +398,7 @@ A related part of this system that is worth thinking about, is that players in c
 dangerous_powertools:
     type: world
     events:
-        on player right clicks block with:powertool_item:
+        after player right clicks block with:powertool_item:
         - execute as_server <player.item_in_hand.flag[powertool_command]>
 
 powertool_item:

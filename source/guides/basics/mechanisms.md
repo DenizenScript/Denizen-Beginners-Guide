@@ -215,7 +215,7 @@ The above script, when a player clicks open air while holding sand, launches `fa
 pumpkin_meloner:
     type: world
     events:
-        on player right clicks pumpkin_stem with:golden_hoe:
+        after player right clicks pumpkin_stem with:golden_hoe:
         - modifyblock <context.location> melon_stem[age=7]
 ```
 

@@ -9,7 +9,7 @@ from recommonmark.transform import AutoStructify
 
 # Project Info
 project = "Denizen Beginner's Guide"
-copyright = '2019-2021 The DenizenScript Team'
+copyright = '2019-2022 The DenizenScript Team'
 author = 'The DenizenScript Team'
 version = '0.4'
 release = '0.4'

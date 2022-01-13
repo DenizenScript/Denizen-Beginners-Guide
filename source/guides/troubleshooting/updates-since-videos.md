@@ -14,6 +14,8 @@ In the tutorial videos, Notepad++ was displayed as the script editor to use. Thi
 
 For more information, refer to the page on [Setting Up The Script Editor](/guides/first-steps/script-editor).
 
+Note that as part of this, the `.yml` file extension is no longer used. Instead, use `.dsc`.
+
 ### We're on Discord Now
 
 The tutorial videos showcase some interactions with a bot on IRC - if you've tried to reach this IRC, you've already seen the messages that we moved to Discord. You're probably also aware of that if you got to this guide.

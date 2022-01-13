@@ -34,7 +34,7 @@ Let's see how this might look in a real script...
 magic_healing_bell:
     type: world
     events:
-        on player right clicks bell:
+        after player right clicks bell:
         - if <player.health_percentage> < 25:
             - heal
             - actionbar "<&[base]>The bell has healed you!"
@@ -118,7 +118,7 @@ You will very often see this in real scripts in a slightly different form, but a
 magic_healing_bell:
     type: world
     events:
-        on player right clicks bell:
+        after player right clicks bell:
         - if <player.health_percentage> > 25:
             - stop
         - heal
@@ -162,7 +162,7 @@ Let's make use of an else in our magic bell script...
 magic_healing_bell:
     type: world
     events:
-        on player right clicks bell:
+        after player right clicks bell:
         - if <player.health_percentage> < 25:
             - heal
             - actionbar "<&[base]>The bell has healed you!"
@@ -180,7 +180,7 @@ Consider this script:
 magic_healing_bell:
     type: world
     events:
-        on player right clicks bell:
+        after player right clicks bell:
         - if <player.health_percentage> > 90:
             - actionbar "<&[error]>The bell does nothing: you're healthy enough already."
             - stop
@@ -199,7 +199,7 @@ If we didn't use an `else` command here, we would have had to do this:
 magic_healing_bell:
     type: world
     events:
-        on player right clicks bell:
+        after player right clicks bell:
         - if <player.health_percentage> > 90:
             - actionbar "<&[error]>The bell does nothing: you're healthy enough already."
             - stop
@@ -247,7 +247,7 @@ How might that go in real usage?
 magic_healing_bell:
     type: world
     events:
-        on player right clicks bell:
+        after player right clicks bell:
         - if <player.health_percentage> > 90:
             - actionbar "<&[error]>The bell does nothing: you're healthy enough already."
         - else if <player.health_percentage> < 25:
