@@ -24,7 +24,7 @@ fancy_stick:
 ```
 In [the script editor](/guides/first-steps/script-editor), you can simply type `item` and use tab completion to generate the basic template of an item script at any time.
 
-An item script container has the type set to `item`. You also need to give it a valid existing Minecraft material for your item to be based off of, for example here we are using a stick.
+An item script container has the type set to `item`. You also need to give it a valid existing Minecraft material for your item to be based off of; for example here we are using a stick.
 
 While not strictly required, most item script will also have a custom display name and custom lore. The display name works similarly to other container keys, the lore takes in a list as opposed to a single argument. Each line of lore is given on a new line prepended by a `-` <span class="parens">(this is similar, but should not be confused with, how commands look)</span>.
 
@@ -36,7 +36,7 @@ You can get this item in-game by typing `/ex give fancy_stick`
 
 There are several other properties that can be added to item scripts.
 
-As an example this would be how you would and enchantments:
+As an example this would be how you would add enchantments:
 ```dscript_green
 fancy_sword:
     type: item
@@ -46,7 +46,7 @@ fancy_sword:
     - DAMAGE_UNDEAD:2
     - DURABILITY:3
 ```
-Note that the enchantment names do differ than the ones that display in game, the names to use can be found on [spigots page](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html)
+Note that the enchantment names do differ than the ones that display in game, the names to use can be found on [Spigot's page](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html)
 
 You can get this item in-game by typing `/ex give fancy_sword`
 
@@ -87,7 +87,7 @@ As a warning, changes to an item script do not get automatically applied to inst
 
 ### Using Items Elsewhere
 
-As demonstrated previously, you can simply just provide the name of the item script into the give command and denizen will give you a copy of that item. This applies also to anywhere that specific items can be referenced. For instance, lets say we want an event to listen for when someone specifically uses the `fancy_sword` to hit something else, we can simply just do the following:
+As demonstrated previously, you can simply just provide the name of the item script into the give command and denizen will give you a copy of that item. This applies also to anywhere that specific items can be referenced. For instance, let's say we want an event to listen for when someone specifically uses the `fancy_sword` to hit something else, we can simply just do the following:
 ```dscript_green
 fancy_sword_events:
     type: world
@@ -123,12 +123,12 @@ A few things to note:
 - The shaped recipe goes in this 3*3 grid with air taking up where you would want a specific empty spot
 - The recipe will not show up in the recipe book after crafting until you either reconnect or use the `resend_recipes` mechanism <span class="parens">(`/ex adjust <player> resend_recipes`)</span>
 
-You can try it out and see that you can now craft it
+You can try it out and see that you can now craft it:
 ![](images/fancy_sword-crafting.png)
 
-As mentioned above, there are more kinds of crafting. To cover them briefly an example would be given of how the input would look.
+As mentioned above, there are more kinds of crafting. To cover them briefly an example is given of how the input would look.
 
-shapeless - taking a list of items as input but doesnt care about shape:
+shapeless - taking a list of items as input but doesn't care about shape:
 ```dscript_blue
 type: shapeless
 input: obsidian|obsidian|iron_sword
