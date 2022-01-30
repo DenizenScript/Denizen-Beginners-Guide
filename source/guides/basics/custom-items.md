@@ -174,8 +174,25 @@ Things to note here:
 - Signed makes this a signed book, you can set this to false to leave it unsigned
 - Each line of text is a new page. You can insert new lines on a page using `<n>`
 
-This is can be given in a similar fashion as other item scripts, as well as used in place of an item just like item scripts.
+This is can be given in a similar fashion as other item scripts.
 You can test this out with `/ex give fancy_book`
+
+If you are looking to use this in events however, you would need to link it to an item script via the `book` key like so:
+```dscript_green
+fancy_book_item:
+    type: item
+    material: written_book
+    book: fancy_book
+```
+
+After than you can then use `fancy_book_item` in events such as:
+```dscript_green
+fancy_book_events:
+    type: world
+    events:
+        on player clicks block with:fancy_book_item:
+        - narrate "Opening the fancy book!!!"
+```
 
 ### Related Technical Docs
 
