@@ -129,30 +129,53 @@ You can try it out and see that you can now craft it
 As mentioned above, there are more kinds of crafting. To cover them briefly an example would be given of how the input would look.
 
 shapeless - taking a list of items as input but doesnt care about shape:
-```
+```dscript_blue
 type: shapeless
 input: obsidian|obsidian|iron_sword
 ```
 
 stonecutting - takes in only a single item on the stonecutter
-```
+```dscript_blue
 type: stonecutting
 input: iron_sword
 ```
 
 furnace/blast/smoker/campfire - smelting an item in the relevant block
-```
+```dscript_blue
 type: furnace
 input: iron_sword
 ```
 
 smithing - crafting an item on the smithing table, using 2 inputs (a base and an upgrade) as well as allowing to  keep enchantments and display names
-```
+```dscript_blue
 type: smithing
 base: iron_sword
 retains: enchantments|display
 upgrade: obsidian
 ```
+
+### Custom Books
+
+On related topic to item scripts, there are also book scripts. While they serve similar purpose as item scripts, they are their own unique container.
+A book script is structured as follows:
+```dscript_green
+fancy_book:
+    type: book
+    title: The Fanciest of Books
+    author: Steve
+    signed: true
+    text:
+    - There once was a player named steve who ate a potato<n><n>He liked it
+    - The end
+```
+
+Things to note here:
+- The author does not have to be anyone real, you can put in whatever you want
+- Signed makes this a signed book, you can set this to false to leave it unsigned
+- Each line of text is a new page. You can insert new lines on a page using `<n>`
+
+This is can be given in a similar fashion as other item scripts, as well as used in place of an item just like item scripts.
+You can test this out with `/ex give fancy_book`
 
 ### Related Technical Docs
 
