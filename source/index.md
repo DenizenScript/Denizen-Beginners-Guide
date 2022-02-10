@@ -39,4 +39,5 @@ See also the [Denizen homepage and links directory](https://denizenscript.com/).
     guides/troubleshooting/index
     guides/this-guide/index
     guides/non-denizen/index
+    guides/contributing/index
 ```
