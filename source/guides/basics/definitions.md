@@ -155,7 +155,7 @@ def_sample:
     script:
     - define current <player.health>
     - define goal 1
-    - if <player.inventory.contains.scriptname[healing_tool]>:
+    - if <player.inventory.contains_item[healing_tool]>:
         - define goal 20
     - narrate "Your health is <[current]>. Let's heal you to <[current].add[<[goal]>]>!"
     - heal <[goal]>
