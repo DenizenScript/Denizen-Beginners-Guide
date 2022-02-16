@@ -15,7 +15,7 @@ Make sure you have the following tools installed on your machine:
 
 ### Building Spigot
 
-To build Denizen, you'll also need to build the supported versions of Spigot. These versions are 1.16.5, 1.17.1, and 1.18.1. To do this, Spigot provides a tool called [BuildTools](https://www.spigotmc.org/wiki/buildtools/).
+To build Denizen, you'll also need to build the supported versions of Spigot, which you can find on the [project README](https://github.com/DenizenScript/Denizen#readme). To do this, Spigot provides a tool called [BuildTools](https://www.spigotmc.org/wiki/buildtools/).
 
 Follow the setup instructions and then run the jar for the specified versions. You'll also need to use the `--remapped remapped-mojang` flag for 1.17.1 and 1.18.1.
 
