@@ -155,7 +155,7 @@ def_sample:
     script:
     - define current <player.health>
     - define goal 1
-    - if <player.inventory.contains.scriptname[healing_tool]>:
+    - if <player.inventory.contains_item[healing_tool]>:
         - define goal 20
     - narrate "Your health is <[current]>. Let's heal you to <[current].add[<[goal]>]>!"
     - heal <[goal]>
@@ -219,5 +219,4 @@ Note: most users, especially those learning from the Denizen for the first time,
 
 - [Define command doc](https://meta.denizenscript.com/Docs/Commands/define)
 - [definition tag](https://meta.denizenscript.com/Docs/Tags/definition)
-- [definition.exists tag](https://meta.denizenscript.com/Docs/Tags/definition.exists)
 - [data actions language doc](https://meta.denizenscript.com/Docs/Languages/data%20actions)

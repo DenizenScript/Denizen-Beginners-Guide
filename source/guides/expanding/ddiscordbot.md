@@ -283,11 +283,11 @@ buttons:
     script:
     - definemap buttons:
         1:
-            a: <discord_button.with[id].as[first].with[label].as[Click me!].with[style].as[primary]>
-            b: <discord_button.with[id].as[second].with[label].as[No, click me!].with[style].as[secondary]>
+            1: <discord_button.with[id].as[first].with[label].as[Click me!].with[style].as[primary]>
+            2: <discord_button.with[id].as[second].with[label].as[No, click me!].with[style].as[secondary]>
         2:
-            a: <discord_button.with[id].as[secondrow_first].with[label].as[This row's better!].with[style].as[danger]>
-            b: <discord_button.with[id].as[https://denizenscript.com].with[label].as[This column's best!].with[style].as[link]>
+            1: <discord_button.with[id].as[secondrow_first].with[label].as[This row's better!].with[style].as[danger]>
+            2: <discord_button.with[id].as[https://denizenscript.com].with[label].as[This column's best!].with[style].as[link]>
     - ~discordmessage id:mybot channel:<server.flag[discord_botspam]> rows:<[buttons]> Buttons!
 ```
 
