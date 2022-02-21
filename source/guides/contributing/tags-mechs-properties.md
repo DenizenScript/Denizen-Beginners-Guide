@@ -72,7 +72,7 @@ With this setup, the tag input is optional; you don't even need to use `[]`. If 
 
 We have a complete and functional tag, but there's one more thing we're missing: documentation! If you've ever wondered how the [meta documentation site](https://meta.denizenscript.com/) works, it actually looks through all the Denizen code and finds custom comments to parse. We call this **meta documentation** because it is documentation that exists next to, but not as a direct part of, the feature it's documenting. For tags, it look like this:
 
-```java
+```text
 // <--[tag]
 // @attribute <ObjectTag.tag_name>
 // @returns ObjectTag
@@ -90,7 +90,7 @@ Meta entries are stuck directly above the tag code. Here's what it would look li
 
 ```java
 // <--[tag]
-// @attribute <Player.uuid_uppercase[(<repeat>)]>
+// @attribute <PlayerTag.uuid_uppercase[(<repeat>)]>
 // @returns ElementTag
 // @description
 // Returns the UUID of the player in uppercase.
@@ -153,9 +153,9 @@ if (mechanism.matches("wrap_brackets") && mechanism.requireInteger()) {
 
 It's time we talk about **NMS** <span class="parens">(short for `net.minecraft.server`, the core Minecraft server package)</span>. "NMS" code in Denizen is generally used any time the Spigot API does not support a feature, or code must be written differently depending on the Minecraft version. In the case of item display names, the Spigot API has a method for display names that improperly handles advanced text features <span class="parens">(for example, alternate fonts)</span> and as such a special NMS assisted implementation is used instead in Denizen.
 
-Denizen provides NMS tooling through the class `NMSHandler` and its attached sub-classes. The specific class we want to access is `ItemHelper`, which can be accessed via `NMSHandler.getItemHelper()`. We can then use `setDisplayName(ItemTag)` and `setDisplayName(ItemTag, String)` to achieve what we want.
+Denizen provides NMS tooling through the class `NMSHandler` and its attached sub-classes. The specific class we want to access is `ItemHelper`, which can be accessed via `NMSHandler.getItemHelper()`. We can then use `getDisplayName(ItemTag)` and `setDisplayName(ItemTag, String)` to achieve what we want.
 
-Going back to the item mechanism - it's a simple call to `getDisplayName()` to get the display string. After that, we can just use string concatenation. Here's our final implementation:
+Going back to the item mechanism - it's a simple call to those two methods, and some string concatenation. Here's our final implementation:
 
 ```java
 if (mechanism.matches("wrap_brackets") && mechanism.requireInteger()) {
@@ -177,7 +177,7 @@ Remember that you'll need to use the [`inventory`](https://meta.denizenscript.co
 
 Mechanisms also have meta entries! Try to fill out one on your own based on this template:
 
-```java
+```text
 // <--[mechanism]
 // @object ObjectTag
 // @name mech_name
