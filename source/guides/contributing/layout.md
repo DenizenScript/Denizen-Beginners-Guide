@@ -6,7 +6,7 @@ Denizen's Project Layout
     :local:
 ```
 
-**Denizen** is a plugin for Minecraft servers that parses and interprets a scripting language called **DenizenScript**. The most popular implementation of Denizen is the Spigot implementation, which is the jar you've most likely downloaded many times. As of the time of writing, it is the *only* maintained impl.
+**Denizen** is a plugin for Minecraft servers that parses and interprets a scripting language called **DenizenScript**. The most popular implementation of Denizen is the Spigot implementation, which is the jar you've most likely downloaded many times. At the time of writing, it is the *only* maintained implementation.
 
 Any Denizen implementation depends on **DenizenCore**, which is the main set of tools that powers every language feature. It includes all content that isn't implementation-specific, such as basic ElementTag manipulation and data script containers.
 

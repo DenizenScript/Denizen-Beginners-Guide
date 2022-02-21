@@ -1,5 +1,5 @@
-Tags, Mechs, and Properties
----------------------------
+Tags, Mechanisms, and Properties
+--------------------------------
 
 ```eval_rst
 .. contents:: Table of Contents
@@ -20,7 +20,7 @@ tagProcessor.registerTag(ElementTag.class, "tag_name", (attribute, object) -> {
 });
 ```
 
-Let's explain that lambda in more detail. The `attribute` parameter represents the tag itself. For example, you can access the parameter with `attribute.getParam()`. When things go wrong, you'll call `attribute.echoError("...")` and return null.
+Let's explain that lambda in more detail. The `attribute` parameter is an instance of the `Attribute` class which is a general utility object that contains all information about the tag being processed and a variety of helper methods and tools to use while processing the tag. For example, you can access the parameter with `attribute.getParam()`. When things go wrong, you'll call `attribute.echoError("...")` and return null.
 
 The `object` parameter is just the instance of the current class. This means that in the `PlayerTag` class, `object` would be a `PlayerTag`.
 
@@ -44,7 +44,7 @@ Put this into the `registerTags` method, build Denizen, and put the jar into you
 
 Let's mess with the player's UUID a bit more. We'll be editing our `uuid_uppercase` tag to take a boolean input that represents whether the UUID should be repeated once with a space in between.
 
-We can use the `attribute` parameter, which is an instance of the `Attribute` class, to check if the tag has input with `hasParam()`. If so, we can get the input as an element with `getParamElement()`. The `ElementTag` class has a variety of methods for returning different primitive values depending on its internal value; we can get the boolean input by calling `asBoolean()`.
+We can use the `attribute` parameter to check if the tag has input with `hasParam()`. If so, we can get the input as an element with `getParamElement()`. The `ElementTag` class has a variety of methods for returning different primitive values depending on its internal value; we can get the boolean input by calling `asBoolean()`.
 
 The above logic can be turned into one if statement like so:
 
@@ -70,7 +70,7 @@ With this setup, the tag input is optional; you don't even need to use `[]`. If 
 
 ### Documenting Tags: Meta Entries
 
-We have a complete and functional tag, but there's one more thing we're missing: documentation! If you've ever wondered how the [meta documentation site](https://meta.denizenscript.com/) works, it actually looks through all the Denizen code and finds custom comments to parse. We call these comments **meta entries**, and for tags, they look like this:
+We have a complete and functional tag, but there's one more thing we're missing: documentation! If you've ever wondered how the [meta documentation site](https://meta.denizenscript.com/) works, it actually looks through all the Denizen code and finds custom comments to parse. We call this **meta documentation** because it is documentation that exists next to, but not as a direct part of, the feature it's documenting. For tags, it look like this:
 
 ```java
 // <--[tag]
@@ -82,7 +82,7 @@ We have a complete and functional tag, but there's one more thing we're missing:
 // -->
 ```
 
-Note that "attribute" is just a legacy term for tag. Keep in mind that this needs to display exactly how the tag should be used, so if the tag takes input, you'll need to account for it. The `@mechanism` key is optional; if present, it means that the supplied mechanism is the direct counterpart to the tag.
+Note that "attribute" is just another term for tag. Keep in mind that this needs to display exactly how the tag should be used, so if the tag takes input, you'll need to account for it. The `@mechanism` key is optional; if present, it means that the supplied mechanism is the direct counterpart to the tag.
 
 The `@returns` key is the tag type of the returned value. In our case, it's just `ElementTag`, since we're returning a piece of text. However, you'll need to be more specific at times; ElementTags can contain booleans, integers, and decimals. For those cases, we denote the specific type in parentheses: `ElementTag(Boolean)`, `ElementTag(Number)`, and `ElementTag(Decimal)` respectively. This specification also applies to ListTags: for example, if you had a list of locations, you'd denote the type as `ListTag(LocationTag)`.
 
@@ -105,11 +105,13 @@ tagProcessor.registerTag(ElementTag.class, "uuid_uppercase", (attribute, object)
 });
 ```
 
+Note that while meta-documentation is, as far as your IDE cares, just a text comment, it is in fact a very strict format that must be followed with care. This is because multiple services automatically parse and make use of this metadata. For example, if you forgot the `()` around the `<repeat>` in the above example, [the script editor](/guides/first-steps/script-editor) would display an error on any script that tried to use the tag without the parameter.
+
 ### Creating Mechanisms
 
-**NOTE**: This section could be subject to change in the near future. The tag registry system has proved to be very capable, and the mechanism matching system could be replaced with a registry of its own.
+**NOTE**: This section is subject to change in the future when mechanisms are updated to use a registration system akin to the tag registration system.
 
-Unlike tags, mechanisms undergo a series of checks to "match" the mechanism. This is done in the class definition's `adjust` method, which takes a `mechanism` parameter. Mechanisms have a variety of methods to match and check input, which we'll see shortly.
+Unlike modern tags, mechanisms undergo a series of checks to "match" the mechanism. This is done in the class definition's `adjust` method, which takes a `mechanism` parameter. Mechanisms have a variety of methods to match and check input, which we'll see shortly.
 
 To match a mechanism, use the `matches(String)` method and provide the mechanism name. To require a specific input type, you can make use of the methods starting with `require`, such as `requireBoolean()` and `requireObject(Object)`. Wrap these methods in an if statement to start a mechanism block.
 
@@ -123,14 +125,14 @@ Let's make a mechanism for an ItemTag called `wrap_brackets` that takes an integ
 
 The `ItemTag` class has an `Item` instance variable named `item`. Since `adjust` isn't a static method, we can use instance variables directly inside of mechanism code. The display name, lore, enchantments, etc. all fall under "item meta," which we can check exists with `hasItemMeta()` and get with `getItemMeta()`. In the case there isn't any existing item meta, we'll throw an error. 
 
-If you remember the "Don't Trust Users" speech, it *especially* applies here. You should account for every reasonable possibility when implementing features in Denizen. As you might expect, errors are quite common. 
+Generally, you should try to check for reasonably possible invalid inputs and give a clean error to explain the user. This is not strictly necessary, but it is encouraged to help ensure that Denizen remains friendly to new scripters, as unchecked errors may be hard to track down and fix for the inexperienced.
 
-There is an `echoError("...")` method for both `attribute` in tags and `mechanism` in mechanisms. That doesn't stop the code, however, so you'll need to return in both cases. Since you need to return something in a tag, you'll return `null`, as that's the default errored value.
+There is an `echoError("...")` method for both `attribute` in tags and `mechanism` in mechanisms. That doesn't stop the code, however, so you'll need to return in both cases. Since you need to return something in a tag, you'll return `null`, as that is understood by the tag system to indicate the tag was invalid.
 
 ```java
 if (mechanism.matches("wrap_brackets") && mechanism.requireInteger()) {
-    if (!item.hasItemMeta()) {
-        mechanism.echoError("This item doesn't have meta!");
+    if (getItemMeta() == null || !getItemMeta().hasDisplayName()) {
+        mechanism.echoError("This item doesn't have a display name!");
         return;
     }
 }
@@ -149,14 +151,16 @@ if (mechanism.matches("wrap_brackets") && mechanism.requireInteger()) {
 }
 ```
 
-It's time we talk about **NMS**, or net.minecraft.server. Denizen supports multiple Minecraft versions, and in order to keep code compatible, different methods are implemented via NMS helpers in their respective version module. The class we want to access is `ItemHelper`, which can be accessed via `NMSHandler.getItemHelper()`. We can then use `setDisplayName(ItemTag, String)` to achieve what we want.
+It's time we talk about **NMS** <span class="parens">(short for `net.minecraft.server`, the core Minecraft server package)</span>. "NMS" code in Denizen is generally used any time the Spigot API does not support a feature, or code must be written differently depending on the Minecraft version. In the case of item display names, the Spigot API has a method for display names that improperly handles advanced text features <span class="parens">(for example, alternate fonts)</span> and as such a special NMS assisted implementation is used instead in Denizen.
 
-Going back to the item meta - it's a simple call to `getDisplayName()` to get the display string. After that, we can just use string concatenation. Here's our final implementation:
+Denizen provides NMS tooling through the class `NMSHandler` and its attached sub-classes. The specific class we want to access is `ItemHelper`, which can be accessed via `NMSHandler.getItemHelper()`. We can then use `setDisplayName(ItemTag)` and `setDisplayName(ItemTag, String)` to achieve what we want.
+
+Going back to the item mechanism - it's a simple call to `getDisplayName()` to get the display string. After that, we can just use string concatenation. Here's our final implementation:
 
 ```java
 if (mechanism.matches("wrap_brackets") && mechanism.requireInteger()) {
-    if (!item.hasItemMeta()) {
-        mechanism.echoError("This item doesn't have meta!");
+    if (getItemMeta() == null || !getItemMeta().hasDisplayName()) {
+        mechanism.echoError("This item doesn't have a display name!");
         return;
     }
     int amount = mechanism.getValue().asInt();
@@ -164,14 +168,14 @@ if (mechanism.matches("wrap_brackets") && mechanism.requireInteger()) {
     for (int i = 0; i < amount; i++) {
         spaces.append(" ");
     }
-    String newName = "[" + spaces + item.getItemMeta().getDisplayName() + spaces + "]";
+    String newName = "[" + spaces + NMSHandler.getItemHelper().getDisplayName(item) + spaces + "]";
     NMSHandler.getItemHelper().setDisplayName(this, newName);
 }
 ```
 
 Remember that you'll need to use the [`inventory`](https://meta.denizenscript.com/Docs/Commands/inventory) command to adjust an item in your inventory. The item will also need to have its `display` property set beforehand <span class="parens">(that's what the error check is for)</span>.
 
-Mechanisms also have meta entries! Try and fill out one on your own based on this template:
+Mechanisms also have meta entries! Try to fill out one on your own based on this template:
 
 ```java
 // <--[mechanism]
@@ -179,7 +183,7 @@ Mechanisms also have meta entries! Try and fill out one on your own based on thi
 // @name mech_name
 // @input ObjectTag
 // @description
-// This is the description of the mechanism
+// This is the description of the mechanism.
 // @tags
 // <ObjectTag.tag_name>
 // -->
@@ -187,22 +191,35 @@ Mechanisms also have meta entries! Try and fill out one on your own based on thi
 
 ### Properties?
 
-A **Property** is a combined set of tags and mechs that contribute to one aspect of an object. For example, [`MaterialTag.mode`](https://meta.denizenscript.com/Docs/Tags/materialtag.mode) is a property: you can retrieve it in tag form and also adjust it with a valid input.
+Many objects in Denizen can be described by some core type, combined with a set of specific details about that object. Each specific detail that is necessarily to accurately define the identity of an object is called a **Property**.
 
-Every property is its own class that implements the `Property` interface. Tags are registered in the static `registerTags` method, and mechanisms are applied in the `adjust` method. You might recognize that this is exactly how it works in the tag type classes!
+For example, `MaterialTag`, when used to identify block types, has a core type - the Material enum value - and various specific datapoints about the block data. For example, [`MaterialTag.half`](https://meta.denizenscript.com/Docs/Tags/materialtag.half) is the "half" value of a material like a bed - the head half, or the foot half. The head-half of a bed is a different precise block-type than the foot-half of a bed. This shows up in Denizen like `red_bed[half=head]`. When this material is read by Denizen, it creates an instance of `MaterialTag` with the material type `red_bed`, and the adjusts the `half` mechanism with a value of `head` to produce the final valid object. When `identify()` is called on the instance, it reads through all properties and includes them in the output.
+
+Each Property in Denizen is defined in its own class that implements the `Property` interface. A valid property must necessarily have a name, a mechanism, and a value getter that corresponds to the mechanism. Properties should almost always have one or more tags to read the relevant data directly as well.
+
+Tags are registered in the static `registerTags` method, and mechanisms are applied in the `adjust` method. You might recognize that this is exactly how it works in the tag type classes!
 
 Here are the methods a property needs to implement:
 
-- `getPropertyString` - the value returned by the tag, but as a java String. For simple properties such as boolean values, this can return `"true"` or `"false"`. However, with more complex tag outputs, you can use every tag type's `identify()` method.
-- `getPropertyId` - the property's name. For example, `type` in `MaterialTag.type`.
-
-And here are the methods commonly used within property definitions:
-
-- `describes` - takes an ObjectTag and determines if it can be used for the property. This isn't just to check the tag type, it's also to validate the object. For example, bamboo only applies to `leaf_size`, so `MaterialLeafSize` checks if the material provided is bamboo.
-- `getFrom` - a placeholder method that gets copy-pasted or generated from a template. It calls describes and then returns the property instance if it's successful, null if not.
+- `getPropertyString` - the current value of the property as a String, formatted to be input directly back into the mechanism. For simple properties such as boolean values, this can return `"true"` or `"false"`. However, with more complex tag outputs, you can use the relevant object type's `identify()` method. This can return `null` in cases where a property's value is a default or 'unset' state. It can also return `null` for extension properties <span class="parens">(further explanation below)</span>.
+- `getPropertyId` - the property's name. This must be the same as the mechanism name. For example, `half` in `MaterialTag.half`.
+- `describes` - this is a static class called through reflection by the property engine and by `getFrom`. It takes an ObjectTag and determines if it can be used for the property. This must both check the tag type and validate that the object's specific sub-type can be described by the property. For example, `leaf_size` is only relevant to `bamboo` blocks, so `MaterialLeafSize` checks if the material provided is bamboo.
+- `getFrom` - this is a static class called through reflection by the property engine. It must return an instance of the property if valid to, or `null` if not. This method's body in practice is almost always just copy/pasted from reference implementations.
 
 Currently, when creating mechanisms, you need to add the mechanism name to the `handledMechs` array. There used to be the equivalent for tags, but that was deprecated in favor of the registry system. If your mechanism isn't recognized, chances are you probably forgot to put it in the array.
 
 For a property to be recognized, it itself needs to be registered. The `properties` package holds all the packages for the different types of properties as well as the `PropertyRegistry` class. To register a property, use `PropertyParser.registerProperty()` and pass in the property class and the tag type it applies to. Make sure to place this call in alphabetical order with the other properties of the same type.
 
 Take a look at the existing property classes for examples!
+
+#### Extension Properties
+
+An additional usage of the property system that comes up is as an extension to existing object types. Notably, the Spigot implementation of Denizen has a few extensions of core types such as `BukkitElementProperties`. Also, Depenizen heavily utilizes extension properties to add external-plugin-relevant features to Spigot object types like PlayerTag.
+
+At a technical level, an extension property:
+- implements `Property` like any normal property would
+- usually does not have any checks in the `describes` method other than object type
+- always returns null from `getPropertyString`
+- has a generic name (usually the class name) as the return from `getPropertyId`
+- does not necessarily have any mechanism(s)
+- exists in a separate project from the one that defines the relevant object
