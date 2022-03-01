@@ -55,7 +55,7 @@ To log your server in as your bot, use the [`discordconnect` command](https://me
 
 For security reasons, you'll need to use a separate tokenfile placed outside of the `scripts` folder. A common location for this is in `Denizen/data`. The token file is just a simple text file, that contains only the bot token <span class="parens">(from the Discord applications page you created above)</span> and nothing else.
 
-The `discordconnect` command takes an `id` argument. This can be anything you want, just choose a label that's memorable and fitting <span class="parens">(such as `mybot`, `ticketbot`, or `relay`), and is just used to uniquely identify a single bot in the case you have multiple bots in use at once on your server. Almost all Discord commands require this argument, and you just have to make sure to use the same label you chose every time.
+The `discordconnect` command takes an `id` argument. This can be anything you want, just choose a label that's memorable and fitting <span class="parens">(such as `mybot`, `ticketbot`, or `relay`)</span>, and is just used to uniquely identify a single bot in the case you have multiple bots in use at once on your server. Almost all Discord commands require this argument, and you just have to make sure to use the same label you chose every time.
 
 Note that while you can connect or disconnect at any time, you only *need* to connect once - usually done right after the server starts with the [`server start` event](https://meta.denizenscript.com/Docs/Events/server%20start). Additionally, make sure to [~wait for](https://meta.denizenscript.com/Docs/Languages/waitable) this command, as you should with all other Discord commands.
 

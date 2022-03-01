@@ -182,11 +182,17 @@ For blocks, if the chunk that contains the block is not loaded, you will have to
 
 For more information on exactly how different object types handle flags, refer to the [Flag System technical doc](https://meta.denizenscript.com/Docs/Languages/flag%20system).
 
-### Advanced Note: Maps And Sub-maps
+### Flag Names
 
-Advanced/experienced users might recognize that flags are a form of data-map - that is, a system of data consisting of named keys paired with values. Those users might be interested in `MapTag` objects, or in using flags to produce dynamic submapping structures (maps within maps). The Denizen flag systems supports submapping automatically by using the `.` symbol as the submap separator, like `- flag server myroot.mysubmap.mykey:myvalue`. If this seems arcane or complex to you, don't worry, you don't need to use or understand this right now. There will be further explanation of this system / how to use it / what it can be used for in a later part of [the advanced section](/guides/advanced/index).
+Many basic ASCII symbols <span class="parens">(like `.` or `!` or `%` or etc., anything that isn't a letter or number really)</span> in names of things <span class="parens">(flags, definitions, script containers, etc)</span> in Denizen can have special meanings and, other than when intentionally using those special meanings, should be avoided. Keep to simple textual names, with underscores `_` to separate words instead of spaces.
 
-### Special Note: Restricted Flag Names
+#### Advanced Note: Maps And Sub-maps
+
+Advanced/experienced users might recognize that flags are a form of data-map - that is, a system of data consisting of named keys paired with values. Those users might be interested in `MapTag` objects, or in using flags to produce dynamic submapping structures (maps within maps). The Denizen flag systems supports submapping automatically by using the `.` symbol as the submap separator, like `- flag server myroot.mysubmap.mykey:myvalue`. This will assign the flag named `myroot.mysubmap` to a MapTag value of `[mykey=myvalue]`, and thus the flag named `myroot` to a nested-MapTag value of `[mysubmap=[mykey=myvalue]]`. The `has_flag` tag will return true for `has_flag[myroot]`, and true for `has_flag[myroot.mysubmap]`, and true for `has_flag[myroot.mysubmap.mykey]`.
+
+If this seems arcane or complex to you, don't worry, you don't need to use or understand this right now. There will be further explanation of this system / how to use it / what it can be used for in a later part of [the advanced section](/guides/advanced/index).
+
+#### Special Note: Restricted Flag Names
 
 It should be noted that it is considered restricted to have flag names prefixed with two underscores, like `__name`. This is because some internal features of Denizen will generate flags, and use this naming convention to avoid conflicts with scripts. This includes for example the `zap` command using `__interact_step` and the `cooldown` command using `__interact_cooldown`.
 
