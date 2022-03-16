@@ -39,14 +39,22 @@ reusable_tokens = {
         (r'\s', token.Text ) #                                                    spaces
     ],
     'inside_brackets': [
-        (r'\[', token.Name.Variable, '#push'), #                                  [
-        (r'\]', token.Name.Variable, '#pop'), #                                   ]
+        (r'\[', token.Name.Attribute, '#push'), #                                 [
+        (r'\]', token.Name.Attribute, '#pop'), #                                  ]
+        include('tag_finder'),
+        (r'$', token.Text, '#pop'),
+        (r'.', token.Name.Attribute) #                                            anything else
+    ],
+    'inside_def_brackets': [
+        (r'\[', token.Name.Attribute, '#push'), #                                 [
+        (r'\]', token.Name.Attribute, '#pop'), #                                  ]
         include('tag_finder'),
         (r'$', token.Text, '#pop'),
         (r'.', token.Name.Variable) #                                             anything else
     ],
     'inside_tag': [
-        (r'\[(?=([^\s]+)\])', token.Name.Variable, 'inside_brackets' ), #         [brackets]
+        (r'(?<=<)\[(?=([^\s]+)\])', token.Name.Attribute, 'inside_def_brackets'),#[def]
+        (r'(?<!<)\[(?=([^\s]+)\])', token.Name.Attribute, 'inside_brackets'), #   [brackets]
         (r'\.', token.Operator ), #                                               .
         (r'>', token.Name.Tag, '#pop'), #                                         >
         (r'$', token.Text, '#pop'),
@@ -70,16 +78,18 @@ reusable_tokens = {
         (r'"(?=([^"]+)")', token.Literal.String, 'double_quoted' ), #             "text"
         (r'\'(?=([^\']+)\')', token.Literal.String.Backtick, 'single_quoted' ), # 'text'
         (r'$', token.Text, '#pop'),
+        (r'(?<= )(<=|<|>|>=|==|!=|not|in|contains|\|\||&&|\(|\)|and|or|!in|!contains)(?= )', token.Operator.Word), # if x <= y (if operators)
+        (r'((?<=- define )|(?<=- definemap ))[^\s<>]+[ :]', token.Name.Variable), #- define def_name
         include('tag_finder'),
         (r'.', token.Text ) #                                                     anything else
     ],
     'root': [
-        (r'^\s*#\s*[\|+=].*$', token.Comment.Hashbang ), #                        # +--- header comment
-        (r'^\s*#\s*-.*$', token.Comment.Single ), #                               # - code comment
-        (r'^\s*#.*$', token.Comment ), #                                          # regular comment
-        (r'^[^-#\n]*:', token.Name.Class ), #                                       yaml key:
-        (r'^\s*-\s[^\s]+$', token.Keyword ), #                                    - somecommand
-        (r'^\s*-\s[^\s]+\s', token.Keyword, 'code_line' ), #                      - somecommand someargs
+        (r'^\s*#\s*[\|+=].*$', token.Comment.Hashbang), #                         # +--- header comment
+        (r'^\s*#\s*-.*$', token.Comment.Single), #                                # - code comment
+        (r'^\s*#.*$', token.Comment), #                                           # regular comment
+        (r'^[^-#\n]*:', token.Name.Class), #                                      yaml key:
+        (r'^\s*-\s[^\s]+$', token.Keyword), #                                     - somecommand
+        (r'^\s*-\s[^\s]+\s', token.Keyword, 'code_line'), #                       - somecommand someargs
         include('spaces_patch'),
         (r'.', token.Text ) #                                                     anything else
     ]
