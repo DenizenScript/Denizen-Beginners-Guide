@@ -13,5 +13,5 @@ Before you begin, read the [Contributing page](https://github.com/DenizenScript/
 
     layout
     building
-    tags-mechs-properties
+    property-dev
 ```

@@ -1,12 +1,12 @@
-Tags, Mechanisms, and Properties
---------------------------------
+Adding New Properties And Tools
+-------------------------------
 
 ```eval_rst
 .. contents:: Table of Contents
     :local:
 ```
 
-You should already be familiar with tags and mechanisms and how to use them. This page will walk you through creating your own custom tags.
+You should already be familiar with how to use tags and mechanisms within scripts. This page will walk you through creating your own custom tags, mechanisms, and properties in Java.
 
 ### Registering Tags
 
