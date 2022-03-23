@@ -53,8 +53,8 @@ reusable_tokens = {
         (r'.', token.Name.Variable) #                                             anything else
     ],
     'inside_tag': [
-        (r'(?<=<)\[(?=([^\s]+)\])', token.Name.Attribute, 'inside_def_brackets'),#[def]
-        (r'(?<!<)\[(?=([^\s]+)\])', token.Name.Attribute, 'inside_brackets'), #   [brackets]
+        (r'(?<=<)\[(?=([^\s]*)\])', token.Name.Attribute, 'inside_def_brackets'),#[def]
+        (r'(?<!<)\[(?=([^\s]*)\])', token.Name.Attribute, 'inside_brackets'), #   [brackets]
         (r'\.', token.Operator ), #                                               .
         (r'>', token.Name.Tag, '#pop'), #                                         >
         (r'$', token.Text, '#pop'),
@@ -88,8 +88,9 @@ reusable_tokens = {
         (r'^\s*#\s*-.*$', token.Comment.Single), #                                # - code comment
         (r'^\s*#.*$', token.Comment), #                                           # regular comment
         (r'^[^-#\n]*:', token.Name.Class), #                                      yaml key:
-        (r'^\s*-\s[^\s]+$', token.Keyword), #                                     - somecommand
-        (r'^\s*-\s[^\s]+\s', token.Keyword, 'code_line'), #                       - somecommand someargs
+        (r'^\s*-\s[^(\s]+$', token.Keyword), #                                     - somecommand
+        (r'^\s*-\s[^(\s]+\s', token.Keyword, 'code_line'), #                       - somecommand someargs
+        include('tag_finder'),
         include('spaces_patch'),
         (r'.', token.Text ) #                                                     anything else
     ]

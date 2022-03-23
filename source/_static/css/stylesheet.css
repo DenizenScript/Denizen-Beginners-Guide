@@ -150,6 +150,7 @@ html[data-theme="dark"] .parens { /* Parentheticals */
 }
 html[data-theme="dark"] pre { /* Code blocks */
     background-color: #222222;
+    color: #ffffff;
 }
 html[data-theme="dark"] div[class^="highlight-dscript"] .s { /* string: "double quoted" */
     color: #77BBF5;
