@@ -53,7 +53,7 @@ Once you have a bot created on Discord's applications page, that bot added to yo
 
 To log your server in as your bot, use the [`discordconnect` command](https://meta.denizenscript.com/Docs/Commands/discordconnect).
 
-For security reasons, you'll need to use a separate tokenfile placed outside of the `scripts` folder. A common location for this is in `Denizen/data`. The token file is just a simple text file, that contains only the bot token <span class="parens">(from the Discord applications page you created above)</span> and nothing else.
+For security reasons, you'll need to use a SecretTag for the token, by putting your token in the `plugins/Denizen/secrets.secret` file. Just add a key like `discord_bot_token: 123.abc` <span class="parens">(and swap `123.abc` for the token from the Discord applications page you created above)</span>.
 
 The `discordconnect` command takes an `id` argument. This can be anything you want, just choose a label that's memorable and fitting <span class="parens">(such as `mybot`, `ticketbot`, or `relay`)</span>, and is just used to uniquely identify a single bot in the case you have multiple bots in use at once on your server. Almost all Discord commands require this argument, and you just have to make sure to use the same label you chose every time.
 
@@ -64,7 +64,7 @@ connect_to_discord:
     type: world
     events:
         after server start:
-        - ~discordconnect id:mybot tokenfile:data/tokenfile.txt
+        - ~discordconnect id:mybot token:<secret[discord_bot_token]>
 ```
 
 ### Sending a Message
