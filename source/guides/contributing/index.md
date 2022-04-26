@@ -5,7 +5,8 @@ Compared to most other programming languages, Denizen makes it exceptionally eas
 
 This section contains guides for implementing many of Denizen's core language features, whether you want to contribute to the main project or include Denizen support for your own plugin.
 
-Before you begin, read the [Contributing page](https://github.com/DenizenScript/Denizen/blob/dev/CONTRIBUTING.md). It's also recommended to have some basic Java knowledge at your disposal.
+<!-- Note: 'a href' style link in an attempt to bruteforce past a bug in the markdown parser where '.md' extension gets stripped inappropriately -->
+Before you begin, read the <a href="https://github.com/DenizenScript/Denizen/blob/dev/CONTRIBUTING.md">Contributing page</a>. It's also recommended to have some basic Java knowledge at your disposal.
 
 ``` toctree::
     :maxdepth: 1
