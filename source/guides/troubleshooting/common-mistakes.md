@@ -166,15 +166,22 @@ For the example given above, a sword that today is `i@diamond_sword`, might some
 
 #### So What Do I Do?
 
-Always compare objects based on reasonably-guaranteed-format tags. That is: tags that return a plaintext element of a clearly specified format, not an object.
+Option one: where possible, use a dedicated matcher tool. The object type `ItemTag` defines a matchable of the material name, so you can use it with the `matches` operator:
 
-Let's fix the earlier script:
+```dscript_blue
+- if <player.item_in_hand> matches diamond_sword:
+    - narrate "You have a diamond sword!"
+```
+
+Option two: compare objects based on reasonably-guaranteed-format tags. That is: tags that return a plaintext element of a clearly specified format, not an object.
+The tag `.material.name` is guaranteed to always return *just* the material name, so the below comparison is safe from any item-detail-changes or future Denizen changes.
+
 ```dscript_blue
 - if <player.item_in_hand.material.name> == diamond_sword:
     - narrate "You have a diamond sword!"
 ```
 
-The tag `.material.name` is guaranteed to always return *just* the material name, making this comparison safe from any item-detail-changes or future Denizen changes. The only risk is that the name of the material might change in a future Minecraft version <span class="parens">(this would be harder to avoid - luckily, this happens very rarely and usually you'll know it's coming when it does. If you really want to protect against it, you could do `== <item[diamond_sword].material.name>:` to rely on the autoconversion that would be added in Denizen when a rename happens, but you don't really need to)</span>.
+With either of these options, the only risk is that the name of the material might change in a future Minecraft version <span class="parens">(this would be harder to avoid - luckily, this happens very rarely and usually you'll know it's coming when it does. If you really want to protect against it, you could do `== <item[diamond_sword].material.name>:` to rely on the autoconversion that would be added in Denizen when a rename happens, but you don't really need to)</span>.
 
 For other object types, find the relevant unique comparison point. For materials, worlds, scripts, plugins, ... you can use `.name`.
 
@@ -185,6 +192,8 @@ For notable object types <span class="parens">(locations, cuboids, ellipsoids, .
 When you want to compare exactly-the-same-object <span class="parens">(usually for unique objects like entities, or in list-handling tags, or similar)</span>, and you have a tag for both <span class="parens">(instead of typing one as plaintext)</span>, you can be relatively safe doing direct comparisons.
 
 For example, you might add `- if <[target]> == <player>:` to [the `/pay` command example](#don-t-trust-players) to prevent players trying to pay themselves. This would be acceptable, as the two values do literally refer to exactly the same object in theory, and thus they will not have any different details, and any identifier changes will automatically apply to both, not only one.
+
+Note, however, that a stored copy of the object <span class="parens">(such as a player object stored in a flag)</span> could potentially in some cases retain an outdated format later on, thus breaking comparisons. Exact-Same object comparison is only safe when both objects are grabbed from a valid source tag.
 
 ### Don't Overuse Fallbacks
 

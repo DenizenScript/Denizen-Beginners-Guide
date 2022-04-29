@@ -78,7 +78,7 @@ reusable_tokens = {
         (r'"(?=([^"]+)")', token.Literal.String, 'double_quoted' ), #             "text"
         (r'\'(?=([^\']+)\')', token.Literal.String.Backtick, 'single_quoted' ), # 'text'
         (r'$', token.Text, '#pop'),
-        (r'(?<= )(<=|<|>|>=|==|!=|not|in|contains|\|\||&&|\(|\)|and|or|!in|!contains)(?= )', token.Operator.Word), # if x <= y (if operators)
+        (r'(?<= )(<=|<|>|>=|==|!=|not|in|contains|\|\||&&|\(|\)|and|or|!in|!contains|matches|!matches)(?= )', token.Operator.Word), # if x <= y (if operators)
         (r'((?<=- define )|(?<=- definemap ))[^\s<>]+[ :]', token.Name.Variable), #- define def_name
         include('tag_finder'),
         (r'.', token.Text ) #                                                     anything else
