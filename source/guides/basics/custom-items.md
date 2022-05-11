@@ -15,12 +15,14 @@ Here's a quick sample of a modern item script.
 my_item:
     type: item
     material: stick
-    display name: <&b><bold>Fancy stick!
+    display name: <&[item]>Fancy stick!
     lore:
-    - <&7>So fancy.
+    - <&[lore]>So fancy.
 ```
 
 You can get this item in-game by typing `/ex give my_item`
+
+Note that the above sample uses the `item` and `lore` custom color codes defined in your `Denizen/config.yml`
 
 ### Related Technical Docs
 
