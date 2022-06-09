@@ -8,7 +8,7 @@ The Queue System
 
 ### Preface
 
-The primary purpose of this page is to introduce you to the concept of *the queue system*. This system is very important for the basic level of scripting, however it is on the inside somewhat complex and enables many advanced features. As such, many of the advanced parts will be mentioned or noted in parentheses throughout the page.
+The primary purpose of this page is to introduce you to the concept of *the queue system*. This system is very important for the basic level of scripting, however it is somewhat complex on the inside and enables many advanced features. As such, many of the advanced parts will be mentioned or noted in parentheses throughout the page.
 
 If you're following this guide for the first time, you don't need to understand every part of the queue system, you just need to understand the basic ideas of what queues are, but you should still read through all the information on this page to get a general sense of the breadth of the system's impact on Denizen.
 

@@ -13,6 +13,5 @@ If you want to read a lot more about the run command and its options, here are a
 
 Note: most users, especially those learning from the Denizen for the first time, should just continue on to the next guides page. These references might be of interest to later come back to after you've learned Denizen as far as this guide teaches.
 
-- [Escaping language doc](https://meta.denizenscript.com/Docs/Languages/property%20escaping)
 - [Run command doc](https://meta.denizenscript.com/Docs/Commands/run)
 - [Inject command doc](https://meta.denizenscript.com/Docs/Commands/inject)
