@@ -190,7 +190,7 @@ Many basic ASCII symbols <span class="parens">(like `.` or `!` or `%` or etc., a
 
 Advanced/experienced users might recognize that flags are a form of data-map - that is, a system of data consisting of named keys paired with values. Those users might be interested in `MapTag` objects, or in using flags to produce dynamic submapping structures (maps within maps). The Denizen flag systems supports submapping automatically by using the `.` symbol as the submap separator, like `- flag server myroot.mysubmap.mykey:myvalue`. This will assign the flag named `myroot.mysubmap` to a MapTag value of `[mykey=myvalue]`, and thus the flag named `myroot` to a nested-MapTag value of `[mysubmap=[mykey=myvalue]]`. The `has_flag` tag will return true for `has_flag[myroot]`, and true for `has_flag[myroot.mysubmap]`, and true for `has_flag[myroot.mysubmap.mykey]`.
 
-If this seems arcane or complex to you, don't worry, you don't need to use or understand this right now. There will be further explanation of this system / how to use it / what it can be used for in a later part of [the advanced section](/guides/advanced/index).
+If this seems arcane or complex to you, don't worry, you don't need to use or understand this right now. There will be further explanation of this system / how to use it / what it can be used for in a later part of [the advanced section](/guides/advanced/submapping).
 
 #### Special Note: Restricted Flag Names
 
