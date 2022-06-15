@@ -246,6 +246,178 @@ Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/textures/`.
 This is where your image files are saved.
 These files should be in the relative filepath specified within the model file that it corresponds to.
 
+### Making Custom Fonts
+
+One of the many useful tools in a resource pack is custom fonts! This allows at the most basic of course to mess with the text font, but also allows you to make emojis, or even entire custom images! A font with an inventory-sized custom image, placed in an inventory title, allows you to have a custom inventory GUI screen!
+
+#### How Do I Make A Custom Font?
+
+Simple!
+
+Step 1: In your resource pack, make sure you have a pack-specific folder. Many other features expect you to override the `minecraft` folder, but this one allows you to just make your own. So instead of `assets/minecraft/font`, you'll have `assets/examplepack/font` (but replace `examplepack` with the name of your pack... or any simple identifier you prefer).
+Step 2: inside `assets/examplepack/font`, create a file named something like `examplefont.json` (but again, name it whatever you want to identify it - say `gui.json` or `particles.json` or something).
+Step 3: inside that json file, add the following:
+```json
+{
+  "providers": [
+      {
+          "type": "bitmap",
+          "file": "examplepack:samplefolder/sampleimage.png",
+          "ascent": 8,
+          "height": 8,
+          "chars": [
+              "a"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:samplefolder/sampleimage2.png",
+          "ascent": 8,
+          "height": 8,
+          "chars": [
+              "b"
+          ]
+      }
+  ]
+}
+```
+Note the usage of `samplefolder` and `sampleimage` as again spots to fill in your own names.
+
+Step 4: in `assets/examplepack/textures/samplefolder/`, add `sampleimage.png` as any valid image of any valid size (8x8, 32x32, 128x128, etc.)
+
+These folder and file names can be anything, as long as they are: ASCII (a-z, 0-9), all lower case, and short/simple. Basically, don't tempt fate of bugs by using complicated or messy names.
+
+It's important to make sure the names in the JSON file content are the same as the real file paths.
+
+If you need images to test with, here's a pair of valid images you can use: [sampleimage.png](images/denizen_pack_image.png), [sampleimage2.png](images/denizen_pack_image2.png)
+
+Step 5: Load up your pack in-game.
+
+Step 6: In-game, try `/ex narrate <&font[examplepack:examplefont]>ab`
+
+Notice how `examplepack` (the folder name) is used, and `examplefont` (the json file name) is used. Replace these with the names you chose yourself for the files.
+
+Notice also that the text `ab` corresponds to the `"a"` and `"b"` lines in the JSON.
+
+You should see your new images:
+
+![](images/custom_font_demo.png)
+
+If you'd like to embed custom fonts within a normal line, you can also do `/ex narrate "Hi there <element[ab].font[examplepack:examplefont]> how's it going?"`, or you can just use `<&font[minecraft:default]>` to swap back to default font at any time.
+
+#### Now How Do I Add More Images To The Font?
+
+Just copy/paste the block starting a `{` and ending at `}`, and make sure to add a `,` in between each block (but not one after the last block), then edit the `chars` to a new letter or number you haven't used, and change the `file` to your new image file's path.
+
+Some users prefer to have `chars` in the form of `\uF801` in the JSON and then use `<&chr[f801]>` in script, incrementing the number by 1 for each new value. This can sometimes be useful for organization, but is mostly just an artifact of the old standard of overriding the Minecraft default font instead of using a custom font.
+
+#### How Do I Make Big or Small Images?
+
+Changing the actual size of the `.png` file does nothing - to change the scale of the image, edit the `height` and `ascent` value in the JSON file.
+
+The `height` is how big the image should be, and `ascent` is how much to move it up or down relative to the line of text it's in.
+
+The default size of text is `8` for both height and ascent.
+
+Note that text bigger than `8` will overlap other lines if used in chat.
+
+#### How Do I Make A Custom Inventory GUI?
+
+Here's an example pack for custom inventory GUIs:
+
+You can add this json in as for example `assets/examplepack/font/gui.json`
+
+```json
+{
+  "providers": [
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/vanilla_inventory_reference.png",
+          "ascent": 13,
+          "height": 127,
+          "chars": [
+              "a"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/custom_inventory.png",
+          "ascent": 13,
+          "height": 127,
+          "chars": [
+              "b"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/space.png",
+          "ascent": -32768,
+          "height": -10,
+          "chars": [
+              "-"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/space.png",
+          "ascent": -32768,
+          "height": -170,
+          "chars": [
+              "="
+          ]
+      }
+  ]
+}
+```
+
+In this pack, `-` uses "space" - a 1x1 empty image, with very specific ascent and height meant to adjust the image backwards into the spot it's meant to be at from an inventory title to apply over the full GUI, and `=` will move the text back to the normal spot. [Here's a space image you can use](images/space.png).
+
+Character `a`, `vanilla_inventory_reference`, is a picture of a vanilla inventory that can be used as a template. [You can download the reference here](images/vanilla_inventory_reference.png). If you use a custom texture pack, you might prefer to use that pack's inventory image as a reference instead of the vanilla one.
+
+Character `b`, `custom_inventory`, is an edit of the vanilla image to demonstrate usage. [You can download my test demo here if you want it](images/custom_inventory.png).
+
+Apply it to an inventory script like so:
+
+```dscript_green
+example_gui:
+    type: inventory
+    debug: false
+    gui: true
+    inventory: chest
+    title: <&f><&font[examplepack:gui]>-b=<&font[minecraft:default]><&0>Hello there!
+    slots:
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [stick] [] [] [] []
+    - [] [stone] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+```
+
+Note the usage of `<&f>` to set the color to white (so it doesn't ruin the image by changing the color) `-` to move the position back, `b` to add the image, and `=` to move the position back to default, the `<&font[minecraft:default]>` to swap back to the default font, then `<&0>` to set color back to default black, and finally the normal inventory name.
+
+Open that with `/ex inventory open d:example_gui` to see it in action.
+
+![](images/example_inv_demo.png)
+
+In real usage, you don't have to match the inventory GUI's structure, you can completely block out spaces or anything else you'd like - the reference is mainly just helpful to keep track of where items will show up if added to the inventory.
+
+You may prefer to set parts of the image to transparent to allow the background-highlight when selecting items to show up properly.
+
+Here's an inventory GUI example that's a bit closer to a real world one: [(Click to download if you want it)](images/awful_inv_demo.png)
+
+![](images/masterpiece_inv.png)
+
+*The above image serves as a reminder that even after you master coding, you can still benefit from hiring an artist to help with the resource pack rather than trying to do it all yourself.*
+
+Hopefully this is enough to spark your imagination flying with the types of custom interfaces you could actually achieve! If not, [join the Discord](https://discord.gg/Q6pZGSR) and look in the `#showcase` channel, a bunch of really neat things have been showcased using custom inventory GUI images!
+
+#### Fonts Conclusion
+
+If you followed this font guide exactly without changing any of the names, your pack's file structure should match this:
+
+![](images/examplepack_structure.png)
+
 ### Inside The Sounds folder Directory
 
 Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
