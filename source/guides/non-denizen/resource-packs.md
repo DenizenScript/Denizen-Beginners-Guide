@@ -30,7 +30,7 @@ Here is what it looks like inside:
 ```json
 {
    "pack": {
-      "pack_format": 5,
+      "pack_format": 9,
       "description": "My Fancy Resource Pack"
    }
 }
@@ -39,10 +39,10 @@ Here is what it looks like inside:
 ##### pack.mcmeta File Key: `pack_format`
 
 This is the indicator to Minecraft what version this pack is.
-- `5` indicates version `1.15`.
 - `6` indicates version `1.16.5`,
 - `7` indicates version `1.17`,
-- `8` indicates version `1.18`
+- `8` indicates version `1.18`,
+- `9` indicates version `1.19`
 - For more version options, refer to [This minecraft wiki page](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_resource_pack#Formatting_pack.mcmeta)
 
 ##### pack.mcmeta File Key: `description`
@@ -77,14 +77,22 @@ Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/`
 Depending on what content you plan on changing, you can create any of the following folders:
 
 - blockstates - This is where each block-state of materials are saved.
-- font - This is where font data is saved. This guide does not cover this.
+- font - This is where font data is saved.
 - models - This is where the model data and files are saved.
 - textures - This is where the texture image files are saved.
-- fonts - This is where your font data is saved.
 - sounds - This is where your sounds are saved.
 - optifine - This is where your optifine data is saved. This guide does not cover this.
 
 For Optifine support, it's recommended you join their discord and review their documentation at their [Github Source](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc).
+
+### Inside The Sounds folder Directory
+
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
+The sound format Minecraft uses is `.ogg`.
+Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
+For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
+You can find Minecraft's default resource sound index here: `.minecraft/assets/indexes/1.18.json`; where `1.18` is the Minecraft version to use.
+All of your sound files <span class="parens">('.ogg' files)</span> should be saved in this directory.
 
 #### Example File: `sounds.json`
 
@@ -141,6 +149,20 @@ Optionally, you can manually adjust the following valid properties of the sound:
     - `event` causes the value of `name` to be interpreted as the name of an already defined event.
     - used for things like being under-water, in a cave, near a beacon, near a beehive.
 
+#### Using Custom Sounds
+
+Playing your sound is relative to the unique custom name you gave it.
+In our example, we specified the name of the sound as `entity.player.defense.level`.
+You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defense.level custom`.
+In a script, this would look something like this:
+
+```dscript_green
+MyCustomSound:
+    type: task
+    script:
+        - playsound <player> sound:entity.player.defense.level custom
+```
+
 ### Inside The Blockstates Folder Directory
 
 Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/blockstates/`
@@ -194,7 +216,7 @@ Here is an example of the override, and the `custom_model_data` specified.
         "layer0": "item/wooden_sword"
     },
     "overrides": [
-        { "predicate": { "custom_model_data": 1}, "model": "item/custom/dserver_ubersword" }
+        { "predicate": { "custom_model_data": 1 }, "model": "item/custom/dserver_ubersword" }
     ]
 }
 ```
@@ -212,10 +234,10 @@ An example of this file with multiple custom model data's specified looks like t
         "layer0": "item/wooden_sword"
     },
     "overrides": [
-        { "predicate": { "custom_model_data": 1}, "model": "item/custom/dserver_ubersword" },
-        { "predicate": { "custom_model_data": 2}, "model": "item/custom/dserver_prosword" },
-        { "predicate": { "custom_model_data": 3}, "model": "item/custom/dserver_greatsword" },
-        { "predicate": { "custom_model_data": 4}, "model": "item/custom/dserver_decentsword" }
+        { "predicate": { "custom_model_data": 1 }, "model": "item/custom/dserver_ubersword" },
+        { "predicate": { "custom_model_data": 2 }, "model": "item/custom/dserver_prosword" },
+        { "predicate": { "custom_model_data": 3 }, "model": "item/custom/dserver_greatsword" },
+        { "predicate": { "custom_model_data": 4 }, "model": "item/custom/dserver_decentsword" }
     ]
 }
 ```
@@ -223,7 +245,7 @@ An example of this file with multiple custom model data's specified looks like t
 #### Example File: `custom_item.json`
 
 Your custom item's model data file is something you may or may not adjust yourself.
-There are plenty of options for modeling software available, two of which most commonly recommended are [Cubik Pro](https://cubik.studio/) and [BlockBench](https://blockbench.net/).
+There are plenty of options for modeling software available, the most commonly recommended is [BlockBench](https://blockbench.net/), which is free and very capable, or  [Cubik Pro](https://cubik.studio/) which is non-free but some have claimed that it is powerful.
 Note that the software you use must be able to export the model to a `.json` file format.
 Cubik Pro specifically saves the model, and the respective image file, into it's correct locations and formats the model file correctly.
 When you place your custom item's model data into the location you direct it to in the above example, the top of your model file should look something like this:
@@ -239,6 +261,24 @@ When you place your custom item's model data into the location you direct it to 
 Note that you do still need any other parts of the JSON file, such as the `"parent"` key.
 
 In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `/assets/minecraft/textures/item/custom/handheld/dserver_ubersword.png`.
+
+#### Using Custom Items
+
+Giving yourself the item is simple. If it's a one-off time you need the thing or you're just generally testing, 
+you can use the [`/ex` command](/guides/first-steps/ex-command) like this:
+`/ex give wooden_sword[custom_model_data=1]`.
+The item script simply looks something like this:
+
+```dscript_green
+UberSword:
+    type: item
+    material: wooden_sword
+    mechanisms:
+        custom_model_data: 1
+```
+
+The `custom_model_data` is in-line with any other mechanisms you choose to specify with the custom item.
+You can give yourself the custom item just like any other item script, `/ex give dserver_ubersword` or in any script with the `give` or `inventory` command.
 
 ### Inside The Textures folder Directory
 
@@ -418,49 +458,6 @@ If you followed this font guide exactly without changing any of the names, your 
 
 ![](images/examplepack_structure.png)
 
-### Inside The Sounds folder Directory
-
-Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
-The sound format Minecraft uses is `.ogg`.
-Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
-For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
-You can find Minecraft's default resource sound index here: `.minecraft/assets/indexes/1.18.json`; where `1.18` is the Minecraft version to use.
-All of your sound files <span class="parens">('.ogg' files)</span> should be saved in this directory.
-
-### Putting It Together: Using Denizen With Your New Pack
-
-#### Custom Items
-
-Giving yourself the item is simple. If it's a one-off time you need the thing or you're just generally testing, 
-you can use the [`/ex` command](/guides/first-steps/ex-command) like this:
-`/ex give wooden_sword[custom_model_data=1]`.
-The item script simply looks something like this:
-
-```dscript_green
-UberSword:
-    type: item
-    material: wooden_sword
-    mechanisms:
-        custom_model_data: 1
-```
-
-The `custom_model_data` is in-line with any other mechanisms you choose to specify with the custom item.
-You can give yourself the custom item just like any other item script, `/ex give dserver_ubersword` or in any script with the `give` or `inventory` command.
-
-#### Custom Sounds
-
-Playing your sound is relative to the unique custom name you gave it.
-In our example, we specified the name of the sound as `entity.player.defense.level`.
-You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defense.level custom`.
-In a script, this would look something like this:
-
-```dscript_green
-MyCustomSound:
-    type: task
-    script:
-        - playsound <player> sound:entity.player.defense.level custom
-```
-
 ### Tips, Tricks And Notes While You Create
 
 A very handy trial-and-error debugging tricks for creating resource packs is that you can actively edit the pack and view your changes in-game.
@@ -476,15 +473,15 @@ If you run across a flat purple and black square texture, this is the default Mi
 There is an incredibly handy JSON formatter and Validator you can find [Here](https://jsonformatter.curiousconcept.com/) for checking your JSON data.
 Minecraft will give no indicators excluding broken texture images and models if your files are wrongly formatted.
 
-Custom textures, models and sounds can be placed within as many sub-folders as you would like. Remember to abide the lowercase sensitivity.
+Custom textures, models and sounds can be placed within as many sub-folders as you would like. Remember to keep all file and folder names lowercase to avoid case-sensitivity issues.
 
 Your default Resource Packs folder is located in your default minecraft directory, and looks something like this:
-`C:/Users/username/AppData/Roaming/.minecraft/resourcepacks` on Windows, or `/home/[username]/.minecraft` on Linux.
-Optimally, you can directly open the folder directory with the `Open Resource Pack Folder` button in the `Resource Packs...` section of your in-game menu.
+`C:/Users/[username]/AppData/Roaming/.minecraft/resourcepacks` (jump straight there via `%appdata%/.minecraft/resourcepacks`) on Windows, or `/home/[username]/.minecraft/resourcepacks` on Linux.
+You can also just directly open the folder with the `Open Resource Pack Folder` button in the `Resource Packs...` section of your in-game menu.
 
 The best template for modifying existing models and textures for Minecraft is the default resource,
 which can be found in your Version Jar directly located in the directory: `/.minecraft/versions/`.
-You can extract this to it's respective file and locate the `Assets` folder within.
+You can extract this to its respective file and locate the `Assets` folder within.
 Note that if you copy the entire `assets` folder as a template, you may consider removing material you don't change,
 as it's extra file storage you don't need to contribute to the resource pack.
 
