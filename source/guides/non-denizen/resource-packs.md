@@ -289,7 +289,7 @@ These folder and file names can be anything, as long as they are: ASCII (a-z, 0-
 
 It's important to make sure the names in the JSON file content are the same as the real file paths.
 
-If you need images to test with, here's a pair of valid images you can use: [sampleimage.png](images/denizen_pack_image.png), [sampleimage2.png](images/denizen_pack_image2.png)
+If you need images to test with, here's a pair of valid images you can use: [sampleimage.png](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/denizen_pack_image.png), [sampleimage2.png](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/denizen_pack_image2.png)
 
 Step 5: Load up your pack in-game.
 
@@ -370,11 +370,11 @@ You can add this json in as for example `assets/examplepack/font/gui.json`
 }
 ```
 
-In this pack, `-` uses "space" - a 1x1 empty image, with very specific ascent and height meant to adjust the image backwards into the spot it's meant to be at from an inventory title to apply over the full GUI, and `=` will move the text back to the normal spot. [Here's a space image you can use](images/space.png).
+In this pack, `-` uses "space" - a 1x1 empty image, with very specific ascent and height meant to adjust the image backwards into the spot it's meant to be at from an inventory title to apply over the full GUI, and `=` will move the text back to the normal spot. [Here's a space image you can use](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/space.png).
 
-Character `a`, `vanilla_inventory_reference`, is a picture of a vanilla inventory that can be used as a template. [You can download the reference here](images/vanilla_inventory_reference.png). If you use a custom texture pack, you might prefer to use that pack's inventory image as a reference instead of the vanilla one.
+Character `a`, `vanilla_inventory_reference`, is a picture of a vanilla inventory that can be used as a template. [You can download the reference here](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/vanilla_inventory_reference.png). If you use a custom texture pack, you might prefer to use that pack's inventory image as a reference instead of the vanilla one.
 
-Character `b`, `custom_inventory`, is an edit of the vanilla image to demonstrate usage. [You can download my test demo here if you want it](images/custom_inventory.png).
+Character `b`, `custom_inventory`, is an edit of the vanilla image to demonstrate usage. [You can download my test demo here if you want it](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/custom_inventory.png).
 
 Apply it to an inventory script like so:
 
@@ -404,7 +404,7 @@ In real usage, you don't have to match the inventory GUI's structure, you can co
 
 You may prefer to set parts of the image to transparent to allow the background-highlight when selecting items to show up properly.
 
-Here's an inventory GUI example that's a bit closer to a real world one: [(Click to download if you want it)](images/awful_inv_demo.png)
+Here's an inventory GUI example that's a bit closer to a real world one: [(Click to download if you want it)](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/awful_inv_demo.png)
 
 ![](images/masterpiece_inv.png)
 
