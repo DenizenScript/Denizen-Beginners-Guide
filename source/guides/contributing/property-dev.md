@@ -191,7 +191,7 @@ Mechanisms also have meta entries! Try to fill out one on your own based on this
 
 ### Properties?
 
-Many objects in Denizen can be described by some core type, combined with a set of specific details about that object. Each specific detail that is necessarily to accurately define the identity of an object is called a **Property**.
+Many objects in Denizen can be described by some core type, combined with a set of specific details about that object. Each specific detail that is necessary to accurately define the identity of an object is called a **Property**.
 
 For example, `MaterialTag`, when used to identify block types, has a core type - the Material enum value - and various specific datapoints about the block data. For example, [`MaterialTag.half`](https://meta.denizenscript.com/Docs/Tags/materialtag.half) is the "half" value of a material like a bed - the head half, or the foot half. The head-half of a bed is a different precise block-type than the foot-half of a bed. This shows up in Denizen like `red_bed[half=head]`. When this material is read by Denizen, it creates an instance of `MaterialTag` with the material type `red_bed`, and the adjusts the `half` mechanism with a value of `head` to produce the final valid object. When `identify()` is called on the instance, it reads through all properties and includes them in the output.
 
