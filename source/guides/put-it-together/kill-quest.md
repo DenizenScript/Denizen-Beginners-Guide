@@ -80,7 +80,7 @@ npc_killquest_interact:
                 - narrate format:cchat "Will you accept this request?"
                 - wait 5t
                 # The player can type 'yes' or 'no' into chat normally, OR click the word to automatically say it
-                - narrate format:instruction_format "Type <&b><&o><element[Yes].on_click[yes]><&7><&o> or <&b><&o><element[No].on_click[no]>"
+                - narrate format:instruction_format "Type <&b><&o><element[Yes].click_chat[yes]><&7><&o> or <&b><&o><element[No].click_chat[no]>"
                 # Zap to the step that contains the chat trigger. Add a five minute limit so if the player runs away and comes back, the NPC isn't still expecting a response.
                 - zap accept_question 5m
                 - flag player npc_engaged:!
