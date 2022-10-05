@@ -143,7 +143,7 @@ proc_example:
         - narrate "No way, I like <context.message.proc[get_fruits].random.if_null[nothing]> too!"
 ```
 
-Notice that the `get_fruits` is basically the same, but the `example` event is much simpler.
+Notice that the `get_fruits` is basically the same, but the `proc_example` event is much simpler.
 
 #### Order of Operations
 
@@ -161,7 +161,7 @@ smooth_example:
     # Get the millionth digit of pi. Using the wait operator will wait for the task to finish,
     # but other things on the server will keep processing, so there won't be any lag.
     - ~run digit_of_pi def:1000000 save:digit
-    - narrate "Ya, the millionth digit is <entry[fruit_list].queue.determination.first>."
+    - narrate "Ya, the millionth digit is <entry[digit].queue.determination.first>."
 ```
 
 This procedure usage however might freeze up the server a bit:
