@@ -33,7 +33,7 @@ The main uses might be an account linker, which verifies a Discord user with the
 
 There are enough tutorials out there for creating a bot account, such as [this one](https://discordpy.readthedocs.io/en/stable/discord.html).
 
-Make sure to enable the `Server Members Intent` on the bot page.
+Make sure to enable the `Server Members Intent` and `Message Content Intent` on the bot page.
 
 When generating a link to have bot join a server, use the 'OAuth2' page of the developers tab and checkmark the `bot` box. You probably also want to checkmark `applications.commands` if you want to use slash commands.
 
@@ -102,7 +102,7 @@ Simple inline usage example:
 send_an_embed:
     type: task
     script:
-    - define embed "<discord_embed.with_map[title=Example Bot;description=Wow! This bot sure is a bot;timestamp=<util.time_now>;color=#00FFFF]>"
+    - define embed <discord_embed.with_map[title=Example Bot;description=Wow! This bot sure is a bot;timestamp=<util.time_now>;color=#00FFFF]>
     - ~discordmessage id:mybot channel:<server.flag[discord_botspam]> <[embed]>
 ```
 
@@ -271,7 +271,7 @@ For example, sending a message with a single button would look like:
 buttons:
     type: task
     script:
-    - define click_me "<discord_button.with[id].as[click_me].with[label].as[Click me!].with[style].as[success]>"
+    - define click_me <discord_button.with[id].as[click_me].with[label].as[Click me!].with[style].as[success]>
     - ~discordmessage id:mybot channel:<server.flag[discord_botspam]> rows:<[click_me]> Buttons!
 ```
 

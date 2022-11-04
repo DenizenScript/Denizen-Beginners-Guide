@@ -122,7 +122,7 @@ sword_duplicator:
     events:
         after player right clicks bedrock with:diamond_sword:
         - ratelimit <player> 1h
-        - give "<player.item_in_hand.with[display=Your Free Duplicate Sword].with[durability=0]>"
+        - give <player.item_in_hand.with[display=Your Free Duplicate Sword].with[durability=0]>
         - narrate "<&b>Sword duplicated!"
 ```
 
