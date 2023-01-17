@@ -30,7 +30,7 @@ Here is what it looks like inside:
 ```json
 {
    "pack": {
-      "pack_format": 5,
+      "pack_format": 9,
       "description": "My Fancy Resource Pack"
    }
 }
@@ -39,10 +39,10 @@ Here is what it looks like inside:
 ##### pack.mcmeta File Key: `pack_format`
 
 This is the indicator to Minecraft what version this pack is.
-- `5` indicates version `1.15`.
 - `6` indicates version `1.16.5`,
 - `7` indicates version `1.17`,
-- `8` indicates version `1.18`
+- `8` indicates version `1.18`,
+- `9` indicates version `1.19`
 - For more version options, refer to [This minecraft wiki page](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_resource_pack#Formatting_pack.mcmeta)
 
 ##### pack.mcmeta File Key: `description`
@@ -77,14 +77,22 @@ Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/`
 Depending on what content you plan on changing, you can create any of the following folders:
 
 - blockstates - This is where each block-state of materials are saved.
-- font - This is where font data is saved. This guide does not cover this.
+- font - This is where font data is saved.
 - models - This is where the model data and files are saved.
 - textures - This is where the texture image files are saved.
-- fonts - This is where your font data is saved.
 - sounds - This is where your sounds are saved.
 - optifine - This is where your optifine data is saved. This guide does not cover this.
 
 For Optifine support, it's recommended you join their discord and review their documentation at their [Github Source](https://github.com/sp614x/optifine/tree/master/OptiFineDoc/doc).
+
+### Inside The Sounds folder Directory
+
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
+The sound format Minecraft uses is `.ogg`.
+Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
+For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
+You can find Minecraft's default resource sound index here: `.minecraft/assets/indexes/1.18.json`; where `1.18` is the Minecraft version to use.
+All of your sound files <span class="parens">('.ogg' files)</span> should be saved in this directory.
 
 #### Example File: `sounds.json`
 
@@ -141,6 +149,20 @@ Optionally, you can manually adjust the following valid properties of the sound:
     - `event` causes the value of `name` to be interpreted as the name of an already defined event.
     - used for things like being under-water, in a cave, near a beacon, near a beehive.
 
+#### Using Custom Sounds
+
+Playing your sound is relative to the unique custom name you gave it.
+In our example, we specified the name of the sound as `entity.player.defense.level`.
+You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defense.level custom`.
+In a script, this would look something like this:
+
+```dscript_green
+MyCustomSound:
+    type: task
+    script:
+        - playsound <player> sound:entity.player.defense.level custom
+```
+
 ### Inside The Blockstates Folder Directory
 
 Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/blockstates/`
@@ -194,7 +216,7 @@ Here is an example of the override, and the `custom_model_data` specified.
         "layer0": "item/wooden_sword"
     },
     "overrides": [
-        { "predicate": { "custom_model_data": 1}, "model": "item/custom/dserver_ubersword" }
+        { "predicate": { "custom_model_data": 1 }, "model": "item/custom/dserver_ubersword" }
     ]
 }
 ```
@@ -212,10 +234,10 @@ An example of this file with multiple custom model data's specified looks like t
         "layer0": "item/wooden_sword"
     },
     "overrides": [
-        { "predicate": { "custom_model_data": 1}, "model": "item/custom/dserver_ubersword" },
-        { "predicate": { "custom_model_data": 2}, "model": "item/custom/dserver_prosword" },
-        { "predicate": { "custom_model_data": 3}, "model": "item/custom/dserver_greatsword" },
-        { "predicate": { "custom_model_data": 4}, "model": "item/custom/dserver_decentsword" }
+        { "predicate": { "custom_model_data": 1 }, "model": "item/custom/dserver_ubersword" },
+        { "predicate": { "custom_model_data": 2 }, "model": "item/custom/dserver_prosword" },
+        { "predicate": { "custom_model_data": 3 }, "model": "item/custom/dserver_greatsword" },
+        { "predicate": { "custom_model_data": 4 }, "model": "item/custom/dserver_decentsword" }
     ]
 }
 ```
@@ -223,7 +245,7 @@ An example of this file with multiple custom model data's specified looks like t
 #### Example File: `custom_item.json`
 
 Your custom item's model data file is something you may or may not adjust yourself.
-There are plenty of options for modeling software available, two of which most commonly recommended are [Cubik Pro](https://cubik.studio/) and [BlockBench](https://blockbench.net/).
+There are plenty of options for modeling software available, the most commonly recommended is [BlockBench](https://blockbench.net/), which is free and very capable, or  [Cubik Pro](https://cubik.studio/) which is non-free but some have claimed that it is powerful.
 Note that the software you use must be able to export the model to a `.json` file format.
 Cubik Pro specifically saves the model, and the respective image file, into it's correct locations and formats the model file correctly.
 When you place your custom item's model data into the location you direct it to in the above example, the top of your model file should look something like this:
@@ -240,24 +262,7 @@ Note that you do still need any other parts of the JSON file, such as the `"pare
 
 In the above example the `particle` and `texture` keys both point to the image files we will be saving at the directory: `/assets/minecraft/textures/item/custom/handheld/dserver_ubersword.png`.
 
-### Inside The Textures folder Directory
-
-Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/textures/`.
-This is where your image files are saved.
-These files should be in the relative filepath specified within the model file that it corresponds to.
-
-### Inside The Sounds folder Directory
-
-Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
-The sound format Minecraft uses is `.ogg`.
-Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
-For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
-You can find Minecraft's default resource sound index here: `.minecraft/assets/indexes/1.18.json`; where `1.18` is the Minecraft version to use.
-All of your sound files <span class="parens">('.ogg' files)</span> should be saved in this directory.
-
-### Putting It Together: Using Denizen With Your New Pack
-
-#### Custom Items
+#### Using Custom Items
 
 Giving yourself the item is simple. If it's a one-off time you need the thing or you're just generally testing, 
 you can use the [`/ex` command](/guides/first-steps/ex-command) like this:
@@ -275,19 +280,183 @@ UberSword:
 The `custom_model_data` is in-line with any other mechanisms you choose to specify with the custom item.
 You can give yourself the custom item just like any other item script, `/ex give dserver_ubersword` or in any script with the `give` or `inventory` command.
 
-#### Custom Sounds
+### Inside The Textures folder Directory
 
-Playing your sound is relative to the unique custom name you gave it.
-In our example, we specified the name of the sound as `entity.player.defense.level`.
-You can play this sound with the `playsound` command like this: `/ex playsound <player> entity.player.defense.level custom`.
-In a script, this would look something like this:
+Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/textures/`.
+This is where your image files are saved.
+These files should be in the relative filepath specified within the model file that it corresponds to.
+
+### Making Custom Fonts
+
+One of the many useful tools in a resource pack is custom fonts! This allows at the most basic of course to mess with the text font, but also allows you to make emojis, or even entire custom images! A font with an inventory-sized custom image, placed in an inventory title, allows you to have a custom inventory GUI screen!
+
+#### How Do I Make A Custom Font?
+
+Simple!
+
+Step 1: In your resource pack, make sure you have a pack-specific folder. Many other features expect you to override the `minecraft` folder, but this one allows you to just make your own. So instead of `assets/minecraft/font`, you'll have `assets/examplepack/font` (but replace `examplepack` with the name of your pack... or any simple identifier you prefer).
+Step 2: inside `assets/examplepack/font`, create a file named something like `examplefont.json` (but again, name it whatever you want to identify it - say `gui.json` or `particles.json` or something).
+Step 3: inside that json file, add the following:
+```json
+{
+  "providers": [
+      {
+          "type": "bitmap",
+          "file": "examplepack:samplefolder/sampleimage.png",
+          "ascent": 8,
+          "height": 8,
+          "chars": [
+              "a"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:samplefolder/sampleimage2.png",
+          "ascent": 8,
+          "height": 8,
+          "chars": [
+              "b"
+          ]
+      }
+  ]
+}
+```
+Note the usage of `samplefolder` and `sampleimage` as again spots to fill in your own names.
+
+Step 4: in `assets/examplepack/textures/samplefolder/`, add `sampleimage.png` as any valid image of any valid size (8x8, 32x32, 128x128, etc.)
+
+These folder and file names can be anything, as long as they are: ASCII (a-z, 0-9), all lower case, and short/simple. Basically, don't tempt fate of bugs by using complicated or messy names.
+
+It's important to make sure the names in the JSON file content are the same as the real file paths.
+
+If you need images to test with, here's a pair of valid images you can use: [sampleimage.png](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/denizen_pack_image.png), [sampleimage2.png](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/denizen_pack_image2.png)
+
+Step 5: Load up your pack in-game.
+
+Step 6: In-game, try `/ex narrate <&font[examplepack:examplefont]>ab`
+
+Notice how `examplepack` (the folder name) is used, and `examplefont` (the json file name) is used. Replace these with the names you chose yourself for the files.
+
+Notice also that the text `ab` corresponds to the `"a"` and `"b"` lines in the JSON.
+
+You should see your new images:
+
+![](images/custom_font_demo.png)
+
+If you'd like to embed custom fonts within a normal line, you can also do `/ex narrate "Hi there <element[ab].font[examplepack:examplefont]> how's it going?"`, or you can just use `<&font[minecraft:default]>` to swap back to default font at any time.
+
+#### Now How Do I Add More Images To The Font?
+
+Just copy/paste the block starting a `{` and ending at `}`, and make sure to add a `,` in between each block (but not one after the last block), then edit the `chars` to a new letter or number you haven't used, and change the `file` to your new image file's path.
+
+Some users prefer to have `chars` in the form of `\uF801` in the JSON and then use `<&chr[f801]>` in script, incrementing the number by 1 for each new value. This can sometimes be useful for organization, but is mostly just an artifact of the old standard of overriding the Minecraft default font instead of using a custom font.
+
+#### How Do I Make Big or Small Images?
+
+Changing the actual size of the `.png` file does nothing - to change the scale of the image, edit the `height` and `ascent` value in the JSON file.
+
+The `height` is how big the image should be, and `ascent` is how much to move it up or down relative to the line of text it's in.
+
+The default size of text is `8` for both height and ascent.
+
+Note that text bigger than `8` will overlap other lines if used in chat.
+
+#### How Do I Make A Custom Inventory GUI?
+
+Here's an example pack for custom inventory GUIs:
+
+You can add this json in as for example `assets/examplepack/font/gui.json`
+
+```json
+{
+  "providers": [
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/vanilla_inventory_reference.png",
+          "ascent": 13,
+          "height": 127,
+          "chars": [
+              "a"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/custom_inventory.png",
+          "ascent": 13,
+          "height": 127,
+          "chars": [
+              "b"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/space.png",
+          "ascent": -32768,
+          "height": -10,
+          "chars": [
+              "-"
+          ]
+      },
+      {
+          "type": "bitmap",
+          "file": "examplepack:gui/space.png",
+          "ascent": -32768,
+          "height": -170,
+          "chars": [
+              "="
+          ]
+      }
+  ]
+}
+```
+
+In this pack, `-` uses "space" - a 1x1 empty image, with very specific ascent and height meant to adjust the image backwards into the spot it's meant to be at from an inventory title to apply over the full GUI, and `=` will move the text back to the normal spot. [Here's a space image you can use](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/space.png).
+
+Character `a`, `vanilla_inventory_reference`, is a picture of a vanilla inventory that can be used as a template. [You can download the reference here](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/vanilla_inventory_reference.png). If you use a custom texture pack, you might prefer to use that pack's inventory image as a reference instead of the vanilla one.
+
+Character `b`, `custom_inventory`, is an edit of the vanilla image to demonstrate usage. [You can download my test demo here if you want it](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/custom_inventory.png).
+
+Apply it to an inventory script like so:
 
 ```dscript_green
-MyCustomSound:
-    type: task
-    script:
-        - playsound <player> sound:entity.player.defense.level custom
+example_gui:
+    type: inventory
+    debug: false
+    gui: true
+    inventory: chest
+    title: <&f><&font[examplepack:gui]>-b=<&font[minecraft:default]><&0>Hello there!
+    slots:
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [stick] [] [] [] []
+    - [] [stone] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 ```
+
+Note the usage of `<&f>` to set the color to white (so it doesn't ruin the image by changing the color) `-` to move the position back, `b` to add the image, and `=` to move the position back to default, the `<&font[minecraft:default]>` to swap back to the default font, then `<&0>` to set color back to default black, and finally the normal inventory name.
+
+Open that with `/ex inventory open d:example_gui` to see it in action.
+
+![](images/example_inv_demo.png)
+
+In real usage, you don't have to match the inventory GUI's structure, you can completely block out spaces or anything else you'd like - the reference is mainly just helpful to keep track of where items will show up if added to the inventory.
+
+You may prefer to set parts of the image to transparent to allow the background-highlight when selecting items to show up properly.
+
+Here's an inventory GUI example that's a bit closer to a real world one: [(Click to download if you want it)](https://github.com/DenizenScript/Denizen-Beginners-Guide/raw/master/source/guides/non-denizen/images/awful_inv_demo.png)
+
+![](images/masterpiece_inv.png)
+
+*The above image serves as a reminder that even after you master coding, you can still benefit from hiring an artist to help with the resource pack rather than trying to do it all yourself.*
+
+Hopefully this is enough to spark your imagination flying with the types of custom interfaces you could actually achieve! If not, [join the Discord](https://discord.gg/Q6pZGSR) and look in the `#showcase` channel, a bunch of really neat things have been showcased using custom inventory GUI images!
+
+#### Fonts Conclusion
+
+If you followed this font guide exactly without changing any of the names, your pack's file structure should match this:
+
+![](images/examplepack_structure.png)
 
 ### Tips, Tricks And Notes While You Create
 
@@ -304,15 +473,15 @@ If you run across a flat purple and black square texture, this is the default Mi
 There is an incredibly handy JSON formatter and Validator you can find [Here](https://jsonformatter.curiousconcept.com/) for checking your JSON data.
 Minecraft will give no indicators excluding broken texture images and models if your files are wrongly formatted.
 
-Custom textures, models and sounds can be placed within as many sub-folders as you would like. Remember to abide the lowercase sensitivity.
+Custom textures, models and sounds can be placed within as many sub-folders as you would like. Remember to keep all file and folder names lowercase to avoid case-sensitivity issues.
 
 Your default Resource Packs folder is located in your default minecraft directory, and looks something like this:
-`C:/Users/username/AppData/Roaming/.minecraft/resourcepacks` on Windows, or `/home/[username]/.minecraft` on Linux.
-Optimally, you can directly open the folder directory with the `Open Resource Pack Folder` button in the `Resource Packs...` section of your in-game menu.
+`C:/Users/[username]/AppData/Roaming/.minecraft/resourcepacks` (jump straight there via `%appdata%/.minecraft/resourcepacks`) on Windows, or `/home/[username]/.minecraft/resourcepacks` on Linux.
+You can also just directly open the folder with the `Open Resource Pack Folder` button in the `Resource Packs...` section of your in-game menu.
 
 The best template for modifying existing models and textures for Minecraft is the default resource,
 which can be found in your Version Jar directly located in the directory: `/.minecraft/versions/`.
-You can extract this to it's respective file and locate the `Assets` folder within.
+You can extract this to its respective file and locate the `Assets` folder within.
 Note that if you copy the entire `assets` folder as a template, you may consider removing material you don't change,
 as it's extra file storage you don't need to contribute to the resource pack.
 

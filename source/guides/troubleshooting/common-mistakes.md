@@ -59,7 +59,7 @@ In Denizen, whenever you look at an object in debug or with a `narrate` command 
 It's important when writing scripts to make sure you work with *the actual object* and not with some text that contains the lookup identifier.
 
 A few examples of where this might come into play:
-- A player object is placed into a line of text. Say for example `"Player:<player>"` is stored somewhere. When you read that text out, you may assume that `<[THAT_TEXT].after[:]>` is going to return the player object - but it won't. It will return plain text of the unique player identifier. You would have to convert it into a player object again, using either `<player[<[THAT_TEXT].after[:]>]>` or `<[THAT_TEXT].after[:].as_player>` <span class="parens">(though in some contexts, Denizen may automatically fix this for you)</span>.
+- A player object is placed into a line of text. Say for example `"Player:<player>"` is stored somewhere. When you read that text out, you may assume that `<[THAT_TEXT].after[:]>` is going to return the player object - but it won't. It will return plain text of the unique player identifier. You would have to convert it into a player object again, using either `<player[<[THAT_TEXT].after[:]>]>` or `<[THAT_TEXT].after[:].as[player]>` <span class="parens">(though in some contexts, Denizen may automatically fix this for you)</span>.
 - In some cases, reading directly from data storage <span class="parens">(YAML, Flags, SQL, etc.)</span> might return the plain text identifier of whatever object was inserted into it. When this happens, you again have to convert it back into the real object using the relevant conversion tags.
 - Generally when user input is given (in for example a command script). A unique identifier or even a non-unique one may be used, and you will have to do more complex real-object-finding. As a particular example of this, when a command script has a player input option, generally you can trust that users aren't going to type out the exact perfect object identifier. The tag `server.match_player` is useful for converting the human-input player name into a real player object.
 
@@ -166,15 +166,22 @@ For the example given above, a sword that today is `i@diamond_sword`, might some
 
 #### So What Do I Do?
 
-Always compare objects based on reasonably-guaranteed-format tags. That is: tags that return a plaintext element of a clearly specified format, not an object.
+Option one: where possible, use a dedicated matcher tool. The object type `ItemTag` defines a matchable of the material name, so you can use it with the `matches` operator:
 
-Let's fix the earlier script:
+```dscript_blue
+- if <player.item_in_hand> matches diamond_sword:
+    - narrate "You have a diamond sword!"
+```
+
+Option two: compare objects based on reasonably-guaranteed-format tags. That is: tags that return a plaintext element of a clearly specified format, not an object.
+The tag `.material.name` is guaranteed to always return *just* the material name, so the below comparison is safe from any item-detail-changes or future Denizen changes.
+
 ```dscript_blue
 - if <player.item_in_hand.material.name> == diamond_sword:
     - narrate "You have a diamond sword!"
 ```
 
-The tag `.material.name` is guaranteed to always return *just* the material name, making this comparison safe from any item-detail-changes or future Denizen changes. The only risk is that the name of the material might change in a future Minecraft version <span class="parens">(this would be harder to avoid - luckily, this happens very rarely and usually you'll know it's coming when it does. If you really want to protect against it, you could do `== <item[diamond_sword].material.name>:` to rely on the autoconversion that would be added in Denizen when a rename happens, but you don't really need to)</span>.
+With either of these options, the only risk is that the name of the material might change in a future Minecraft version <span class="parens">(this would be harder to avoid - luckily, this happens very rarely and usually you'll know it's coming when it does. If you really want to protect against it, you could do `== <item[diamond_sword].material.name>:` to rely on the autoconversion that would be added in Denizen when a rename happens, but you don't really need to)</span>.
 
 For other object types, find the relevant unique comparison point. For materials, worlds, scripts, plugins, ... you can use `.name`.
 
@@ -185,6 +192,8 @@ For notable object types <span class="parens">(locations, cuboids, ellipsoids, .
 When you want to compare exactly-the-same-object <span class="parens">(usually for unique objects like entities, or in list-handling tags, or similar)</span>, and you have a tag for both <span class="parens">(instead of typing one as plaintext)</span>, you can be relatively safe doing direct comparisons.
 
 For example, you might add `- if <[target]> == <player>:` to [the `/pay` command example](#don-t-trust-players) to prevent players trying to pay themselves. This would be acceptable, as the two values do literally refer to exactly the same object in theory, and thus they will not have any different details, and any identifier changes will automatically apply to both, not only one.
+
+Note, however, that a stored copy of the object <span class="parens">(such as a player object stored in a flag)</span> could potentially in some cases retain an outdated format later on, thus breaking comparisons. Exact-Same object comparison is only safe when both objects are grabbed from a valid source tag.
 
 ### Don't Overuse Fallbacks
 
@@ -390,7 +399,7 @@ Many server admins tend to leave themselves in creative mode while working and e
 
 Normally, in gamemode survival <span class="parens">(or adventure)</span>, inventories are *serverside*. This means that the server has the final say on which items are where, and further means that any serverside scripts or plugins can modify and control any inventory or interaction with an inventory, and trust that it will work.
 
-However, while in gamemode **creative**, inventories are *clientside*. This means that the client <span class="parens">(the code running on the player's own PC, whether it's a vanilla minecraft client or a modded one)</span> has final say on the details of an inventory. While servers can still make their own changes to inventories or interactions, the client can overrule those changes. This leads to things like trying to cancel a click event duplicating the item <span class="parens">(the server said "no, A: you don't pick up the item, and B: that item is still in its original slot" ... the client decides "I deny B, I did in fact pick up the item, it's mine now, but I'm okay with B, that item can still be in its original slot" ie there's now two copies of the same item)</span>.
+However, while in gamemode **creative**, inventories are *clientside*. This means that the client <span class="parens">(the code running on the player's own PC, whether it's a vanilla minecraft client or a modded one)</span> has final say on the details of an inventory. While servers can still make their own changes to inventories or interactions, the client can overrule those changes. This leads to things like trying to cancel a click event duplicating the item <span class="parens">(the server said "no, A: you don't pick up the item, and B: that item is still in its original slot" ... the client decides "I deny A, I did in fact pick up the item, it's mine now, but I'm okay with B, that item can still be in its original slot" ie there's now two copies of the same item)</span>.
 
 A related part of this system that is worth thinking about, is that players in creative gamemode have the ability to spawn any item they want. On a vanilla minecraft client, that means they can either A: grab any new core item or stack of items from the creative item list at any time, or B: produce a perfect copy of any item they see by way of middle-clicking on that item <span class="parens">(this might for example be used to get a GUI-only special scripted item into their own inventory)</span>. A modded client, however, could potentially spawn *any* item, even ones with custom NBT data on them. This is worth thinking about any time you link some power or system to data on an item. Consider the following script:
 

@@ -122,7 +122,7 @@ sword_duplicator:
     events:
         after player right clicks bedrock with:diamond_sword:
         - ratelimit <player> 1h
-        - give "<player.item_in_hand.with[display=Your Free Duplicate Sword].with[durability=0]>"
+        - give <player.item_in_hand.with[display=Your Free Duplicate Sword].with[durability=0]>
         - narrate "<&b>Sword duplicated!"
 ```
 
@@ -150,7 +150,7 @@ sword_duplicator:
         - ratelimit <player> 1h
         - define sword <player.item_in_hand>
         - adjust def:sword "display:Your Free Duplicate Sword"
-        - if <player.location.material.name> == lava:
+        - if <player.location> matches lava:
             - adjust def:sword "lore:<&c>Forged in lava."
             - adjust def:sword durability:0
         - give <[sword]>

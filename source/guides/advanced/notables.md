@@ -76,11 +76,13 @@ For a very quick and simple example of creating a cuboid, you could simply stand
 
 To test that it worked, you can walk around the room and type `/ex narrate <player.location.is_within[myroom]>` ... for as long as you're in the room, it should output `true`, and once you leave the room, it should output `false`.
 
-You're probably thinking: "**that's such an awkward way of doing it, I want a magic wand to just click and be done**" and you're in luck! This is Denizen after all, noting areas involves tags and commands, this is a problem easily solved by a script. In fact, being such a common request, there's a high quality premade script to do exactly this - give you a magic wand to click and note cuboids with. You can download it [here from the Denizen forum resources section](https://forum.denizenscript.com/resources/cuboid-selector-tool.1/).
+### Convenience Script
+
+You're probably thinking: "**that's such an awkward way of doing it, I want a magic wand to just click and be done**" and you're in luck! This is Denizen after all, noting areas involves tags and commands, this is a problem easily solved by a script. In fact, being such a common request, there's a high quality premade script to do exactly this - give you a magic wand to click and note areas with. You can download it [here from the Denizen forum resources section](https://forum.denizenscript.com/resources/area-selector-tool.1/).
 
 ![](images/cuboid_wand.png)
 
-To use it, simply download the `.dsc` file and put it in your scripts folder. Give the file a look-through in your script editor if you'd like, to see what's it doing, how it does it, etc. When you're ready, go into your server and type `/ex reload` to load the script, then `/ctool` to get the magic wand. You can then left click any block to start a selection, and right click to expand it. It will automatically create particle highlights to show you the selected region thus far. When you have an area selected, type `/cnote myareaname`. You now have a noted cuboid named `myareaname`.
+To use it, simply download the `.dsc` file and put it in your scripts folder. Give the file a look-through in your script editor if you'd like, to see what's it doing, how it does it, etc. When you're ready, go into your server and type `/ex reload` to load the script, then `/seltool` to get the magic wand. You can then left click any block to start a selection, and right click to expand it. It will automatically create particle highlights to show you the selected region thus far. When you have an area selected, type `/selnote myareaname`. You now have a noted cuboid named `myareaname`.
 
 #### Using An Area Note
 
@@ -119,7 +121,7 @@ Limiting events in this way is useful for countless scenarios. You can use it to
 
 Ellipsoid notes work larger the same as cuboids, they're just rounder. Also unlike cuboids, ellipsoids values can have decimal points on them.
 
-I'll cut to the chase here, you can basically do all the same things, just use the word `ellipsoid` instead of `cuboid`. And [here's the ellipsoid selector switch, just like the cuboid one](https://forum.denizenscript.com/resources/ellipsoid-selector-tool.3/). Use `/etool` to get the wand, left click to start, right click to expand, `/enote` to make a note of it.
+I'll cut to the chase here, you can basically do all the same things, just use the word `ellipsoid` instead of `cuboid`. If you use the premade script linked above, just use `/seltool ellipsoid` or `/etool` to get the wand, left click to start, right click to expand, and `/selnote` to make a note of it.
 
 ![](images/ellipsoid_note.png)
 
@@ -131,7 +133,7 @@ Polygons are a little bit more complicated. Polygons are defined by a minimum an
 
 Outside of their complicated formation, they're otherwise used the same as cuboids and ellipsoids - there are commands and tags that operate with polygons, and any event input that takes an "area" accepts a polygon just the same as an ellipsoid or a cuboid.
 
-There is, of course, also a premade script tool for selecting polygons, [which you can download here](https://forum.denizenscript.com/resources/polygon-selector-tool.2/). Use `/ptool` to get the wand, then left click the first corner of a region, and right click each additional corner. Be careful which blocks you select, make sure you keep moving in a single rotational direction (clockwise or counter-clockwise) around the area, make sure you don't turn backwards or bend in on yourself, don't keep going past the start point. Once you've placed at least 3 corners, particles will start appearing. If you want to expand the polygon up or down, simply fly to the height you need and use `/pheight`. If this is all confusing... well just give it a try and experiment a little, you'll probably understand after you've tried it and see the particle boundaries of your region. If you get lost, don't be afraid to join the [Discord](https://discord.gg/Q6pZGSR) and ask for help.
+If you use the premade selector tool script, you can use `/seltool polygon` or `/ptool` to get the wand, then left click the first corner of a region, and right click each additional corner. Be careful which blocks you select, make sure you keep moving in a single rotational direction (clockwise or counter-clockwise) around the area, make sure you don't turn backwards or bend in on yourself, don't keep going past the start point. Once you've placed at least 3 corners, particles will start appearing. If you want to expand the polygon up or down, simply fly to the height you need and use `/selheight`. If this is all confusing... well just give it a try and experiment a little, you'll probably understand after you've tried it and see the particle boundaries of your region. If you get lost, don't be afraid to join the [Discord](https://discord.gg/Q6pZGSR) and ask for help.
 
 ![](images/polygon_note.png)
 

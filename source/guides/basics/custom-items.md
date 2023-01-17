@@ -17,7 +17,7 @@ To start off with, this is how a basic item script looks like:
 fancy_stick:
     type: item
     material: stick
-    display name: <&b><bold>Fancy stick!
+    display name: <&[item]>Fancy stick!
     lore:
     - <&7>So fancy.
     - <&7>Second line.
@@ -201,6 +201,8 @@ fancy_book_events:
         on player clicks block with:fancy_book_item:
         - narrate "Opening the fancy book!!!"
 ```
+
+Note that the above sample uses the `item` and `lore` custom color codes defined in your `Denizen/config.yml`
 
 ### Related Technical Docs
 

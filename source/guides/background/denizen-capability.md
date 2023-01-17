@@ -13,12 +13,13 @@ What Can You Do With Denizen?
 ### What Can An Advanced User Do With Denizen?
 
 **What can you do with Denizen... if you're dedicated? Anything you can set your mind to!**
-- Here's a region manager that competes with WorldGuard, written as a Denizen script: [Spigot - dRegions](https://www.spigotmc.org/resources/denizen-dregions.26864/)
-- Here's a script only about 20 lines long that makes it so a torch glows when held in your hand: [Forums - Denizen Torch Light](https://forum.denizenscript.com/viewtopic.php?f=13&t=8)
+- Here's a variety of high quality scripts publicly posted [on the Denizen forum resources section](https://forum.denizenscript.com/resources/categories/denizen-scripts.1/?prefix_id=2)
+- (Outdated) Here's a region manager that competes with WorldGuard, written as a Denizen script: [Spigot - dRegions](https://www.spigotmc.org/resources/denizen-dregions.26864/)
+- (Outdated) Here's a script only about 20 lines long that makes it so a torch glows when held in your hand: [Forums - Denizen Torch Light](https://forum.denizenscript.com/viewtopic.php?f=13&t=8)
 
 ![](images/torchlight.png)
 
-- In the past before I (mcmonkey) created Sentinel, I had written the same basic concept as a fully functional Denizen script: [Old Repo Archive - dSentry](https://one.denizenscript.com/denizen/repo/entry/0)
+- (Outdated) In the past before I (mcmonkey) created Sentinel, I had written the same basic concept as a fully functional Denizen script: [Old Repo Archive - dSentry](https://one.denizenscript.com/denizen/repo/entry/0)
 
 ![](images/dsentry.png)
 
