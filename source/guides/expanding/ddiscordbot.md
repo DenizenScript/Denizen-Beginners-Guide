@@ -33,7 +33,7 @@ The main uses might be an account linker, which verifies a Discord user with the
 
 There are enough tutorials out there for creating a bot account, such as [this one](https://discordpy.readthedocs.io/en/stable/discord.html).
 
-Make sure to enable the `Server Members Intent` on the bot page.
+Make sure to enable the `Server Members Intent` and `Message Content Intent` on the bot page.
 
 When generating a link to have bot join a server, use the 'OAuth2' page of the developers tab and checkmark the `bot` box. You probably also want to checkmark `applications.commands` if you want to use slash commands.
 
@@ -53,9 +53,9 @@ Once you have a bot created on Discord's applications page, that bot added to yo
 
 To log your server in as your bot, use the [`discordconnect` command](https://meta.denizenscript.com/Docs/Commands/discordconnect).
 
-For security reasons, you'll need to use a separate tokenfile placed outside of the `scripts` folder. A common location for this is in `Denizen/data`. The token file is just a simple text file, that contains only the bot token <span class="parens">(from the Discord applications page you created above)</span> and nothing else.
+For security reasons, you'll need to use a SecretTag for the token, by putting your token in the `plugins/Denizen/secrets.secret` file. Just add a key like `discord_bot_token: 123.abc` <span class="parens">(and swap `123.abc` for the token from the Discord applications page you created above)</span>.
 
-The `discordconnect` command takes an `id` argument. This can be anything you want, just choose a label that's memorable and fitting <span class="parens">(such as `mybot`, `ticketbot`, or `relay`), and is just used to uniquely identify a single bot in the case you have multiple bots in use at once on your server. Almost all Discord commands require this argument, and you just have to make sure to use the same label you chose every time.
+The `discordconnect` command takes an `id` argument. This can be anything you want, just choose a label that's memorable and fitting <span class="parens">(such as `mybot`, `ticketbot`, or `relay`)</span>, and is just used to uniquely identify a single bot in the case you have multiple bots in use at once on your server. Almost all Discord commands require this argument, and you just have to make sure to use the same label you chose every time.
 
 Note that while you can connect or disconnect at any time, you only *need* to connect once - usually done right after the server starts with the [`server start` event](https://meta.denizenscript.com/Docs/Events/server%20start). Additionally, make sure to [~wait for](https://meta.denizenscript.com/Docs/Languages/waitable) this command, as you should with all other Discord commands.
 
@@ -64,7 +64,7 @@ connect_to_discord:
     type: world
     events:
         after server start:
-        - ~discordconnect id:mybot tokenfile:data/tokenfile.txt
+        - ~discordconnect id:mybot token:<secret[discord_bot_token]>
 ```
 
 ### Sending a Message
@@ -102,7 +102,7 @@ Simple inline usage example:
 send_an_embed:
     type: task
     script:
-    - define embed "<discord_embed.with_map[title=Example Bot;description=Wow! This bot sure is a bot;timestamp=<util.time_now>;color=#00FFFF]>"
+    - define embed <discord_embed.with_map[title=Example Bot;description=Wow! This bot sure is a bot;timestamp=<util.time_now>;color=#00FFFF]>
     - ~discordmessage id:mybot channel:<server.flag[discord_botspam]> <[embed]>
 ```
 
@@ -271,7 +271,7 @@ For example, sending a message with a single button would look like:
 buttons:
     type: task
     script:
-    - define click_me "<discord_button.with[id].as[click_me].with[label].as[Click me!].with[style].as[success]>"
+    - define click_me <discord_button.with[id].as[click_me].with[label].as[Click me!].with[style].as[success]>
     - ~discordmessage id:mybot channel:<server.flag[discord_botspam]> rows:<[click_me]> Buttons!
 ```
 
@@ -283,11 +283,11 @@ buttons:
     script:
     - definemap buttons:
         1:
-            a: <discord_button.with[id].as[first].with[label].as[Click me!].with[style].as[primary]>
-            b: <discord_button.with[id].as[second].with[label].as[No, click me!].with[style].as[secondary]>
+            1: <discord_button.with[id].as[first].with[label].as[Click me!].with[style].as[primary]>
+            2: <discord_button.with[id].as[second].with[label].as[No, click me!].with[style].as[secondary]>
         2:
-            a: <discord_button.with[id].as[secondrow_first].with[label].as[This row's better!].with[style].as[danger]>
-            b: <discord_button.with[id].as[https://denizenscript.com].with[label].as[This column's best!].with[style].as[link]>
+            1: <discord_button.with[id].as[secondrow_first].with[label].as[This row's better!].with[style].as[danger]>
+            2: <discord_button.with[id].as[https://denizenscript.com].with[label].as[This column's best!].with[style].as[link]>
     - ~discordmessage id:mybot channel:<server.flag[discord_botspam]> rows:<[buttons]> Buttons!
 ```
 

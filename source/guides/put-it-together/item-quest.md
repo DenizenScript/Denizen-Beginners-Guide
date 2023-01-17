@@ -74,8 +74,8 @@ item_questgiver_interact:
             click trigger:
                 script:
                 - chat "Hi <player.name>! Can you help me? I lost my valuable item!"
-                # Use on_click to make chat triggers easier, and on_hover to make it clear that the text is clickable
-                - narrate "<&7>[<element[<&b>Yes I accept].on_click[yes].on_hover[Click to start quest]> or <element[<&b>No not right now].on_click[no].on_hover[Click to refuse quest]>]"
+                # Use click_chat to make chat triggers easier, and on_hover to make it clear that the text is clickable
+                - narrate "<&7>[<element[<&b>Yes I accept].click_chat[yes].on_hover[Click to start quest]> or <element[<&b>No not right now].click_chat[no].on_hover[Click to refuse quest]>]"
                 # Jump to the possible acceptance step, with a duration limit to be safe (if the player does nothing for 5 minutes, reset to default step again)
                 - zap wait_for_accept 5m
         # After clicking the NPC, this step is used to allow the player to accept or refuse the quest
@@ -86,7 +86,7 @@ item_questgiver_interact:
                 - chat "... Well? Yes or no?!"
                 # Copy/paste the narrate.
                 # In some cases it might be better to move this into a task script or a data key for reuse, but copy/pasta is quick and easy for just one duplicate.
-                - narrate "<&7>[<element[<&b>Yes I accept].on_click[yes].on_hover[Click to start quest]> or <element[<&b>No not right now].on_click[no].on_hover[Click to refuse quest]>]"
+                - narrate "<&7>[<element[<&b>Yes I accept].click_chat[yes].on_hover[Click to start quest]> or <element[<&b>No not right now].click_chat[no].on_hover[Click to refuse quest]>]"
             chat trigger:
                 1:
                     # If the player says yes...
@@ -173,7 +173,7 @@ item_quest_goal_interact:
                 script:
                 # Give the player some interaction options
                 - chat "Questy McQuestface sent you, didn't he?"
-                - narrate "<&7>[<element[<&b>Yes, give me his item back now!].on_click[yes].on_hover[Click here to advance quest]> or <element[<&b>No I don't know what you're talking about].on_click[no].on_hover[Don't click this]><&7>]"
+                - narrate "<&7>[<element[<&b>Yes, give me his item back now!].click_chat[yes].on_hover[Click here to advance quest]> or <element[<&b>No I don't know what you're talking about].click_chat[no].on_hover[Don't click this]><&7>]"
                 # Note for caution: if you put a cooldown on this, it would revert to the default step, which is bad, so don't do that.
                 - zap give_item
         # This step is to talk to the NPC and get the item
@@ -181,7 +181,7 @@ item_quest_goal_interact:
             click trigger:
                 script:
                 # This part, same idea as the wait_for_accept click trigger in the previous interact script above
-                - narrate "<&7>[<element[<&b>Yes, give me his item back now!].on_click[yes].on_hover[Click here to advance quest]> or <element[<&b>No I don't know what you're talking about].on_click[no].on_hover[Don't click this]><&7>]"
+                - narrate "<&7>[<element[<&b>Yes, give me his item back now!].click_chat[yes].on_hover[Click here to advance quest]> or <element[<&b>No I don't know what you're talking about].click_chat[no].on_hover[Don't click this]><&7>]"
             chat trigger:
                 1:
                     trigger: /Yes/ I can take it back

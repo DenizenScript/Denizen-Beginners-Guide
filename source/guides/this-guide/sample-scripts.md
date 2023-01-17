@@ -41,7 +41,7 @@ my_imperfect_script:
     - narrate "ur flag is <player.flag[waffle]> unless <player.has_flag[waffle]> is false oopsie"
 ```
 
-Imperfect scripts have a green outline. These scripts are valid for learning material but shouldn't be used as-is.
+Imperfect scripts have a yellow outline. These scripts are valid for learning material but shouldn't be used as-is.
 
 ### Bad Scripts
 

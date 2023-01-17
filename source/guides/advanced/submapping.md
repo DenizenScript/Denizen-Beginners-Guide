@@ -1,4 +1,4 @@
 We Must Go Deeper: Submapping (NOT YET WRITTEN)
 -----------------------------
 
-**TODO: Write-up that explains the concept of sub-mapping, particularly as applies to flags and MapTags.**
+**TODO: Write-up that explains the concept of sub-mapping. Should showcase both Flag and Definition submapping and the simple way of reading them like "`<[a.b]>`". Should explain how MapTags are generated and how you can read the root key to get a MapTag, and then use `.get[]` on it if wanted. Should give some general notes about MapTags. Should compare using `.` based submapping to using MapTag explicitly for the same tasks. Should describe both quality-of-code improvements and potential performance differences. Should also showcase `definemap`. Should showcase building a definition or flag initially from a direct MapTag like `<map[a=b]>` and then modifying keys within. Should show that removing the root also removes the nodes inside. Should show that replacing the root effectively clears any other keys inside as both a potential mistake and a useful tool when intended.**

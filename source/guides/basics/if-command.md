@@ -73,6 +73,14 @@ so you can read this like "if three **is not** equal to three, then run some com
 As a special additional note here: you might notice that `<` and `>` are the symbols used to indicate a tag normally, but are used for a different meaning here -
 this is fine, as you will never have both `<` and `>` in a single argument of a comparison, and thus the symbols will never be misinterpreted as a tag.
 
+<hr>
+
+- `contains` and `in` for list containment checks, like `- if one|two contains one:` or `- if one in one|two:`
+
+<hr>
+
+- `matches` for advanced-matcher checks, like `- if <player.item_in_hand> matches diamond_sword:`
+
 ### Combining Conditions: The Venti Mocha Frap With Extra Sugar and No Cream
 
 When a simple comparison just won't do, and you gotta get a few extra things included, don't worry: the `if` command will let you do that!

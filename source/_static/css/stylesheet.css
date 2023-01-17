@@ -90,10 +90,15 @@ div[class^="highlight-dscript"] .c1 { /* comment-single: #- code comment */
     font-weight: normal;
     font-style: normal;
 }
-div[class^="highlight-dscript"] .nv { /* name-variable: [brackets] */
+div[class^="highlight-dscript"] .na { /* name-attribute: [brackets] */
     color: #5500FF;
     font-weight: normal;
     font-style: normal;
+}
+div[class^="highlight-dscript"] .nv { /* name-variable: [def] */
+    color: #117799;
+    font-weight: normal;
+    font-style: italic;
 }
 div[class^="highlight-dscript"] .nc { /* name-class: yaml keys */
     color: #0000FF;
@@ -120,6 +125,11 @@ div[class^="highlight-dscript"] .o { /* operator: the . in tags */
     font-weight: normal;
     font-style: normal;
 }
+div[class^="highlight-dscript"] .ow { /* operator-word: if command operators */
+    color: #337799;
+    font-weight: bold;
+    font-style: normal;
+}
 /* Dark Theme */
 html[data-theme="dark"] .highlighted {
     background: #403404 !important;
@@ -140,6 +150,7 @@ html[data-theme="dark"] .parens { /* Parentheticals */
 }
 html[data-theme="dark"] pre { /* Code blocks */
     background-color: #222222;
+    color: #ffffff;
 }
 html[data-theme="dark"] div[class^="highlight-dscript"] .s { /* string: "double quoted" */
     color: #77BBF5;
@@ -157,8 +168,11 @@ html[data-theme="dark"] div[class^="highlight-dscript"] .gr { /* generic-error: 
 html[data-theme="dark"] div[class^="highlight-dscript"] .c1 { /* comment-single: #- code comment */
     color: #DD5500;
 }
-html[data-theme="dark"] div[class^="highlight-dscript"] .nv { /* name-variable: [brackets] */
+html[data-theme="dark"] div[class^="highlight-dscript"] .na { /* name-attribute: [brackets] */
     color: #7777FF;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .nv { /* name-variable: [def] */
+    color: #33CCFF;
 }
 html[data-theme="dark"] div[class^="highlight-dscript"] .nc { /* name-class: yaml keys */
     color: #1155FF;
@@ -174,4 +188,7 @@ html[data-theme="dark"] div[class^="highlight-dscript"] .k { /* keyword: - comma
 }
 html[data-theme="dark"] div[class^="highlight-dscript"] .o { /* operator: the . in tags */
     color: #EEEEFF;
+}
+html[data-theme="dark"] div[class^="highlight-dscript"] .ow { /* operator-word: if command operators */
+    color: #66CCFF;
 }

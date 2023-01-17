@@ -155,7 +155,7 @@ def_sample:
     script:
     - define current <player.health>
     - define goal 1
-    - if <player.inventory.contains.scriptname[healing_tool]>:
+    - if <player.inventory.contains_item[healing_tool]>:
         - define goal 20
     - narrate "Your health is <[current]>. Let's heal you to <[current].add[<[goal]>]>!"
     - heal <[goal]>
@@ -207,6 +207,10 @@ When you run that script, it will first narrate `mydef became 4`, showing that t
 
 For the list data actions, change the first line to `- define mydef <list[old_value|some_other_value]>` for testing.
 
+#### What Else?
+
+You can also use the `define` command (and the special-case variant, the `definemap` command) to dynamically build data maps, which will be explained in more detail in [the advanced section](/guides/advanced/submapping).
+
 ### Other Definition Sources
 
 As an added note, be aware that there are some things that create definitions other than the `define` command, including [loops](/guides/basics/loops), some various commands <span class="parens">(like shoot)</span> that will say when they create a definition in the relevant command's documentation, and sometimes external plugins that hook into Denizen.
@@ -219,5 +223,4 @@ Note: most users, especially those learning from the Denizen for the first time,
 
 - [Define command doc](https://meta.denizenscript.com/Docs/Commands/define)
 - [definition tag](https://meta.denizenscript.com/Docs/Tags/definition)
-- [definition.exists tag](https://meta.denizenscript.com/Docs/Tags/definition.exists)
 - [data actions language doc](https://meta.denizenscript.com/Docs/Languages/data%20actions)
