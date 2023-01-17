@@ -17,10 +17,10 @@ To start off with, this is how a basic item script looks like:
 fancy_stick:
     type: item
     material: stick
-    display name: <&b><bold>Fancy stick!
+    display name: <&[item]><bold>Fancy stick!
     lore:
-    - <&7>So fancy.
-    - <&7>Second line.
+    - <&[lore]>So fancy.
+    - <&[lore]>Second line.
 ```
 In [the script editor](/guides/first-steps/script-editor), you can simply type `item` and use tab completion to generate the basic template of an item script at any time.
 
@@ -29,6 +29,8 @@ An item script container has the type set to `item`. You will need to give it a 
 While not strictly required, most item script will also have a custom display name and custom lore. The display name works similarly to other container keys, the lore takes in a list as opposed to a single argument. Each line of lore is given on a new line prepended by a `-` <span class="parens">(similar to how a list of commands look in scripts)</span>.
 
 You can get this item in-game by typing `/ex give fancy_stick`
+
+Note that the above sample uses the `item` and `lore` custom color codes defined in your Denizen/config.yml
 
 ![](images/fancy_stick-basic.png)
 
@@ -41,7 +43,7 @@ As an example this would be how you would add enchantments:
 fancy_sword:
     type: item
     material: iron_sword
-    display name: <&b><bold>Fancy indestructible sword!
+    display name: <&[item]><bold>Fancy indestructible sword!
     enchantments:
     - smite:2
     - unbreaking:3
@@ -56,13 +58,13 @@ You can also add in custom data onto an item in the form of flags such as:
 special_hat_1:
     type: item
     material: iron_helmet
-    display name: <&b><bold>A Special Hat
+    display name: <&[item]><bold>A Special Hat
     flags:
         hat_type: 1
 special_hat_2:
     type: item
     material: iron_helmet
-    display name: <&b><bold>A Special Hat 2.0
+    display name: <&[item]><bold>A Special Hat 2.0
     flags:
         hat_type: 2
 ```
@@ -75,7 +77,7 @@ As mentioned above [the mechanisms guide](/guides/basics/mechanisms) covers more
 fancy_sword:
     type: item
     material: iron_sword
-    display name: <&b><bold>Fancy indestructible sword!
+    display name: <&[item]><bold>Fancy indestructible sword!
     enchantments:
     - smite:2
     mechanisms:
@@ -103,7 +105,7 @@ Custom items can also come with their own crafting recipes so that players can c
 fancy_sword:
     type: item
     material: iron_sword
-    display name: <&b><bold>Fancy indestructible sword!
+    display name: <&[item]><bold>Fancy indestructible sword!
     enchantments:
     - smite:2
     mechanisms:
