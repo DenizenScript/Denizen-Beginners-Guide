@@ -1,4 +1,4 @@
-Fancier Sticks: Making Custom Items (PLACEHOLDER ONLY)
+Fancier Sticks: Making Custom Items
 -----------------------------------
 
 ```eval_rst
@@ -12,7 +12,7 @@ Custom items are a way to store a various set of properties onto an item to crea
 
 ### The Basic Structure
 
-To start off with, this is the basic structure of an item script:
+To start off with, this is how a basic item script looks like:
 ```dscript_green
 fancy_stick:
     type: item
@@ -24,9 +24,9 @@ fancy_stick:
 ```
 In [the script editor](/guides/first-steps/script-editor), you can simply type `item` and use tab completion to generate the basic template of an item script at any time.
 
-An item script container has the type set to `item`. You also need to give it a valid existing Minecraft material for your item to be based off of; for example here we are using a stick.
+An item script container has the type set to `item`. You will need to give it a valid ItemTag for your item to be based off of; for example here we are using a stick.
 
-While not strictly required, most item script will also have a custom display name and custom lore. The display name works similarly to other container keys, the lore takes in a list as opposed to a single argument. Each line of lore is given on a new line prepended by a `-` <span class="parens">(this is similar, but should not be confused with, how commands look)</span>.
+While not strictly required, most item script will also have a custom display name and custom lore. The display name works similarly to other container keys, the lore takes in a list as opposed to a single argument. Each line of lore is given on a new line prepended by a `-` <span class="parens">(similar to how a list of commands look in scripts)</span>.
 
 You can get this item in-game by typing `/ex give fancy_stick`
 
@@ -43,10 +43,9 @@ fancy_sword:
     material: iron_sword
     display name: <&b><bold>Fancy indestructible sword!
     enchantments:
-    - DAMAGE_UNDEAD:2
-    - DURABILITY:3
+    - smite:2
+    - unbreaking:3
 ```
-Note that the enchantment names do differ than the ones that display in game, the names to use can be found on [Spigot's page](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html)
 
 You can get this item in-game by typing `/ex give fancy_sword`
 
@@ -78,7 +77,7 @@ fancy_sword:
     material: iron_sword
     display name: <&b><bold>Fancy indestructible sword!
     enchantments:
-    - DAMAGE_UNDEAD:2
+    - smite:2
     mechanisms:
         unbreakable: true
 ```
@@ -87,7 +86,7 @@ As a warning, changes to an item script do not get automatically applied to inst
 
 ### Using Items Elsewhere
 
-As demonstrated previously, you can simply just provide the name of the item script into the give command and denizen will give you a copy of that item. This applies also to anywhere that specific items can be referenced. For instance, let's say we want an event to listen for when someone specifically uses the `fancy_sword` to hit something else, we can simply just do the following:
+Since item scripts are effectively new items, any place that accepts ItemTags will also accept item scripts in addition to any vanilla minecraft item. As demonstrated previously, you can simply just provide the name of the item script into the give command and denizen will give you a copy of that item. This applies also to anywhere that specific items can be referenced. For instance, let's say we want an event to listen for when someone specifically uses the `fancy_sword` to hit something else, we can simply just do the following:
 ```dscript_green
 fancy_sword_events:
     type: world
@@ -95,7 +94,7 @@ fancy_sword_events:
         on player damages entity with:fancy_sword:
         - narrate "You hit an <context.entity.name> with the fancy sword"
 ```
-You can test this out by hitting an entity with the fancy_sword and again with a normal one and see that nothing happens when using the normal one and only when using the fancy_sword.
+You can test this out by hitting an entity with the fancy_sword and again with a normal one. See that nothing happens when using the normal one and only when using the fancy_sword does the statement display.
 
 ### Adding Crafting Recipes
 
@@ -106,7 +105,7 @@ fancy_sword:
     material: iron_sword
     display name: <&b><bold>Fancy indestructible sword!
     enchantments:
-    - DAMAGE_UNDEAD:2
+    - smite:2
     mechanisms:
         unbreakable: true
     recipes:
@@ -119,8 +118,8 @@ fancy_sword:
 ```
 A few things to note:
 - Each recipe needs a number, as an item can have multiple recipes. This should be increasing in numeric order
-- The recipe needs a type, there are many ways to craft items, shaped is the most basic/common of using the crafting table
-- The shaped recipe goes in this 3*3 grid with air taking up where you would want a specific empty spot
+- The recipe needs a type, there are many ways to craft items, shaped is the most basic/common which uses the crafting table
+- The shaped recipe goes in this 3\*3 or 2\*2 grid with air taking up where you would want a specific empty spot <span class="parens">if a 2\*2 shape is desired, simply adjust the input to match</span>
 - The recipe will not show up in the recipe book after crafting until you either reconnect or use the `resend_recipes` mechanism <span class="parens">(`/ex adjust <player> resend_recipes`)</span>
 
 You can try it out and see that you can now craft it:
@@ -140,13 +139,13 @@ type: stonecutting
 input: iron_sword
 ```
 
-furnace/blast/smoker/campfire - smelting an item in the relevant block
+furnace/blast/smoker/campfire - smelting an item in the relevant item from the script
 ```dscript_blue
 type: furnace
 input: iron_sword
 ```
 
-smithing - crafting an item on the smithing table, using 2 inputs (a base and an upgrade) as well as allowing to  keep enchantments and display names
+smithing - crafting an item on the smithing table, using 2 inputs (a base and an upgrade) as well as allowing to keep enchantments and display names
 ```dscript_blue
 type: smithing
 base: iron_sword
@@ -154,10 +153,17 @@ retains: enchantments|display
 upgrade: obsidian
 ```
 
+brewing - use a brewing stand to convert and item with an ingredient into the item from the script. Note, neither the item in the script nor the input need to be a potion in any way.
+```dscript_blue
+type: brewing
+input: iron_sword
+ingredient: obsidian
+```
+
 ### Custom Books
 
 On related topic to item scripts, there are also book scripts. While they serve similar purpose as item scripts, they are their own unique container.
-A book script is structured as follows:
+An example book script would be as follows:
 ```dscript_green
 fancy_book:
     type: book
@@ -172,12 +178,14 @@ fancy_book:
 Things to note here:
 - The author does not have to be anyone real, you can put in whatever you want
 - Signed makes this a signed book, you can set this to false to leave it unsigned
-- Each line of text is a new page. You can insert new lines on a page using `<n>`
+- Each line of text is a new page, not a new line on a page. You can insert new lines on a page using `<n>`
+- While text will automatically move to new lines if space is required, there is no guarantee that the text you write will fit on the page. This may take some trial and error to ensure the text you want to show does in fact fit its page.
 
 This is can be given in a similar fashion as other item scripts.
 You can test this out with `/ex give fancy_book`
 
-If you are looking to use this in events however, you would need to link it to an item script via the `book` key like so:
+Despite this being similar to item scripts, book scripts are not necessarily valid ItemTags in all situations, and thereby cannot be used in all the same ways that other ItemTags can be used, in particular when verifying that the book a player has is indeed a result of the script.
+For instance if you are looking to use this in events, you would need to link it to an item script via the `book` key like so:
 ```dscript_green
 fancy_book_item:
     type: item
