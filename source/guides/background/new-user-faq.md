@@ -36,7 +36,7 @@ First: If you can spare a couple hours per week, you probably have enough time t
 
 If you can't... well why are you trying to run a Minecraft server? Running a server takes a lot of time and effort.
 
-If the reason you're low on time is you need something made *now* and next week is too late, consider [hiring](https://forum.denizenscript.com/viewtopic.php?f=14&t=156) a scripter.
+If the reason you're low on time is you need something made *now* and next week is too late, consider hiring a scripter on our [Discord](https://discord.gg/Q6pZGSR).
 
 If the reason you're low on time is just that your server takes too much time already and you just don't want to spend *even more* time on it, consider delegating the task of learning to script to a friend/admin/co-owner. Anyone can learn Denizen, you just need to find the friend who's willing to spend some time and effort to learn scripting and help your server.
 

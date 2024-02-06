@@ -5,6 +5,7 @@ Blurring The Line Between Commands And Tags: Procedure Scripts
 .. contents:: Table of Contents
     :local:
 ```
+
 ### Procedure Basics
 
 You may be working on a project and find that there is a section of script that you write often, that you'd like to be able to neatly package up and reuse. Maybe you have some math that you don't want to copy/paste, or you have a script that generates a custom name for items or NPCs. You've already learned about using `task` scripts for reusable sections of script that can be called in one line with the `run` command, but what about something even smaller and easier to use? Meet: **Procedure** scripts!
