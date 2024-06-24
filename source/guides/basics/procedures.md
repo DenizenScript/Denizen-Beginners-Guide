@@ -124,7 +124,7 @@ task_example:
         # run the task, and save the result. We also need to specify waiting for the task to finish
         - ~run get_fruits def:<context.message> save:fruit_list
         # get the saved list, get the queue, then the determined list, and a random entry from that determination
-        - narrate "No way, I like <entry[fruit_list].queue.determination.first.random.if_null[nothing]> too!"
+        - narrate "No way, I like <entry[fruit_list].created_queue.determination.first.random.if_null[nothing]> too!"
 ```
 
 And here's the procedure version:
