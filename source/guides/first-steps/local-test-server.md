@@ -27,7 +27,7 @@ It's pretty simple! Let's go through the steps...
 
 **Fair warning** that this guide is focused on Windows PCs, as they are the most common (but will note differences for other OS's where applicable).
 
-- **Step 0: Install Java.** You might not already have Java installed on your PC - if not, you'll need to have it installed. You can download [OpenJDK 17 from here](https://adoptium.net/?variant=openjdk17). <span class="parens">(for Linux/Mac, just google how to download OpenJDK 17 for your specific OS/Distro)</span>. When installing, make sure to enable the options "Add to PATH" and "Set JAVA_HOME variable". Note that the correct Java version to install depends on your Minecraft server version. For Minecraft 1.18+ the preferred Java version is JDK 17.
+- **Step 0: Install Java.** You might not already have Java installed on your PC - if not, you'll need to have it installed. You can download [OpenJDK 21 from here](https://adoptium.net/?variant=openjdk21). <span class="parens">(for Linux/Mac, just google how to download OpenJDK 21 for your specific OS/Distro)</span>. When installing, make sure to enable the options "Add to PATH" and "Set JAVA_HOME variable". Note that the correct Java version to install depends on your Minecraft server version. Current versions use JDK 21, in recent previous versions JDK 17 was used, in the distance past Java 8 used to be the usual version.
 
 ![](images/javainstall.png)
 

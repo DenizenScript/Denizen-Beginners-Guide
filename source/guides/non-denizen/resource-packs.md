@@ -38,11 +38,14 @@ Here is what it looks like inside:
 
 ##### pack.mcmeta File Key: `pack_format`
 
-This is the indicator to Minecraft what version this pack is.
+This is the indicator to Minecraft what version of Minecraft this pack was built for. This number can be a bit arbitrary, as it's updated whenever Minecraft updates pack format internals, sometimes even multiple times between a minecraft update.
 - `6` indicates version `1.16.5`,
 - `7` indicates version `1.17`,
 - `8` indicates version `1.18`,
-- `9` indicates version `1.19`
+- `9` indicates version `1.19`,
+- `13` indicates version `1.19.4`
+- `22` indicates `1.20.4`
+- `34` indicates `1.21`
 - For more version options, refer to [This minecraft wiki page](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_resource_pack#Formatting_pack.mcmeta)
 
 ##### pack.mcmeta File Key: `description`
@@ -91,7 +94,7 @@ Directory: `.minecraft/resourcepacks/MyResourcePack/assets/minecraft/sounds/`.
 The sound format Minecraft uses is `.ogg`.
 Free converting tools can be found online, one recommended option being [Audio-Online-Convert.com.](https://audio.online-convert.com/convert-to-ogg).
 For organization's sake, if you're adding new sounds, it is recommended that you place them in a folder named `Custom`. Minecraft's default resource organizes it's sounds by [category](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html).
-You can find Minecraft's default resource sound index here: `.minecraft/assets/indexes/1.18.json`; where `1.18` is the Minecraft version to use.
+You can find Minecraft's default resource sound index here: `.minecraft/assets/indexes/1.21.json`; where `1.21` is the Minecraft version to use.
 All of your sound files <span class="parens">('.ogg' files)</span> should be saved in this directory.
 
 #### Example File: `sounds.json`
