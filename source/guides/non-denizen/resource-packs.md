@@ -39,14 +39,14 @@ Here is what it looks like inside:
 ##### pack.mcmeta File Key: `pack_format`
 
 This is the indicator to Minecraft what version of Minecraft this pack was built for. This number can be a bit arbitrary, as it's updated whenever Minecraft updates pack format internals, sometimes even multiple times between a minecraft update.
-- `6` indicates version `1.16.5`,
 - `7` indicates version `1.17`,
 - `8` indicates version `1.18`,
 - `9` indicates version `1.19`,
-- `13` indicates version `1.19.4`
-- `22` indicates `1.20.4`
-- `34` indicates `1.21`
-- For more version options, refer to [This minecraft wiki page](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_resource_pack#Formatting_pack.mcmeta)
+- `13` indicates version `1.19.4`,
+- `32` indicates `1.20.6`,
+- `34` indicates `1.21`,
+- `42` indicates `1.21.3`
+- For more version options, refer to [This minecraft wiki page](https://minecraft.wiki/w/Pack_format/#List_of_resource_pack_formats)
 
 ##### pack.mcmeta File Key: `description`
 
