@@ -12,9 +12,9 @@ Before you use Denizen at all, there is one basic requirement: You need to be ru
 
 That means a Spigot server or fork thereof (like Paper), as opposed to a vanilla server, a Forge server, or some other platform.
 
-What constitutes a "recent version" changes with time of course, but generally that means the current version of minecraft - but if you're one or two major versions behind, that's fine. Note that you must always be on the latest *minor* version though. Minecraft versions are of the format `1.major.minor`, so for example in `1.15.2`, `15` is major and `2` is minor. If `1.15.2` is the current latest version, then `1.15.2` is a good version, but `1.15.1` is unsupported, and `1.15` (implied `.0`) is also unsupported. `1.14.4` (ie, latest minor version of the previous major version) is also supported. Major versions older than this are also supported sometimes.
+What constitutes a "recent version" changes with time of course, but generally that means the current version of minecraft - but if you're one or two major versions behind, that's fine. Note that you must always be on the latest *minor* version though. Minecraft versions are of the format `1.major.minor`, so for example in `1.21.3`, `21` is major and `3` is minor. If `1.21.3` is the current latest version, then `1.21.3` is a good version, but `1.21.1` is unsupported, and `1.21` (implied `.0`) is also unsupported. `1.20.6` (ie, latest minor version of the previous major version) is also supported. Major versions older than this are also supported sometimes.
 
-At time of writing, the supported versions are `1.21.1`, `1.20.6`, `1.19.4`, `1.18.2`, `1.17.1`. Note that these versions are just examples, and this page will not necessarily be updated with new Minecraft releases. Check the Discord's news and changelog channels for information about current version support.
+At time of writing, the supported versions are `1.21.3`, `1.20.6`, `1.19.4`, `1.18.2`, `1.17.1`. Note that these versions are just examples, and this page will not necessarily be updated with new Minecraft releases. Check the Discord's news and changelog channels for information about current version support.
 
 ### Chocolate Or Vanilla?
 
