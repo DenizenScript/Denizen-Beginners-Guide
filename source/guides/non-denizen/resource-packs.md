@@ -43,9 +43,9 @@ This is the indicator to Minecraft what version of Minecraft this pack was built
 - `8` indicates version `1.18`,
 - `9` indicates version `1.19`,
 - `13` indicates version `1.19.4`,
-- `32` indicates `1.20.6`,
-- `34` indicates `1.21`,
-- `42` indicates `1.21.3`
+- `32` indicates version `1.20.6`,
+- `34` indicates version `1.21`,
+- `42` indicates version `1.21.3`
 - For more version options, refer to [This minecraft wiki page](https://minecraft.wiki/w/Pack_format/#List_of_resource_pack_formats)
 
 ##### pack.mcmeta File Key: `description`
