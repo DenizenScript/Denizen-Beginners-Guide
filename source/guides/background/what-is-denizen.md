@@ -12,6 +12,8 @@ In short: Denizen is a scripting language!
 
 A bit longer: Denizen is a plugin for Spigot servers that loads and runs user-written scripts automatically, allowing server owners to quickly and easily customize their server however they please, in a manner similar to developing your own plugins, but ten times faster and ten times easier!
 
+**Here's a video** showing a bit of what Denizen is and can do: [Denizen overview video by hyper](https://www.youtube.com/watch?v=Kiml0hcDIYo)
+
 ### Let's Be Semi-Formal About It
 
 Denizen scripts are contained within a YAML-like structuring, for the sake of ease and familiarity - have you ever edited some YAML configs for a plugin on your server? Imagine that kind of simple YAML config editing but you can do *anything you want* with it!
