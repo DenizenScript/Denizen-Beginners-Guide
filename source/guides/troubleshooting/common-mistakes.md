@@ -300,8 +300,8 @@ It's simply too easy to cause a lot of problems for a lot of people when you're 
 
 ### If True Is True Equal To Truly True Is The Truth
 
-The way the `if` command in Denizen works is it processes the arguments using logical comparison techniques, then runs the code inside unless the result is falsy<span class="parens">(the word `false`, the number 0, an empty list, and so on)</span>.
-So, if a script does `- if <sometag> == true:`, you're essentially saying `if ( <sometag.is_truthy> == true ) == true:` ... which is pretty silly, right?
+The way the `if` command in Denizen works is it processes the arguments using logical comparison techniques, then runs the code inside if the result is truthy<span class="parens">(the word `true`, a non-empty list, a non-zero number, or so on)</span>.
+So, if a script does `- if <sometag> == true:`, you're essentially saying `if ( true == true ) == true:` ... which is pretty silly, right?
 
 **NEVER** input `== true` into an `if` command <span class="parens">(or `while` or anything like it)</span>. It is always redundant.
 
