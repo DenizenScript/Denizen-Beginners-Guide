@@ -35,7 +35,7 @@ my_interact:
                 - zap *
 ```
 
-This script can be assigned to your selected NPC via `/ex assignment set my_assignment`
+This script can be assigned to your selected NPC via `/ex assignment set script:my_assignment`
 
 ### Related Technical Docs
 
