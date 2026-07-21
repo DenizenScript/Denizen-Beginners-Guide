@@ -27,15 +27,6 @@ Follow the setup instructions and then run the BuildTools jar for each version s
 
 After building, the jar will be available in the `target` folder. You can stick this into your test server's plugins folder and all of Denizen should be available. You can repeat step 3 to build the project after making any desired changes.
 
-### Building the Project (CLI)
-
-To compile the project and test your changes locally, you can also use [Maven](https://maven.apache.org/) directly from the command line. Run the following command in the root directory of the repository:
-
-```bash
-mvn clean package
-```
-
-Once the build completes successfully, the compiled plugin jar will be located in the `dist/target` folder.
 
 ### Testing Your Changes
 
