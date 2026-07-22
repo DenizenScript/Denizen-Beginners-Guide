@@ -30,8 +30,8 @@ After building, the jar will be available in the `target` folder. You can stick 
 
 ### Testing Your Changes
 
-Before submitting a pull request, ensure you have thoroughly tested your modifications locally on a test server. You are expected to provide proof of testing and instructions on how to replicate your test within your PR description. Once merged into a developmental build, changes are further validated by testers before making their way to an official release.
+Before submitting a pull request, make sure to thoroughly test your modifications locally on a test server. In your PR description, you should list which server versions you tested your changes on and confirm that the features worked as expected. Once merged into a developmental build, changes are further validated by testers before making their way to an official release.
 
 ### The Review Process
 
-The Denizen project is intentionally designed to be an educational environment. When you submit a pull request, expect maintainers to leave detailed reviews and point out small nitpicks. This isn't meant to be discouraging; the goal is to help you learn the nuances of the codebase, understand good coding practices, and improve your skills for future contributions.
+When you submit a pull request, maintainers will likely leave detailed reviews that point out minor adjustments or suggest improvements. This process is highly educational: the maintainers want to help you learn every detail of good coding practices so you can do even better on your next contribution! Although fixing minor issues might seem tedious, this feedback loop trains contributors to handle things effectively and helps ensure the long-term health of the project.
