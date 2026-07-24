@@ -1,4 +1,4 @@
-Working With and Building Denizen
+Building Denizen and Testing Changes
 ---------------------------------
 
 ```eval_rst
@@ -6,32 +6,16 @@ Working With and Building Denizen
     :local:
 ```
 
-### Prerequisites
-
-Make sure you have the following tools installed on your machine:
-
-- Some form of git. We recommend [GitHub Desktop](https://desktop.github.com/) <span class="parens">(if you're using Linux, don't worry, there's probably a package for your distro)</span>.
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/). This editor is specifically designed for Java projects and will handle dependencies on its own.
-
-### Building Spigot
-
-To build Denizen, you'll also need to build the supported versions of Spigot, which you can find on the [project README](https://github.com/DenizenScript/Denizen#readme). To do this, Spigot provides a tool called [BuildTools](https://www.spigotmc.org/wiki/buildtools/). This cannot be substituted with prebuilt jars or forks, as it must be built into your local maven repo.
-
-Follow the setup instructions and then run the BuildTools jar for each version supported by Denizen. This should be a command like `java -jar BuildTools.jar --rev 1.21.1 --remapped`.
-
 ### Building Denizen
 
-1. Clone the Denizen repository: https://github.com/DenizenScript/Denizen
-2. Open the cloned folder with IntelliJ.
-3. Open the Maven tab, select `denizen-parent`, and click "Run Maven Build" <span class="parens">(the green arrow)</span>.
+After you've made changes to Denizen's code, you'll need to test them thoroughly to ensure that they function as expected in all use-cases. To do this, you'll need to build the plugin, with your changes, into a custom .jar file.
+The easiest way to do this is to use Intellj's Maven plugin's GUI. In Intellj, on the right side, you should see an `M` symbol. Click that and it'll open a menu that looks like this:
 
-After building, the jar will be available in the `target` folder. You can stick this into your test server's plugins folder and all of Denizen should be available. You can repeat step 3 to build the project after making any desired changes.
+![](images/maven_menu.png)
 
+Right click on `denizen-parent` and select "Run Maven Build". This will take a few moments, esspecially the first time you do it. Wait until the console tells you that the build is sucessful, and then navigate to your repository. In the root directory, you'll find /target, and the .jar will be inside. This is your plugin and you can put it into your [test server](/guides/first-steps/local-test-server) and try it! Make sure you get the jar from the target directory in the root. 
 
-### Testing Your Changes
+### Testing Changes
 
-Before submitting a pull request, make sure to thoroughly test your modifications locally on a test server. In your PR description, you should list which server versions you tested your changes on and confirm that the features worked as expected. Once merged into a developmental build, changes are further validated by testers before making their way to an official release.
-
-### The Review Process
-
-When you submit a pull request, maintainers will likely leave detailed reviews that point out minor adjustments or suggest improvements. This process is highly educational: the maintainers want to help you learn every detail of good coding practices so you can do even better on your next contribution! Although fixing minor issues might seem tedious, this feedback loop trains contributors to handle things effectively and helps ensure the long-term health of the project.
+How you test changes varies greatly depending on the nature of the feature, but you'll want to make sure that it works when used correctly and gracefully errors when used incorrectly on each version that it supports. Unless you've set otherwise, this means that you need to test it on each minecraft version that Denizen supports.
+You should try to think a little outside-the-box when testing for failures, as you may be suprised just how incorrectly users manage to use your feature. For example, if you're adding a tag, command, or mechanism, try giving no input, input of the completely wrong object type, empty input, misordered input, or so on. If your change uses a location, try it on locations that are unloaded, do not exist at all(such as in a made-up world name), with noted locations. It's not possible or expected to catch every possible mistake, and Denizen will often handle user-created problems for you before your code ever runs, but do your best!
