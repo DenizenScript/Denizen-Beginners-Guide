@@ -2,7 +2,7 @@ Resource Packs - 3D Models and Advanced Implementation
 ----------------------------------------
 
 This page will provide some examples and guides to how to utilize the program Blockbench to create custom 3D items for use in your own projects.
-This guide will assume you already have a basic resource pack file structure, but will instead it will primarily focus on the step by step process of creating a model using Blockbench, creating a namespace, and finally implementing it using Denizen with up to date info for modern Minecraft verisons.
+This guide assumes you already have a basic resource pack file structure and will primarily focus on the step by step process of creating a model using Blockbench, creating a namespace, and finally implementing it using Denizen with up to date info for modern Minecraft verisons.
 
 ```eval_rst
 .. contents:: Table of Contents
@@ -13,7 +13,7 @@ This guide will assume you already have a basic resource pack file structure, bu
 
 Assuming you already have a basic resource pack with an `.mcmeta` file and an `assets` folder, inside the `assets` folder is where all of your `Namespaces` live. A `Namespace` is a kind of directory that Minecraft uses to organize resource and data packs.
 
-For example, all of the Minecraft textures and models will be prefixed ingame with the following Namespace `minecraft:wooden_sword` . 
+For example, all of the Minecraft textures and models will be prefixed in-game with the following Namespace `minecraft:wooden_sword`. 
 
 You can see the namespace being the first part before the colon, being `namespace:item`. In the above, it sees the `minecraft` part being the folder it needs to look for in the Resource Pack. 
 
@@ -45,9 +45,9 @@ Namespaces are comprised of the simple file structure:
 
 #### Items Folder
 
-This folder is where all of your items are registered by Minecraft, as well as items. The `.json` files inside this directory are the exact names of what will be registered in-game for usage in your custom items.
+This folder is where Minecraft registers custom items and their default model behaviors. The `.json` files inside this directory are the exact names of what will be registered in-game for usage in your custom items.
 
-If you create a file in the folder called `hamburger.json` you will end up with registering an item with the namespace key of `example:hamburger`.
+If you create a file in the folder called `hamburger.json` you will register an item with the namespace key of `example:hamburger`.
 
 Keep in mind that this `.json` file can actually be called something else than what your model file is called.
 For basic models, it's a good idea to reuse the same name for your model so you don't get confused easily.
@@ -84,7 +84,7 @@ Finally, this folder houses any of your custom textures used in your model files
 
 An important thing to note is that since the `1.21.2` update, model atlases have been given a strict enforcement that you cannot cross-use subdirectories.
 
-So if you wanted to use a directory of `*/example/textures/block/`, you would need to use only textures from the `block` directory; you cannot use textures from an `item` directory. Supposedly, this is for optimization for the GPU engine for baking. (Personally, it's extremely annoying since this wasn't a solid rule for a solid decade)
+So if you wanted to use a directory of `*/example/textures/block/`, you would need to use only textures from the `block` directory; you cannot use textures from an `item` directory.
 
 ### Blockbench
 
@@ -102,7 +102,7 @@ Specifically select `Java Block/Item`. Otherwise, the Blockbench exporter will n
 
 You will want to enter the `File Name` section with the name of your model. This will directly provide the output file with the correct name.
 
-`IMPORTANT NOTE`: Do not use any capitalization or spaces in the file name. Minecraft files only rely on alphanumeric characters and underscores. `(A-Z, 0-9)` 
+`IMPORTANT NOTE`: Do not use any capitalization or spaces in the file name. Minecraft files only rely on alphanumeric characters and underscores. `(a-z, 0-9, _)` 
 If you want to separate your words, use an underscore (_) in your file name.
 
 For our guide, we'll be making a chair for use in furniture with an associated Denizen script later on to implement it directly in-game.
@@ -121,13 +121,17 @@ However, you currently have no cubes or groups. To add one, select the `Plus Sym
 
 This will place a `2 x 2 x 2` cube into the model. 
 
-The default size that Minecraft allows to fit in a single block's space is '16 x 16 x 16`. So keep this in mind if you want your model to fit well with what you plan to use it for.
+The default size that Minecraft allows to fit in a single block's space is `16 x 16 x 16`. So keep this in mind if you want your model to fit well with what you plan to use it for.
+
+Cubes in Blockbench are measured in Pixels. The max size that Blockbench allows for is a `48 x 48 x 48` space. This means that you can make models that are larger than a single Minecraft block. 
+
+This can be useful for making models that take up multiple blocks instead of making multiple models for the same purpose.
 
 You can name each of the cubes you have by `Right Clicking` it in the `Outliner` and selecting `Rename`. The default keybind for this is `F2`.
 
 #### Groups
 
-For organizational purposes, `Groups` are very useful, so you don't end up with your model entirely composed of parts called `Cube` and not knowing what goes where.
+For organizational purposes, `Groups` are very useful, so you don't end up with your model entirely composed of parts with the default name of "cube" and not knowing what goes where.
 
 To create a group, select the `Folder` icon next to the `Plus` symbol. You will likely want to put your original Cube inside this Group by dragging the Cube in the `Outliner` onto the newly created Group.
 
@@ -141,32 +145,34 @@ Create four separate cubes in this Group and position them equidistant from each
 
 #### Facing the Right Way
 
-Now that we have the start of the legs of our chair, we'll want to keep in mind the direction our model will face for our use. If you design your model to face `North`, then when you place it down in the world, keeping in mind the player's facing direction, it will face outwards and away from the player as intended. 
+Now that we have the start of the legs of our chair, we'll want to keep in mind the direction our model will face for our use. If you design your model to face north, then when you place it down in the world, keeping in mind the player's facing direction, it will face outwards and away from the player as intended. 
 
 This is important so you do not end up with a model facing the wrong direction when it comes to your usage. However, this is entirely on a case-by-case basis; if it does not matter what direction your model will be seen from, then simply ignore this.
 
 #### Resizing
 
-To fully make the legs of our chair, you will want to lengthen the cubes. To make this a simple model, we'll be using increments of `2 Voxels` each. We now have our chair legs with a size of `2 x 6 x 2`
+To fully make the legs of our chair, you will want to lengthen the cubes.
 
-This length is important because we'll want to create a new group called `Seat` and add a cube to it to place on top of our legs. And since this new seat is `2 Voxels` thick as well, our model now has a total height of `8 Voxels`.
+To make this a simple model, we'll be using increments of 2 pixels each. We now have our chair legs with a size of `2 x 6 x 2`
 
-`8 Voxels` is also the same size as a slab in Minecraft. Which is also exactly the height at which most `Sit` or `Mount` mechanics in Denizen place the player at. 
+This length is important because we'll want to create a new group called `Seat` and add a cube to it to place on top of our legs. And since this new seat is 2 pixels thick as well, our model now has a total height of 8 pixels.
+
+8 pixels is also the same size as a slab in Minecraft. Which is also exactly the height at which most `sit` or `mount` commands, in Denizen, place the player at. 
 
 We'll now want to make a new group called `back`; this will be the back of the chair. Add a cube to this new group.
-Making this also `8 Voxels` in height means we now have a total height of `16 Voxels`, which is the max height of a standard Minecraft Block.
+Making this also 8 pixels in height means we now have a total height of 16 pixels, which is the max height of a standard Minecraft Block.
 
 ![](images/model_demo_resize.png)
 
 #### Texturing
 
-Now that we have a model, we could technically export this to our resource pack and continue with the guide, however there is no textures on the model. It will show up in-game as black and purple checkerboard.
+Now that we have a model, we could technically export this to our resource pack and continue with the guide, however currently there are no textures on the model. It will show up in-game as black and purple checkerboard.
 
 To add textures to your model, you will want to import some from the `Textures` section on the left pane of the program.
 
 This is where, if you have any art skills, you can create your own texture UV maps for your model, but the easiest thing you can actually do is just to reuse vanilla Minecraft's textures.
 
-This means that you don't have to be skillful at art to create your own custom 3D models.
+This means that you don't have to be skilled at art to create your own custom 3D models.
 
 However, you will likely want to extract all of Minecraft's Textures for your usage.
 
@@ -177,7 +183,7 @@ There are a few hosted copies of Minecraft's textures online, but the easiest wa
 Follow this step-by-step process:
 1. Locate your `.minecraft` folder
 2. Enter the `versions` folder
-3. Locate your current Minecraft Jar, like `1.26.2.jar`
+3. Locate your current Minecraft Jar, like `26.2.jar`
 4. Use an extraction program like `7-ZIP` to extract the jar to your desired directory
 5. Navigate to the `Textures` folder
 
@@ -193,11 +199,23 @@ A few textures we will use for this project are as follows:
 - `stripped_oak_log`
 - `stripped_dark_oak_log`
 
+Using Minecraft's textures like this also preserves the filepaths of the texture, meaning it can perfectly grab the texture.
+
+Keep in mind that this also applies any changes to the texture based off any other resource pack you might have installed. Meaning your model might render differently if a player has their own resource pack.
+
 The easiest way to apply a texture is simply by dragging the texture from the side directly to the Cube you want to texture. This will place the texture onto the single face of the Cube. 
 
 This may take a while and be tedious to apply for each face of the Cube; an easier way exists: hold `SHIFT` when you let go of it. This will apply it to all faces of the Cube.
 
 ![](images/model_demo_texturing.png)
+
+Another important thing to double check on your textures is the filepath of the texture. 
+
+To make sure Minecraft finds the texture in the right location, right click on the texture in the outliner, then click `Properties`.
+
+This should show the data of the texture file in Blockbench. Make sure that the namespace is set as `minecraft` and that the folder is correct for where the texture is from.
+
+If Minecraft is unable to find the file, then it will show up as bright purple and black boxes. This is useful to know in case one of your textures is incompatible or the filepath is incorrect.
 
 ##### UV Mapping
 
@@ -214,7 +232,7 @@ Now that we have a solid, simple model, we can get a bit fancy or fix any issues
 
 Let's try adding a cushion to the chair by selecting the seat and copying it. You now have a second cube of the same size. 
 
-Move it up `2 Voxels` so it's on top of the seat. 
+Move it up `2 Pixels` so it's on top of the seat. 
 Select the `Resize` tool and shrink it down to `9.5 x 0.25 x 7.75`
 Center it in the seat by adjusting its position.
 
@@ -242,7 +260,7 @@ A useful tip is that you can often simply select `Copy` and `Paste` to swap it b
 
 #### Cleanup
 
-This is all good and all, but we want to make sure our new model is optimized for players to use in their builds without causing too much lag.
+This is good, but we want to make sure our new model is optimized for players to use in their builds without causing too much lag.
 
 An easy way to do this is to cull any faces that players will not see. 
 
@@ -251,6 +269,8 @@ To do this, you can select any cube that has a face that players cannot see.
 For example, our chair legs. The tops of the legs won't have any way for players to see. Select the legs group and on the `UV Map` sidebar select `Up`. Press the `X` button at the bottom of the sidebar to `Remove Face`
 
 Repeat this for any other cubes with hidden faces to improve your model's performance.
+
+Utilizing plugins that you can install from the browser inside Blockbench can speed up this process greatly.
 
 
 #### Exporting
@@ -301,21 +321,21 @@ You can simply modify the `Item Frame` display in Blockbench to an upright posit
 
 ![](images/model_demo_item_frame.png)
 
-We can do even better... Using Denizen!
+However, we can do even better using Denizen!
 
 #### Item Display
 
-By utilizing `Display Entities` like the `Item Display,` we can directly achieve spawning the model into the world without relying on an item frame.
+By utilizing display entities like the Item Display, we can directly achieve spawning the model into the world without relying on an item frame.
 
 These also don't even rely on any of the Blockbench `Display` changes, and instead, it's your direct model you made in the world. 
 
 This works with spawning vanilla items as well and makes great decorations on its own.
 
-The only problem is that we can't interact with these as a player. There is simply no hitbox for the `Item Display` for the player to click or break.
+The only problem is that we can't interact with these as a player. There is simply no hitbox for the item display for the player to click or break.
 
 These also tend to be difficult to remove just by targeting them with `<player.target>`, since you have to look at their origin point. You can see it by using `F3 + B` to show hitboxes. It's very precise.
 
-However, we can simply `flag` this item to keep track of it. By flagging something with this `Item Display` we can directly target it for removal to clean it up or modify it in any way.
+However, we can simply `flag` this item to keep track of it. By flagging something with this item display we can directly target it for removal to clean it up or modify it in any way.
 
 To spawn an item display, you can create an entity script like:
 
@@ -330,15 +350,17 @@ chair_model:
 
 Changing the `Item` mechanism directly changes the model of the `Item Display`. This can be either any vanilla item or a direct `Item Script` from Denizen.
 
-Using the `Scale` mechanism changes the item's size in the world. It defaults to `1,1,1`; I provided it above just to see how it's formatted.
+Using the `Scale` mechanism changes the item's size in the world. It defaults to `1,1,1`; provided above is just to show proper formatting.
 
 #### Interaction Entity
 
-How about we add an actual hitbox to this `Item Display` so players can interact with it?
+To allow players to interact with the item display, you must add a hitbox.
 
-`Interaction Entities` provide a modifiable hitbox based on the `Height` and `Width` mechanisms, both of which default to `1`. 
+We can do this by spawning an `Interaction Entity`.
 
-It's important to know that `width` is a radius around the middle, which is unfortunate for making rectangular hitboxes in a single horizontal direction.
+These provide a modifiable hitbox based on the `Height` and `Width` mechanisms, both of which default to `1`. 
+
+It's important to know that width is a radius around the middle, which unlike using scaling for item displays, they only increase equally in each horizontal direction and end up square in shape. This means that you cannot make rectangular hitboxes in a single horizontal direction.
 
 ```dscript_green
 chair_interaction:
@@ -369,13 +391,25 @@ chair_event:
 
 By using the `Mount` command, we can force the player to sit directly on the model, which, as explained above, places the player as if they were on a slab. 
 
-We also wanted to keep in mind a cleanup method to remove the chair's entity and model.
+We also want to keep in mind a cleanup method to remove the chair's entity and model for when the player wants to break the chair or move it elsewhere.
 
 ![](images/model_demo_hitbox.png)
 
+#### Performance
+
+Depending on the complexity of your models, having too many of high cube/face models in the same area can cause player clients to lag or have performance issues.
+
+Remember that even if the player can't directly see a model through a wall, it still is rendered to the client and takes up resources.
+
+By default this is a range of `64` blocks determined by the `view_range` mechanism on a display entity.
+
+Meaning we can modify this mechanism to make models only render when you are quite close to them. 
+
+For example, you could fully furnish a house, and the house across the street won't have any of it's models actually impacting performance.
+
 ### Closing Notes
 
-Using Blockbench isn't that hard, and you can implement your own models directly in-game by utilizing the power of Denizen.
+Blockbench provides an accessible way to design custom models, and Denizen allows you to easily implement them directly in-game.
 
 It all depends on your creativity and logic in how you want to utilize custom models. 
 
