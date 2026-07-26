@@ -1,7 +1,7 @@
 Resource Packs - 3D Models and Advanced Implementation
 ----------------------------------------
 
-This page will provide some examples and guides to how to utilize the program Blockbench to create custom 3D items for use in your own projects.
+This page will provide some examples and guides on how to utilize the program Blockbench to create custom 3D items for use in your own projects.
 This guide assumes you already have a basic resource pack file structure and will primarily focus on the step by step process of creating a model using Blockbench, creating a namespace, and finally implementing it using Denizen with up to date info for modern Minecraft verisons.
 
 ```eval_rst
